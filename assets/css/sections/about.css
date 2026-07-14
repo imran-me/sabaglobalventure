@@ -22,12 +22,10 @@
   max-height: 620px;
 }
 .about-portrait-img { position: absolute; inset: 0; background: var(--ivory-200); }
-.about-portrait-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s var(--ease);
-}
-.about-portrait:hover .about-portrait-img img { transform: scale(1.045); }
+.about-portrait-img img { width: 100%; height: 100%; object-fit: cover; }
+/* The gentle push-in on hover only once the unveil has finished — otherwise the
+   two transforms fight over the same property and the image jumps. */
+.about-portrait.is-visible:hover .unveil img { transform: scale(1.045); }
 .about-portrait .arch-frame { color: var(--gold-700); opacity: .8; }
 .about-portrait figcaption {
   position: absolute;

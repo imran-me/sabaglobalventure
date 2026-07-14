@@ -70,6 +70,9 @@ window.initProducts = function initProducts() {
       <div class="media">
         <div class="media-niche">
           <img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
+          <!-- Sheen lives INSIDE the niche so the arch mask clips it: the light
+               travels across the opening, not across a rectangle. -->
+          <span class="arch-sheen" aria-hidden="true"></span>
         </div>
         <span class="media-frame" aria-hidden="true"></span>
       </div>

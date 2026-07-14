@@ -34,6 +34,83 @@
 }
 .arch-frame svg { width: 100%; height: 100%; display: block; }
 
+/* ---- The arch draws itself ------------------------------------------
+   The frame is not simply there when you arrive: it is DRAWN, one continuous
+   gold line travelling up the pier, around the cusps, over the apex and down
+   the other side. A mason's line, laid once.
+
+   pathLength="100" normalises both the outer and the inner concentric path to
+   the same length, so they draw at the same rate despite being different real
+   lengths — and the inner line follows a beat behind, the way a second pass of
+   the pen would. */
+.arch-frame path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 2.6s var(--ease);
+}
+.arch-frame path:last-child { transition-delay: .35s; }
+[data-reveal].is-visible .arch-frame path,
+.is-visible > .arch-frame path,
+.arch-frame.is-drawn path { stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .arch-frame path { stroke-dashoffset: 0; transition: none; }
+}
+
+/* ---- The unveiling ---------------------------------------------------
+   An arched portrait is not faded in — it is UNVEILED, the image rising into
+   its niche from below while a curtain of indigo lifts off it. A fade says "an
+   image loaded"; a reveal says "something is being shown to you".
+
+   clip-path on the image + a sliding scrim, both transform/clip only. The
+   0.06s of daylight between them is what sells it as cloth. */
+.unveil { position: absolute; inset: 0; overflow: hidden; }
+.unveil img {
+  clip-path: inset(100% 0 0 0);
+  transform: scale(1.12);
+  transition: clip-path 1.5s var(--ease), transform 2s var(--ease);
+}
+[data-reveal].is-visible .unveil img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
+/* The curtain itself. */
+.unveil::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--indigo-800), var(--indigo-950));
+  transform: translateY(0);
+  transition: transform 1.5s var(--ease) .06s;
+}
+[data-reveal].is-visible .unveil::after { transform: translateY(-101%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .unveil img { clip-path: none; transform: none; transition: none; }
+  .unveil::after { display: none; }
+}
+
+/* ---- The niche catches the light ------------------------------------
+   A single slow sheen crosses an arched niche on hover — light moving over
+   glazed tile. One pass, no loop: a loop would be decoration, one pass is a
+   response. */
+.arch-sheen {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.arch-sheen::after {
+  content: "";
+  position: absolute;
+  top: -60%; bottom: -60%; left: -40%;
+  width: 28%;
+  background: linear-gradient(100deg, transparent, rgba(255,247,220,.16) 45%, rgba(255,247,220,.26) 50%, transparent);
+  transform: translateX(-260%) rotate(8deg);
+  transition: transform 1.15s var(--ease);
+}
+.product-card:hover .arch-sheen::after,
+.about-portrait:hover .arch-sheen::after { transform: translateX(560%) rotate(8deg); }
+@media (prefers-reduced-motion: reduce) { .arch-sheen { display: none; } }
+
 /* ===== Chapters =======================================================
    The narrative is numbered. A trade house tells its story in order; the
    number is set in the wordmark face, oversized and gold, and the label is
@@ -132,6 +209,80 @@
 @media (prefers-reduced-motion: reduce) {
   .alpona .alpona-line { stroke-dashoffset: 0; transition: none; }
   .alpona circle { opacity: 1; transition: none; }
+}
+
+/* ===== The Journey frieze =============================================
+   A single gold line carrying the goods from the paddy field to the ship. It
+   draws itself SCENE BY SCENE, left to right — the drawing travels the way the
+   cargo does, and at roughly the pace you read. Each scene is staggered off its
+   data-scene, so the paddy is already drawn by the time the ship starts.
+
+   Every stroke carries pathLength="100", so one duration draws them all evenly
+   regardless of true length — without that, a long water line and a short grain
+   ear would draw at wildly different speeds and the panel would look broken. */
+.frieze-band { position: relative; overflow: hidden; }
+.frieze-head { max-width: 46ch; margin-bottom: clamp(1.25rem, 3vw, 2rem); }
+.frieze-head h2 { margin: .5rem 0 0; font-size: clamp(1.5rem, 3vw, 2.4rem); max-width: 22ch; }
+
+.frieze {
+  color: var(--gold-500);
+  width: 100%;
+  margin-block: clamp(.5rem, 2vw, 1.25rem);
+  /* Feather both ends so the panel emerges from, and dissolves back into, the
+     indigo — a frieze should have no hard start or stop. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.frieze svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+.frieze .frieze-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1.8s var(--ease);
+}
+.frieze circle { opacity: 0; transition: opacity .9s var(--ease); }
+.frieze.is-drawn .frieze-line { stroke-dashoffset: 0; }
+.frieze.is-drawn circle { opacity: 1; }
+
+/* The stagger: each scene begins after the one upstream of it. */
+.frieze .frieze-scene { --d: 0s; }
+.frieze .frieze-scene[data-scene="paddy"]    { --d: 0s; }
+.frieze .frieze-scene[data-scene="river"]    { --d: .28s; }
+.frieze .frieze-scene[data-scene="nouka"]    { --d: .56s; }
+.frieze .frieze-scene[data-scene="bazar"]    { --d: .84s; }
+.frieze .frieze-scene[data-scene="rickshaw"] { --d: 1.12s; }
+.frieze .frieze-scene[data-scene="port"]     { --d: 1.4s; }
+.frieze .frieze-scene[data-scene="ship"]     { --d: 1.68s; }
+.frieze .frieze-scene .frieze-line { transition-delay: var(--d); }
+.frieze .frieze-scene circle { transition-delay: calc(var(--d) + 1.2s); }
+
+/* The legend: seven micro-cap words under the panel, gold-lozenge separated —
+   naming the journey without captioning the drawing. */
+.frieze-legend {
+  list-style: none; margin: 1.25rem 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  gap: .5rem 1rem;
+  font-size: .58rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold-500); opacity: .7;
+}
+.frieze-legend li { display: inline-flex; align-items: center; gap: .75rem; }
+.frieze-legend li:not(:last-child)::after {
+  content: ""; width: 3px; height: 3px; background: currentColor;
+  transform: rotate(45deg); opacity: .8;
+}
+
+/* The panel is 2400 wide. On a phone that would shrink to an unreadable thread,
+   so let it keep a legible height and scroll sideways under the finger —
+   deliberately, with the feather masking the cut. */
+@media (max-width: 860px) {
+  .frieze { overflow-x: auto; scrollbar-width: none; }
+  .frieze::-webkit-scrollbar { display: none; }
+  .frieze svg { width: 1500px; max-width: none; }
+  .frieze-legend { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .frieze .frieze-line { stroke-dashoffset: 0; transition: none; }
+  .frieze circle { opacity: 1; transition: none; }
 }
 
 /* ===== Market marquee =================================================

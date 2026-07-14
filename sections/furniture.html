@@ -6,11 +6,29 @@
      Links read from config.js via main.js populateConfig().
      ======================================================================== -->
 
-<!-- Preloader -->
+<!-- =========================================================================
+     Preloader — the overture.
+     The first two seconds decide whether a buyer believes the rest of the page.
+     So: a gold ring DRAWS itself closed around the crest, the crest blooms
+     inside it, the wordmark opens out of tight tracking, and a hairline rule
+     runs out beneath. Then the whole thing lifts away. No spinner — a spinner
+     says "please wait"; this says "you have arrived somewhere".
+     ====================================================================== -->
 <div class="preloader" role="status" aria-label="Loading">
-  <div class="stack" style="align-items:center">
-    <img class="emblem" src="assets/img/icons/emblem.svg" alt="Saba Global Venture">
-    <div class="bar"><span></span></div>
+  <div class="pre-inner">
+    <div class="pre-mark">
+      <!-- The ring is stroked so it can draw itself closed (stroke-dashoffset). -->
+      <svg class="pre-ring" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1" opacity=".35"/>
+        <circle class="pre-ring-draw" cx="60" cy="60" r="56" fill="none"
+                stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                pathLength="100" transform="rotate(-90 60 60)"/>
+      </svg>
+      <img class="emblem" src="assets/img/icons/emblem.svg" alt="Saba Global Venture">
+    </div>
+    <p class="pre-word" aria-hidden="true">SABA GLOBAL VENTURE</p>
+    <span class="pre-rule" aria-hidden="true"></span>
+    <p class="pre-tag" aria-hidden="true">From Bangladesh to the World</p>
   </div>
 </div>
 

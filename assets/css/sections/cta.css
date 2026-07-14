@@ -1,19 +1,50 @@
 /* ============================================================================
-   sections/cta.css — Full-width conversion band
+   sections/cta.css — The conversion band, in Royal Bengal
+   ----------------------------------------------------------------------------
+   This is the moment we actually ask for the conversation, so it is the one
+   place the ROYAL BENGAL damask appears at full strength: a medallion whose
+   petals are tiger-stripe brush blades, set in terracotta-temple geometry.
+   Used once, on the ask. Used everywhere, it would be wallpaper.
    ========================================================================== */
 
 .cta-band {
   position: relative;
   text-align: center;
   background:
-    radial-gradient(80% 120% at 50% 0%, rgba(201,162,75,.12), transparent 60%),
-    linear-gradient(180deg, var(--blue-900), var(--navy-950));
+    radial-gradient(80% 120% at 50% 0%, rgba(201,162,75,.14), transparent 60%),
+    linear-gradient(180deg, var(--indigo-800), var(--indigo-950));
   border-block: 1px solid var(--line);
   overflow: hidden;
+  isolation: isolate;
 }
+
+/* The damask ground. Pooled in the centre and dissolved well before the edges
+   so the band has a lit heart rather than a tiled surface. */
+.cta-band::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
+  background: url("../../img/patterns/royal-bengal-gold.svg") center / 140px repeat;
+  opacity: .14;
+  -webkit-mask-image: radial-gradient(75% 90% at 50% 50%, #000 10%, rgba(0,0,0,.45) 55%, transparent 85%);
+          mask-image: radial-gradient(75% 90% at 50% 50%, #000 10%, rgba(0,0,0,.45) 55%, transparent 85%);
+  /* The ground drifts, very slowly. Nothing in this house is quite still. */
+  animation: damask-drift 90s linear infinite;
+  will-change: background-position;
+}
+/* Exactly one tile (140px) on each axis — the loop cannot be seen. */
+@keyframes damask-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 140px 140px; }
+}
+@media (prefers-reduced-motion: reduce) { .cta-band::after { animation: none; } }
+
 .cta-band .container { position: relative; z-index: 1; }
 .cta-band h2 { max-width: 20ch; margin: 0 auto var(--space-5); }
-.cta-band .cta-actions { display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-5); }
+.cta-band .cta-actions {
+  display: flex; gap: var(--space-3); justify-content: center;
+  flex-wrap: wrap; margin-bottom: var(--space-5);
+}
 .cta-band .market-row { justify-content: center; }
 
 /* Faint filigree frame inside the band. */

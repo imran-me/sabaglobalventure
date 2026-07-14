@@ -28,10 +28,15 @@
     <div class="about-grid">
       <!-- The story image, cut to the house arch. -->
       <figure class="about-portrait" data-reveal>
+        <!-- .arch cuts the niche; .unveil lifts a curtain off the image inside
+             it and raises the photo into place. The sheen crosses on hover. -->
         <div class="arch about-portrait-img">
-          <img src="assets/img/photos/delta-harvest.jpg" data-content-src="aboutImage"
-               alt="Harvest being loaded at a Bangladeshi river port at golden hour"
-               loading="lazy" decoding="async">
+          <div class="unveil">
+            <img src="assets/img/photos/delta-harvest.jpg" data-content-src="aboutImage"
+                 alt="Harvest being loaded at a Bangladeshi river port at golden hour"
+                 loading="lazy" decoding="async">
+          </div>
+          <span class="arch-sheen" aria-hidden="true"></span>
         </div>
         <div class="arch-frame">
           <svg viewBox="0 0 100 140" preserveAspectRatio="none" fill="none"

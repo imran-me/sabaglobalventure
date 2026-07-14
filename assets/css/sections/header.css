@@ -15,12 +15,19 @@
               box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
   border-bottom: 1px solid transparent;
 }
+/* The scrolled bar must hold its own colour over BOTH canvases.
+   This was rgba(2,7,26,.72) back when the whole page was dark. Once the ivory
+   chapters arrived that 28% of transparency pulled warm paper up through the
+   bar and blended it to a muddy grey (~#474A56) — the nav looked broken exactly
+   where the design is proudest. Near-opaque indigo instead: the blur now reads
+   as tinted glass with depth behind it, rather than as a tint of whatever it
+   happens to be over. */
 .site-header.is-scrolled {
   padding-block: .7rem;
-  background: rgba(2,7,26,.72);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  background: linear-gradient(180deg, rgba(5,8,28,.94), rgba(5,8,28,.88));
+  -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2);
   border-bottom-color: var(--line);
-  box-shadow: 0 8px 30px -16px rgba(0,0,0,.6);
+  box-shadow: 0 10px 34px -18px rgba(0,0,0,.75);
 }
 
 /* ---- Brand lockup ---------------------------------------------------- */

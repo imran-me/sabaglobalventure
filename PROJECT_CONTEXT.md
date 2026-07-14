@@ -178,6 +178,64 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-15 — Session 3 (the craft pass: art, animation, detail)
+Client: *"more luxurious, premium, perfection even in the tiniest detailing, more
+premium animations, art animation, background animation, more themed"* and
+*"royal bengal pattern, royal bengal tiger, rikshaw, river, nouka, bazar too —
+premium artistic luxurious cultural"*.
+
+**THE JOURNEY FRIEZE (the centrepiece).** `sections/frieze.html` — one unbroken
+gold line, 164 strokes across 7 scenes: paddy field → braided river → nouka under
+sail → bazar (baskets, balance scale, awning) → Dhaka rickshaw (its painted back
+panel engraved, not coloured) → port cranes → container ship leaving. It **draws
+itself scene by scene, left to right**, at reading pace. Placed deliberately
+between "03 The House" and "04 Reach": it is the bridge from *how we work* to
+*where it goes*. Every stroke carries `pathLength="100"` so they draw at one rate.
+
+**Cultural art, placed by meaning not decoration** (see `background.js`
+SIDE_ACCENTS — the comment there explains each pairing): tiger beside the origin
+story, **bazar** behind the catalogue (a catalogue *is* a market), **river-delta**
+(the braided delta from above — the shape of Bangladesh) behind the Journey,
+**rickshaw** at the CTA (the last mile), mosque at the sign-off.
+
+**Royal Bengal damask** (`patterns/royal-bengal-gold.svg`) — a medallion whose
+petals are tiger-stripe brush blades set in terracotta-temple geometry. Used at
+**full strength in exactly one place**: the CTA band, the moment we ask. Used
+everywhere it would be wallpaper. It drifts one tile per 90s.
+
+**Background is now living art:** "liquid silk" — four colour blooms drifting on
+**coprime periods (37/53/71/89s) so the canvas never resyncs and never visibly
+repeats**; gold **caustics** skimming the waterline (translating exactly one
+120px pattern period, so the loop is invisible); and **gold dust** rebuilt with
+real depth — every mote's z drives radius, opacity AND speed together, with its
+own sway and twinkle phase. Deterministic seeding (a small LCG, never
+Math.random) so the field is identical on every load.
+
+**The overture.** The preloader was capped at 1.2s — which cut its own animation
+off mid-gesture. Now: ring draws closed, crest blooms, wordmark opens out of tight
+tracking, rule runs out; it holds for the beat (2.2s), never for the network
+(3.2s ceiling), is dismissable, and **greets once per session** — a flourish on
+arrival is hospitality, the same flourish on every navigation is a toll.
+
+**Detail pass:** arches that **draw themselves** (a mason's line); a one-pass gold
+**sheen** across a niche on hover; images **unveiled** (clip-path + a lifting
+curtain) rather than faded; a **two-part cursor** — a dot that never lags plus a
+ring that does, which is what reads as weight — with magnetic snap to anything
+interactive.
+
+**Bugs found and fixed:**
+- **The header went muddy grey.** `rgba(2,7,26,.72)` was written when the whole
+  page was dark; over the new ivory chapters that 28% transparency pulled warm
+  paper through and blended to ~#474A56. Now near-opaque indigo.
+- **`counters.js` never emitted the suffix span** that `trust.css` paints gold, so
+  the "+" was silently the wrong colour. Also moved to easeOutExpo and a
+  left-to-right stagger.
+- Dropped `mix-blend-mode: difference` from the cursor: over ivory it turned the
+  gold ring muddy cyan.
+- Reduced-motion verified by emulating the media feature, not by reading the CSS:
+  no cursor, no particles, no curtain, arches drawn instantly.
+
+
 ### 2026-07-15 — Session 2 (THE REDESIGN — and why it was needed)
 **Client feedback, verbatim and fair:** *"you have made everything same to same of
 sara al salam, just color is different… it is not a luxurious practice to make

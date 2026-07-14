@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <!-- Dhaka cycle-rickshaw, profile, facing left. Solid silhouette mask. -->
+
+  <!-- rear wheel (large) -->
+  <path fill="#000" fill-rule="evenodd" d="M122,118 a28,28 0 1,0 56,0 a28,28 0 1,0 -56,0 Z M127,118 a23,23 0 1,0 46,0 a23,23 0 1,0 -46,0 Z"/>
+  <circle fill="#000" cx="150" cy="118" r="5"/>
+  <rect fill="#000" x="128" y="117.2" width="44" height="1.6"/>
+  <rect fill="#000" x="128" y="117.2" width="44" height="1.6" transform="rotate(45 150 118)"/>
+  <rect fill="#000" x="128" y="117.2" width="44" height="1.6" transform="rotate(90 150 118)"/>
+  <rect fill="#000" x="128" y="117.2" width="44" height="1.6" transform="rotate(135 150 118)"/>
+
+  <!-- front wheel (smaller) -->
+  <path fill="#000" fill-rule="evenodd" d="M28,122 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0 Z M32.5,122 a15.5,15.5 0 1,0 31,0 a15.5,15.5 0 1,0 -31,0 Z"/>
+  <circle fill="#000" cx="48" cy="122" r="4"/>
+  <rect fill="#000" x="33" y="121.3" width="30" height="1.4"/>
+  <rect fill="#000" x="33" y="121.3" width="30" height="1.4" transform="rotate(45 48 122)"/>
+  <rect fill="#000" x="33" y="121.3" width="30" height="1.4" transform="rotate(90 48 122)"/>
+  <rect fill="#000" x="33" y="121.3" width="30" height="1.4" transform="rotate(135 48 122)"/>
+
+  <!-- fork / head tube, handlebars, grips -->
+  <rect fill="#000" x="42" y="64" width="3.2" height="60" transform="rotate(7 44 94)"/>
+  <rect fill="#000" x="24" y="59" width="34" height="3.2" rx="1.6"/>
+  <rect fill="#000" x="22" y="57" width="5" height="8" rx="2.5"/>
+  <rect fill="#000" x="55" y="57" width="5" height="8" rx="2.5"/>
+
+  <!-- frame: top tube, down tube, seat tube, chain stay, seat stay -->
+  <rect fill="#000" x="44" y="70" width="48" height="3.2" transform="rotate(10 44 71.6)"/>
+  <rect fill="#000" x="48" y="118" width="42" height="3.2" transform="rotate(-19 48 119.6)"/>
+  <rect fill="#000" x="85" y="78" width="3.2" height="30" transform="rotate(-8 86.6 93)"/>
+  <rect fill="#000" x="86" y="109" width="66" height="3.2" transform="rotate(9 86 110.6)"/>
+  <rect fill="#000" x="92" y="82" width="68" height="3.2" transform="rotate(30 92 83.6)"/>
+
+  <!-- saddle, chainring, pedal -->
+  <ellipse fill="#000" cx="90" cy="76" rx="11.5" ry="3.6"/>
+  <circle fill="#000" cx="86" cy="106" r="6.5"/>
+  <rect fill="#000" x="80" y="116" width="9" height="2.6" rx="1.2"/>
+
+  <!-- carriage deck over rear wheel + uprights -->
+  <rect fill="#000" x="108" y="103" width="72" height="4" rx="1.5"/>
+  <rect fill="#000" x="113" y="104" width="3" height="16"/>
+  <rect fill="#000" x="167" y="104" width="3" height="16"/>
+
+  <!-- passenger seat cushion -->
+  <rect fill="#000" x="111" y="90" width="66" height="13" rx="3.5"/>
+  <rect fill="#000" x="105" y="112" width="12" height="3.4" rx="1.5"/>
+
+  <!-- flat decorated back panel -->
+  <path fill="#000" d="M170,116 L170,50 q0,-4 5,-4 q5,0 5,4 L180,116 Z"/>
+
+  <!-- tall curved hood -->
+  <path fill="#000" d="M179,54 C179,22 140,10 112,30 C99,39.5 95,56.5 95,73 L105,73 C105,58.5 108.5,45 118,38 C141,21.5 169,30 169,55 Z"/>
+  <path fill="#000" d="M137,20 C152,17 165,22 172,32 L167,36 C161,27 150,23 138,25 Z"/>
+  <rect fill="#000" x="103" y="71" width="3" height="24" transform="rotate(-6 104.5 83)"/>
+</svg>

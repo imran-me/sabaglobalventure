@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="140" height="140" viewBox="0 0 140 140">
+  <!-- "Royal Bengal" - tiger-stripe damask medallion on terracotta-temple lattice.
+       Seamless 140x140 tile. Gold #C9A24B only, transparent ground. -->
+  <defs>
+    <!-- medallion: eight tapering tiger-stripe brush blades -->
+    <g id="med" fill="none" stroke="#C9A24B" stroke-width="0.8">
+      <circle r="32" stroke-width="0.7"/>
+      <circle r="29.6" stroke-width="0.4"/>
+      <circle r="8.6"/>
+      <circle r="3.6" stroke-width="0.6"/>
+      <circle r="1.4" fill="#C9A24B" stroke="none"/>
+      <g id="blades" fill="#C9A24B" stroke="none">
+        <path id="bl" d="M-3.2,-7 C-4.8,-14 -3,-22 2,-27.5 C3.4,-29.2 4,-28.8 3.4,-26.8 C1.2,-20 2.2,-13.5 3.2,-7.8 C1,-6.4 -1.4,-6.4 -3.2,-7 Z"/>
+        <use xlink:href="#bl" href="#bl" transform="rotate(45)"/>
+        <use xlink:href="#bl" href="#bl" transform="rotate(90)"/>
+        <use xlink:href="#bl" href="#bl" transform="rotate(135)"/>
+        <use xlink:href="#bl" href="#bl" transform="rotate(180)"/>
+        <use xlink:href="#bl" href="#bl" transform="rotate(225)"/>
+        <use xlink:href="#bl" href="#bl" transform="rotate(270)"/>
+        <use xlink:href="#bl" href="#bl" transform="rotate(315)"/>
+      </g>
+      <g fill="#C9A24B" stroke="none">
+        <circle id="pd" cy="-20" r="0.9" transform="rotate(22.5)"/>
+        <use xlink:href="#pd" href="#pd" transform="rotate(45)"/>
+        <use xlink:href="#pd" href="#pd" transform="rotate(90)"/>
+        <use xlink:href="#pd" href="#pd" transform="rotate(135)"/>
+        <use xlink:href="#pd" href="#pd" transform="rotate(180)"/>
+        <use xlink:href="#pd" href="#pd" transform="rotate(225)"/>
+        <use xlink:href="#pd" href="#pd" transform="rotate(270)"/>
+        <use xlink:href="#pd" href="#pd" transform="rotate(315)"/>
+      </g>
+    </g>
+
+    <!-- stepped temple lozenge -->
+    <g id="lz" fill="none" stroke="#C9A24B" stroke-width="0.7" stroke-linecap="round">
+      <path d="M0,-8 L8,0 L0,8 L-8,0 Z"/>
+      <path d="M0,-4.4 L4.4,0 L0,4.4 L-4.4,0 Z" stroke-width="0.5"/>
+      <circle r="1" fill="#C9A24B" stroke="none"/>
+      <path id="cv" d="M-2.6,-10.6 L0,-13.2 L2.6,-10.6"/>
+      <use xlink:href="#cv" href="#cv" transform="rotate(90)"/>
+      <use xlink:href="#cv" href="#cv" transform="rotate(180)"/>
+      <use xlink:href="#cv" href="#cv" transform="rotate(270)"/>
+    </g>
+  </defs>
+
+  <!-- diagonal temple lattice (period 70 - seamless in both axes) -->
+  <g stroke="#C9A24B" stroke-width="0.6" fill="none">
+    <path d="M-70,-140 L210,140 M-70,-70 L210,210 M-70,0 L210,280"/>
+    <path d="M-70,140 L210,-140 M-70,210 L210,-70 M-70,280 L210,0"/>
+  </g>
+
+  <!-- central medallion -->
+  <use xlink:href="#med" href="#med" transform="translate(70,70)"/>
+
+  <!-- corner medallions, quartered by the tile edge -->
+  <use xlink:href="#med" href="#med" transform="translate(0,0) scale(0.5)"/>
+  <use xlink:href="#med" href="#med" transform="translate(140,0) scale(0.5)"/>
+  <use xlink:href="#med" href="#med" transform="translate(0,140) scale(0.5)"/>
+  <use xlink:href="#med" href="#med" transform="translate(140,140) scale(0.5)"/>
+
+  <!-- lozenges on the lattice nodes -->
+  <use xlink:href="#lz" href="#lz" transform="translate(35,35)"/>
+  <use xlink:href="#lz" href="#lz" transform="translate(105,35)"/>
+  <use xlink:href="#lz" href="#lz" transform="translate(35,105)"/>
+  <use xlink:href="#lz" href="#lz" transform="translate(105,105)"/>
+  <!-- edge-midpoint lozenges, halved (drawn on both opposite edges) -->
+  <use xlink:href="#lz" href="#lz" transform="translate(70,0)"/>
+  <use xlink:href="#lz" href="#lz" transform="translate(70,140)"/>
+  <use xlink:href="#lz" href="#lz" transform="translate(0,70)"/>
+  <use xlink:href="#lz" href="#lz" transform="translate(140,70)"/>
+
+  <!-- scatter of tiny dots -->
+  <g fill="#C9A24B">
+    <circle cx="52.5" cy="17.5" r="0.9"/>
+    <circle cx="87.5" cy="17.5" r="0.9"/>
+    <circle cx="17.5" cy="52.5" r="0.9"/>
+    <circle cx="122.5" cy="52.5" r="0.9"/>
+    <circle cx="17.5" cy="87.5" r="0.9"/>
+    <circle cx="122.5" cy="87.5" r="0.9"/>
+    <circle cx="52.5" cy="122.5" r="0.9"/>
+    <circle cx="87.5" cy="122.5" r="0.9"/>
+    <!-- edge dots, halved (mirrored on the opposite edge) -->
+    <circle cx="35" cy="0" r="0.9"/>
+    <circle cx="105" cy="0" r="0.9"/>
+    <circle cx="35" cy="140" r="0.9"/>
+    <circle cx="105" cy="140" r="0.9"/>
+    <circle cx="0" cy="35" r="0.9"/>
+    <circle cx="0" cy="105" r="0.9"/>
+    <circle cx="140" cy="35" r="0.9"/>
+    <circle cx="140" cy="105" r="0.9"/>
+  </g>
+</svg>

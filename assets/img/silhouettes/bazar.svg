@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <!-- Bengali market stall (bazar). Solid silhouette mask. -->
+
+  <!-- sagging sloped awning -->
+  <path fill="#000" d="M12,42 C60,30 140,38 188,52 L188,61 C140,47 60,39 12,51 Z"/>
+
+  <!-- poles -->
+  <rect fill="#000" x="15" y="44" width="4.5" height="104"/>
+  <rect fill="#000" x="181" y="56" width="4.5" height="92"/>
+
+  <!-- hanging balance scale -->
+  <rect fill="#000" x="99.2" y="43" width="1.8" height="23"/>
+  <rect fill="#000" x="72" y="65" width="56" height="2.2" rx="1.1"/>
+  <circle fill="#000" cx="100" cy="66" r="3.2"/>
+  <rect fill="#000" x="73.4" y="67" width="1.4" height="13"/>
+  <rect fill="#000" x="125.4" y="67" width="1.4" height="13"/>
+  <path fill="#000" d="M62,79.5 Q74,90 86,79.5 Z"/>
+  <path fill="#000" d="M114,79.5 Q126,90 138,79.5 Z"/>
+
+  <!-- counter / table -->
+  <rect fill="#000" x="28" y="103" width="144" height="5" rx="1.5"/>
+  <rect fill="#000" x="35" y="108" width="4" height="40"/>
+  <rect fill="#000" x="159" y="108" width="4" height="40"/>
+
+  <!-- tokri A (left) heaped with produce -->
+  <path fill="#000" d="M40,103 C44,89 80,89 84,103 Z"/>
+  <circle fill="#000" cx="50" cy="98"  r="3.6"/>
+  <circle fill="#000" cx="58" cy="94"  r="4"/>
+  <circle fill="#000" cx="67" cy="93"  r="4"/>
+  <circle fill="#000" cx="75" cy="96"  r="3.6"/>
+  <rect  fill="#000" x="38" y="102" width="48" height="4.2" rx="2"/>
+  <path fill="#000" d="M42,106 L82,106 L77,120 Q62,127 47,120 Z"/>
+
+  <!-- tokri B (right) heaped with produce -->
+  <path fill="#000" d="M118,103 C122,92 154,92 158,103 Z"/>
+  <circle fill="#000" cx="126" cy="99" r="3.2"/>
+  <circle fill="#000" cx="134" cy="96" r="3.6"/>
+  <circle fill="#000" cx="142" cy="96" r="3.6"/>
+  <circle fill="#000" cx="150" cy="99" r="3.2"/>
+  <rect  fill="#000" x="116" y="102" width="44" height="4.2" rx="2"/>
+  <path fill="#000" d="M120,106 L156,106 L151,118 Q138,124 125,118 Z"/>
+
+  <!-- stacked empty baskets on the ground -->
+  <rect fill="#000" x="128" y="130" width="40" height="3.6" rx="1.7"/>
+  <path fill="#000" d="M131,133.6 L165,133.6 L161,145 Q148,150 135,145 Z"/>
+  <rect fill="#000" x="132" y="117" width="32" height="3.6" rx="1.7"/>
+  <path fill="#000" d="M135,120.6 L161,120.6 L158,130 L138,130 Z"/>
+
+  <!-- sacks at the base -->
+  <path fill="#000" d="M38,147 C34,130 40,118 52,118 C64,118 70,130 66,147 Z"/>
+  <path fill="#000" d="M45,120 L59,120 L61,112 L43,112 Z"/>
+  <path fill="#000" d="M76,147 C73,134 78,124 87,124 C96,124 101,134 98,147 Z"/>
+  <path fill="#000" d="M81,126 L93,126 L94.5,119 L79.5,119 Z"/>
+</svg>
