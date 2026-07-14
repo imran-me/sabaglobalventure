@@ -171,6 +171,18 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-15 — Pushed to GitHub
+- Repo: **<https://github.com/imran-me/sabaglobalventure.git>**, branch `main`,
+  initial commit `fa4f55b` (86 files), author **Md Imran Hossain**.
+- The repo root **is** the site root (`index.html` at top level), so GitHub Pages can
+  serve it as-is. `.nojekyll` is committed and every path is relative, so a project
+  subpath (`imran-me.github.io/sabaglobalventure/`) works.
+- ⏳ To go live: repo → **Settings → Pages → Deploy from branch `main` / root**.
+  Then add that domain to Firebase → Authentication → Authorized domains.
+- Note: only the `sabaglobal/` project folder was committed. The parent directory
+  still holds `saraalsalam-main.zip` and the old Sara Alsalam prompt — those belong to
+  a **different client** and were deliberately kept out of this repo.
+
 ### 2026-07-15 — Session 1 (project built end-to-end)
 Built the entire site from scratch, reusing the proven architecture of the earlier
 `saraalsalam` project (same category of business) but with a wholly new identity:
