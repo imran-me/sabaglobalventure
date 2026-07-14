@@ -1,0 +1,15 @@
+{
+  "name": "Saba Global Venture",
+  "short_name": "Saba Global",
+  "description": "Bulk rice, shrimp, fish, fruit and fresh vegetables exported from Bangladesh to the world.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#071C4D",
+  "background_color": "#02071A",
+  "icons": [
+    { "src": "assets/img/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

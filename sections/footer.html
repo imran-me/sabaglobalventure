@@ -1,0 +1,92 @@
+<!-- ===========================================================================
+     sections/footer.html — Deep-navy footer with lotus divider + columns
+     ---------------------------------------------------------------------------
+     Product links deep-link into the filtered showcase (products.js picks up
+     data-cat and pre-selects that pill). Markets list + year are injected.
+     The tiny gold dot at bottom-right is the only public route to /admin.
+     ======================================================================== -->
+<footer class="site-footer" id="footer">
+  <!-- Lotus / 8-point star atop the divider -->
+  <svg class="arabesque" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+    <path d="M12 2l2.5 5.5L20 6l-1.5 6L20 18l-5.5-1.5L12 22l-2.5-5.5L4 18l1.5-6L4 6l5.5 1.5z"/>
+  </svg>
+
+  <div class="container">
+    <div class="foot-grid">
+      <!-- Brand -->
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html" aria-label="Saba Global Venture — home">
+          <img class="mark" src="assets/img/icons/emblem.svg" alt="Saba Global Venture crest">
+          <span class="wordmark"><b>Saba Global</b><small>Venture</small></span>
+        </a>
+        <p class="ethos">Trusted sourcing partner from the Bengal delta — the harvest of Bangladesh, delivered in bulk, with trust.</p>
+        <div class="socials">
+          <a data-config-href="instagram" aria-label="Instagram">IG</a>
+          <a data-config-href="facebook" aria-label="Facebook">FB</a>
+          <a data-config-href="linkedin" aria-label="LinkedIn">in</a>
+          <a data-config-href="whatsapp" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+
+      <!-- Explore -->
+      <nav class="foot-col" aria-label="Explore">
+        <h4>Explore</h4>
+        <ul role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Products (deep-link into the catalogue filter) -->
+      <nav class="foot-col" aria-label="Products">
+        <h4>Products</h4>
+        <ul role="list">
+          <li><a href="#products" data-cat="Rice">Rice</a></li>
+          <li><a href="#products" data-cat="Shrimp">Shrimp</a></li>
+          <li><a href="#products" data-cat="Fish &amp; Seafood">Fish &amp; Seafood</a></li>
+          <li><a href="#products" data-cat="Fresh Vegetables">Fresh Vegetables</a></li>
+          <li><a href="#products" data-cat="Fresh Fruits">Fresh Fruits</a></li>
+          <li><a href="#products" data-cat="Spices">Spices</a></li>
+          <li><a href="#products" data-cat="Potato">Potato</a></li>
+          <li><a href="#products" data-cat="Dry &amp; Agro Foods">Dry &amp; Agro Foods</a></li>
+        </ul>
+      </nav>
+
+      <!-- Markets (flag dots injected) -->
+      <div class="foot-col">
+        <h4>Markets</h4>
+        <ul class="flag-dots" role="list" data-markets data-markets-dots></ul>
+      </div>
+
+      <!-- Get in touch -->
+      <div class="foot-col">
+        <h4>Get in Touch</h4>
+        <ul role="list">
+          <li><a data-config-href="whatsapp">WhatsApp — click to chat</a></li>
+          <li><a data-config-href="email" data-config="email">{SALES_EMAIL}</a></li>
+          <li><a data-config-href="phone" data-config="phone">{PHONE}</a></li>
+          <li><span data-config="address">{ADDRESS_CUMILLA}</span></li>
+          <li><span data-config="hours">Sat–Thu, 9:00–18:00 (BST, GMT+6)</span></li>
+        </ul>
+        <p style="font-size:.74rem;color:var(--text-muted-on-dark);margin-top:.6rem">Bulk &amp; wholesale inquiries only.</p>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="foot-bottom">
+      <div class="left">© <span data-year>2026</span> Saba Global Venture. All rights reserved.</div>
+      <div class="center">Trade Markets · GCC · Middle East · South Asia</div>
+      <div class="right">
+        <a href="#">Privacy</a> · <a href="#">Terms</a>
+        <a class="admin-dot" href="admin.html" aria-label="Admin"></a>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot-fineprint">FOB / CIF terms available · MOQ applies to all products.</p>
+
+  <!-- Faint cargo-ship silhouette -->
+  <img class="foot-silhouette" src="assets/img/silhouettes/cargo-ship.svg" alt="" aria-hidden="true">
+</footer>

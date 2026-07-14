@@ -1,0 +1,106 @@
+/* ============================================================================
+   sections/products.css — Products showcase (filter pills + card grid + modal)
+   ----------------------------------------------------------------------------
+   Cards are rendered by assets/js/products.js from assets/data/products.js.
+   ========================================================================== */
+
+/* ---- Showcase heading (client request) ------------------------------
+   Title on two lines, the lead wider so it reads on ~one line, and the whole
+   head tightened ~30% so the product grid sits higher. Scoped to #products so
+   other sections' headings are untouched. */
+#products .section-head { max-width: 80ch; margin-bottom: calc(var(--space-5) * .7); }
+#products .section-head .eyebrow { margin-bottom: calc(var(--space-3) * .7); }
+#products .section-head h2 { margin-bottom: calc(var(--space-4) * .7); }
+#products .section-head .lead { max-width: 78ch; margin-inline: auto; }
+
+/* ---- Filter pills row ----------------------------------------------- */
+.filter-bar { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: var(--space-5); }
+
+/* ---- Product grid --------------------------------------------------- */
+/* auto-FILL (not auto-fit) + a capped column max keeps every card the SAME
+   size, so a category with just one or two products shows tidy normal-width
+   cards instead of stretching them across the whole row. The row is centered. */
+.product-grid {
+  display: grid;
+  /* auto-FIT collapses empty tracks (so 1–2 products stay centered, not shoved
+     left) while the fixed 288px max stops a lone card stretching full width —
+     every card is the same size everywhere. */
+  grid-template-columns: repeat(auto-fit, minmax(248px, 288px));
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+/* Smooth filtered re-layout: hidden cards collapse out. */
+.product-card.is-hidden { display: none; }
+
+/* ---- Product card --------------------------------------------------- */
+.product-card { display: flex; flex-direction: column; }
+.product-card .media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.product-card .media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
+.product-card:hover .media img { transform: scale(1.07); }
+.product-card .media .cat-eyebrow {
+  position: absolute; top: .75rem; left: .75rem; z-index: 2;
+  font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
+  color: var(--navy-950); background: var(--gold-metallic); padding: .25rem .6rem; border-radius: var(--radius-sm);
+}
+.product-card .body { display: flex; flex-direction: column; gap: .55rem; padding: var(--space-4); flex: 1; }
+.product-card .name { font-family: var(--font-serif); font-size: 1.3rem; color: var(--frost-100); }
+.product-card .desc { font-size: var(--fs-small); color: var(--text-muted-on-dark); }
+.product-card .meta { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .15rem; }
+.product-card .meta .chip { font-size: .72rem; padding: .25rem .6rem; }
+.product-card .meta .chip--pack { opacity: .82; }
+.product-card .hs-line { font-size: .72rem; color: var(--text-muted-on-dark); margin-top: .1rem; letter-spacing: .01em; }
+.product-card .hs-line b { color: var(--gold-300); font-weight: 600; }
+.product-card .card-actions { display: flex; gap: .5rem; margin-top: auto; padding-top: .6rem; }
+.product-card .card-actions .btn { flex: 1; }
+
+/* ---- Product detail modal ------------------------------------------- */
+.modal {
+  position: fixed; inset: 0; z-index: var(--z-overlay);
+  display: grid; place-items: center; padding: var(--gutter);
+  background: rgba(2,7,26,.7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  opacity: 0; visibility: hidden; transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
+}
+.modal.is-open { opacity: 1; visibility: visible; }
+.modal-panel {
+  width: min(960px, 100%); max-height: 88vh; overflow: auto;
+  background: linear-gradient(180deg, var(--blue-900), var(--navy-950));
+  border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-lift);
+  transform: translateY(20px) scale(.98); transition: transform var(--dur) var(--ease);
+}
+.modal.is-open .modal-panel { transform: none; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.modal-gallery { position: relative; min-height: 320px; background: var(--royal-700); }
+.modal-gallery img { width: 100%; height: 100%; object-fit: cover; }
+.modal-body { padding: clamp(1.25rem, 3vw, 2rem); display: flex; flex-direction: column; gap: .9rem; }
+.modal-body h3 { font-size: 1.8rem; color: var(--frost-100); }
+.modal-body .spec-list { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1rem; font-size: var(--fs-small); }
+.modal-body .spec-list dt { color: var(--gold-300); font-weight: 600; }
+.modal-body .spec-list dd { color: var(--text-muted-on-dark); }
+.modal-body .modal-actions { display: flex; gap: .6rem; margin-top: auto; flex-wrap: wrap; }
+.modal-close { position: absolute; top: .75rem; right: .75rem; z-index: 3; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: rgba(2,7,26,.6); border: 1px solid var(--line); color: var(--gold-300); }
+
+/* Empty state */
+.products-empty { text-align: center; color: var(--text-muted-on-dark); padding: var(--space-8) 0; }
+
+@media (max-width: 760px) {
+  .modal-grid { grid-template-columns: 1fr; }
+  .modal-gallery { min-height: 220px; aspect-ratio: 16/10; }
+}
+
+/* ---- Mobile: always two product cards per row ----------------------- */
+/* Override the auto-fit min (248px) so phones show a tidy 2-up grid
+   instead of a single tall column. Cards + actions compact to fit. */
+@media (max-width: 640px) {
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+  .product-card .body { padding: .8rem .75rem; gap: .4rem; }
+  .product-card .name { font-size: 1.02rem; }
+  .product-card .desc {
+    font-size: .78rem;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .product-card .meta { gap: .25rem; }
+  .product-card .meta .chip { font-size: .62rem; padding: .18rem .45rem; }
+  .product-card .card-actions { flex-direction: column; gap: .4rem; }
+  .product-card .cat-eyebrow { font-size: .56rem; padding: .2rem .45rem; }
+}

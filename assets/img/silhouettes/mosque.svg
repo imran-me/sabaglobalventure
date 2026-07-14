@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140">
+  <!-- main body / prayer hall -->
+  <rect x="26" y="72" width="168" height="52" fill="#000"/>
+  <!-- plinth -->
+  <rect x="14" y="124" width="192" height="10" fill="#000"/>
+  <!-- roof parapet -->
+  <rect x="24" y="66" width="172" height="8" fill="#000"/>
+
+  <!-- row of small domes across the roof -->
+  <path d="M36 66 C36 54 42 47 50 47 C58 47 64 54 64 66 Z" fill="#000"/>
+  <path d="M68 66 C68 54 74 47 82 47 C90 47 96 54 96 66 Z" fill="#000"/>
+  <path d="M132 66 C132 54 138 47 146 47 C154 47 160 54 160 66 Z" fill="#000"/>
+  <path d="M164 66 C164 54 170 47 178 47 C186 47 192 54 192 66 Z" fill="#000"/>
+  <!-- finials on small domes -->
+  <rect x="48.6" y="41" width="2.8" height="7" fill="#000"/>
+  <rect x="80.6" y="41" width="2.8" height="7" fill="#000"/>
+  <rect x="144.6" y="41" width="2.8" height="7" fill="#000"/>
+  <rect x="176.6" y="41" width="2.8" height="7" fill="#000"/>
+
+  <!-- larger central dome -->
+  <path d="M96 66 C96 46 106 34 114 34 C122 34 132 46 132 66 Z" fill="#000"/>
+  <rect x="112.4" y="24" width="3.2" height="11" fill="#000"/>
+  <circle cx="114" cy="23" r="3.2" fill="#000"/>
+
+  <!-- stout corner towers -->
+  <rect x="10" y="58" width="22" height="68" fill="#000"/>
+  <path d="M8 58 C8 48 14 42 21 42 C28 42 34 48 34 58 Z" fill="#000"/>
+  <rect x="6" y="70" width="30" height="5" fill="#000"/>
+  <rect x="188" y="58" width="22" height="68" fill="#000"/>
+  <path d="M186 58 C186 48 192 42 199 42 C206 42 212 48 212 58 Z" fill="#000"/>
+  <rect x="184" y="70" width="30" height="5" fill="#000"/>
+</svg>

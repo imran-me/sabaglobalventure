@@ -1,0 +1,25 @@
+<!-- ===========================================================================
+     sections/featured.html — Featured products deck (auto-rotating)
+     ---------------------------------------------------------------------------
+     Sits just after the trust strip on the home page. Cards are injected by
+     assets/js/featured.js from the live catalogue (products flagged featured:true
+     in Admin → Products). 5 across on desktop, 3 across on mobile; the deck
+     quietly rotates through all featured items with a gold crossfade, pausing on
+     hover / off-screen / hidden tab. "View All" deep-links into the catalogue.
+     ======================================================================== -->
+<section class="featured section section--tight" id="featured" data-bg-section="products">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">Featured Selection</p>
+      <h2>Signature Lines, <em>Hand-Picked</em></h2>
+      <span class="title-rule"></span>
+    </div>
+
+    <!-- Rotating featured deck (injected) -->
+    <div class="featured-row" data-featured aria-label="Featured products"></div>
+
+    <div class="row row--center" style="margin-top:var(--space-6)">
+      <a class="btn btn--gold" href="#products">View All Products &rarr;</a>
+    </div>
+  </div>
+</section>

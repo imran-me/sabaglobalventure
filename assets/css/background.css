@@ -1,0 +1,156 @@
+/* ============================================================================
+   background.css — The signature "Delta to the World" animated background
+   ----------------------------------------------------------------------------
+   A fixed, full-viewport layered stage behind ALL content:
+
+     .bg-glow      radial mood lighting on the majestic-blue canvas
+     .bg-scene     a golden Bengal-delta panorama (SVG mask -> gold gradient)
+     .bg-waves     two slow ocean currents drifting across the base
+     .bg-veil      blue veil + scrim that keeps frost/gold text legible
+     .bg-particles drifting golden particle field (canvas, drawn by JS)
+     .side-accent  per-section golden silhouettes that scroll with the page
+     .bg-grain / .bg-vignette   film grain + vignette that tie it together
+
+   All art is authored SVG used as a CSS MASK, so a single gold gradient tints
+   every silhouette — no photography required, and nothing to go stale.
+   JS (assets/js/background.js) places the accents and drives the particles.
+   ========================================================================== */
+
+/* The fixed stage sits behind content. */
+.bg-stage {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Radial mood lighting on the majestic-blue canvas. This alone is a complete,
+   handsome background — everything below is enrichment. */
+.bg-stage .bg-glow {
+  position: absolute; inset: -10%;
+  background:
+    radial-gradient(58% 48% at 76% 14%, rgba(201,162,75,.13), transparent 62%),
+    radial-gradient(52% 46% at 16% 78%, rgba(18,121,196,.22), transparent 62%),
+    radial-gradient(40% 38% at 50% 50%, rgba(30,79,216,.10), transparent 70%),
+    linear-gradient(180deg, var(--navy-900), var(--blue-900) 46%, var(--navy-950));
+}
+
+/* The golden delta panorama — a container ship, gantry cranes, a Bengali sampan
+   under sail and date/coconut palms along the waterline. The SVG is a MASK, so
+   the gold gradient beneath shows through the shapes. Anchored to the bottom so
+   the horizon sits under the hero; a slow drift keeps it alive. */
+.bg-stage .bg-scene {
+  position: absolute;
+  left: -4%; right: -4%; bottom: 0;
+  height: 72%;
+  background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 45%, var(--gold-700));
+  -webkit-mask: url("../img/bg/delta-scene.svg") center bottom / cover no-repeat;
+          mask: url("../img/bg/delta-scene.svg") center bottom / cover no-repeat;
+  opacity: .17;
+  filter: blur(.3px);
+  animation: scene-drift 46s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes scene-drift {
+  from { transform: scale(1.02) translateY(0); }
+  to   { transform: scale(1.07) translateY(-1.2%); }
+}
+
+/* Two ocean currents drifting in opposite directions along the base — the
+   "delta" heartbeat. Pure gradients: cheap, GPU-only, endlessly loopable. */
+.bg-stage .bg-waves {
+  position: absolute;
+  left: -50%; right: -50%; bottom: -2%;
+  height: 46%;
+  background:
+    radial-gradient(60% 100% at 20% 100%, rgba(52,163,224,.16), transparent 70%),
+    radial-gradient(60% 100% at 70% 100%, rgba(30,79,216,.14), transparent 70%);
+  animation: current-drift 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.bg-stage .bg-waves::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(50% 100% at 45% 100%, rgba(169,207,234,.10), transparent 72%);
+  animation: current-drift 52s ease-in-out infinite alternate-reverse;
+  will-change: transform;
+}
+@keyframes current-drift {
+  from { transform: translateX(-3%); }
+  to   { transform: translateX(3%); }
+}
+
+/* Blue veil + bottom scrim: brand cohesion + keeps frost/gold text legible.
+   Lighter over the upper third (let the gold glow), deep navy toward the base. */
+.bg-stage .bg-veil {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(95% 65% at 50% 18%, rgba(2,7,26,.04), rgba(2,7,26,.38) 62%, rgba(2,7,26,.66) 100%),
+    linear-gradient(180deg, rgba(4,16,49,.14) 0%, rgba(7,28,77,.36) 44%, rgba(2,7,26,.82) 100%);
+}
+
+/* Per-section golden silhouette accents (tiger / sampan / lily / ship / …).
+   They live INSIDE their section (so they scroll with the page), peeking from
+   the left or right edge, feathered + blurred + low opacity so they read as
+   luminous golden ghosts. They slide + fade in as the section enters view.
+   Section content sits above them via the z-index rule below. */
+.section > .container,
+.section > .container--narrow { position: relative; z-index: 2; }
+
+.side-accent {
+  position: absolute; z-index: 0; pointer-events: none;
+  background: linear-gradient(160deg, var(--gold-300), var(--gold-500) 55%, var(--gold-700));
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: contain; mask-size: contain;
+  filter: blur(.6px) drop-shadow(0 8px 28px rgba(201,162,75,.16));
+  opacity: 0;
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+  will-change: opacity, transform;
+}
+.side-accent.left  { left: 0;  transform: translate(-42%, -50%); }
+.side-accent.right { right: 0; transform: translate(42%, -50%); }
+.side-accent.is-in        { opacity: var(--acc-op, .15); }
+.side-accent.is-in.left   { transform: translate(-26%, -50%); }
+.side-accent.is-in.right  { transform: translate(26%, -50%); }
+
+/* A missing SVG simply masks to nothing — the site degrades gracefully to the
+   glow canvas alone. */
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-stage .bg-scene { animation: none; transform: scale(1.03); }
+  .bg-stage .bg-waves, .bg-stage .bg-waves::after { animation: none; }
+  .side-accent { transition: opacity .3s; }
+  .side-accent.is-in.left  { transform: translate(-26%, -50%); }
+  .side-accent.is-in.right { transform: translate(26%, -50%); }
+}
+
+/* On smaller screens the side art crowds the text AND, since it's anchored to
+   the section edge and pushed outward, it would widen the page (horizontal
+   scroll). Remove it from layout entirely on mobile — not just opacity:0. */
+@media (max-width: 760px) {
+  .side-accent { display: none !important; }
+}
+
+/* Drifting golden particle field (canvas drawn by JS, styled here). */
+.bg-particles { position: absolute; inset: 0; opacity: .55; }
+
+/* Film grain + vignette overlay ties the whole canvas together. */
+.bg-grain {
+  position: fixed; inset: 0; z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.bg-vignette {
+  position: fixed; inset: 0; z-index: var(--z-grain);
+  pointer-events: none;
+  background: radial-gradient(120% 120% at 50% 40%, transparent 54%, rgba(2,7,26,.62) 100%);
+}
+
+/* Reduced motion: no particles, static scene. */
+@media (prefers-reduced-motion: reduce) {
+  .bg-particles { display: none; }
+}

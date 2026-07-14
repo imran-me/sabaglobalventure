@@ -1,0 +1,8 @@
+# Saba Global Venture — robots.txt
+# The admin panel is not linked publicly and must never be indexed.
+
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://www.sabaglobalventure.com/sitemap.xml

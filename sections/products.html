@@ -1,0 +1,32 @@
+<!-- ===========================================================================
+     sections/products.html — Products showcase (the centerpiece)
+     ---------------------------------------------------------------------------
+     .filter-bar pills and .product-grid cards are rendered by products.js from
+     the live Store catalogue (seeded from assets/data/products.js, thereafter
+     managed in Admin → Products). Clicking a card opens the detail modal with a
+     pre-filled WhatsApp / email inquiry for that exact product.
+     data-bg-section="products" fades in the paddy silhouette.
+     ======================================================================== -->
+<section class="section" id="products" data-bg-section="products">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">The Showcase</p>
+      <h2>A Curated Catalogue, <em>Traded in Bulk</em></h2>
+      <span class="title-rule"></span>
+      <p class="lead" style="margin-top:.6rem">
+        Eight core categories, export-graded and packed to your destination's standards.
+        Browse, then start a conversation — no carts, just trade.
+      </p>
+    </div>
+
+    <!-- Category filter pills (injected by products.js) -->
+    <div class="filter-bar" role="group" aria-label="Filter products by category"></div>
+
+    <!-- Product cards (injected by products.js) -->
+    <div class="product-grid" data-reveal-stagger></div>
+
+    <div class="row row--center" style="margin-top:2.5rem">
+      <a class="btn btn--gold" data-cta="whatsapp">Request the Full Line Card &rarr;</a>
+    </div>
+  </div>
+</section>

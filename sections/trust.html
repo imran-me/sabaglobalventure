@@ -1,0 +1,18 @@
+<!-- ===========================================================================
+     sections/trust.html — Trust strip: animated stat counters + certifications
+     ---------------------------------------------------------------------------
+     Stats are injected by main.js renderStats() into [data-stats] and counted up
+     by counters.js. The "Trading Markets" number is LIVE — it counts the active
+     countries in Admin → Countries, so adding a market bumps it automatically.
+     Certification chips come from config.js `certs` ({show:false} hides one; if
+     none are shown main.js removes the row entirely).
+
+     NOTE: the class names .stats / .certs are the contract with trust.css —
+     don't rename them without updating that file.
+     ======================================================================== -->
+<section class="trust section section--tight" id="trust" data-bg-section="trust">
+  <div class="container">
+    <div class="stats" data-stats></div>
+    <div class="certs" data-certs></div>
+  </div>
+</section>

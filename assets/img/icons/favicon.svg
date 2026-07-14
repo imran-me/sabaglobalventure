@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="fvTitle">
+  <title id="fvTitle">Saba Global Venture</title>
+  <defs>
+    <!-- bold shapla petal, tip up, hinged at the origin -->
+    <path id="fvPetal" d="M0,0 C-6.2,-11 -5.2,-24 0,-32 C5.2,-24 6.2,-11 0,0 Z"/>
+  </defs>
+
+  <rect x="0" y="0" width="64" height="64" rx="12" fill="#071C4D"/>
+
+  <!-- shapla lily -->
+  <g fill="#C9A24B">
+    <use href="#fvPetal" transform="translate(32,44) rotate(-78) scale(0.92,0.52)"/>
+    <use href="#fvPetal" transform="translate(32,44) rotate(78) scale(0.92,0.52)"/>
+    <use href="#fvPetal" transform="translate(32,44) rotate(-52) scale(0.96,0.76)"/>
+    <use href="#fvPetal" transform="translate(32,44) rotate(52) scale(0.96,0.76)"/>
+    <use href="#fvPetal" transform="translate(32,44) rotate(-26) scale(1,0.93)"/>
+    <use href="#fvPetal" transform="translate(32,44) rotate(26) scale(1,0.93)"/>
+    <use href="#fvPetal" transform="translate(32,44)"/>
+  </g>
+
+  <!-- water -->
+  <g fill="none" stroke="#C9A24B" stroke-linecap="round">
+    <path d="M7,50.5 C14,46.5 18,54.5 25,50.5 C32,46.5 36,54.5 43,50.5 C50,46.5 54,54.5 57,51.5" stroke-width="3.4"/>
+    <path d="M14,58.5 C20,55 23.5,61.5 29.5,58.5 C35.5,55.5 39,61.5 45,58.5" stroke-width="2.8"/>
+  </g>
+</svg>

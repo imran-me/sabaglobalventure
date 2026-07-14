@@ -1,0 +1,102 @@
+/* ============================================================================
+   layout.css — Containers, section scaffolding, grid helpers, dividers
+   ----------------------------------------------------------------------------
+   Structural-only. Visual treatment lives in components.css and the per-section
+   files under assets/css/sections/.
+   ========================================================================== */
+
+/* ---- Container ------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-width: var(--container-narrow); }
+
+/* ---- Section spacing ------------------------------------------------- */
+.section {
+  position: relative;
+  padding-block: var(--section-pad);
+  z-index: var(--z-content);
+}
+.section--tight { padding-block: clamp(2rem, 4vw, 3rem); }
+
+/* Section header (eyebrow + title + optional intro) */
+.section-head { max-width: 58ch; margin-bottom: var(--space-6); }
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head .eyebrow { margin-bottom: var(--space-3); }
+.section-head h2 { margin-bottom: var(--space-4); }
+
+/* Gold hairline that "draws in" under titles (JS adds .is-drawn). */
+.title-rule {
+  position: relative;
+  height: 1px;
+  width: 140px;
+  margin-top: var(--space-5);
+  background: linear-gradient(90deg, var(--gold-500), transparent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform var(--dur-slow) var(--ease);
+}
+/* A small gold lozenge rides the end of the rule. */
+.title-rule::after {
+  content: "";
+  position: absolute;
+  right: 0; top: 50%;
+  width: 5px; height: 5px;
+  margin-top: -2.5px;
+  background: var(--gold-500);
+  transform: rotate(45deg);
+  opacity: .9;
+}
+.section-head--center .title-rule {
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+.section-head--center .title-rule::after { display: none; }
+.title-rule.is-drawn { transform: scaleX(1); }
+
+/* ---- Grid helpers ---------------------------------------------------- */
+.grid { display: grid; gap: var(--space-6); }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--auto { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.grid--split { grid-template-columns: 1.05fr .95fr; align-items: center; }
+
+@media (max-width: 900px) {
+  .grid--2, .grid--3, .grid--split { grid-template-columns: 1fr; }
+}
+
+/* ---- Flex helpers ---------------------------------------------------- */
+.row { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; }
+.row--between { justify-content: space-between; }
+.row--center { justify-content: center; }
+.stack { display: flex; flex-direction: column; gap: var(--space-4); }
+
+/* ---- Section divider -------------------------------------------------
+   A thin gold rule with a centered nakshi-kantha lotus motif. Decorative. */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: min(640px, 80%);
+  margin: var(--space-6) auto;
+  color: var(--gold-500);
+  opacity: .65;
+}
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+.divider svg { width: 24px; height: 24px; }
+
+/* ---- Visibility utilities ------------------------------------------- */
+.hide-mobile { }
+.hide-desktop { display: none; }
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+  .hide-desktop { display: revert; }
+}

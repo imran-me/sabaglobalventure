@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="emTitle">
+  <title id="emTitle">Saba Global Venture crest</title>
+  <defs>
+    <linearGradient id="emGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BF953F"/>
+      <stop offset="25%" stop-color="#FCF6BA"/>
+      <stop offset="50%" stop-color="#B38728"/>
+      <stop offset="75%" stop-color="#FBF5B7"/>
+      <stop offset="100%" stop-color="#AA771C"/>
+    </linearGradient>
+
+    <!-- one shapla petal, tip up, hinged at the origin -->
+    <path id="emPetal" d="M0,0 C-4.4,-11 -3.4,-23 0,-31 C3.4,-23 4.4,-11 0,0 Z"/>
+  </defs>
+
+  <!-- double hairline ring -->
+  <g fill="none" stroke="url(#emGold)">
+    <circle cx="60" cy="60" r="56" stroke-width="1.4"/>
+    <circle cx="60" cy="60" r="51.5" stroke-width="0.7"/>
+  </g>
+
+  <!-- rising sun behind the lily -->
+  <g fill="none" stroke="url(#emGold)" opacity="0.55">
+    <path d="M22,72 A38,38 0 0 1 98,72" stroke-width="1"/>
+    <path d="M28.6,72 A31.4,31.4 0 0 1 91.4,72" stroke-width="0.5" opacity="0.7"/>
+    <g stroke-width="0.9" stroke-linecap="round">
+      <path d="M0,-41 L0,-46" transform="translate(60,72) rotate(-90)"/>
+      <path d="M0,-41 L0,-46" transform="translate(60,72) rotate(-72)"/>
+      <path d="M0,-41 L0,-46" transform="translate(60,72) rotate(-54)"/>
+      <path d="M0,-41 L0,-46" transform="translate(60,72) rotate(54)"/>
+      <path d="M0,-41 L0,-46" transform="translate(60,72) rotate(72)"/>
+      <path d="M0,-41 L0,-46" transform="translate(60,72) rotate(90)"/>
+    </g>
+  </g>
+
+  <!-- shapla water lily -->
+  <g fill="url(#emGold)" stroke="#9A7423" stroke-width="0.4" stroke-linejoin="round">
+    <use href="#emPetal" transform="translate(60,72) rotate(-94) scale(0.86,0.5)"/>
+    <use href="#emPetal" transform="translate(60,72) rotate(94) scale(0.86,0.5)"/>
+    <use href="#emPetal" transform="translate(60,72) rotate(-70) scale(0.9,0.7)"/>
+    <use href="#emPetal" transform="translate(60,72) rotate(70) scale(0.9,0.7)"/>
+    <use href="#emPetal" transform="translate(60,72) rotate(-46) scale(0.95,0.87)"/>
+    <use href="#emPetal" transform="translate(60,72) rotate(46) scale(0.95,0.87)"/>
+    <use href="#emPetal" transform="translate(60,72) rotate(-22) scale(1,0.98)"/>
+    <use href="#emPetal" transform="translate(60,72) rotate(22) scale(1,0.98)"/>
+    <use href="#emPetal" transform="translate(60,72) scale(1,1.06)"/>
+  </g>
+  <!-- engraved centre -->
+  <g fill="none" stroke="#9A7423" stroke-width="0.5" opacity="0.8">
+    <path d="M60,72 L60,52"/>
+    <path d="M60,72 L52,56"/>
+    <path d="M60,72 L68,56"/>
+  </g>
+
+  <!-- water -->
+  <g fill="none" stroke="url(#emGold)" stroke-linecap="round">
+    <path d="M26,77.5 C36,73.5 42,81.5 52,77.5 C62,73.5 68,81.5 78,77.5 C85,74.7 89.5,78 94,77.5" stroke-width="1.3"/>
+    <path d="M32,84 C41,80.4 46.5,87.6 55.5,84 C64.5,80.4 70,87.6 79,84 C82.5,82.6 85,84.3 88,84" stroke-width="1"/>
+    <path d="M40,89.5 C47.5,86.6 52,92.4 59.5,89.5 C67,86.6 72.5,92.4 80,89.5" stroke-width="0.8" opacity="0.8"/>
+  </g>
+
+  <!-- house initials -->
+  <text x="61.3" y="104.5" text-anchor="middle" font-family="Marcellus, Georgia, serif" font-size="11.5" letter-spacing="2.6" fill="url(#emGold)">SGV</text>
+</svg>

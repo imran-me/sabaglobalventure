@@ -1,0 +1,43 @@
+<!-- ===========================================================================
+     sections/about.html — About preview (two-column story + framed image)
+     ---------------------------------------------------------------------------
+     data-bg-section="about" -> the Royal Bengal tiger silhouette drifts in here.
+     Every [data-content] node is editable from Admin → Page Content, including
+     the image (data-content-src="aboutImage" — upload or paste a Drive link).
+     Until real photography lands, img-fallback.js paints a branded placeholder.
+     ======================================================================== -->
+<section class="about section" id="about" data-bg-section="about">
+  <div class="container grid grid--split">
+    <div data-reveal>
+      <p class="eyebrow eyebrow--tick" data-content="aboutEyebrow">Our Story</p>
+      <h2 data-content="aboutTitle">Rooted in the Delta. <em>Trusted Across Borders.</em></h2>
+      <span class="title-rule"></span>
+      <p class="lead" style="margin-top:1.25rem" data-content="aboutLead">
+        Bangladesh feeds a great deal more than Bangladesh. From our base in Cumilla we
+        buy where the crop is grown and the catch is landed, hold it to an export
+        standard, and move it to buyers who need the same quality arriving container
+        after container.
+      </p>
+
+      <div class="values">
+        <span class="chip">Direct Sourcing</span>
+        <span class="chip">Quality Control</span>
+        <span class="chip">Cold Chain</span>
+        <span class="chip">Trade Documentation</span>
+      </div>
+
+      <blockquote class="pull-quote" data-content="aboutQuote">
+        “From the delta's harvest to the world's tables — moved in bulk, backed by a
+        handshake that holds.”
+      </blockquote>
+
+      <a class="btn btn--ghost" href="#products">Explore the Catalogue &rarr;</a>
+    </div>
+
+    <div class="framed about-media has-filigree" data-reveal>
+      <img src="assets/img/photos/delta-harvest.jpg" data-content-src="aboutImage"
+           alt="Harvest being loaded at a Bangladeshi river port at golden hour"
+           loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>

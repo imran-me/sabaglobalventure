@@ -1,0 +1,132 @@
+/* ============================================================================
+   tokens.css — Design tokens (the single source of truth for the brand system)
+   ----------------------------------------------------------------------------
+   Edit colours, fonts, spacing and radii HERE and they cascade everywhere.
+   Loaded FIRST, before every other stylesheet.
+
+   BRAND RULE (Saba Global Venture):
+     - Majestic/Royal blue is the canvas — deep, oceanic, sovereign.
+     - Gold is jewelry: <=10% of any view. Lines, eyebrows, CTAs, the emblem.
+     - Powder blue + frost carry the readable light sections.
+     - Ocean blue is the "current" — used for motion, routes, water, glows.
+   ========================================================================== */
+
+:root {
+  /* ---- Blues (canvas + surfaces) --------------------------------------
+     From the deepest night-sea to the palest powder. --blue-900 is the
+     Majestic Blue that dominates the site; --royal-600 is true Royal Blue. */
+  --navy-950:  #02071A;   /* deepest — footer, preloader, vignette core */
+  --navy-900:  #041031;   /* deep background wash */
+  --blue-900:  #071C4D;   /* PRIMARY brand surface — "Majestic Blue" */
+  --blue-800:  #0B2A6B;   /* dark blue sections, gradients */
+  --royal-700: #14369E;   /* Royal Blue, deep — cards on dark */
+  --royal-600: #1E4FD8;   /* ROYAL BLUE — the signature accent */
+  --ocean-500: #1279C4;   /* Ocean Blue — currents, routes, links */
+  --ocean-400: #34A3E0;   /* bright ocean — icon tints, glows */
+  --powder-300:#A9CFEA;   /* Powder Blue — soft highlights */
+  --powder-200:#CFE4F5;   /* powder panels */
+  --powder-100:#EDF4FB;   /* light section background */
+
+  /* ---- Golds (the jewelry) -------------------------------------------- */
+  --gold-700: #9A7423;    /* gold shadow / engrave */
+  --gold-500: #C9A24B;    /* PRIMARY gold — lines, eyebrows, CTAs */
+  --gold-300: #E8CE79;    /* hover gold, glows */
+  --gold-100: #F7EDCB;    /* gold text on very dark, highlights */
+  --gold-metallic: linear-gradient(135deg,#BF953F,#FCF6BA,#B38728,#FBF5B7,#AA771C);
+
+  /* ---- Neutral + light ------------------------------------------------ */
+  --frost-100: #F2F7FD;   /* text on dark, light section bg */
+  --mist:      #DDE7F2;   /* dividers, subtle fills on light */
+  --ink-900:   #050C1C;   /* text on light */
+  --ink-600:   #3D4C63;   /* body text on light */
+  --line:      rgba(201,162,75,.22);   /* gold hairline @ low alpha */
+  --line-blue: rgba(169,207,234,.16);  /* powder hairline @ low alpha */
+
+  /* ---- Semantic aliases ----------------------------------------------- */
+  --bg:            var(--blue-900);
+  --bg-deep:       var(--navy-950);
+  --surface-card:  var(--royal-700);
+  --text-on-dark:  var(--frost-100);
+  --text-muted-on-dark: rgba(242,247,253,.70);
+  --text-on-light: var(--ink-900);
+  --accent:        var(--gold-500);
+  --accent-hover:  var(--gold-300);
+
+  /* ---- Typography -----------------------------------------------------
+     Cormorant Garamond at LIGHT weights and LARGE sizes is the luxury move —
+     high stroke contrast, generous air. Marcellus carves the wordmark.
+     Manrope keeps the UI modern and legible. */
+  --font-display:  "Cormorant Garamond", "Times New Roman", serif;
+  --font-wordmark: "Marcellus", "Cormorant Garamond", serif;
+  --font-serif:    "Cormorant Garamond", Georgia, serif;
+  --font-body:     "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Fluid type scale (clamp). Display runs large because Cormorant is airy;
+     body stays restrained. Whitespace beats big fonts. */
+  --fs-h1:      clamp(2.9rem, 6.2vw, 5.6rem);
+  --fs-h2:      clamp(2.1rem, 4vw, 3.6rem);
+  --fs-h3:      1.6rem;
+  --fs-lead:    1.3rem;
+  --fs-body:    1rem;
+  --fs-small:   0.875rem;
+  --fs-eyebrow: 0.75rem;
+
+  --lh-heading: 1.06;     /* tight — Cormorant has lots of built-in air */
+  --lh-body:    1.7;
+  --measure:    68ch;
+  --tracking-eyebrow: 0.22em;
+
+  /* ---- Spacing scale (8pt-ish) ---------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-pad: clamp(2.4rem, 5.2vw, 4.6rem);
+
+  /* ---- Layout --------------------------------------------------------- */
+  --container:        1240px;
+  --container-narrow: 880px;
+  --gutter:           clamp(1rem, 4vw, 2.5rem);
+
+  /* ---- Radii ---------------------------------------------------------- */
+  --radius-sm:   6px;
+  --radius:      12px;
+  --radius-lg:   20px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows / glows ------------------------------------------------ */
+  --shadow-card: 0 10px 30px -12px rgba(1,5,18,.55);
+  --shadow-lift: 0 22px 48px -18px rgba(1,5,18,.65);
+  --glow-gold:   0 0 0 1px var(--line), 0 8px 28px -10px rgba(201,162,75,.38);
+  --glow-ocean:  0 0 0 1px var(--line-blue), 0 10px 34px -12px rgba(52,163,224,.35);
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);   /* ~power3.out */
+  --dur-fast: 180ms;
+  --dur:      320ms;
+  --dur-slow: 600ms;
+
+  /* ---- Z-index ladder ------------------------------------------------- */
+  --z-bg:        -1;
+  --z-grain:     0;
+  --z-content:   1;
+  --z-header:    50;
+  --z-dock:      60;
+  --z-overlay:   90;
+  --z-cursor:    100;
+  --z-preloader: 120;
+}
+
+/* Honour reduced motion globally by zeroing durations (JS also checks this). */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 1ms;
+    --dur: 1ms;
+    --dur-slow: 1ms;
+  }
+}

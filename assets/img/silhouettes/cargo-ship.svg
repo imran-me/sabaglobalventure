@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130">
+  <!-- hull, bow to the left with raked stem -->
+  <path d="M10 74 L228 74 C230 88 224 100 212 104 L44 104 C28 100 16 90 10 74 Z" fill="#000"/>
+  <!-- raked bow rise -->
+  <path d="M8 72 C8 60 10 50 14 42 L22 42 L22 74 Z" fill="#000"/>
+  <!-- bulwark / main deck line -->
+  <rect x="18" y="66" width="212" height="9" fill="#000"/>
+
+  <!-- container stacks on deck -->
+  <rect x="30" y="54" width="26" height="11" fill="#000"/>
+  <rect x="30" y="42" width="26" height="11" fill="#000"/>
+  <rect x="60" y="54" width="26" height="11" fill="#000"/>
+  <rect x="60" y="42" width="26" height="11" fill="#000"/>
+  <rect x="60" y="30" width="26" height="11" fill="#000"/>
+  <rect x="90" y="54" width="26" height="11" fill="#000"/>
+  <rect x="90" y="42" width="26" height="11" fill="#000"/>
+  <rect x="90" y="30" width="26" height="11" fill="#000"/>
+  <rect x="90" y="18" width="26" height="11" fill="#000"/>
+  <rect x="120" y="54" width="26" height="11" fill="#000"/>
+  <rect x="120" y="42" width="26" height="11" fill="#000"/>
+  <rect x="120" y="30" width="26" height="11" fill="#000"/>
+  <rect x="150" y="54" width="26" height="11" fill="#000"/>
+  <rect x="150" y="42" width="26" height="11" fill="#000"/>
+
+  <!-- bridge tower (aft) -->
+  <rect x="182" y="22" width="34" height="44" fill="#000"/>
+  <rect x="176" y="30" width="46" height="10" fill="#000"/>
+  <!-- funnel -->
+  <rect x="192" y="8" width="16" height="16" fill="#000"/>
+  <!-- mast -->
+  <rect x="198" y="0" width="3" height="10" fill="#000"/>
+
+  <!-- waterline strokes -->
+  <rect x="0" y="108" width="240" height="3" fill="#000"/>
+  <rect x="20" y="116" width="86" height="2.5" fill="#000"/>
+  <rect x="122" y="116" width="70" height="2.5" fill="#000"/>
+  <rect x="52" y="124" width="52" height="2" fill="#000"/>
+  <rect x="140" y="124" width="66" height="2" fill="#000"/>
+</svg>

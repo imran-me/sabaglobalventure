@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <!-- mast -->
+  <rect x="86" y="18" width="3.5" height="98" fill="#000"/>
+  <!-- main lateen sail (forward of mast) -->
+  <path d="M84 22 C60 55 44 84 32 110 L84 110 Z" fill="#000"/>
+  <!-- small aft sail -->
+  <path d="M92 40 C104 62 114 86 120 108 L92 108 Z" fill="#000"/>
+  <!-- pennant at masthead -->
+  <path d="M89.5 18 L108 23 L89.5 28 Z" fill="#000"/>
+  <!-- hull: curved upswept prow (left) and stern (right) -->
+  <path d="M12 116 C22 114 34 118 48 120 L152 120 C166 118 178 114 188 111
+           C182 126 170 137 156 141 L44 141 C30 137 19 129 12 116 Z" fill="#000"/>
+  <!-- upswept prow tip -->
+  <path d="M10 114 C14 106 20 100 28 96 L30 101 C24 105 19 110 16 117 Z" fill="#000"/>
+  <!-- upswept stern tip -->
+  <path d="M190 109 C186 101 180 95 172 91 L170 96 C176 100 181 105 184 112 Z" fill="#000"/>
+  <!-- boatman poling at stern -->
+  <circle cx="158" cy="82" r="5" fill="#000"/>
+  <path d="M154 89 L163 89 L166 112 L159 112 L157 100 L154 112 L148 112 Z" fill="#000"/>
+  <!-- pole -->
+  <rect x="164" y="60" width="2.6" height="58" fill="#000" transform="rotate(14 165 90)"/>
+</svg>

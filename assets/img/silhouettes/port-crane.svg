@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170">
+  <!-- ===== crane 1 (left) ===== -->
+  <!-- boom -->
+  <rect x="8" y="30" width="92" height="7" fill="#000"/>
+  <!-- machine house -->
+  <rect x="48" y="18" width="30" height="14" fill="#000"/>
+  <!-- back stay -->
+  <polygon points="78,24 100,54 96,58 74,30" fill="#000"/>
+  <!-- boom truss diagonals -->
+  <polygon points="10,37 22,37 36,54 26,54" fill="#000"/>
+  <polygon points="34,37 46,37 32,54 22,54" fill="#000"/>
+  <rect x="16" y="52" width="34" height="4" fill="#000"/>
+  <!-- legs -->
+  <rect x="52" y="36" width="7" height="94" fill="#000"/>
+  <rect x="88" y="36" width="7" height="94" fill="#000"/>
+  <rect x="52" y="72" width="43" height="5" fill="#000"/>
+  <!-- sills / bogies -->
+  <rect x="44" y="130" width="24" height="8" fill="#000"/>
+  <rect x="80" y="130" width="24" height="8" fill="#000"/>
+  <!-- trolley -->
+  <rect x="30" y="37" width="12" height="8" fill="#000"/>
+
+  <!-- ===== crane 2 (right) ===== -->
+  <rect x="104" y="46" width="88" height="6" fill="#000"/>
+  <rect x="134" y="35" width="26" height="12" fill="#000"/>
+  <polygon points="160,40 180,66 176,70 156,46" fill="#000"/>
+  <polygon points="106,52 116,52 128,66 119,66" fill="#000"/>
+  <polygon points="126,52 136,52 124,66 115,66" fill="#000"/>
+  <rect x="112" y="64" width="28" height="4" fill="#000"/>
+  <rect x="136" y="51" width="6" height="79" fill="#000"/>
+  <rect x="170" y="51" width="6" height="79" fill="#000"/>
+  <rect x="136" y="82" width="40" height="4" fill="#000"/>
+  <rect x="129" y="130" width="21" height="8" fill="#000"/>
+  <rect x="162" y="130" width="21" height="8" fill="#000"/>
+  <rect x="118" y="52" width="11" height="7" fill="#000"/>
+
+  <!-- ===== container stacks at base ===== -->
+  <rect x="6" y="142" width="34" height="11" fill="#000"/>
+  <rect x="6" y="155" width="34" height="11" fill="#000"/>
+  <rect x="44" y="155" width="34" height="11" fill="#000"/>
+  <rect x="82" y="142" width="34" height="11" fill="#000"/>
+  <rect x="82" y="155" width="34" height="11" fill="#000"/>
+  <rect x="120" y="155" width="34" height="11" fill="#000"/>
+  <rect x="158" y="142" width="34" height="11" fill="#000"/>
+  <rect x="158" y="155" width="34" height="11" fill="#000"/>
+  <!-- quay line -->
+  <rect x="0" y="168" width="200" height="2" fill="#000"/>
+</svg>

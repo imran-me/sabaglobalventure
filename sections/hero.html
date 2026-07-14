@@ -1,0 +1,45 @@
+<!-- ===========================================================================
+     sections/hero.html — Full-screen hero
+     ---------------------------------------------------------------------------
+     data-bg-section="hero" tells background.js to fade in the sampan silhouette
+     here. Market chips are injected from the live country list (main.js).
+     Every [data-content] node is editable from Admin → Page Content; leaving a
+     field blank in admin keeps the committed default below.
+     ======================================================================== -->
+<section class="hero section" id="home" data-bg-section="hero">
+  <div class="container">
+    <p class="eyebrow" data-reveal data-content="heroEyebrow">Cumilla · Bangladesh · Global Trade</p>
+    <h1 data-reveal><span data-content="heroTitle">Bangladesh's Harvest, </span><em data-content="heroTitleGold">Carried to the World.</em></h1>
+    <p class="lead italic" data-reveal data-content="heroLead">
+      Saba Global Venture sources rice, shrimp, fish, fruit and fresh vegetables from
+      the Bengal delta and delivers them in bulk to wholesale markets across the Gulf,
+      the Middle East and South Asia.
+    </p>
+
+    <div class="hero-cta" data-reveal>
+      <a class="btn btn--gold" data-cta="whatsapp">Request a Bulk Quote</a>
+      <a class="btn btn--ghost" data-cta="gmail">Email Our Trade Desk</a>
+    </div>
+
+    <!-- Market flag chips (injected from Admin → Countries) -->
+    <div class="market-row" data-reveal>
+      <span class="label">Trading in</span>
+      <span data-markets></span>
+    </div>
+  </div>
+
+  <!-- Two tilted "product plate" cards (desktop): quietly cross-fade through the
+       catalogue's photos. Injected + animated by assets/js/hero-deck.js. They sit
+       in the open right-hand space and never block the background scene.
+       Self-removes if the catalogue has no photos yet. -->
+  <div class="hero-deck" data-hero-deck aria-hidden="true">
+    <div class="hd-card hd-card--a"></div>
+    <div class="hd-card hd-card--b"></div>
+  </div>
+
+  <!-- Scroll cue -->
+  <a class="scroll-cue" href="#trust" aria-label="Scroll to explore">
+    <span>Scroll to explore</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg>
+  </a>
+</section>
