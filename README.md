@@ -34,8 +34,8 @@ step** — no npm, no bundler. Edit a file, refresh.
 
 | # | Task | Where |
 |---|---|---|
-| 1 | **Fill in the real contact details** (they are `{CURLY}` placeholders now) | `assets/js/config.js` |
-| 2 | Mirror them into the structured data so Google sees them | `index.html` (JSON-LD block) |
+| 1 | ✅ WhatsApp / email / address are in. Still `{CURLY}`: **website + socials** | `assets/js/config.js` |
+| 2 | ✅ Mirrored into the structured data — **keep the two in sync by hand** | `index.html` (JSON-LD block) |
 | 3 | Add real product photos | `assets/img/products/` |
 | 4 | Add a story photo | `assets/img/photos/` |
 | 5 | Confirm the certifications you actually hold | `assets/js/config.js` → `certs` |
@@ -44,7 +44,13 @@ step** — no npm, no bundler. Edit a file, refresh.
 | 8 | Replace `www.sabaglobalventure.com` with the real domain | `index.html`, `sitemap.xml`, `robots.txt` |
 
 > **Never invent contact details.** A wrong phone number on a trading site costs real
-> business. The `{CURLY}` values are intentionally visible so they can't ship unnoticed.
+> business. Any value still left as `{CURLY}` is treated as **unset** — its link is
+> disabled rather than half-built, so the gap is obvious instead of silently wrong.
+
+> **Changing a contact detail later?** Do all three: edit `assets/js/config.js`, update
+> the JSON-LD in `index.html`, and **bump `seeded` in `assets/js/store.js`**. A browser
+> that has already seeded keeps saved Settings that mask `config.js`, so returning
+> visitors would otherwise still see the old number.
 
 ---
 

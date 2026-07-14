@@ -8,7 +8,11 @@
 
    IMPORTANT: values wrapped in {CURLY} are PLACEHOLDERS. Replace them with the
    real, client-supplied values before launch. Never invent contact details —
-   a wrong phone number on a trading site costs real business.
+   a wrong phone number on a trading site costs real business. Anything still
+   left as {CURLY} is treated as UNSET by cta-helper.js: its links are disabled
+   rather than half-built, so the gap is obvious instead of silently wrong.
+
+   STILL PENDING: {WEBSITE}, {INSTAGRAM}, {FACEBOOK}, {LINKEDIN}.
 
    WHERE EACH VALUE SHOWS UP:
      whatsapp -> every "Inquire" button, the floating dock, the contact card
@@ -27,14 +31,17 @@ window.SITE_CONFIG = {
   ethos:     "Trusted Sourcing Partner from the Bengal Delta",
   website:   "{WEBSITE}",                 // e.g. www.sabaglobalventure.com
 
-  /* ---- Contact — CLIENT TO SUPPLY ------------------------------------
-     WhatsApp must be E.164 WITHOUT the '+' or any spaces.
-     Bangladesh mobile numbers look like: 8801XXXXXXXXX                    */
-  whatsapp: "{WHATSAPP_E164}",            // e.g. 8801712345678
-  email:    "{SALES_EMAIL}",              // e.g. sales@sabaglobalventure.com
-  phone:    "{PHONE}",                    // e.g. +880 171 234 5678
-  address:  "{ADDRESS_CUMILLA}",          // full street address, Cumilla, Bangladesh
-  mapUrl:   "{GOOGLE_MAPS_URL}",          // share link from Google Maps
+  /* ---- Contact (client-supplied) --------------------------------------
+     WhatsApp must be E.164 WITHOUT the '+' or any spaces.                 */
+  whatsapp: "8801879175319",                          // +880 1879 175319
+  email:    "sabaglobalventures.bd@gmail.com",
+  // The client gave one number, for WhatsApp. It is shown as the phone line too;
+  // replace this if there is a separate landline for the office.
+  phone:    "+880 1879 175319",
+  address:  "Green House Mansion, Jhautola, Adarsha Sadar, Cumilla 3500, Bangladesh",
+  // Derived from the address above — a Google Maps *search*, not a guessed pin.
+  // Swap in the exact share link from Google Maps once the office is pinned there.
+  mapUrl:   "https://www.google.com/maps/search/?api=1&query=Green+House+Mansion%2C+Jhautola%2C+Adarsha+Sadar%2C+Cumilla+3500%2C+Bangladesh",
   hours:    "Sat–Thu, 9:00–18:00 (BST, GMT+6)",
 
   /* ---- Social links (optional — unset links hide themselves) ---------- */

@@ -32,8 +32,11 @@
     categories: "sgv_categories",
     countries: "sgv_countries",
     // Bump this version to force a re-seed in browsers that already cached an
-    // older seed (e.g. after the real contact details land in config.js).
-    seeded: "sgv_seeded_v1",
+    // older seed. Once a browser has seeded, its saved Settings MASK config.js —
+    // so shipping new contact details without bumping this leaves earlier
+    // visitors on the stale ones.
+    //   v2 — real WhatsApp / email / address / map landed in config.js
+    seeded: "sgv_seeded_v2",
   };
 
   // Default category + country seeds (used on first run and "Reset demo data").

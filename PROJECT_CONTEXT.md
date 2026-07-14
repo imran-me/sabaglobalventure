@@ -35,16 +35,21 @@ Full source-of-truth spec: **`Saba-Global-Venture-Landing-Page-Prompt.md`**.
 - **Tagline:** "From Bangladesh to the World."
 - **Ethos:** "Trusted Sourcing Partner from the Bengal Delta"
 
-### ⏳ Client-supplied contact details — ALL STILL PENDING
+### Client-supplied contact details
 | Field | Value | Status |
 |---|---|---|
-| WhatsApp | `{WHATSAPP_E164}` (e.g. 8801712345678, no `+`) | ⏳ pending |
-| Email | `{SALES_EMAIL}` | ⏳ pending |
-| Phone | `{PHONE}` | ⏳ pending |
-| Address | `{ADDRESS_CUMILLA}` | ⏳ pending |
-| Google Maps | `{GOOGLE_MAPS_URL}` | ⏳ pending |
+| WhatsApp | `8801879175319` (+880 1879 175319) | ✅ provided |
+| Email | `sabaglobalventures.bd@gmail.com` | ✅ provided |
+| Phone | `+880 1879 175319` | ⚠ reusing the WhatsApp number — confirm if the office has a separate line |
+| Address | Green House Mansion, Jhautola, Adarsha Sadar, Cumilla 3500, Bangladesh | ✅ provided |
+| Google Maps | Derived **search** URL built from the address | ⚠ replace with the exact share link once the office is pinned on Maps |
 | Website | `{WEBSITE}` | ⏳ pending |
-| Instagram / Facebook / LinkedIn | `{INSTAGRAM}` / `{FACEBOOK}` / `{LINKEDIN}` | ⏳ pending |
+| Instagram / Facebook / LinkedIn | `{INSTAGRAM}` / `{FACEBOOK}` / `{LINKEDIN}` | ⏳ pending (unset socials hide themselves) |
+
+> When contact details change, update **both** `assets/js/config.js` **and** the
+> JSON-LD block in `index.html` (search engines read the HTML copy), and **bump
+> `seeded` in `store.js`** — a browser that already seeded has saved Settings that
+> mask `config.js`, so returning visitors would otherwise keep the old details.
 
 **Single source of truth = `assets/js/config.js`** (overridden live by Admin →
 Settings). Every CTA reads from there. Unset socials hide themselves; the contact
@@ -144,7 +149,9 @@ sabaglobal/
 
 ## 7. Open questions / TODO for the client
 
-1. Provide all `{CURLY}` contact values (WhatsApp, email, phone, address, map, website, socials).
+1. Remaining `{CURLY}` values: **website + socials**. Also confirm whether the office
+   has a **separate phone line** (the WhatsApp number is currently shown as the phone)
+   and supply the exact **Google Maps share link** for the office pin.
 2. Confirm the trust-strip numbers (Export Grades "20+", Core Categories "8").
 3. Confirm certifications actually held — HACCP / Halal / Phytosanitary are shown by
    default and **EU Approved Est. is off**. Never display a cert not held.

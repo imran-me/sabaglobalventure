@@ -104,22 +104,25 @@ function populateConfig() {
     if (v != null) el.textContent = v;
   });
 
+  // Treat any still-unfilled {CURLY} value as unset, so we never emit a
+  // half-built link (e.g. href="{GOOGLE_MAPS_URL}" or tel:{PHONE}).
+  const unset = (v) => (window.CTA ? window.CTA.isUnset(v) : !v || /^\{.*\}$/.test(String(v)));
+
   document.querySelectorAll("[data-config-href]").forEach((el) => {
     const key = el.getAttribute("data-config-href");
     let href = "#";
     if (key === "whatsapp") href = window.CTA.whatsappUrl({});
     else if (key === "email") href = window.CTA.mailtoUrl({});
-    else if (key === "phone") href = `tel:${(c.phone || "").replace(/\s+/g, "")}`;
-    else if (key === "map") href = c.mapUrl || "#";
-    else if (key === "instagram") href = c.socials?.instagram || "#";
-    else if (key === "facebook") href = c.socials?.facebook || "#";
-    else if (key === "linkedin") href = c.socials?.linkedin || "#";
+    else if (key === "phone") href = unset(c.phone) ? "#" : `tel:${String(c.phone).replace(/[\s-]+/g, "")}`;
+    else if (key === "map") href = unset(c.mapUrl) ? "#" : c.mapUrl;
+    else if (key === "instagram") href = unset(c.socials?.instagram) ? "#" : c.socials.instagram;
+    else if (key === "facebook") href = unset(c.socials?.facebook) ? "#" : c.socials.facebook;
+    else if (key === "linkedin") href = unset(c.socials?.linkedin) ? "#" : c.socials.linkedin;
     el.setAttribute("href", href);
-    // Hide social links that are still unset ({PLACEHOLDER} or empty).
-    if (key.match(/instagram|facebook|linkedin/) && (href === "#" || /^\{.*\}$/.test(href))) {
-      el.style.display = "none";
-    }
-    if (key === "whatsapp" || key === "map" || key.match(/instagram|facebook|linkedin/)) {
+    // Socials we simply hide when unset — an empty row reads as "no presence",
+    // which is better than a dead icon.
+    if (key.match(/instagram|facebook|linkedin/) && href === "#") el.style.display = "none";
+    if (href !== "#" && (key === "whatsapp" || key === "map" || key.match(/instagram|facebook|linkedin/))) {
       el.target = "_blank"; el.rel = "noopener";
     }
   });
