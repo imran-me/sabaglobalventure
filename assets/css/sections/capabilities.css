@@ -1,16 +1,75 @@
 /* ============================================================================
-   sections/capabilities.css — "Why us" gold-line-icon cards
+   sections/capabilities.css — CHAPTER 03, THE HOUSE (ivory)
+   ----------------------------------------------------------------------------
+   A numbered, hairline-ruled list — two columns of rows, not a 3x2 icon-card
+   grid (which is the single most template-looking block on the internet).
+   Roman numerals in the wordmark face, gold. On hover the row's rule warms to
+   terracotta and the row eases right: restrained and physical, nothing like a
+   lifting card.
    ========================================================================== */
 
-.capabilities .cap-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5);
+.capability-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(2rem, 5vw, 4.5rem);
+  border-top: 1px solid var(--line-ivory);
 }
-.cap-card { padding: var(--space-6); }
-.cap-card .cap-icon {
-  width: 46px; height: 46px; display: grid; place-items: center; margin-bottom: var(--space-4);
-  color: var(--gold-300); border: 1px solid var(--line); border-radius: var(--radius);
-  background: rgba(201,162,75,.06);
+
+.capability {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 0 1rem;
+  align-items: baseline;
+  padding: clamp(1.1rem, 2.5vw, 1.6rem) 0;
+  border-bottom: 1px solid var(--line-ivory);
+  transition: transform var(--dur) var(--ease);
 }
-.cap-card .cap-icon svg { width: 24px; height: 24px; stroke-width: 1.5; }
-.cap-card h3 { color: var(--frost-100); margin-bottom: .5rem; font-size: 1.25rem; }
-.cap-card p { font-size: var(--fs-small); color: var(--text-muted-on-dark); }
+/* The rule that warms on hover. A separate element so only THIS row lights and
+   it can animate independently of the static border. */
+.capability::after {
+  content: "";
+  position: absolute; left: 0; bottom: -1px;
+  width: 100%; height: 1px;
+  background: var(--clay-600);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.capability:hover { transform: translateX(6px); }
+.capability:hover::after { transform: scaleX(1); }
+
+.cap-index {
+  font-family: var(--font-wordmark);
+  font-size: .82rem;
+  letter-spacing: .1em;
+  color: var(--gold-700);
+  padding-top: .15em;
+}
+.capability h3 {
+  margin: 0 0 .35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 600;
+  color: var(--ink-900);
+  letter-spacing: 0;
+}
+.capability p {
+  grid-column: 2;
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  color: var(--text-muted-on-light);
+  max-width: 46ch;
+}
+
+@media (max-width: 860px) {
+  .capability-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .capability { grid-template-columns: 1.75rem 1fr; }
+  .capability p { font-size: .82rem; }
+}

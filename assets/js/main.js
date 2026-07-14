@@ -62,8 +62,9 @@
   [
     "initPreloader", "initNav", "initCursor",
     "initCounters", "initBackground", "initProducts", "initFeatured",
-    "initHeroDeck", "initMarketsMap",
-    "initReveal",
+    "initMarquee", "initMarketsMap",
+    "initReveal",     // after everything that injects markup — see note above
+    "initKinetic",    // after reveal: the headline reveals itself, not via IO
     "initContact",
   ].forEach((fn) => { try { window[fn] && window[fn](); } catch (e) { console.error(fn, e); } });
 

@@ -59,11 +59,19 @@ window.initProducts = function initProducts() {
     const packs = (p.packaging || [])
       .map((pk) => `<span class="chip chip--pack">${esc(pk)}</span>`).join("");
     const hs = p.hsCode ? `<p class="hs-line">HS Code: <b>${esc(p.hsCode)}</b></p>` : "";
+    // The photo sits in an arched niche (.media-niche carries the arch mask) and
+    // .media-frame traces the same arch in gold OUTSIDE that mask — a frame
+    // inside the mask would have half its own hairline clipped away. The
+    // category is a micro-cap above the arch, not a pill stuck on the photo, so
+    // it must live outside .media too or the mask would eat it.
     return `
     <article class="card product-card ${i % 2 ? "motif-b" : ""}" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
+      <span class="cat-eyebrow">${esc(p.category)}</span>
       <div class="media">
-        <span class="cat-eyebrow">${esc(p.category)}</span>
-        <img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
+        <div class="media-niche">
+          <img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
+        </div>
+        <span class="media-frame" aria-hidden="true"></span>
       </div>
       <div class="body">
         <h3 class="name">${esc(p.name)}</h3>

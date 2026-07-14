@@ -1,0 +1,90 @@
+<!-- ===========================================================================
+     sections/alpona.html — Alpona divider
+     ---------------------------------------------------------------------------
+     Alpona is the rice-paste line art Bengali households paint on floors for a
+     welcome. Here it separates the story from the line card, and it DRAWS
+     ITSELF IN as you reach it (reveal.js adds .is-drawn; every stroke carries
+     pathLength="100" so they all draw at one rate regardless of true length).
+
+     The SVG is INLINED rather than <img>-ed: it uses stroke="currentColor" so
+     it can be gold on indigo and deeper gold on ivory, and the stroke-dash
+     animation needs the paths in the document.
+     Source of truth: assets/img/ornaments/alpona-divider.svg — keep in sync.
+     ======================================================================== -->
+<div class="alpona" data-alpona aria-hidden="true">
+  <svg viewBox="0 0 1200 120" fill="none" stroke="currentColor"
+       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<title>Alpona divider — lotus medallion with sweeping vines</title>
+  <defs>
+    <!-- petals point up; pathLength normalises the draw-in for every clone -->
+    <path id="po" pathLength="100" d="M0 -7C-7.5 -13 -7.5 -21 0 -27C7.5 -21 7.5 -13 0 -7Z"/>
+    <path id="pi" pathLength="100" d="M0 -3.5C-4.5 -7.5 -4.5 -12 0 -15.5C4.5 -12 4.5 -7.5 0 -3.5Z"/>
+    <path id="pb" pathLength="100" d="M0 -2C-3 -5 -3 -9 0 -12C3 -9 3 -5 0 -2Z"/>
+  </defs>
+
+  <!-- ===== right wing (mirrored below for the left) ===== -->
+  <g id="wing" class="alpona-line">
+    <!-- upper vine -->
+    <path class="alpona-line" pathLength="100"
+          d="M630 60C672 58 686 38 724 34C762 30 788 44 824 44C874 44 912 34 946 42C974 48 990 56 1006 60"/>
+    <!-- lower vine -->
+    <path class="alpona-line" pathLength="100"
+          d="M630 60C672 62 686 82 724 86C762 90 788 76 824 76C874 76 912 86 946 78C974 72 990 64 1006 60"/>
+
+    <!-- tendril curls springing off the vines -->
+    <path class="alpona-line" pathLength="100" d="M724 34C714 28 714 16 726 15C733 14.5 735 22 729 24"/>
+    <path class="alpona-line" pathLength="100" d="M724 86C714 92 714 104 726 105C733 105.5 735 98 729 96"/>
+
+    <!-- paisley (boteh) floating between the vines -->
+    <path class="alpona-line" pathLength="100"
+          d="M800 72C786 67 781 55 789 47C797 40 810 44 810 55C810 62 805 67 800 72"/>
+    <path class="alpona-line" pathLength="100"
+          d="M800 66C793 60 794 52 800 48C805 45 809 49 808 54"/>
+
+    <!-- lotus bud where the vines meet -->
+    <g class="alpona-line" transform="translate(1006 60)">
+      <use href="#pb" transform="rotate(90)"/>
+      <use href="#pb" transform="rotate(55)"/>
+      <use href="#pb" transform="rotate(125)"/>
+    </g>
+
+    <!-- fine tapering tendril to the far end -->
+    <path class="alpona-line" pathLength="100"
+          d="M1018 60C1044 60 1060 52 1082 54C1096 55 1100 62 1094 66C1090 69 1085 66 1087 62"/>
+
+    <!-- alpona dots -->
+    <circle cx="724" cy="26" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="724" cy="94" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="946" cy="30" r="1.2" fill="currentColor" stroke="none"/>
+    <circle cx="946" cy="90" r="1.2" fill="currentColor" stroke="none"/>
+    <circle cx="1116" cy="60" r="2.1" fill="currentColor" stroke="none"/>
+    <circle cx="1132" cy="60" r="1.4" fill="currentColor" stroke="none"/>
+    <circle cx="1146" cy="60" r="0.9" fill="currentColor" stroke="none"/>
+  </g>
+
+  <!-- ===== left wing: exact mirror about x = 600 ===== -->
+  <use href="#wing" class="alpona-line" transform="translate(1200 0) scale(-1 1)"/>
+
+  <!-- ===== central lotus medallion ===== -->
+  <g class="alpona-line" transform="translate(600 60)">
+    <use href="#po" transform="rotate(0)"/>
+    <use href="#po" transform="rotate(45)"/>
+    <use href="#po" transform="rotate(90)"/>
+    <use href="#po" transform="rotate(135)"/>
+    <use href="#po" transform="rotate(180)"/>
+    <use href="#po" transform="rotate(225)"/>
+    <use href="#po" transform="rotate(270)"/>
+    <use href="#po" transform="rotate(315)"/>
+    <use href="#pi" transform="rotate(22.5)"/>
+    <use href="#pi" transform="rotate(67.5)"/>
+    <use href="#pi" transform="rotate(112.5)"/>
+    <use href="#pi" transform="rotate(157.5)"/>
+    <use href="#pi" transform="rotate(202.5)"/>
+    <use href="#pi" transform="rotate(247.5)"/>
+    <use href="#pi" transform="rotate(292.5)"/>
+    <use href="#pi" transform="rotate(337.5)"/>
+    <circle class="alpona-line" pathLength="100" r="5"/>
+  </g>
+  <circle cx="600" cy="60" r="1.6" fill="currentColor" stroke="none"/>
+  </svg>
+</div>

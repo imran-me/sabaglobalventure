@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/bengal.css"><!-- arches, chapters, alpona, marquee -->
   <link rel="stylesheet" href="assets/css/background.css">
   <link rel="stylesheet" href="assets/css/sections/header.css">
   <link rel="stylesheet" href="assets/css/sections/hero.css">
@@ -105,16 +106,43 @@
 
   <div data-include="sections/header.html"></div>
 
+  <!-- =========================================================================
+       THE NARRATIVE. Deliberately NOT the conventional
+       hero → stats → features → grid → map → contact stack.
+
+       It is told in numbered chapters, and it ALTERNATES: deep indigo, warm
+       ivory, indigo again. The alternation is the point — an unbroken dark
+       canvas reads as a template, however good the colours are. The story runs
+       origin → house → line card → reach → desk, so the goods arrive only
+       after you know where they come from.
+       ====================================================================== -->
   <main>
     <div data-include="sections/hero.html"></div>
-    <div data-include="sections/trust.html"></div>
-    <div data-include="sections/featured.html"></div>
-    <div class="divider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 2l2.5 5.5L20 6l-1.5 6L20 18l-5.5-1.5L12 22l-2.5-5.5L4 18l1.5-6L4 6l5.5 1.5z"/></svg></div>
+
+    <!-- 01 — where the goods come from. Ivory: the page opens up and breathes. -->
     <div data-include="sections/about.html"></div>
+
+    <!-- The numbers, set as an editorial band rather than a row of boxes. -->
+    <div data-include="sections/trust.html"></div>
+
+    <!-- A quiet interlude: the signature lines, rotating. No chapter head — it
+         is a glimpse, not a chapter. -->
+    <div data-include="sections/featured.html"></div>
+
+    <div data-include="sections/alpona.html"></div>
+
+    <!-- 02 — the catalogue proper, as arched portraits. -->
     <div data-include="sections/products.html"></div>
+
+    <!-- 03 — how the house works. Ivory again. -->
     <div data-include="sections/capabilities.html"></div>
+
+    <!-- 04 — where it all goes. -->
     <div data-include="sections/markets.html"></div>
+
     <div data-include="sections/cta.html"></div>
+
+    <!-- 05 — the trade desk. -->
     <div data-include="sections/contact.html"></div>
   </main>
 
@@ -141,9 +169,9 @@
   <script src="assets/js/reveal.js"></script>
   <script src="assets/js/counters.js"></script>
   <script src="assets/js/background.js"></script>
+  <script src="assets/js/kinetic.js"></script>
   <script src="assets/js/products.js"></script>
   <script src="assets/js/featured.js"></script>
-  <script src="assets/js/hero-deck.js"></script>
   <script src="assets/js/markets-map.js"></script>
   <script src="assets/js/contact.js"></script>
   <script src="assets/js/main.js"></script>

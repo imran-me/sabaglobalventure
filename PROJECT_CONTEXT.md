@@ -178,6 +178,48 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-15 — Session 2 (THE REDESIGN — and why it was needed)
+**Client feedback, verbatim and fair:** *"you have made everything same to same of
+sara al salam, just color is different… it is not a luxurious practice to make
+exactly same, I have given that as reference of what type of luxurious vibe I want.
+If SAS is 100/100, make Saba 1000/100."*
+
+They were right. Session 1 kept the reference's section order, its card grid, its
+repeated eyebrow/H2/rule stack and its single dark canvas, and changed the paint.
+That is a recolour, not a design. What changed:
+
+- **Palette deepened and opened.** Added **indigo** (`--indigo-950…700`) as the real
+  canvas — Bengal traded indigo to the world, so it earns its place — plus a warm
+  **ivory** second canvas and **terracotta** as the rare spark. The page now
+  ALTERNATES indigo ↔ ivory. This is the single biggest reason it now reads as
+  editorial rather than as a template.
+- **The arch became the house's shape.** A Mughal/Bengali cusped niche
+  (`ornaments/arch-mask.svg` + `arch-outline.svg`) applied as a CSS mask: the hero
+  **portal**, the story portrait, and every product as a **framed arched portrait**.
+- **New Bengal ornament, all of it specific:** Jamdani weave (the figured muslin)
+  replacing the generic damask; **alpona** rice-paste line art that draws itself in.
+- **Narrative restructured** into numbered chapters (01 Origin → 05 Trade Desk), with
+  the story placed BEFORE the catalogue, an asymmetric hero (1.15/.85, never 50/50),
+  rotated side-rails, a market **marquee**, a word-by-word kinetic headline, the stats
+  as an **editorial numbers band**, and capabilities as a **numbered ruled list**
+  instead of six identical icon cards.
+- **Removed** `hero-deck.js` (superseded by the portal) and the old divider.
+
+**Bug found while verifying (would have shipped broken):** the arch masks were
+declared as `--arch: url("../img/…")` in tokens.css. A relative `url()` inside a
+custom property resolves against the stylesheet that **uses** the var, not the one
+that declares it — so it became `assets/css/img/…` from `assets/css/sections/*.css`,
+404'd, and **a mask whose image fails masks the element away entirely**: the hero
+portal and all 20 product niches rendered blank. Paths are now spelled out per
+stylesheet. Never put a relative url() in a custom property.
+
+**Verified:** no horizontal overflow at 390 or 1440; 0 broken images; 0 dead CTAs; 20
+arched niches sized correctly; alpona draws; marquee loops seamlessly; every
+[data-reveal] reaches opacity 1 (see the headless caveat below — fast scripted
+scrolling outruns IntersectionObserver on a GPU-less browser and gives false
+"unrevealed" readings; park the element and dwell instead).
+
+
 ### 2026-07-15 — Pushed to GitHub
 - Repo: **<https://github.com/imran-me/sabaglobalventure.git>**, branch `main`,
   initial commit `fa4f55b` (86 files), author **Md Imran Hossain**.

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <title>Jamdani buti weave — gold</title>
+  <defs>
+    <!-- angular 8-point buti (supplementary-weft figured motif), centred on origin, R=11 -->
+    <g id="buti">
+      <path d="M11 0 4.619 -1.913 7.778 -7.778 1.913 -4.619 0 -11 -1.913 -4.619 -7.778 -7.778 -4.619 -1.913 -11 0 -4.619 1.913 -7.778 7.778 -1.913 4.619 0 11 1.913 4.619 7.778 7.778 4.619 1.913Z"/>
+      <path d="M0 -4.2 4.2 0 0 4.2 -4.2 0Z"/>
+    </g>
+    <!-- tiny four-point spark for the floating diagonal repeat -->
+    <path id="spark" d="M0 -4 1 -1 4 0 1 1 0 4 -1 1 -4 0 -1 -1Z"/>
+  </defs>
+
+  <g fill="none" stroke="#C9A24B" stroke-linejoin="round" stroke-linecap="round">
+
+    <!-- warp / weft hairlines: the woven ground -->
+    <path stroke-width="0.5" stroke-opacity="0.35"
+          d="M0 0V120M10 0V120M20 0V120M30 0V120M40 0V120M50 0V120M60 0V120M70 0V120M80 0V120M90 0V120M100 0V120M110 0V120M120 0V120M0 0H120M0 10H120M0 20H120M0 30H120M0 40H120M0 50H120M0 60H120M0 70H120M0 80H120M0 90H120M0 100H120M0 110H120M0 120H120"/>
+
+    <!-- central buti -->
+    <use href="#buti" stroke-width="0.85" transform="translate(60 60)"/>
+
+    <!-- corner butis: quartered, four tiles join into one whole motif -->
+    <use href="#buti" stroke-width="0.85" transform="translate(0 0)"/>
+    <use href="#buti" stroke-width="0.85" transform="translate(120 0)"/>
+    <use href="#buti" stroke-width="0.85" transform="translate(0 120)"/>
+    <use href="#buti" stroke-width="0.85" transform="translate(120 120)"/>
+
+    <!-- half-drop edge butis: halved, reappear on the opposite edge -->
+    <use href="#buti" stroke-width="1.4" transform="translate(60 0) scale(0.5)"/>
+    <use href="#buti" stroke-width="1.4" transform="translate(60 120) scale(0.5)"/>
+    <use href="#buti" stroke-width="1.4" transform="translate(0 60) scale(0.5)"/>
+    <use href="#buti" stroke-width="1.4" transform="translate(120 60) scale(0.5)"/>
+
+    <!-- floating sparks on the diagonal lattice -->
+    <use href="#spark" stroke-width="0.6" transform="translate(30 30)"/>
+    <use href="#spark" stroke-width="0.6" transform="translate(90 30)"/>
+    <use href="#spark" stroke-width="0.6" transform="translate(30 90)"/>
+    <use href="#spark" stroke-width="0.6" transform="translate(90 90)"/>
+  </g>
+</svg>

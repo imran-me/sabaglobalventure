@@ -1,45 +1,69 @@
 <!-- ===========================================================================
-     sections/hero.html — Full-screen hero
+     sections/hero.html — The portal hero
      ---------------------------------------------------------------------------
-     data-bg-section="hero" tells background.js to fade in the sampan silhouette
-     here. Market chips are injected from the live country list (main.js).
-     Every [data-content] node is editable from Admin → Page Content; leaving a
-     field blank in admin keeps the committed default below.
+     NOT a stacked-left headline over a full-bleed background. This is an
+     asymmetric editorial spread: oversized display type on the left, and on the
+     right a tall ARCHED PORTAL — a Bengali cusped niche framed in a gold
+     hairline — looking out onto the delta. The arch is the house's signature
+     shape; it recurs on the product portraits and the story image.
+
+     The headline reveals word by word (kinetic.js). data-bg-section="hero"
+     fades the sampan silhouette in behind. Market chips are gone from here —
+     nine markets belong in the marquee below, not wrapped into a chip block.
      ======================================================================== -->
 <section class="hero section" id="home" data-bg-section="hero">
-  <div class="container">
-    <p class="eyebrow" data-reveal data-content="heroEyebrow">Cumilla · Bangladesh · Global Trade</p>
-    <h1 data-reveal><span data-content="heroTitle">Bangladesh's Harvest, </span><em data-content="heroTitleGold">Carried to the World.</em></h1>
-    <p class="lead italic" data-reveal data-content="heroLead">
-      Saba Global Venture sources rice, shrimp, fish, fruit and fresh vegetables from
-      the Bengal delta and delivers them in bulk to wholesale markets across the Gulf,
-      the Middle East and South Asia.
-    </p>
+  <span class="side-rail" aria-hidden="true">Est. Cumilla · Bengal</span>
 
-    <div class="hero-cta" data-reveal>
-      <a class="btn btn--gold" data-cta="whatsapp">Request a Bulk Quote</a>
-      <a class="btn btn--ghost" data-cta="gmail">Email Our Trade Desk</a>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow" data-reveal data-content="heroEyebrow">Cumilla · Bangladesh · Global Trade</p>
+
+      <h1 class="hero-title" data-kinetic>
+        <span data-content="heroTitle">Bangladesh's Harvest,</span>
+        <em data-content="heroTitleGold">Carried to the World.</em>
+      </h1>
+
+      <div class="hero-rule" data-reveal aria-hidden="true"></div>
+
+      <p class="lead italic" data-reveal data-content="heroLead">
+        Saba Global Venture sources rice, shrimp, fish, fruit and fresh vegetables from
+        the Bengal delta and delivers them in bulk to wholesale markets across the Gulf,
+        the Middle East and South Asia.
+      </p>
+
+      <div class="hero-cta" data-reveal>
+        <a class="btn btn--gold" data-cta="whatsapp">Request a Bulk Quote</a>
+        <a class="btn btn--ghost" data-cta="gmail">Email Our Trade Desk</a>
+      </div>
     </div>
 
-    <!-- Market flag chips (injected from Admin → Countries) -->
-    <div class="market-row" data-reveal>
-      <span class="label">Trading in</span>
-      <span data-markets></span>
+    <!-- The portal: an arched niche onto the delta. The scene inside drifts
+         slowly; the gold hairline frame traces the exact same arch geometry. -->
+    <div class="hero-portal" data-reveal aria-hidden="true">
+      <div class="portal-niche">
+        <div class="portal-scene"></div>
+        <div class="portal-veil"></div>
+      </div>
+      <!-- The frame geometry is INLINED (not <use href="…svg#id">): an external
+           <use> can't inherit currentColor, so the gold would be lost. Path data
+           is identical to assets/img/ornaments/arch-outline.svg — keep them in
+           sync if the arch ever changes. -->
+      <div class="arch-frame">
+        <svg viewBox="0 0 100 140" preserveAspectRatio="none" fill="none"
+             stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true">
+          <path vector-effect="non-scaling-stroke" d="M0 140L0 76A32.07 32.07 0 0 1 7 56A13 13 0 0 1 16 36A13 13 0 0 1 30 20A10 10 0 0 1 43 10C46 8 49 5 50 2C51 5 54 8 57 10A10 10 0 0 1 70 20A13 13 0 0 1 84 36A13 13 0 0 1 93 56A32.07 32.07 0 0 1 100 76L100 140Z"/>
+          <path vector-effect="non-scaling-stroke" opacity=".55" d="M3 140L3 77.5A30.36 30.36 0 0 1 9.6 58.6A11 11 0 0 1 18.2 39.2A11 11 0 0 1 31.5 23.6A8.5 8.5 0 0 1 43.8 13.6C46.5 12.2 49.1 9.6 50 7C50.9 9.6 53.5 12.2 56.2 13.6A8.5 8.5 0 0 1 68.5 23.6A11 11 0 0 1 81.8 39.2A11 11 0 0 1 90.4 58.6A30.36 30.36 0 0 1 97 77.5L97 140"/>
+        </svg>
+      </div>
+      <span class="portal-caption">The Bengal Delta</span>
     </div>
   </div>
 
-  <!-- Two tilted "product plate" cards (desktop): quietly cross-fade through the
-       catalogue's photos. Injected + animated by assets/js/hero-deck.js. They sit
-       in the open right-hand space and never block the background scene.
-       Self-removes if the catalogue has no photos yet. -->
-  <div class="hero-deck" data-hero-deck aria-hidden="true">
-    <div class="hd-card hd-card--a"></div>
-    <div class="hd-card hd-card--b"></div>
-  </div>
-
-  <!-- Scroll cue -->
-  <a class="scroll-cue" href="#trust" aria-label="Scroll to explore">
-    <span>Scroll to explore</span>
+  <a class="scroll-cue" href="#about" aria-label="Scroll to explore">
+    <span>Scroll</span>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg>
   </a>
 </section>
+
+<!-- Endless hairline ticker of every market we ship to (injected by main.js). -->
+<div class="marquee" aria-hidden="true" data-marquee></div>

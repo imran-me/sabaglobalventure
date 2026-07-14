@@ -4,14 +4,36 @@
    Edit colours, fonts, spacing and radii HERE and they cascade everywhere.
    Loaded FIRST, before every other stylesheet.
 
-   BRAND RULE (Saba Global Venture):
-     - Majestic/Royal blue is the canvas — deep, oceanic, sovereign.
+   BRAND RULE (Saba Global Venture) — "Indigo & Gold, the Bengal trade house":
+     - Majestic/Royal blue is the canvas, deepened toward INDIGO. Indigo is not
+       decoration here: it is the dye Bengal traded to the world. It earns the
+       palette.
      - Gold is jewelry: <=10% of any view. Lines, eyebrows, CTAs, the emblem.
-     - Powder blue + frost carry the readable light sections.
-     - Ocean blue is the "current" — used for motion, routes, water, glows.
+     - IVORY is the second canvas. The site must BREATHE — deep indigo chapters
+       alternating with warm ivory ones. An unbroken dark slab reads as a
+       template; the alternation is what reads as editorial and expensive.
+     - TERRACOTTA is the rare spark — the fired clay of Bengal's temple panels.
+       Never more than a chip, a rule, a numeral.
+     - Ocean blue is the "current" — motion, trade routes, water, glows.
    ========================================================================== */
 
 :root {
+  /* ---- Indigo (the deepening of the canvas) ---------------------------
+     Bengal's own dye. These sit UNDER the blues and give the dark chapters
+     their depth and warmth-in-coldness. */
+  --indigo-950: #05081C;   /* the deepest ground */
+  --indigo-900: #0A1338;   /* dark chapter base */
+  --indigo-800: #141F55;   /* raised indigo surfaces */
+  --indigo-700: #1E2E78;   /* indigo cards / gradients */
+
+  /* ---- Ivory & natural (the light chapters) ---------------------------
+     Warm, paper-like, hand-made. NOT a cold grey-white — that would kill the
+     "natural" half of the brief. */
+  --ivory-100: #FBF7EF;   /* the light canvas — raw silk / muslin */
+  --ivory-200: #F4EDE0;   /* raised ivory panels */
+  --ivory-300: #E8DCC8;   /* ivory dividers, hairlines on light */
+  --clay-600:  #9C4A2F;   /* TERRACOTTA — the rare spark */
+  --clay-400:  #C2694A;   /* terracotta hover/tint */
   /* ---- Blues (canvas + surfaces) --------------------------------------
      From the deepest night-sea to the palest powder. --blue-900 is the
      Majestic Blue that dominates the site; --royal-600 is true Royal Blue. */
@@ -43,14 +65,29 @@
   --line-blue: rgba(169,207,234,.16);  /* powder hairline @ low alpha */
 
   /* ---- Semantic aliases ----------------------------------------------- */
-  --bg:            var(--blue-900);
-  --bg-deep:       var(--navy-950);
-  --surface-card:  var(--royal-700);
+  --bg:            var(--indigo-900);
+  --bg-deep:       var(--indigo-950);
+  --surface-card:  var(--indigo-700);
   --text-on-dark:  var(--frost-100);
   --text-muted-on-dark: rgba(242,247,253,.70);
   --text-on-light: var(--ink-900);
+  --text-muted-on-light: #6B6255;   /* warm grey — reads as ink on paper */
   --accent:        var(--gold-500);
   --accent-hover:  var(--gold-300);
+  --line-ivory:    rgba(90,74,48,.18);   /* hairline on the light chapters */
+
+  /* ---- Shape language --------------------------------------------------
+     The Bengal cusped arch lives in assets/img/ornaments/ and is applied as a
+     CSS mask so any box can become an arched niche: the hero portal, the
+     product "portraits", framed imagery. That one move is the site's signature.
+
+     ⚠ DO NOT put those url()s in a custom property here. A relative url() inside
+     a custom property is resolved against the stylesheet that *uses* the var,
+     not the one that declares it — so `../img/…` silently became
+     `assets/css/img/…` when used from assets/css/sections/*.css, and a mask
+     whose image fails to load masks the element away ENTIRELY (the portal went
+     blank). Browsers also disagree here. Each stylesheet therefore spells the
+     path out itself, at its own depth. */
 
   /* ---- Typography -----------------------------------------------------
      Cormorant Garamond at LIGHT weights and LARGE sizes is the luxury move —

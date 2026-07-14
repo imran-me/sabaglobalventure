@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" preserveAspectRatio="none"
+     fill="none" stroke="currentColor" stroke-width="1"
+     stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke">
+  <title>Bengal cusped arch — outline</title>
+  <!-- outer frame: identical geometry to arch-mask.svg -->
+  <path vector-effect="non-scaling-stroke" d="M0 140L0 76A32.07 32.07 0 0 1 7 56A13 13 0 0 1 16 36A13 13 0 0 1 30 20A10 10 0 0 1 43 10C46 8 49 5 50 2C51 5 54 8 57 10A10 10 0 0 1 70 20A13 13 0 0 1 84 36A13 13 0 0 1 93 56A32.07 32.07 0 0 1 100 76L100 140Z"/>
+  <!-- inner concentric line, inset ~3 units -->
+  <path vector-effect="non-scaling-stroke" d="M3 140L3 77.5A30.36 30.36 0 0 1 9.6 58.6A11 11 0 0 1 18.2 39.2A11 11 0 0 1 31.5 23.6A8.5 8.5 0 0 1 43.8 13.6C46.5 12.2 49.1 9.6 50 7C50.9 9.6 53.5 12.2 56.2 13.6A8.5 8.5 0 0 1 68.5 23.6A11 11 0 0 1 81.8 39.2A11 11 0 0 1 90.4 58.6A30.36 30.36 0 0 1 97 77.5L97 140"/>
+</svg>

@@ -1,43 +1,71 @@
 <!-- ===========================================================================
-     sections/about.html — About preview (two-column story + framed image)
+     sections/about.html — CHAPTER 01, ORIGIN
      ---------------------------------------------------------------------------
-     data-bg-section="about" -> the Royal Bengal tiger silhouette drifts in here.
+     The first chapter after the hero, and the first IVORY one — the page opens
+     out of the indigo and breathes. Warm muslin ground with a faint Jamdani
+     weave (bengal.css .section--ivory), asymmetric, with the story image cut to
+     the same cusped arch as the hero portal.
+
+     Deliberately placed BEFORE the catalogue: a trade house earns the right to
+     show you goods by first telling you where they come from.
+
      Every [data-content] node is editable from Admin → Page Content, including
-     the image (data-content-src="aboutImage" — upload or paste a Drive link).
-     Until real photography lands, img-fallback.js paints a branded placeholder.
+     the image (data-content-src="aboutImage").
      ======================================================================== -->
-<section class="about section" id="about" data-bg-section="about">
-  <div class="container grid grid--split">
-    <div data-reveal>
-      <p class="eyebrow eyebrow--tick" data-content="aboutEyebrow">Our Story</p>
-      <h2 data-content="aboutTitle">Rooted in the Delta. <em>Trusted Across Borders.</em></h2>
-      <span class="title-rule"></span>
-      <p class="lead" style="margin-top:1.25rem" data-content="aboutLead">
-        Bangladesh feeds a great deal more than Bangladesh. From our base in Cumilla we
-        buy where the crop is grown and the catch is landed, hold it to an export
-        standard, and move it to buyers who need the same quality arriving container
-        after container.
-      </p>
-
-      <div class="values">
-        <span class="chip">Direct Sourcing</span>
-        <span class="chip">Quality Control</span>
-        <span class="chip">Cold Chain</span>
-        <span class="chip">Trade Documentation</span>
+<!-- id stays "about": the header/footer/mobile nav, the scroll-spy and the
+     about.html redirect stub all target #about. The chapter is *titled* Origin;
+     the anchor is not a place to be clever. -->
+<section class="about section section--ivory" id="about" data-bg-section="about">
+  <div class="container">
+    <div class="chapter-head" data-reveal>
+      <span class="chapter-num" aria-hidden="true">01</span>
+      <div>
+        <span class="chapter-label" data-content="aboutEyebrow">Origin</span>
+        <h2 data-content="aboutTitle">Rooted in the Delta. <em>Trusted Across Borders.</em></h2>
       </div>
-
-      <blockquote class="pull-quote" data-content="aboutQuote">
-        “From the delta's harvest to the world's tables — moved in bulk, backed by a
-        handshake that holds.”
-      </blockquote>
-
-      <a class="btn btn--ghost" href="#products">Explore the Catalogue &rarr;</a>
     </div>
 
-    <div class="framed about-media has-filigree" data-reveal>
-      <img src="assets/img/photos/delta-harvest.jpg" data-content-src="aboutImage"
-           alt="Harvest being loaded at a Bangladeshi river port at golden hour"
-           loading="lazy" decoding="async">
+    <div class="about-grid">
+      <!-- The story image, cut to the house arch. -->
+      <figure class="about-portrait" data-reveal>
+        <div class="arch about-portrait-img">
+          <img src="assets/img/photos/delta-harvest.jpg" data-content-src="aboutImage"
+               alt="Harvest being loaded at a Bangladeshi river port at golden hour"
+               loading="lazy" decoding="async">
+        </div>
+        <div class="arch-frame">
+          <svg viewBox="0 0 100 140" preserveAspectRatio="none" fill="none"
+               stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true">
+            <path vector-effect="non-scaling-stroke" d="M0 140L0 76A32.07 32.07 0 0 1 7 56A13 13 0 0 1 16 36A13 13 0 0 1 30 20A10 10 0 0 1 43 10C46 8 49 5 50 2C51 5 54 8 57 10A10 10 0 0 1 70 20A13 13 0 0 1 84 36A13 13 0 0 1 93 56A32.07 32.07 0 0 1 100 76L100 140Z"/>
+          </svg>
+        </div>
+        <figcaption>Chattogram · the river to the sea</figcaption>
+      </figure>
+
+      <div class="about-text" data-reveal>
+        <p class="lead" data-content="aboutLead">
+          Bangladesh feeds a great deal more than Bangladesh. From our base in Cumilla we
+          buy where the crop is grown and the catch is landed, hold it to an export
+          standard, and move it to buyers who need the same quality arriving container
+          after container.
+        </p>
+
+        <blockquote class="pull-quote" data-content="aboutQuote">
+          “From the delta's harvest to the world's tables — moved in bulk, backed by a
+          handshake that holds.”
+        </blockquote>
+
+        <!-- The house's four commitments, as a hairline-ruled list rather than
+             another row of identical chips. -->
+        <dl class="creed">
+          <div><dt>Direct Sourcing</dt><dd>Farm gate and landing station. No layers between the crop and your container.</dd></div>
+          <div><dt>Quality Control</dt><dd>Export-graded, sampled and inspected before a carton is sealed.</dd></div>
+          <div><dt>Cold Chain</dt><dd>Blast-frozen at source, monitored in transit, unbroken to port.</dd></div>
+          <div><dt>Documentation</dt><dd>Halal, phytosanitary, health certificate, CoO — the full file, on time.</dd></div>
+        </dl>
+
+        <a class="btn btn--royal" href="#products">See the Line Card &rarr;</a>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,212 @@
+/* ============================================================================
+   bengal.css — The Bengal design language: arches, chapters, weave, alpona
+   ----------------------------------------------------------------------------
+   This file is what stops the site being "a dark page with cards on it". It
+   carries the four moves that make the design specific to Bengal and specific
+   to this house:
+
+     .arch      the cusped arch as a MASK — turns any box into an arched niche
+     .chapter   editorial chapter numbering ("01 — ORIGIN") + asymmetric heads
+     .alpona    rice-paste line-art dividers that DRAW themselves in on scroll
+     .marquee   an endless hairline ticker of the markets
+
+   Loaded AFTER components.css so it can refine the shared primitives.
+   ========================================================================== */
+
+/* ===== The arch =======================================================
+   A Bengali/Mughal cusped arch, applied as a mask so the *content* takes the
+   shape — an image, a scene, a photo. Rectangles are what every other site
+   does; the arch is the signature. The mask SVG is preserveAspectRatio="none",
+   so it stretches to whatever box you put it on. */
+.arch {
+  position: relative;
+  -webkit-mask: url("../img/ornaments/arch-mask.svg") center / 100% 100% no-repeat;
+          mask: url("../img/ornaments/arch-mask.svg") center / 100% 100% no-repeat;
+}
+/* A hairline gold frame that lines up exactly with the mask (same geometry,
+   non-scaling stroke, so it stays a hairline however the box is stretched). */
+.arch-frame {
+  position: absolute; inset: 0;
+  color: var(--gold-500);
+  opacity: .75;
+  pointer-events: none;
+  -webkit-mask: none; mask: none;
+}
+.arch-frame svg { width: 100%; height: 100%; display: block; }
+
+/* ===== Chapters =======================================================
+   The narrative is numbered. A trade house tells its story in order; the
+   number is set in the wordmark face, oversized and gold, and the label is
+   micro-caps. This replaces the identical eyebrow/H2/rule/lead stack that
+   every section otherwise repeats. */
+.chapter-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1rem, 3vw, 2.25rem);
+  align-items: start;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+.chapter-num {
+  font-family: var(--font-wordmark);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: .8;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gold-500);
+  opacity: .85;
+  letter-spacing: 0;
+}
+.chapter-label {
+  display: block;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold-500);
+  margin-bottom: .75rem;
+}
+.chapter-head h2 { margin: 0; max-width: 20ch; }
+.chapter-head .lead { margin-top: var(--space-4); max-width: 54ch; }
+/* On the ivory chapters the stroked numeral needs the warmer gold to read. */
+.section--ivory .chapter-num { -webkit-text-stroke-color: var(--gold-700); }
+.section--ivory .chapter-label { color: var(--gold-700); }
+
+@media (max-width: 640px) {
+  .chapter-head { grid-template-columns: 1fr; gap: .5rem; }
+  .chapter-num { font-size: 2.2rem; }
+}
+
+/* ===== Ivory chapters =================================================
+   The site alternates deep indigo and warm ivory. This is the single biggest
+   reason it reads as editorial rather than as a template: the page breathes.
+   Ivory carries a faint woven ground so it feels like muslin, not like a
+   white div. */
+.section--ivory {
+  background: var(--ivory-100);
+  color: var(--text-on-light);
+  position: relative;
+  isolation: isolate;
+}
+.section--ivory::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url("../img/patterns/jamdani-gold.svg") center / 120px repeat;
+  opacity: .10;
+}
+.section--ivory .lead { color: var(--text-muted-on-light); }
+.section--ivory h1, .section--ivory h2, .section--ivory h3 { color: var(--ink-900); }
+.section--ivory h1 em, .section--ivory h2 em { color: var(--clay-600); }
+.section--ivory .title-rule { background: linear-gradient(90deg, var(--gold-700), transparent); }
+.section--ivory .chip {
+  color: var(--text-muted-on-light);
+  border-color: var(--line-ivory);
+  background: rgba(255,255,255,.5);
+}
+/* Ivory chapters get a hairline seam top and bottom so the transition from
+   indigo reads as a deliberate edge, not a gap. */
+.section--ivory { border-block: 1px solid var(--ivory-300); }
+
+/* ===== Alpona divider =================================================
+   Bengali rice-paste floor art. Every stroke carries pathLength="100", so one
+   rule draws them all in at a uniform rate regardless of true length. The
+   line literally paints itself across the page as you arrive. */
+.alpona {
+  display: block;
+  width: min(1100px, 92%);
+  margin: clamp(1rem, 4vw, 2.5rem) auto;
+  color: var(--gold-500);
+  opacity: .9;
+}
+.alpona svg { width: 100%; height: auto; display: block; }
+.alpona .alpona-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 2.2s var(--ease);
+}
+.alpona circle { opacity: 0; transition: opacity 1.2s var(--ease) .8s; }
+.alpona.is-drawn .alpona-line { stroke-dashoffset: 0; }
+.alpona.is-drawn circle { opacity: 1; }
+/* Stagger the draw so it sweeps outward from the centre medallion. */
+.alpona .alpona-line:nth-child(2n) { transition-delay: .12s; }
+.alpona .alpona-line:nth-child(3n) { transition-delay: .24s; }
+.section--ivory .alpona { color: var(--gold-700); opacity: .75; }
+
+@media (prefers-reduced-motion: reduce) {
+  .alpona .alpona-line { stroke-dashoffset: 0; transition: none; }
+  .alpona circle { opacity: 1; transition: none; }
+}
+
+/* ===== Market marquee =================================================
+   An endless hairline ticker of the markets. Modern luxury houses run these;
+   it also solves a real problem — nine markets is too many for a chip row
+   without wrapping into a block. */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: rgba(5,8,28,.4);
+  padding-block: .9rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-run 42s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-group { display: flex; flex: none; }
+.marquee-item {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding-inline: clamp(1.1rem, 3vw, 2.2rem);
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: .24em; text-transform: uppercase;
+  color: var(--text-muted-on-dark);
+  white-space: nowrap;
+}
+/* A gold lozenge between every market. */
+.marquee-item::after {
+  content: "";
+  width: 4px; height: 4px;
+  margin-left: clamp(1.1rem, 3vw, 2.2rem);
+  background: var(--gold-500);
+  transform: rotate(45deg);
+  opacity: .7;
+}
+.marquee-item .flag { font-size: .95rem; letter-spacing: 0; }
+/* Two identical groups sit side by side; translating by exactly -50% swaps in
+   the copy seamlessly, so the loop has no visible seam or jump. */
+@keyframes marquee-run {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee-group:nth-child(2) { display: none; }
+}
+
+/* ===== Vertical side-rail ============================================
+   A rotated hairline label pinned down the left edge of a chapter. Pure
+   editorial furniture — the kind of detail that separates a maison from a
+   template. Desktop only; it would only crowd a phone. */
+.side-rail {
+  position: absolute;
+  left: clamp(.5rem, 2vw, 1.25rem);
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  font-size: .64rem;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  color: var(--gold-500);
+  opacity: .5;
+  pointer-events: none;
+  user-select: none;
+  display: flex; align-items: center; gap: 1rem;
+}
+.side-rail::after {
+  content: "";
+  width: 1px; height: clamp(40px, 8vw, 90px);
+  background: linear-gradient(180deg, var(--gold-500), transparent);
+}
+@media (max-width: 1100px) { .side-rail { display: none; } }

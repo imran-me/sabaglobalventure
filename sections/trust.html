@@ -1,18 +1,25 @@
 <!-- ===========================================================================
-     sections/trust.html — Trust strip: animated stat counters + certifications
+     sections/trust.html — The numbers, as an editorial band
      ---------------------------------------------------------------------------
-     Stats are injected by main.js renderStats() into [data-stats] and counted up
-     by counters.js. The "Trading Markets" number is LIVE — it counts the active
-     countries in Admin → Countries, so adding a market bumps it automatically.
-     Certification chips come from config.js `certs` ({show:false} hides one; if
-     none are shown main.js removes the row entirely).
+     NOT a row of four boxed stat tiles. A single hairline-ruled band of
+     oversized thin numerals, the way a report sets its headline figures —
+     divided by vertical gold hairlines, with the certifications set as fine
+     lettering on the right rather than as another row of chips.
 
-     NOTE: the class names .stats / .certs are the contract with trust.css —
-     don't rename them without updating that file.
+     Injected by main.js renderStats() into [data-stats] and counted up by
+     counters.js. "Trading Markets" is LIVE — it counts the active countries in
+     Admin → Countries. Certifications come from config.js `certs`.
+
+     Class contract with trust.css: .stats / .certs — do not rename.
      ======================================================================== -->
 <section class="trust section section--tight" id="trust" data-bg-section="trust">
   <div class="container">
-    <div class="stats" data-stats></div>
-    <div class="certs" data-certs></div>
+    <div class="trust-band">
+      <div class="stats" data-stats></div>
+      <div class="certs-wrap">
+        <span class="certs-label">Certified</span>
+        <div class="certs" data-certs></div>
+      </div>
+    </div>
   </div>
 </section>

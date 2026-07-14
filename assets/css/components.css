@@ -61,9 +61,21 @@
 }
 .btn--ghost:hover { border-color: var(--gold-500); background: rgba(201,162,75,.12); color: var(--gold-300); }
 
-/* Royal — a blue solid for tertiary actions on light sections */
-.btn--royal { background: var(--royal-600); color: #fff; box-shadow: var(--glow-ocean); }
-.btn--royal:hover { background: var(--royal-700); color: #fff; }
+/* Ink — the button for the IVORY chapters. Deep indigo with a gold hairline,
+   not a saturated royal-blue slab: on warm paper a bright blue reads as a UI
+   control, while ink-and-gold reads as a seal. */
+.btn--royal {
+  background: var(--indigo-900);
+  color: var(--gold-100);
+  border-color: rgba(201,162,75,.45);
+  box-shadow: 0 10px 26px -14px rgba(5,8,28,.6);
+}
+.btn--royal:hover {
+  background: var(--indigo-950);
+  color: var(--gold-300);
+  border-color: var(--gold-500);
+  box-shadow: 0 14px 30px -12px rgba(5,8,28,.7);
+}
 
 /* WhatsApp green */
 .btn--whatsapp { background: #1FA855; color: #fff; }
@@ -135,9 +147,12 @@
 }
 /* Faint motif, radially feathered (and softly blurred) so it never touches the
    gold border. Very low opacity = luxurious, not busy. */
+/* The texture is Jamdani — the supplementary-weft figured muslin Bengal was
+   famous for. A generic damask would say "luxury template"; the weave says
+   where this house is from. */
 .card::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: var(--card-pattern, url("../img/patterns/kantha-gold.svg")) center / 132px repeat;
+  background: var(--card-pattern, url("../img/patterns/jamdani-gold.svg")) center / 120px repeat;
   opacity: .16;
   -webkit-mask-image: radial-gradient(108% 94% at 50% 44%, #000 24%, rgba(0,0,0,.4) 60%, transparent 84%);
           mask-image: radial-gradient(108% 94% at 50% 44%, #000 24%, rgba(0,0,0,.4) 60%, transparent 84%);

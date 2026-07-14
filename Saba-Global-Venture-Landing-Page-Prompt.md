@@ -8,9 +8,23 @@
 
 You are a senior brand designer + front-end engineer building a **top-tier, luxurious corporate showcase website** for an international export/import house based in Bangladesh. This is **not** an e-commerce store — there is **no cart, no checkout, no prices, no order flow**. Every "buy/order" intent is converted into a **bulk inquiry** routed to **WhatsApp** and **Gmail**. The site exists to project **authority, authenticity, scale and trust**, present ~20–25 products beautifully, and make it effortless for a wholesale buyer to start a conversation.
 
-The signature experience: a **cinematic "Delta to the World" animated background** — golden silhouettes of the Bengal delta and global trade (sampan under sail, container ship, gantry cranes, Royal Bengal tiger, Shapla water lily, paddy stalks, the Shat Gombuj mosque) that **drift, parallax and fade in as the user scrolls** — present like luminous shadows, elegant and never distracting, over a majestic-blue canvas with slow ocean currents.
+The signature experience: **the Bengal arch**. A Mughal/Bengali cusped niche is the house's shape — the hero looks out through an arched **portal** onto the delta, the story image is cut to the same arch, and every product is presented as a **framed portrait in an arched niche**. Around it: indigo and gold, Jamdani weave, alpona line art that paints itself in, and golden silhouettes of the delta (sampan, container ship, gantry cranes, Royal Bengal tiger, Shapla lily, paddy, the Shat Gombuj mosque) drifting behind.
 
 Quality bar: **flawless on mobile and desktop**, every micro-interaction intentional, every word on-brand. If a detail isn't specified here, choose the most premium, restrained option.
+
+### 0.1 ⚠ WHAT THIS MUST NOT BE — read this first
+
+This project began by copying the structure of a sibling site (a green-and-gold Dubai foodstuff trader) and merely recolouring it blue. **That was the wrong instinct and it was rejected.** A reference is given for its *vibe*, never as a blueprint. Copying a 100/100 site gets you a 100 at best; the brief here is 1000.
+
+Concretely, do **not**:
+- reuse the hero → stats → features → card-grid → map → contact stack. That order *is* the template.
+- paint the whole page one dark colour. The page must **breathe** — deep indigo chapters alternating with warm **ivory** ones. This is the single biggest thing separating "editorial" from "template".
+- present products as rectangles with a photo and a filled category pill on top.
+- state capabilities as a 3x2 grid of identical icon cards. It is the most template-looking block on the internet.
+- repeat an identical `eyebrow / H2 / rule / lead` stack at the top of every section.
+- reach for a generic damask, an arabesque, or any ornament that isn't *from Bengal*.
+
+Every ornament must **earn its place by being Bengali**: indigo was the dye Bengal traded to the world; Jamdani is its figured muslin; alpona is the rice-paste art painted on its floors; the cusped arch is its architecture; terracotta is its temple clay. Luxury here is specificity, not gloss.
 
 ---
 
@@ -44,9 +58,18 @@ Majestic blue + royal blue + ocean blue + powder blue + gold.
 
 | Token | Hex | Use |
 |---|---|---|
-| `--navy-950` | `#02071A` | Deepest background, footer, preloader |
+| `--indigo-950` | `#05081C` | **The deepest ground** — the dark chapters' base |
+| `--indigo-900` | `#0A1338` | **Primary dark canvas** (indigo — Bengal's own dye) |
+| `--indigo-800` | `#141F55` | Raised indigo surfaces |
+| `--indigo-700` | `#1E2E78` | Indigo cards / gradients |
+| `--ivory-100` | `#FBF7EF` | **The LIGHT canvas** — raw silk / muslin. The page must breathe |
+| `--ivory-200` | `#F4EDE0` | Raised ivory panels |
+| `--ivory-300` | `#E8DCC8` | Ivory hairlines / seams |
+| `--clay-600` | `#9C4A2F` | **TERRACOTTA** — Bengal's temple clay. The rare spark, never more than a rule or a chip |
+| `--clay-400` | `#C2694A` | Terracotta tint |
+| `--navy-950` | `#02071A` | Legacy deep tone |
 | `--navy-900` | `#041031` | Deep background wash |
-| `--blue-900` | `#071C4D` | **Primary brand surface — "Majestic Blue"** |
+| `--blue-900` | `#071C4D` | Majestic Blue (still used in gradients/glows) |
 | `--blue-800` | `#0B2A6B` | Dark blue sections, gradients |
 | `--royal-700` | `#14369E` | Royal Blue deep — cards on dark |
 | `--royal-600` | `#1E4FD8` | **ROYAL BLUE** — the signature accent |
@@ -74,8 +97,16 @@ Load via Google Fonts with `display=swap` and preconnect; provide system fallbac
 - **The signature flourish:** emphasis inside a display heading (`<em>`) is **gold italic** — e.g. "Bangladesh's Harvest, *Carried to the World.*"
 - **Type scale (clamp, fluid):** h1 `clamp(2.9rem,6.2vw,5.6rem)`; h2 `clamp(2.1rem,4vw,3.6rem)`; h3 `1.6rem`; lead `1.3rem`; body `1rem/1.7`; eyebrow `.75rem`. Line-height: headings 1.06, body 1.7. Max measure 68ch.
 
-### 2.5 Iconography & motifs
-Thin-line gold icons (1.5px stroke). Recurring decorative motif: **nakshi-kantha** (Bengali embroidery) damask and an 8-point lotus star, used as faint card textures (`assets/img/patterns/`) and section dividers. Gold filigree corner ornaments on key panels. Use sparingly and consistently.
+### 2.5 The shape language & ornament (the heart of the design)
+- **The cusped arch** (`assets/img/ornaments/arch-mask.svg` + `arch-outline.svg`) is the house's shape, applied as a **CSS mask** so any box becomes an arched niche: the hero portal, the story portrait, every product. `preserveAspectRatio="none"` lets one file stretch to any box; the outline uses `vector-effect="non-scaling-stroke"` so its gold hairline survives the stretch.
+  ⚠ Never put those `url()`s in a CSS custom property — a relative `url()` in a custom property resolves against the stylesheet that **uses** the var, not the one that declares it, and a mask whose image 404s masks the element away entirely. Spell the path out per file.
+- **Jamdani weave** (`patterns/jamdani-gold.svg`) — the figured muslin Bengal was famous for. The faint texture on cards and under the ivory chapters. Not a damask.
+- **Alpona** (`ornaments/alpona-divider.svg`) — rice-paste floor art, inlined so `currentColor` works, with `pathLength="100"` on every stroke so one CSS rule draws them all in at a uniform rate. It paints itself across the page on arrival.
+- **Chapter numbering** — `01 … 05` in stroked Marcellus, gold outline, oversized. Replaces the repeated eyebrow/H2/rule stack.
+- Thin-line gold icons (1.5px). Use everything sparingly: gold is still ≤10%.
+
+### 2.6 Editorial furniture
+Asymmetric grids (never 50/50), a rotated hairline **side-rail** down chapter edges, a **market marquee** (endless hairline ticker — nine markets don't fit a chip row), micro-caps captions under framed imagery, and figures set as an editorial **numbers band** with vertical gold hairlines rather than four boxed tiles.
 
 ### 2.6 Imagery direction
 Rich, warm, editorial product photography on deep-blue or powder backgrounds: paddy fields at golden hour, ice-packed tiger shrimp, whole hilsa, jute sacks of rice, spice mounds, crates of mango, container ships at Chattogram port. Consistent warm grade against the cool canvas. Every image: descriptive `alt`, lazy-loaded, soft gold inner-shadow frame on hover.
@@ -137,18 +168,20 @@ Preloader (gold crest + shimmering progress line) · scroll-progress gold hairli
 
 ## 6. PAGE / SECTION BLUEPRINT (Home single-scroll)
 
-Order = scroll order. `products.html` / `about.html` / `contact.html` exist only as **redirect stubs** to `index.html#section`.
+The story is told in **numbered chapters** and **alternates indigo ↔ ivory**. The order is deliberate: the goods arrive only *after* you know where they come from. `products.html` / `about.html` / `contact.html` exist only as **redirect stubs** to `index.html#section` (so the section `id`s must stay `about` / `products` / `contact`, whatever a chapter is *titled*).
 
-1. **Hero** — Eyebrow "Cumilla · Bangladesh · Global Trade". H1: "Bangladesh's Harvest, *Carried to the World.*" Cormorant-italic lead. Two CTAs: **"Request a Bulk Quote"** (gold → WhatsApp) + **"Email Our Trade Desk"** (ghost gold → Gmail). A row of market flag chips. Two tilted, gold-framed "product plate" cards cross-fade through the catalogue photos on desktop — and **remove themselves unless a photo actually loads** (a URL in the data is not proof the file exists). Animated scroll cue.
-2. **Trust strip** — gold-hairline band, animated **stat counters** (Trading Markets — *live, counts the active Admin countries* · Export Grades · Core Categories · Bulk/Wholesale) + certification chips (client to confirm; never display a cert not held).
-3. **Featured deck** — auto-rotating gold crossfade through `featured:true` products, 5-up desktop / 3-up mobile, pauses on hover/off-screen/hidden tab.
-4. **About** — two-column story + framed image with gold filigree, values chips, pull-quote. All editable from Admin → Page Content.
-5. **Products (the centerpiece)** — category filter pills + responsive card grid. Each card: image (zoom-on-hover, gold frame), category eyebrow, serif name, one-line description, **all** origin + packaging chips, HS code, and **"Inquire" (WhatsApp)** + **Email** mini-buttons. Cards float and lift with a gold glow. Clicking opens a **detail modal** with gallery, grades, origins, packaging, MOQ, specs and a **WhatsApp/email inquiry pre-filled about that product**. 2-up on mobile.
-6. **Capabilities** — six gold-line-icon cards: Direct Sourcing, Quality Control, Sea & Air Freight, Unbroken Cold Chain, Custom Packaging, Trade Documentation.
-7. **Markets** — a real **equirectangular world map** (`viewBox 0 0 360 180`, `x = lng+180`, `y = 90-lat`) with golden landmasses, geographic gold pins and **animated trade-route arcs drawn outward from the Bangladesh hub**. Adding a country in Admin (with lat/lng) makes a pin + route appear.
-8. **CTA band** — "Ready to place a *bulk inquiry?*" + WhatsApp/Email + market chips.
-9. **Contact** — inquiry form (Name, Company, Country, Product interest [built from live Admin categories], Quantity/MOQ, Message) → validates, stores to Admin → Inquiries, then **opens WhatsApp with the full summary pre-filled**. Contact card: WhatsApp, Email, Phone, Cumilla HQ, hours, socials (unset links hide themselves), and a map that **stays a placeholder until a real address exists** — never embed a guessed location. Note clearly: **"Wholesale & bulk inquiries only."**
-10. **Footer** (see §8).
+1. **Hero — the portal.** Asymmetric spread (1.15fr / .85fr, never 50/50). Left: eyebrow, an oversized Cormorant H1 that **reveals word by word from behind a mask** ("Bangladesh's Harvest, *Carried to the World.*"), a gold hairline that grows in, the lead, and two CTAs. Right: a tall **arched portal** onto the drifting delta scene, traced in a gold hairline, captioned in micro-caps. A rotated side-rail down the edge. Below 900px the portal becomes a watermark **behind** the type (stacking it would push the CTAs off the fold).
+2. **Market marquee** — the endless hairline ticker.
+3. **01 — Origin** *(ivory)*. The story, asymmetric (.8fr / 1.2fr), with the image cut to the house arch and captioned; a terracotta-ruled pull-quote; and the four commitments as a **hairline-ruled letterhead list**, not chips. Editable from Admin → Page Content.
+4. **The numbers** — an **editorial band**: oversized thin Marcellus numerals separated by vertical gold hairlines, certifications set as lettering with terracotta ticks to the right. Not four boxed tiles. "Trading Markets" is *live* — it counts the active Admin countries.
+5. **Featured** — a quiet interlude, no chapter head: auto-rotating gold crossfade through `featured:true` products, pausing on hover/off-screen/hidden tab.
+6. **Alpona divider** — draws itself in.
+7. **02 — The Line Card.** Filter pills + the catalogue, each product an **arched portrait**: the photo cut to the cusped niche, a gold hairline frame traced outside the mask, the category a gold micro-cap **above** the arch, then name, description, all origin + packaging chips, HS code, and **Inquire (WhatsApp)** + **Email**. Clicking opens a detail modal with a **pre-filled inquiry for that product**. 2-up on mobile.
+8. **03 — The House** *(ivory)*. The six capabilities as a **numbered, hairline-ruled editorial list** in two columns — roman numerals in Marcellus, and on hover the row's rule warms to terracotta and the row eases right.
+9. **04 — Reach.** A real **equirectangular world map** (`viewBox 0 0 360 180`, `x = lng+180`, `y = 90-lat`): golden landmasses, geographic pins, **animated trade-route arcs drawn outward from the Bangladesh hub**. Adding a country in Admin (with lat/lng) makes a pin + route appear.
+10. **CTA band** — "Ready to place a *bulk inquiry?*"
+11. **05 — The Trade Desk.** Inquiry form (Name, Company, Country, Product interest [built from live Admin categories], Quantity/MOQ, Message) → validates, stores to Admin → Inquiries, then **opens WhatsApp with the full summary pre-filled**. Contact card: WhatsApp, Email, Phone, Cumilla HQ, hours, socials (unset links hide themselves), and a map that **stays a placeholder until a real address exists** — never embed a guessed location. State clearly: **"Wholesale & bulk inquiries only."**
+12. **Footer** (see §8).
 
 ---
 

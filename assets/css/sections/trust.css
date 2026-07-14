@@ -1,36 +1,92 @@
 /* ============================================================================
-   sections/trust.css — Trust strip (animated stat counters + certification row)
+   sections/trust.css — The numbers, as an editorial band
+   ----------------------------------------------------------------------------
+   Four boxed tiles in a row is the default every template ships. This is the
+   alternative: one hairline-ruled band, oversized THIN numerals in the wordmark
+   face, separated by vertical gold hairlines, with the certifications set as
+   fine lettering to the right instead of yet another chip row.
    ========================================================================== */
 
-/* Compact trust strip — numbers + certs in ~half the vertical space. */
 .trust {
   border-block: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(2,7,26,.4), rgba(7,28,77,.2));
-  padding-block: clamp(1.1rem, 3vw, 2rem);   /* ~50% of the standard section pad */
+  background: linear-gradient(180deg, rgba(5,8,28,.55), rgba(10,19,56,.25));
+  padding-block: clamp(1.4rem, 3.5vw, 2.4rem);
 }
+
+.trust-band {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(1.25rem, 4vw, 3rem);
+  align-items: center;
+}
+
+/* ---- The figures ----------------------------------------------------- */
 .trust .stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4);
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(.5rem, 2vw, 1.5rem);
+}
+/* Vertical gold hairlines BETWEEN the figures — the band reads as one ruled
+   object rather than four detached tiles. */
+.stat { position: relative; padding-inline: clamp(.4rem, 1.5vw, 1.25rem); }
+.stat + .stat::before {
+  content: "";
+  position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 1px; height: 2.6em;
+  background: linear-gradient(180deg, transparent, var(--line), transparent);
 }
 .stat .num {
-  font-family: var(--font-display); font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-  color: var(--gold-300); line-height: 1; font-variant-numeric: tabular-nums;
+  font-family: var(--font-wordmark);
+  font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+  font-weight: 400;
+  color: var(--gold-300);
+  line-height: 1;
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
 }
 .stat .num .suffix { color: var(--gold-500); }
 .stat .label {
-  margin-top: .3rem; font-size: var(--fs-eyebrow); letter-spacing: .12em;
-  text-transform: uppercase; color: var(--text-muted-on-dark);
+  margin-top: .5rem;
+  font-size: .6rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--text-muted-on-dark);
 }
 
-/* Certs tucked right under the numbers — small gap, no big divider block. */
-.certs {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem;
-  margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--line);
+/* ---- Certifications --------------------------------------------------
+   Lettering, not chips. Terracotta ticks: the rare warm spark against all
+   this indigo and gold. */
+.certs-wrap {
+  display: flex; align-items: center; gap: 1rem;
+  padding-left: clamp(1rem, 3vw, 2rem);
+  border-left: 1px solid var(--line);
 }
-.certs .chip { background: rgba(201,162,75,.06); padding: .3rem .7rem; font-size: .8rem; }
+.certs-label {
+  font-size: .58rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--gold-500); writing-mode: vertical-rl; transform: rotate(180deg);
+  opacity: .8;
+}
+.certs { display: flex; flex-direction: column; gap: .3rem; }
+/* Override the global .chip pill — these are lines of type, not buttons. */
+.certs .chip {
+  background: none; border: 0; padding: 0;
+  font-size: .78rem; letter-spacing: .04em;
+  color: var(--frost-100);
+  gap: .5rem;
+}
+.certs .chip::before { content: ""; width: 5px; height: 5px; background: var(--clay-400); transform: rotate(45deg); flex: none; }
+.certs .chip:hover { color: var(--gold-300); }
 
-@media (max-width: 720px) {
-  .trust .stats { grid-template-columns: repeat(4, 1fr); gap: var(--space-3) var(--space-2); }
-  .stat .num { font-size: clamp(1.3rem, 6vw, 1.9rem); }
-  .stat .label { font-size: .56rem; }
+@media (max-width: 900px) {
+  .trust-band { grid-template-columns: 1fr; }
+  .certs-wrap { padding-left: 0; border-left: 0; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+  .certs-label { writing-mode: horizontal-tb; transform: none; }
+  .certs { flex-direction: row; flex-wrap: wrap; gap: .5rem 1.1rem; }
+}
+@media (max-width: 560px) {
+  .trust .stats { grid-template-columns: repeat(2, 1fr); gap: 1.4rem .5rem; }
+  .stat:nth-child(3)::before { display: none; }   /* no rule at a row start */
+  .stat .num { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  .stat .label { font-size: .54rem; }
 }

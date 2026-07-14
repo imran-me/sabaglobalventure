@@ -17,12 +17,13 @@ window.initReveal = function initReveal() {
   });
 
   const targets = document.querySelectorAll(
-    "[data-reveal], [data-reveal-stagger], .title-rule, .markets"
+    "[data-reveal], [data-reveal-stagger], .title-rule, .markets, [data-alpona]"
   );
 
   if (reduce || !("IntersectionObserver" in window)) {
     targets.forEach((t) => {
       t.classList.add("is-visible", "is-drawn");
+      t.querySelectorAll?.(".title-rule").forEach((r) => r.classList.add("is-drawn"));
     });
     return;
   }
@@ -35,6 +36,8 @@ window.initReveal = function initReveal() {
         el.classList.add("is-visible");
         if (el.classList.contains("title-rule")) el.classList.add("is-drawn");
         if (el.classList.contains("markets")) el.classList.add("is-drawn");
+        // The alpona paints itself in — same .is-drawn contract (bengal.css).
+        if (el.hasAttribute("data-alpona")) el.classList.add("is-drawn");
         // Also draw any title-rule inside a revealed section.
         el.querySelectorAll?.(".title-rule").forEach((r) => r.classList.add("is-drawn"));
         io.unobserve(el);
