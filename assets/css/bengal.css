@@ -13,6 +13,10 @@
    Loaded AFTER components.css so it can refine the shared primitives.
    ========================================================================== */
 
+/* The shared ornament definitions render nothing themselves — but a bare <svg>
+   still takes part in layout and would push a blank line into the flow. */
+.sgv-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
 /* ===== The arch =======================================================
    A Bengali/Mughal cusped arch, applied as a mask so the *content* takes the
    shape — an image, a scene, a photo. Rectangles are what every other site
@@ -34,15 +38,54 @@
 }
 .arch-frame svg { width: 100%; height: 100%; display: block; }
 
-/* ---- The arch draws itself ------------------------------------------
-   The frame is not simply there when you arrive: it is DRAWN, one continuous
-   gold line travelling up the pier, around the cusps, over the apex and down
-   the other side. A mason's line, laid once.
+/* ---- লতা পাতা — the vine grows ---------------------------------------
+   The arch is not simply there when you arrive, and it is not a plain outline
+   either. It is CARVED: the mason's line runs up the pier and over the cusps,
+   then lota-pata — vine, leaf, bud, flower — climbs it from the ground, and a
+   lotus-bud finial clasps it shut at the apex. Exactly like the alpona, it
+   paints itself in as you reach it.
 
-   pathLength="100" normalises both the outer and the inner concentric path to
-   the same length, so they draw at the same rate despite being different real
-   lengths — and the inner line follows a beat behind, the way a second pass of
-   the pen would. */
+   The three parts are separate <use>s (see sections/defs.html) purely so this
+   stagger is possible — CSS cannot reach inside a <use> shadow tree. The order
+   is the order a craftsman would work: structure, then growth, then the clasp.
+
+   stroke-dasharray/-dashoffset are INHERITED SVG properties, which is the whole
+   trick: set them on the <use> and they cascade into the referenced art, where
+   every path's pathLength="100" makes a leaf and a long stem draw at the same
+   rate. Without that normalisation the stems would finish while the leaves were
+   still crawling. */
+.arch-orn {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  color: var(--gold-500);
+  pointer-events: none;
+  overflow: visible;
+}
+.arch-orn .lo {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+  transition: stroke-dashoffset 2.4s var(--ease), opacity .5s var(--ease);
+}
+/* Structure first, then the vine climbs, then the finial closes it. */
+.arch-orn .lo-frame { transition-delay: 0s; }
+.arch-orn .lo-vines { transition-delay: .45s, .45s; }
+.arch-orn .lo-crest { transition-delay: 1.55s, 1.55s; }
+
+/* Draw when the piece it frames arrives. */
+[data-reveal].is-visible .arch-orn .lo,
+.is-visible .arch-orn .lo,
+.arch-orn.is-drawn .lo { stroke-dashoffset: 0; opacity: 1; }
+
+/* On ivory the same gold is too bright — drop to the engraved tone. */
+.section--ivory .arch-orn { color: var(--gold-700); }
+
+@media (prefers-reduced-motion: reduce) {
+  .arch-orn .lo { stroke-dashoffset: 0; opacity: 1; transition: none; }
+}
+
+/* The legacy plain frame (hero portal markup) — kept drawing for the same
+   reason, in case an arch is ever framed without the ornament. */
 .arch-frame path {
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
@@ -52,7 +95,6 @@
 [data-reveal].is-visible .arch-frame path,
 .is-visible > .arch-frame path,
 .arch-frame.is-drawn path { stroke-dashoffset: 0; }
-
 @media (prefers-reduced-motion: reduce) {
   .arch-frame path { stroke-dashoffset: 0; transition: none; }
 }

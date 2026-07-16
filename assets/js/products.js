@@ -59,11 +59,11 @@ window.initProducts = function initProducts() {
     const packs = (p.packaging || [])
       .map((pk) => `<span class="chip chip--pack">${esc(pk)}</span>`).join("");
     const hs = p.hsCode ? `<p class="hs-line">HS Code: <b>${esc(p.hsCode)}</b></p>` : "";
-    // The photo sits in an arched niche (.media-niche carries the arch mask) and
-    // .media-frame traces the same arch in gold OUTSIDE that mask — a frame
-    // inside the mask would have half its own hairline clipped away. The
-    // category is a micro-cap above the arch, not a pill stuck on the photo, so
-    // it must live outside .media too or the mask would eat it.
+    // The photo sits in an arched niche (.media-niche carries the arch mask);
+    // the lota-pata ornament traces the same arch OUTSIDE that mask — a frame
+    // inside it would have half its own hairline clipped away. The category is a
+    // micro-cap above the arch, not a pill stuck on the photo, so it must live
+    // outside .media too or the mask would eat it.
     return `
     <article class="card product-card ${i % 2 ? "motif-b" : ""}" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
       <span class="cat-eyebrow">${esc(p.category)}</span>
@@ -74,7 +74,15 @@ window.initProducts = function initProducts() {
                travels across the opening, not across a rectangle. -->
           <span class="arch-sheen" aria-hidden="true"></span>
         </div>
-        <span class="media-frame" aria-hidden="true"></span>
+        <!-- The lota-pata arch, referenced from sections/defs.html rather than
+             inlined: 20+ niches x ~14KB of path data would be ~300KB of DOM. -->
+        <svg class="arch-orn" viewBox="0 0 100 140" preserveAspectRatio="none"
+             fill="none" stroke="currentColor" stroke-width="0.25"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <use class="lo lo-frame" href="#sgv-arch-frame"></use>
+          <use class="lo lo-vines" href="#sgv-arch-vines"></use>
+          <use class="lo lo-crest" href="#sgv-arch-crest"></use>
+        </svg>
       </div>
       <div class="body">
         <h3 class="name">${esc(p.name)}</h3>

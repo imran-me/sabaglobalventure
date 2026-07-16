@@ -178,6 +178,41 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-15 — Session 4 (লতা পাতা: the arches are carved, not drawn)
+Client: *"make all arc more creative, Lota Pata, Flower little, after scrolling,
+do animation, like the alpana."*
+
+A plain cusped outline is architecture. **Lota-pata is what a Bengali craftsman
+would actually carve into it** — so every arch on the site is now wreathed in
+climbing vine, leaf, bud and small five-petal flowers, closing at a lotus-bud
+finial, and it **paints itself in on scroll exactly like the alpona**.
+
+- **`assets/img/ornaments/arch-lota.svg`** — 52 drawable strokes + 4 flower
+  centres. Base geometry is byte-identical to `arch-mask.svg`, so the ornament
+  sits exactly on the opening. Pixel-verified: zero ink in the central field, so
+  content still shows through cleanly.
+- **`sections/defs.html`** — the ornament is defined ONCE and `<use>`d by all
+  **22 arches** (hero portal, story portrait, 20 product niches). Inlining it per
+  card would have put ~300KB of duplicate path data in the DOM. This works
+  because `stroke-dasharray`/`-dashoffset` are **inherited** SVG properties, so
+  the draw-in set on the `<use>` cascades into the referenced art.
+- **Split into three `<use>`s (frame / vines / crest)** because CSS cannot reach
+  inside a `<use>` shadow tree — that split is the only way to stagger them. They
+  draw in the order a craftsman works: structure, then growth, then the clasp.
+
+⚠ **TRAP, VERIFIED THE HARD WAY — do not "fix" this:**
+`vector-effect="non-scaling-stroke"` is **incompatible with `pathLength` +
+`stroke-dasharray` in Blink**. The dash lengths resolve in *screen* space while
+`pathLength` normalises *user* space, which shatters every leaf into permanent
+fragments — not just mid-animation, but at `dashoffset:0` too. It is deliberately
+absent from `arch-lota.svg`; hairline weight is achieved with `stroke-width:0.25`
+instead. There is a comment in the file saying so. Re-adding it will silently
+break the ornament.
+
+Superseded and removed: the static masked-gradient `.media-frame` on product
+cards, and the plain two-path `.arch-frame` in the hero (kept in CSS only as a
+fallback for any future un-ornamented arch).
+
 ### 2026-07-15 — Session 3 (the craft pass: art, animation, detail)
 Client: *"more luxurious, premium, perfection even in the tiniest detailing, more
 premium animations, art animation, background animation, more themed"* and

@@ -65,19 +65,10 @@
   transition: transform 1s var(--ease);
 }
 .product-card:hover .media-niche img { transform: scale(1.06); }
-/* The frame traces the SAME arch, but lives outside the niche's mask so its
-   hairline isn't half-clipped. It is a gold fill revealed through the outline
-   SVG used as a mask — an external SVG can't inherit currentColor as a
-   background, so masking a gold gradient is how the frame gets its colour. */
-.product-card .media-frame {
-  position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 60%, var(--gold-700));
-  -webkit-mask: url("../../img/ornaments/arch-outline.svg") center / 100% 100% no-repeat;
-          mask: url("../../img/ornaments/arch-outline.svg") center / 100% 100% no-repeat;
-  opacity: .5;
-  transition: opacity var(--dur) var(--ease);
-}
-.product-card:hover .media-frame { opacity: .95; }
+/* The niche's frame is the DRAWN lota-pata ornament (.arch-orn — wired in
+   products.js, defined once in sections/defs.html). It sits outside the niche's
+   own mask so its hairline isn't half-clipped, and it grows in with the card
+   rather than simply being there. */
 /* Category set as a fine gold micro-cap ABOVE the arch, not a filled pill
    stuck on the photo. */
 .product-card .cat-eyebrow {
