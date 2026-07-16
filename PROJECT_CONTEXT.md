@@ -7,6 +7,36 @@
 
 ---
 
+## 0. Standing instructions (read first)
+
+These are durable rules from the owner. They do not change between sessions.
+
+1. **Attribution — Md Imran Hossain, alone.** Every commit and push is authored
+   *and* committed by **Md Imran Hossain** (`me.imran.personal@gmail.com`, already
+   the global git identity). **Never** add a `Co-Authored-By` trailer or list any
+   AI assistant as author/committer/contributor. If such a trailer ever reaches
+   pushed history, rewrite it out and force-push `main` (the owner has authorized
+   force-pushing `main` for this specific purpose).
+2. **Keep this context in the repo, and push it.** Standing instructions and
+   session context live *inside the project* (this file) — not only in any
+   assistant's private memory — and get pushed to GitHub, so they travel with the
+   code. Append a Session Log entry and push at the end of each working session.
+3. **Design bar: the reference is a *vibe*, never a blueprint.** This project was
+   rejected once for copying a sibling site's structure and recolouring it. If the
+   reference is 100/100, this must be 1000. Luxury = **Bengali specificity**, not
+   gloss: indigo/ivory that breathes, the লতা পাতা cusped arch that draws itself
+   in, alpona, Jamdani, terracotta, the Royal Bengal tiger, delta/nouka/bazar/
+   rickshaw — motifs placed by **meaning**. See §0.1 of
+   `Saba-Global-Venture-Landing-Page-Prompt.md` for the full "what this must NOT be".
+4. **Never invent contact details.** Anything unknown stays a visible `{CURLY}`
+   placeholder; `cta-helper.js` disables (not half-builds) links for unset values.
+5. **Verify by driving the real thing.** No Node/Playwright on this machine — serve
+   over HTTP (`python -m http.server`) and use the CDP client in the scratchpad;
+   emulate `prefers-reduced-motion` to check it, don't just read the CSS; keep zero
+   horizontal overflow at 320–1920px.
+
+---
+
 ## 1. What this project is
 
 A **top-tier luxury corporate showcase website** for **Saba Global Venture**, an
@@ -177,6 +207,14 @@ sabaglobal/
 ---
 
 ## 9. Session Log (newest first)
+
+### 2026-07-16 — Standing instructions captured in-repo
+Owner asked that context + instructions always be saved *inside the project
+folder* and pushed to GitHub (not only in an assistant's private memory). Added
+**§0 Standing instructions** at the top of this file — attribution (Md Imran
+Hossain only, no AI co-author), keep-context-in-repo-and-push, the design bar,
+the never-invent-contacts rule, and how to verify. These are durable and should
+be honoured every session.
 
 ### 2026-07-15 — Session 4 (লতা পাতা: the arches are carved, not drawn)
 Client: *"make all arc more creative, Lota Pata, Flower little, after scrolling,
