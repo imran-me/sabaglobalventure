@@ -406,6 +406,16 @@
   }
 
   // A product card mirroring the public showcase look.
+  // WYSIWYG preview — must mirror products.js cardHTML() EXACTLY, or the editor
+  // lies about what the public card looks like. The redesign moved the image into
+  // .media-niche (which carries the arch mask) and lifted .cat-eyebrow OUTSIDE
+  // .media (a micro-cap above the arch, not a pill on the photo); an old-markup
+  // preview mis-sizes the image and lets the arch mask clip the category.
+  //
+  // The .arch-orn is marked .is-drawn so the লতা পাতা vine shows statically here —
+  // the admin page has no scroll-reveal observer to trigger the draw-in, and the
+  // ornament otherwise sits at opacity:0. The shared arch symbols are provided by
+  // sections/defs.html, included in admin.html.
   function previewCard(p) {
     const img = (p.images && p.images[0]) || { url: "", alt: p.name };
     const chips = [...(p.origins || []), ...(p.packaging || [])]
@@ -413,9 +423,19 @@
     const hs = p.hsCode ? `<p class="hs-line">HS Code: <b>${esc(p.hsCode)}</b></p>` : "";
     return `
       <article class="card product-card">
+        <span class="cat-eyebrow">${esc(p.category || "Category")}</span>
         <div class="media">
-          <span class="cat-eyebrow">${esc(p.category || "Category")}</span>
-          <img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}">
+          <div class="media-niche">
+            <img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}">
+            <span class="arch-sheen" aria-hidden="true"></span>
+          </div>
+          <svg class="arch-orn is-drawn" viewBox="0 0 100 140" preserveAspectRatio="none"
+               fill="none" stroke="currentColor" stroke-width="0.25"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <use class="lo lo-frame" href="#sgv-arch-frame"></use>
+            <use class="lo lo-vines" href="#sgv-arch-vines"></use>
+            <use class="lo lo-crest" href="#sgv-arch-crest"></use>
+          </svg>
         </div>
         <div class="body">
           <h3 class="name">${esc(p.name || "Product name")}</h3>

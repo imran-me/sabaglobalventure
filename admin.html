@@ -18,11 +18,18 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/sections/contact.css"><!-- reuse .field / .inquiry-form -->
+  <link rel="stylesheet" href="assets/css/bengal.css"><!-- .arch-orn / .arch-sheen for the WYSIWYG card preview -->
   <link rel="stylesheet" href="assets/css/sections/products.css"><!-- reuse product-card preview -->
   <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 
 <body class="admin">
+
+  <!-- The shared লতা পাতা arch symbols, so the product editor's live preview
+       renders the exact same vine-wreathed niche as the public card. Loaded via
+       the same include mechanism as the site (include.js hydrates this before
+       the user can open the editor). Renders nothing itself. -->
+  <div data-include="sections/defs.html"></div>
 
   <!-- =========================================================================
        ADMIN PANEL (separate page) — FULLY FUNCTIONAL.
@@ -340,6 +347,7 @@
   <script src="assets/js/firebase.js"></script>
   <script src="assets/js/img-fallback.js"></script>
   <script src="assets/js/media.js"></script>
+  <script src="assets/js/include.js"></script><!-- hydrates the shared arch defs above -->
   <script src="assets/js/admin.js"></script>
 </body>
 </html>
