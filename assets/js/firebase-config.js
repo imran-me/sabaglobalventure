@@ -24,11 +24,15 @@
    strangers writing to your catalogue. Get step 5 right.
    ========================================================================== */
 
+/* Live project: "sabaglobalventure" (added 2026-07). The Firebase console shows
+   the keys in a v12 modular <script type="module"> snippet, but this site uses
+   the v10 *compat* SDK (the <script> tags in index.html / admin.html) — the
+   config OBJECT is identical either way, so these values drop straight in. */
 window.FIREBASE_CONFIG = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
+  apiKey: "AIzaSyBFrkeXaK56cFsJh8ikgMuAt1V8T-LbEGM",
+  authDomain: "sabaglobalventure.firebaseapp.com",
+  projectId: "sabaglobalventure",
+  storageBucket: "sabaglobalventure.firebasestorage.app",
+  messagingSenderId: "612320337283",
+  appId: "1:612320337283:web:ba07f03850815c41e52ab6",
 };
