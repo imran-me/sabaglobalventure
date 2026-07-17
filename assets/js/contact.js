@@ -104,7 +104,7 @@ window.initContact = function initContact() {
     if (unset) return;   // keep the placeholder + its "add your link" note
 
     const frame = document.createElement("iframe");
-    frame.title = `${c.legalName || "Saba Global Venture"} — ${address}`;
+    frame.title = `${c.legalName || "Saba Global Ventures"} — ${address}`;
     frame.loading = "lazy";
     frame.referrerPolicy = "no-referrer-when-downgrade";
     frame.src = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;

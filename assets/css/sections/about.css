@@ -45,7 +45,7 @@
 .pull-quote {
   margin: clamp(1.5rem, 3.5vw, 2.25rem) 0;
   padding-left: clamp(1rem, 2vw, 1.5rem);
-  border-left: 2px solid var(--clay-600);   /* terracotta — the rare spark */
+  border-left: 2.7px solid var(--clay-600);   /* terracotta — the rare spark */
   font-family: var(--font-serif);
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-style: italic;
@@ -59,14 +59,14 @@
    another grid of identical feature cards. */
 .creed {
   margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
-  border-top: 1px solid var(--line-ivory);
+  border-top: 1.35px solid var(--line-ivory);
 }
 .creed > div {
   display: grid;
   grid-template-columns: 12rem 1fr;
   gap: 1rem;
   padding: .85rem 0;
-  border-bottom: 1px solid var(--line-ivory);
+  border-bottom: 1.35px solid var(--line-ivory);
 }
 .creed dt {
   font-size: .72rem;

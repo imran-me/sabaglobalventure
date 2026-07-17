@@ -11,7 +11,7 @@
   position: relative; margin-top: var(--space-5);
   max-width: 1040px; margin-inline: auto;
   padding: clamp(.75rem, 2.5vw, 1.75rem);
-  border: 3.5px solid var(--line); border-radius: var(--radius-lg);
+  border: 4.73px solid var(--line); border-radius: var(--radius-lg);
   background:
     radial-gradient(120% 120% at 50% 0%, rgba(201,162,75,.06), transparent 60%),
     linear-gradient(180deg, rgba(2,7,26,.5), rgba(2,7,26,.2));
@@ -60,7 +60,7 @@
 /* ---- "See all markets" chip/button (shown when > 10 countries) -------- */
 .see-all-markets {
   cursor: pointer; background: transparent; color: var(--gold-300);
-  border: 1px dashed var(--gold-500); font: inherit; font-size: var(--fs-small);
+  border: 1.35px dashed var(--gold-500); font: inherit; font-size: var(--fs-small);
   letter-spacing: .02em; border-radius: 999px; padding: .28rem .8rem;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }

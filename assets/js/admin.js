@@ -17,7 +17,7 @@
    ========================================================================== */
 
 (function () {
-  const DEMO = { email: "admin@sabaglobalventure.com", pass: "demo1234" };
+  const DEMO = { email: "admin@sabaglobalventures.com", pass: "demo1234" };
   // Categories are admin-managed — read live from the Store (fallback seed
   // mirrors assets/js/store.js SEED_CATEGORIES).
   const cats = () => (window.Store && Store.getCategoryNames && Store.getCategoryNames().length)
@@ -750,54 +750,66 @@
     "heroEyebrow", "heroTitle", "heroTitleGold", "heroLead",
     "aboutEyebrow", "aboutTitle", "aboutLead", "aboutQuote",
   ];
+  // Editable images on the home page. Each drives a data-content-src="<key>"
+  // node on the public site (main.js applyContent swaps the src). "heroImage"
+  // fills the hero portal; "aboutImage" the story portrait. Each has three form
+  // controls: a file input (<key>File), a hidden data-URL field (<key>), and a
+  // URL/Drive field (<key>Url) — an upload wins over a typed link.
+  const CONTENT_IMG_KEYS = ["heroImage", "aboutImage"];
+
   function loadContent() {
     const form = $("#content-form");
     if (!form) return;
     const content = (Store.getSettings().content) || {};
     CONTENT_TEXT_KEYS.forEach((k) => { if (form.elements[k]) form.elements[k].value = content[k] || ""; });
-
-    // Story image: an uploaded data URL lives in the hidden aboutImage field;
-    // a pasted link lives in aboutImageUrl. Show whichever is set as the thumb.
-    const isData = String(content.aboutImage || "").startsWith("data:");
-    form.elements["aboutImage"].value = isData ? content.aboutImage : "";
-    form.elements["aboutImageUrl"].value = isData ? "" : (content.aboutImage || "");
-    drawAboutThumb(content.aboutImage || "");
-
-    // Upload → resize → embed as data URL (same path as product photos).
-    const fileInput = form.elements["aboutImageFile"];
-    if (fileInput && !fileInput.dataset.wired) {
-      fileInput.dataset.wired = "1";
-      fileInput.addEventListener("change", async () => {
-        const file = fileInput.files && fileInput.files[0];
-        if (!file) return;
-        if (!/^image\//.test(file.type)) { toast("Please choose an image file.", "err"); return; }
-        toast("Processing image…");
-        try {
-          const dataUrl = await compressImage(file, 1200, 0.72);
-          form.elements["aboutImage"].value = dataUrl;
-          form.elements["aboutImageUrl"].value = "";
-          drawAboutThumb(dataUrl);
-          toast("Image ready — click Save to publish.");
-        } catch (e) { console.error(e); toast("Could not read that image.", "err"); }
-      });
-      const urlInput = form.elements["aboutImageUrl"];
-      urlInput && urlInput.addEventListener("input", () => {
-        if (urlInput.value.trim()) { form.elements["aboutImage"].value = ""; drawAboutThumb(urlInput.value.trim()); }
-      });
-    }
+    CONTENT_IMG_KEYS.forEach((key) => wireImageField(form, key, content[key] || ""));
 
     form.onsubmit = (e) => {
       e.preventDefault();
       const next = {};
       CONTENT_TEXT_KEYS.forEach((k) => { next[k] = form.elements[k].value.trim(); });
-      // Uploaded photo wins over a typed link.
-      next.aboutImage = form.elements["aboutImage"].value || form.elements["aboutImageUrl"].value.trim();
+      CONTENT_IMG_KEYS.forEach((key) => {
+        // Uploaded photo (data URL) wins over a typed link.
+        next[key] = (form.elements[key] && form.elements[key].value) ||
+                    (form.elements[key + "Url"] && form.elements[key + "Url"].value.trim()) || "";
+      });
       Store.saveSettings({ content: { ...(Store.getSettings().content || {}), ...next } });
       toast("Page content saved — live on the home page.");
     };
   }
-  function drawAboutThumb(url) {
-    const thumb = $("#c-about-thumb");
+
+  // Wire one image field's file-upload + link input + thumbnail. Idempotent.
+  function wireImageField(form, key, current) {
+    const hidden = form.elements[key];          // hidden data-URL field
+    const urlInput = form.elements[key + "Url"];// typed link
+    const fileInput = form.elements[key + "File"];
+    if (!hidden || !urlInput || !fileInput) return;
+
+    const isData = String(current).startsWith("data:");
+    hidden.value = isData ? current : "";
+    urlInput.value = isData ? "" : current;
+    drawThumb(key, current);
+
+    if (fileInput.dataset.wired) return;
+    fileInput.dataset.wired = "1";
+    fileInput.addEventListener("change", async () => {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+      if (!/^image\//.test(file.type)) { toast("Please choose an image file.", "err"); return; }
+      toast("Processing image…");
+      try {
+        const dataUrl = await compressImage(file, 1200, 0.72);
+        hidden.value = dataUrl; urlInput.value = "";
+        drawThumb(key, dataUrl);
+        toast("Image ready — click Save to publish.");
+      } catch (e) { console.error(e); toast("Could not read that image.", "err"); }
+    });
+    urlInput.addEventListener("input", () => {
+      if (urlInput.value.trim()) { hidden.value = ""; drawThumb(key, urlInput.value.trim()); }
+    });
+  }
+  function drawThumb(key, url) {
+    const thumb = $("#c-" + key.replace(/Image$/, "") + "-thumb");
     if (thumb) thumb.innerHTML = url
       ? `<img src="${esc(resolveImg(url))}" alt="" style="max-width:220px;border-radius:8px;border:1px solid var(--line)">` : "";
   }

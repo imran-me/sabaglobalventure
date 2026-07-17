@@ -1,4 +1,4 @@
-# Saba Global Venture — corporate showcase website
+# Saba Global Ventures — corporate showcase website
 
 **From Bangladesh to the World.** A luxury, inquiry-only showcase site for an
 international wholesale export/import house based in Cumilla, Bangladesh.
@@ -41,7 +41,7 @@ step** — no npm, no bundler. Edit a file, refresh.
 | 5 | Confirm the certifications you actually hold | `assets/js/config.js` → `certs` |
 | 6 | Confirm grades / packaging / MOQ / **HS codes** on every product | `assets/data/products.js` or Admin |
 | 7 | Set up Firebase so admin edits reach real visitors | `FIREBASE_SETUP.md` |
-| 8 | Replace `www.sabaglobalventure.com` with the real domain | `index.html`, `sitemap.xml`, `robots.txt` |
+| 8 | Replace `www.sabaglobalventures.com` with the real domain | `index.html`, `sitemap.xml`, `robots.txt` |
 
 > **Never invent contact details.** A wrong phone number on a trading site costs real
 > business. Any value still left as `{CURLY}` is treated as **unset** — its link is
@@ -71,7 +71,7 @@ Anything saved in Admin → Settings **overrides** `config.js` live, with no red
 
 ⚠ **Login.** With Firebase configured, login is real Firebase Auth and the credentials
 live in your Firebase console. Until then it falls back to a **local demo gate**
-(`admin@sabaglobalventure.com` / `demo1234`) — in that mode every edit stays in your
+(`admin@sabaglobalventures.com` / `demo1234`) — in that mode every edit stays in your
 own browser's localStorage and is **not** visible to anyone else. Set up Firebase
 before you rely on the panel for anything real.
 

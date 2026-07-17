@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0 clamp(2rem, 5vw, 4.5rem);
-  border-top: 1px solid var(--line-ivory);
+  border-top: 1.35px solid var(--line-ivory);
 }
 
 .capability {
@@ -25,7 +25,7 @@
   gap: 0 1rem;
   align-items: baseline;
   padding: clamp(1.1rem, 2.5vw, 1.6rem) 0;
-  border-bottom: 1px solid var(--line-ivory);
+  border-bottom: 1.35px solid var(--line-ivory);
   transition: transform var(--dur) var(--ease);
 }
 /* The rule that warms on hover. A separate element so only THIS row lights and

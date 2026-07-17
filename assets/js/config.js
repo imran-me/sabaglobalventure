@@ -12,7 +12,10 @@
    left as {CURLY} is treated as UNSET by cta-helper.js: its links are disabled
    rather than half-built, so the gap is obvious instead of silently wrong.
 
-   STILL PENDING: {WEBSITE}, {INSTAGRAM}, {FACEBOOK}, {LINKEDIN}.
+   STILL PENDING: {INSTAGRAM}, {FACEBOOK}, {LINKEDIN}.
+
+   Identity, contacts, tagline and MD confirmed from the official logo + business
+   card (2026-07). Company name is PLURAL — "Saba Global Ventures".
 
    WHERE EACH VALUE SHOWS UP:
      whatsapp -> every "Inquire" button, the floating dock, the contact card
@@ -23,21 +26,23 @@
    ========================================================================== */
 
 window.SITE_CONFIG = {
-  /* ---- Business identity ---------------------------------------------- */
-  legalName: "Saba Global Venture",
+  /* ---- Business identity (from the official card + logo) -------------- */
+  legalName: "Saba Global Ventures",
   shortName: "Saba Global",
-  brandName: "Saba Global Venture",
-  tagline:   "From Bangladesh to the World.",
-  ethos:     "Trusted Sourcing Partner from the Bengal Delta",
-  website:   "{WEBSITE}",                 // e.g. www.sabaglobalventure.com
+  brandName: "Saba Global Ventures",
+  // The card's primary line + descriptor.
+  tagline:   "Global Sourcing, Trusted Trading",
+  ethos:     "Connecting Quality Products to the World",
+  director:  "Shah Alam",                 // Managing Director (shown on the contact card)
+  directorTitle: "Managing Director",
+  website:   "sabaglobalventures.com",    // NOTE: plural. (Firebase project id stays singular.)
 
-  /* ---- Contact (client-supplied) --------------------------------------
-     WhatsApp must be E.164 WITHOUT the '+' or any spaces.                 */
-  whatsapp: "8801879175319",                          // +880 1879 175319
+  /* ---- Contact (from the official card) -------------------------------
+     WhatsApp must be E.164 WITHOUT the '+' or any spaces. The card lists TWO
+     numbers: a phone line and a separate WhatsApp line — kept distinct here. */
+  whatsapp: "8801830187381",              // WhatsApp: +880 1830 187381
   email:    "sabaglobalventures.bd@gmail.com",
-  // The client gave one number, for WhatsApp. It is shown as the phone line too;
-  // replace this if there is a separate landline for the office.
-  phone:    "+880 1879 175319",
+  phone:    "+880 1879 175319",           // Phone: +880 1879 175319
   address:  "Green House Mansion, Jhautola, Adarsha Sadar, Cumilla 3500, Bangladesh",
   // Derived from the address above — a Google Maps *search*, not a guessed pin.
   // Swap in the exact share link from Google Maps once the office is pinned there.
@@ -93,11 +98,11 @@ window.SITE_CONFIG = {
   templates: {
     // Generic "Request a Quote" button.
     generic:
-      "Hello Saba Global Venture, I'd like to start a bulk inquiry. " +
+      "Hello Saba Global Ventures, I'd like to start a bulk inquiry. " +
       "Please share your catalogue and FOB/CIF terms. Thank you.",
     // Per-product inquiry.
     product:
-      "Hello Saba Global Venture, I'd like a bulk quote for {product} ({packaging}). " +
+      "Hello Saba Global Ventures, I'd like a bulk quote for {product} ({packaging}). " +
       "Destination: {country}. Please share FOB/CIF terms. — {name}",
     // Email subject line.
     emailSubject: "Bulk Inquiry — {product}",

@@ -46,7 +46,7 @@
   // square loses the least in both directions, and the text is wrapped and
   // kept well inside a centre-safe column so nothing gets sliced off.
   function makePlaceholder(label) {
-    const lines = wrap(String(label || "Saba Global Venture"), 18, 3);
+    const lines = wrap(String(label || "Saba Global Ventures"), 18, 3);
     const startY = 470 - (lines.length - 1) * 21;
     const text = lines.map((l, i) =>
       "<text x='400' y='" + (startY + i * 42) + "' text-anchor='middle' fill='%23E8CE79' " +
@@ -66,7 +66,7 @@
           "<path d='M-40 36 H40 M-26 48 H26' stroke-opacity='0.4'/>" +
         "</g>" +
         text +
-        "<text x='400' y='610' text-anchor='middle' fill='%23C9A24B' font-family='Arial, sans-serif' font-size='16' letter-spacing='4'>SABA GLOBAL VENTURE</text>" +
+        "<text x='400' y='610' text-anchor='middle' fill='%23C9A24B' font-family='Arial, sans-serif' font-size='16' letter-spacing='4'>SABA GLOBAL VENTURES</text>" +
       "</svg>";
     return "data:image/svg+xml," + svg.replace(/#/g, "%23").replace(/\s{2,}/g, " ");
   }

@@ -13,7 +13,7 @@
   padding: clamp(.9rem, 2vw, 1.4rem) var(--gutter);
   transition: padding var(--dur) var(--ease), background var(--dur) var(--ease),
               box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1.35px solid transparent;
 }
 /* The scrolled bar must hold its own colour over BOTH canvases.
    This was rgba(2,7,26,.72) back when the whole page was dark. Once the ivory
@@ -63,7 +63,7 @@
 .header-cta { display: flex; align-items: center; gap: .6rem; }
 .icon-btn {
   display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
-  border: 1px solid var(--line); color: var(--gold-300);
+  border: 1.35px solid var(--line); color: var(--gold-300);
   transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 .icon-btn:hover { background: rgba(201,162,75,.12); border-color: var(--gold-500); transform: translateY(-2px); }

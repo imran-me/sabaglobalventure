@@ -5,7 +5,7 @@ credentials it works exactly as-is (localStorage + export-to-GitHub). Once you f
 the steps below, the admin panel reads & writes the **cloud**, and every visitor
 instantly sees your latest catalogue — no more "Export catalogue → commit" step.
 
-> ⚠ **Create a NEW project for Saba Global Venture.** Do not reuse another site's
+> ⚠ **Create a NEW project for Saba Global Ventures.** Do not reuse another site's
 > Firebase project. `assets/js/firebase-config.js` ships **blank** on purpose.
 
 ## How it works (architecture)
@@ -79,7 +79,7 @@ Collections used: `products`, `categories`, `countries`, `ads`, `inquiries`, and
    ```
 
 6. **Authorize your domain** — Authentication → *Settings → Authorized domains* → add
-   your live domain (e.g. `yourname.github.io` and/or `sabaglobalventure.com`).
+   your live domain (e.g. `yourname.github.io` and/or `sabaglobalventures.com`).
    `localhost` is already allowed. **Miss this and admin login fails in production.**
 
 ## First run

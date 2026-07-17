@@ -115,7 +115,7 @@ a:hover { color: var(--accent-hover); }
   * { scrollbar-width: thin; scrollbar-color: var(--gold-700) var(--navy-900); }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--navy-900); }
-  ::-webkit-scrollbar-thumb { background: var(--gold-700); border-radius: 999px; border: 2px solid var(--navy-900); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-700); border-radius: 999px; border: 2.7px solid var(--navy-900); }
   ::-webkit-scrollbar-thumb:hover { background: var(--gold-500); }
 }
 
@@ -128,7 +128,7 @@ a:hover { color: var(--accent-hover); }
   background: var(--royal-700);
   color: var(--frost-100);
   padding: .75rem 1.25rem;
-  border: 1px solid var(--line);
+  border: 1.35px solid var(--line);
   border-radius: var(--radius-pill);
   z-index: var(--z-preloader);
   transition: top var(--dur) var(--ease);

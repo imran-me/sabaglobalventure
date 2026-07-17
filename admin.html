@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#02071A">
   <!-- Admin is private: keep it out of search engines. -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Admin — Saba Global Venture</title>
+  <title>Admin — Saba Global Ventures</title>
 
   <link rel="icon" href="assets/img/icons/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,9 +47,9 @@
   <!-- ===== Login screen ===== -->
   <div class="admin-login">
     <form class="login-card" id="admin-login-form" novalidate>
-      <img class="emblem" src="assets/img/icons/emblem.svg" alt="Saba Global Venture">
+      <img class="emblem" src="assets/img/icons/emblem.svg" alt="Saba Global Ventures">
       <h1>Admin Panel</h1>
-      <p>Saba Global Venture</p>
+      <p>Saba Global Ventures</p>
       <div class="inquiry-form">
         <div class="field">
           <label for="a-email">Email</label>
@@ -70,7 +70,7 @@
     <!-- Sidebar -->
     <aside class="admin-sidebar">
       <a class="brand" href="index.html">
-        <img class="mark" src="assets/img/icons/emblem.svg" alt="Saba Global Venture">
+        <img class="mark" src="assets/img/icons/emblem.svg" alt="Saba Global Ventures">
         <span class="wordmark"><b>Saba Global</b><small>Admin</small></span>
       </a>
       <button class="admin-nav-btn is-active" data-tab="dashboard">
@@ -210,7 +210,7 @@
           <form id="settings-form" class="inquiry-form" style="max-width:620px">
             <div class="field--row">
               <div class="field"><label for="s-whatsapp">WhatsApp (E.164, no +)</label><input id="s-whatsapp" name="whatsapp" type="text" placeholder="8801XXXXXXXXX"></div>
-              <div class="field"><label for="s-email">Sales email</label><input id="s-email" name="email" type="email" placeholder="sales@sabaglobalventure.com"></div>
+              <div class="field"><label for="s-email">Sales email</label><input id="s-email" name="email" type="email" placeholder="sales@sabaglobalventures.com"></div>
             </div>
             <div class="field--row">
               <div class="field"><label for="s-phone">Phone</label><input id="s-phone" name="phone" type="text" placeholder="+880 1XXX XXXXXX"></div>
@@ -250,7 +250,15 @@
               <div class="field"><label for="c-hero-title">Headline (plain part)</label><input id="c-hero-title" name="heroTitle" placeholder="Bangladesh's Harvest, "></div>
               <div class="field"><label for="c-hero-title-gold">Headline (gold italic part)</label><input id="c-hero-title-gold" name="heroTitleGold" placeholder="Carried to the World."></div>
             </div>
-            <div class="field"><label for="c-hero-lead">Intro paragraph</label><textarea id="c-hero-lead" name="heroLead" placeholder="Saba Global Venture sources rice, shrimp, fish…"></textarea></div>
+            <div class="field"><label for="c-hero-lead">Intro paragraph</label><textarea id="c-hero-lead" name="heroLead" placeholder="Saba Global Ventures sources rice, shrimp, fish…"></textarea></div>
+            <div class="field">
+              <label>Hero image — shown inside the arched portal on the right</label>
+              <input name="heroImageFile" type="file" accept="image/*">
+              <input name="heroImage" type="hidden">
+              <div id="c-hero-thumb" style="margin:.55rem 0"></div>
+              <span class="form-note">Upload a photo (auto-resized) or paste a link below. Leave empty to keep the golden delta scene. A tall/portrait image fits the arch best.</span>
+            </div>
+            <div class="field"><label for="c-hero-image-url">…or hero image URL / Google Drive link</label><input id="c-hero-image-url" name="heroImageUrl" placeholder="https://…  or a Drive share link"></div>
 
             <h3 style="color:var(--frost-100);margin:1.25rem 0 .75rem">Our Story (About section)</h3>
             <div class="field--row">

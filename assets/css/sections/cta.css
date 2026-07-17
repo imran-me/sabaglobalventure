@@ -50,6 +50,6 @@
 /* Faint filigree frame inside the band. */
 .cta-band::before {
   content: ""; position: absolute; inset: clamp(1rem, 3vw, 2rem);
-  border: 1px solid var(--line); border-radius: var(--radius-lg); pointer-events: none;
+  border: 1.35px solid var(--line); border-radius: var(--radius-lg); pointer-events: none;
   -webkit-mask: linear-gradient(#000, transparent 70%); mask: linear-gradient(#000, transparent 70%);
 }

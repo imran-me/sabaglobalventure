@@ -1,4 +1,4 @@
-# MASTER BUILD PROMPT — "Saba Global Venture" Luxury Corporate Landing Page
+# MASTER BUILD PROMPT — "Saba Global Ventures" Luxury Corporate Landing Page
 
 > This is the single source of truth for the project. Build **exactly** to this spec — nothing is too small to style, down to the favicon, eyebrow labels, hover states and footer fine print. Where you see `{CURLY_PLACEHOLDERS}`, the client must supply the real value before launch; **never invent contact details.**
 
@@ -30,7 +30,7 @@ Every ornament must **earn its place by being Bengali**: indigo was the dye Beng
 
 ## 1. COMPANY FACTS (use verbatim)
 
-- **Legal name:** Saba Global Venture
+- **Legal name:** Saba Global Ventures
 - **Business:** International export & import — **wholesale / bulk only**
 - **Origin / HQ:** **Cumilla, Bangladesh** — the story is *from Bangladesh to the world*
 - **Trading markets:** Bangladesh (origin hub), UAE (Dubai), Saudi Arabia, Qatar, Kuwait, Oman, Bahrain, India, Malaysia — i.e. the Gulf, the wider Middle East and South Asia
@@ -134,7 +134,7 @@ Confident, refined, globally-minded. Short declarative sentences. Trade vocabula
 Gold Shapla on `--blue-900`. Deliver `favicon.svg`, `favicon.ico` (16/32/48/64), `apple-touch-icon.png` (180), `icon-192.png`, `icon-512.png` (maskable), `site.webmanifest` (theme_color `#071C4D`, background_color `#02071A`). `<meta name="theme-color" content="#071C4D">`.
 
 ### 4.2 Head / SEO / sharing
-- Title pattern: `Saba Global Venture — Bulk Rice, Shrimp, Fish & Fresh Produce Exporter from Bangladesh`.
+- Title pattern: `Saba Global Ventures — Bulk Rice, Shrimp, Fish & Fresh Produce Exporter from Bangladesh`.
 - Meta description, keywords, canonical, robots. **Open Graph + Twitter cards** with a branded 1200×630 share image.
 - **JSON-LD:** `Organization` (name, logo, areaServed = the 9 markets, contactPoint). Keep it in sync with `config.js` — search engines read the HTML copy, not the JS.
 - `lang="en"`. Sitemap.xml + robots.txt (robots must `Disallow: /admin.html`).
@@ -209,14 +209,14 @@ Deep `--navy-950` with a lotus divider and a faint cargo-ship silhouette. Column
 3. **Products:** all 8 categories, deep-linking into the filtered showcase.
 4. **Markets:** flag dots (injected from the live country list).
 5. **Get in touch:** WhatsApp, Email, Phone, Cumilla HQ, hours. "Bulk & wholesale inquiries only."
-- **Bottom bar:** gold hairline; `© {YEAR} Saba Global Venture. All rights reserved.`; `Trade Markets · GCC · Middle East · South Asia`; `Privacy · Terms`. Tiny gold admin dot → `/admin.html`.
+- **Bottom bar:** gold hairline; `© {YEAR} Saba Global Ventures. All rights reserved.`; `Trade Markets · GCC · Middle East · South Asia`; `Privacy · Terms`. Tiny gold admin dot → `/admin.html`.
 - Fine print: "FOB / CIF terms available · MOQ applies to all products."
 
 ---
 
 ## 9. FUNCTIONAL / INTEGRATION SPEC
 
-- **WhatsApp click-to-chat:** `https://wa.me/{E164}?text=` + URL-encoded message. Per-product: `Hello Saba Global Venture, I'd like a bulk quote for {product} ({packaging}). Destination: {country}. Please share FOB/CIF terms. — {name}`.
+- **WhatsApp click-to-chat:** `https://wa.me/{E164}?text=` + URL-encoded message. Per-product: `Hello Saba Global Ventures, I'd like a bulk quote for {product} ({packaging}). Destination: {country}. Please share FOB/CIF terms. — {name}`.
 - **Email:** `mailto:` primary, plus a **Gmail compose** deep link for desktop users. Same pre-filled subject/body.
 - **Contact form:** validate → store to `inquiries` → hand off to WhatsApp with the summary. ⚠ Pass **only** the assembled `body` to the WhatsApp helper: the helper prefers the short per-product template whenever `product` is set and would otherwise throw the detailed summary away.
 - All CTAs reuse one helper (`cta-helper.js`) so the number/email come from **settings** (single source).

@@ -5,10 +5,38 @@
 .site-footer {
   position: relative;
   background: var(--navy-950);
-  border-top: 1px solid var(--line);
+  border-top: 1.35px solid var(--line);
   padding-top: var(--space-8);
   overflow: hidden;
 }
+/* Group companies band — a hairline-ruled row of the sister firms. */
+.foot-group {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: .75rem clamp(1rem, 3vw, 2.25rem);
+}
+.foot-group .fg-label {
+  font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold-500);
+}
+.foot-group ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: .5rem clamp(1rem, 3vw, 2rem);
+}
+.foot-group li {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1.02rem; color: var(--text-muted-on-dark);
+  display: inline-flex; align-items: center; gap: clamp(1rem, 3vw, 2rem);
+}
+.foot-group li:not(:last-child)::after {
+  content: ""; width: 4px; height: 4px; background: var(--gold-700);
+  transform: rotate(45deg); opacity: .8;
+}
+@media (max-width: 560px) { .foot-group li:not(:last-child)::after { display: none; } }
+
 .site-footer .arabesque {
   position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
   color: var(--gold-500); width: 30px; height: 30px; background: var(--navy-950); padding: 4px;
@@ -27,7 +55,7 @@
 
 .foot-brand .ethos { font-family: var(--font-serif); font-style: italic; color: var(--text-muted-on-dark); margin: var(--space-3) 0 var(--space-4); max-width: 32ch; }
 .foot-brand .socials { display: flex; gap: .7rem; color: var(--gold-300); }
-.foot-brand .socials a { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; }
+.foot-brand .socials a { width: 36px; height: 36px; display: grid; place-items: center; border: 1.35px solid var(--line); border-radius: 50%; }
 .foot-brand .socials a:hover { border-color: var(--gold-500); background: rgba(201,162,75,.08); }
 
 .flag-dots { display: flex; flex-direction: column; gap: .5rem; }
@@ -35,7 +63,7 @@
 
 /* Bottom bar */
 .foot-bottom {
-  margin-top: var(--space-8); border-top: 1px solid var(--line);
+  margin-top: var(--space-8); border-top: 1.35px solid var(--line);
   padding-block: var(--space-5);
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-4);
   font-size: .76rem; color: var(--text-muted-on-dark);

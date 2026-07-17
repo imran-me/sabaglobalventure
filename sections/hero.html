@@ -26,7 +26,7 @@
       <div class="hero-rule" data-reveal aria-hidden="true"></div>
 
       <p class="lead italic" data-reveal data-content="heroLead">
-        Saba Global Venture sources rice, shrimp, fish, fruit and fresh vegetables from
+        Saba Global Ventures sources rice, shrimp, fish, fruit and fresh vegetables from
         the Bengal delta and delivers them in bulk to wholesale markets across the Gulf,
         the Middle East and South Asia.
       </p>
@@ -42,6 +42,11 @@
     <div class="hero-portal" data-reveal aria-hidden="true">
       <div class="portal-niche">
         <div class="portal-scene"></div>
+        <!-- Optional hero photo (Admin → Page Content → Hero image). It sits ABOVE
+             the golden delta scene and only appears once a src is set — applyContent
+             fills data-content-src; with no image the :not([src]) rule hides it and
+             the delta scene shows through. -->
+        <img class="portal-photo" data-content-src="heroImage" alt="" loading="lazy" decoding="async">
         <div class="portal-veil"></div>
       </div>
       <!-- The lota-pata arch: vine, leaf, bud and flower climbing the cusped

@@ -18,7 +18,7 @@
   display: block;
   border-radius: var(--radius);
   overflow: hidden;
-  border: 3.5px solid var(--line);
+  border: 4.73px solid var(--line);
   background: linear-gradient(180deg, rgba(20,54,158,.55), rgba(7,28,77,.65));
   box-shadow: var(--shadow-card);
   transition: opacity 520ms var(--ease), transform 520ms var(--ease),

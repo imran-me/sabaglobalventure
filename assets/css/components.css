@@ -23,7 +23,7 @@
   font-size: var(--fs-small);
   letter-spacing: .03em;
   line-height: 1;
-  border: 1px solid transparent;
+  border: 1.35px solid transparent;
   overflow: hidden;
   transition: transform var(--dur-fast) var(--ease),
               box-shadow var(--dur) var(--ease),
@@ -91,7 +91,7 @@
   align-items: center;
   gap: .4rem;
   padding: .38rem .85rem;
-  border: 1px solid var(--line);
+  border: 1.35px solid var(--line);
   border-radius: var(--radius-pill);
   font-size: var(--fs-small);
   color: var(--text-muted-on-dark);
@@ -110,7 +110,7 @@
 /* Filter pills (products) */
 .pill {
   padding: .55rem 1.15rem;
-  border: 1px solid var(--line);
+  border: 1.35px solid var(--line);
   border-radius: var(--radius-pill);
   font-size: var(--fs-small);
   font-weight: 600;
@@ -135,7 +135,7 @@
   position: relative;
   background:
     linear-gradient(180deg, rgba(30,79,216,.16), rgba(7,28,77,.72) 55%, rgba(4,16,49,.88));
-  border: 3.5px solid rgba(201,162,75,.28);
+  border: 4.73px solid rgba(201,162,75,.28);
   border-radius: var(--radius-lg);
   box-shadow:
     0 24px 50px -24px rgba(1,5,18,.78),      /* deep floating shadow */
@@ -181,7 +181,7 @@
   content: "";
   position: absolute;
   width: 26px; height: 26px;
-  border: 1.5px solid var(--gold-500);
+  border: 2.03px solid var(--gold-500);
   opacity: .55;
   pointer-events: none;
 }
@@ -193,7 +193,7 @@
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1.35px solid var(--line);
 }
 .framed img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
 .framed::after {
@@ -210,7 +210,7 @@
   display: inline-flex; align-items: center; gap: .4rem;
   padding: .3rem .7rem; border-radius: var(--radius-sm);
   font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-  background: rgba(201,162,75,.12); color: var(--gold-300); border: 1px solid rgba(201,162,75,.3);
+  background: rgba(201,162,75,.12); color: var(--gold-300); border: 1.35px solid rgba(201,162,75,.3);
 }
 .badge--ocean { background: rgba(52,163,224,.12); color: var(--ocean-400); border-color: rgba(52,163,224,.3); }
 
@@ -258,13 +258,13 @@
 .dock a svg { width: 24px; height: 24px; }
 .dock .dock-wa { background: #25D366; color: #fff; animation: pulse 2.6s var(--ease) infinite; }
 .dock .dock-mail { background: var(--gold-metallic); color: var(--navy-950); }
-.dock .dock-products { background: var(--royal-700); color: var(--gold-300); border: 1px solid var(--gold-500); }
+.dock .dock-products { background: var(--royal-700); color: var(--gold-300); border: 1.35px solid var(--gold-500); }
 .dock a[data-tip]::after {
   content: attr(data-tip);
   position: absolute; right: 110%; top: 50%; transform: translateY(-50%);
   background: var(--navy-950); color: var(--frost-100);
   font-size: .72rem; white-space: nowrap; padding: .3rem .6rem; border-radius: var(--radius-sm);
-  border: 1px solid var(--line);
+  border: 1.35px solid var(--line);
   opacity: 0; pointer-events: none; transition: opacity var(--dur-fast) var(--ease);
 }
 .dock a[data-tip]:hover::after { opacity: 1; }
@@ -280,7 +280,7 @@
   position: fixed; left: clamp(1rem, 3vw, 1.75rem); bottom: clamp(1rem, 3vw, 1.75rem);
   display: inline-flex; align-items: center; gap: .4rem;
   padding: .6rem 1rem; border-radius: var(--radius-pill);
-  background: rgba(7,28,77,.82); border: 1px solid var(--line); color: var(--gold-300);
+  background: rgba(7,28,77,.82); border: 1.35px solid var(--line); color: var(--gold-300);
   font-size: .78rem; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   opacity: 0; pointer-events: none; transform: translateY(10px);
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
@@ -296,7 +296,7 @@
 .toast {
   padding: .8rem 1.2rem; border-radius: var(--radius);
   background: var(--royal-700); color: var(--frost-100);
-  border: 1px solid var(--line); box-shadow: var(--shadow-lift);
+  border: 1.35px solid var(--line); box-shadow: var(--shadow-lift);
   font-size: var(--fs-small);
   animation: toast-in var(--dur) var(--ease);
 }
@@ -402,7 +402,7 @@
 .cursor-ring {
   position: fixed; top: 0; left: 0;
   width: 30px; height: 30px;
-  border: 1px solid var(--gold-500);
+  border: 1.35px solid var(--gold-500);
   border-radius: 50%;
   pointer-events: none;
   z-index: var(--z-cursor);
@@ -430,7 +430,7 @@
 }
 /* Press: the ring tightens under the click. The scale is JS-owned, so we cannot
    use transform here — the border does the work instead. */
-.cursor-ring.is-down { border-width: 2px; background: rgba(201,162,75,.18); }
+.cursor-ring.is-down { border-width: 2.7px; background: rgba(201,162,75,.18); }
 
 @media (hover: none), (pointer: coarse) { .cursor-ring, .cursor-dot { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cursor-ring, .cursor-dot { display: none; } }
@@ -452,7 +452,7 @@
   max-height: 80vh; overflow-y: auto;
   padding: clamp(1.5rem, 4vw, 2.5rem);
   background: linear-gradient(180deg, rgba(20,54,158,.55), rgba(4,16,49,.96));
-  border: 1px solid var(--line);
+  border: 1.35px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lift);
   transform: translateY(16px) scale(.98);
@@ -471,7 +471,7 @@
 .mm-list li {
   display: flex; align-items: center; gap: .5rem;
   padding: .5rem .75rem;
-  border: 1px solid var(--line-blue); border-radius: var(--radius-sm);
+  border: 1.35px solid var(--line-blue); border-radius: var(--radius-sm);
   font-size: var(--fs-small);
 }
 .mm-list .flag { font-size: 1.05rem; }

@@ -36,7 +36,8 @@
     // so shipping new contact details without bumping this leaves earlier
     // visitors on the stale ones.
     //   v2 — real WhatsApp / email / address / map landed in config.js
-    seeded: "sgv_seeded_v2",
+    //   v3 — official card: name pluralised, tagline, WhatsApp number corrected
+    seeded: "sgv_seeded_v3",
   };
 
   // Default category + country seeds (used on first run and "Reset demo data").

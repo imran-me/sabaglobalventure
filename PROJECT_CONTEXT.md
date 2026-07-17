@@ -1,4 +1,4 @@
-# PROJECT_CONTEXT.md — Saba Global Venture
+# PROJECT_CONTEXT.md — Saba Global Ventures
 
 > **Purpose of this file:** the living context / memory for the project. Read it at
 > the start of every session to instantly recall what this is, what's done, what's
@@ -39,7 +39,7 @@ These are durable rules from the owner. They do not change between sessions.
 
 ## 1. What this project is
 
-A **top-tier luxury corporate showcase website** for **Saba Global Venture**, an
+A **top-tier luxury corporate showcase website** for **Saba Global Ventures**, an
 international wholesale export/import house based in **Cumilla, Bangladesh**.
 
 - **NOT an e-commerce site.** No cart, no checkout, no prices, no orders.
@@ -56,7 +56,7 @@ Full source-of-truth spec: **`Saba-Global-Venture-Landing-Page-Prompt.md`**.
 
 ## 2. Company facts (do not invent)
 
-- **Legal name:** Saba Global Venture
+- **Legal name:** Saba Global Ventures
 - **HQ / origin:** Cumilla, Bangladesh — the story is *from Bangladesh to the world*
 - **Markets (9):** Bangladesh (origin **hub**), UAE, Saudi Arabia, Qatar, Kuwait,
   Oman, Bahrain, India, Malaysia
