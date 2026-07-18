@@ -58,23 +58,29 @@
 /* The photo now sits in an ARCHED niche — the same cusped shape as the product
    cards and hero portal, so the featured deck speaks the house language. A gold
    arch outline traces it; the name plate rides the flat bottom of the arch. */
-.featured-card .ph {
-  position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+/* .ph is now an unmasked positioning frame: the photo is masked in .ph-mask,
+   so the lota-pata vine (.arch-orn) can trace the arch WITHOUT being clipped. */
+.featured-card .ph { position: relative; aspect-ratio: 3 / 4; }
+.featured-card .ph-mask {
+  position: absolute; inset: 0; overflow: hidden; background: var(--indigo-800);
   -webkit-mask: url("../../img/ornaments/arch-mask.svg") center / 100% 100% no-repeat;
           mask: url("../../img/ornaments/arch-mask.svg") center / 100% 100% no-repeat;
-  background: var(--indigo-800);
 }
-.featured-card .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
-.featured-card:hover .ph img { transform: scale(1.06); }
+.featured-card .ph-mask img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
+.featured-card:hover .ph-mask img { transform: scale(1.06); }
 /* Gold arch outline over the niche (masked-gradient, matches the arch exactly). */
 .featured-card .ph::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
   background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 60%, var(--gold-700));
   -webkit-mask: url("../../img/ornaments/arch-outline.svg") center / 100% 100% no-repeat;
           mask: url("../../img/ornaments/arch-outline.svg") center / 100% 100% no-repeat;
-  opacity: .5; transition: opacity var(--dur) var(--ease);
+  opacity: .45; transition: opacity var(--dur) var(--ease);
 }
-.featured-card:hover .ph::after { opacity: .85; }
+.featured-card:hover .ph::after { opacity: .8; }
+/* The climbing লতা পাতা vine over the arch — bright gold on the dark card (the
+   ivory-section rule would otherwise engrave it too dark to read here). */
+.featured-card .ph .arch-orn { color: var(--gold-300); z-index: 3; opacity: .9; }
+.featured-card:hover .ph .arch-orn { color: var(--gold-100); opacity: 1; }
 
 /* Category as a fine gold micro-cap ABOVE the arched photo. */
 .featured-card .cat {

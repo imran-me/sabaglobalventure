@@ -59,7 +59,16 @@ window.initFeatured = function initFeatured() {
          href="#products" data-cat="${esc(p.category || "")}"
          aria-label="${esc(p.name)} — view in catalogue">
         <span class="cat">${esc(p.category || "")}</span>
-        <div class="ph"><img src="${esc(resolveImg(im.url))}" alt="${esc(im.alt || p.name)}" loading="lazy" decoding="async"></div>
+        <div class="ph">
+          <div class="ph-mask"><img src="${esc(resolveImg(im.url))}" alt="${esc(im.alt || p.name)}" loading="lazy" decoding="async"></div>
+          <svg class="arch-orn is-drawn" viewBox="0 0 100 140" preserveAspectRatio="none"
+               fill="none" stroke="currentColor" stroke-width="0.3"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <use class="lo lo-frame" href="#sgv-arch-frame"></use>
+            <use class="lo lo-vines" href="#sgv-arch-vines"></use>
+            <use class="lo lo-crest" href="#sgv-arch-crest"></use>
+          </svg>
+        </div>
         <div class="plate">
           <div class="name">${esc(p.name)}</div>
           ${ori ? `<div class="ori">${esc(ori)}</div>` : ""}
