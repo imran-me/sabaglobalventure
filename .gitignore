@@ -9,3 +9,9 @@ Thumbs.db
 # Local env
 .env
 .env.local
+
+# Raw AI source art / working files (optimised copies live in assets/img/scene/)
+assets/img/bg/*.png
+assets/img/bg/*.zip
+assets/img/bg/_vectors/
+assets/img/bg/_contact.png
