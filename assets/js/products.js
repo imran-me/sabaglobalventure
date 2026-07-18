@@ -142,7 +142,8 @@ window.initProducts = function initProducts() {
     // with a dash + ✦, serif name, a line of copy, origin with a pin, and
     // "Explore Product ⟶" pinned to the panel foot over a long gold underline).
     return `
-    <article class="product-card" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
+    <article class="product-card" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal
+             tabindex="0" role="button" aria-label="${esc(p.name)} — view details">
       <div class="pc-frame">
         <div class="pc-photo">
           <img src="${esc(nicheSrc(img, p))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
@@ -155,6 +156,7 @@ window.initProducts = function initProducts() {
           <h3 class="pc-name">${esc(p.name)}</h3>
           <p class="pc-desc">${esc(p.shortDesc)}</p>
           <p class="pc-loc">${pin}${esc(origin)}</p>
+          ${p.moq ? `<p class="pc-moq">MOQ&ensp;&middot;&ensp;${esc(p.moq)}</p>` : ""}
           <a class="pc-explore" data-explore>Explore Product <span class="pc-arrow" aria-hidden="true">${arrow}</span></a>
         </div>
       </div>
@@ -166,28 +168,79 @@ window.initProducts = function initProducts() {
     ? products.map(cardHTML).join("")
     : `<p class="products-empty">No products yet — add your first to bring the showcase to life.</p>`;
 
-  // Open modal on card body click (but not on the inquiry buttons).
+  // Open modal on card body click (but not on the inquiry buttons), and on
+  // Enter/Space for keyboard buyers — every card is a real button.
   grid.addEventListener("click", (e) => {
     if (e.target.closest("[data-cta]")) return;
     const card = e.target.closest(".product-card");
     if (card) openModal(card.dataset.slug);
   });
+  grid.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const card = e.target.closest(".product-card");
+    if (!card) return;
+    e.preventDefault();
+    openModal(card.dataset.slug);
+  });
 
   // Wire the freshly-rendered inquiry buttons.
   window.CTA && window.CTA.wireDataAttrs(grid);
 
-  /* ---- Filtering ------------------------------------------------------ */
-  function applyFilter(cat) {
+  /* ---- Filtering + search + mobile batching ---------------------------
+     One `refresh()` owns visibility: active category ∩ search term, and on
+     phones the list reveals in batches of 8 (a 20-card single column is a
+     scroll marathon, not a catalogue). */
+  const searchInput = document.querySelector("[data-product-search]");
+  const moreBtn = document.querySelector("[data-show-more]");
+  const BATCH = 8;
+  let activeCat = "All";
+  let term = "";
+  let mobileCap = BATCH;
+
+  const matchesTerm = (card, t) =>
+    !t || card.textContent.toLowerCase().includes(t);
+
+  function refresh() {
+    const phone = window.matchMedia("(max-width: 640px)").matches;
+    let shown = 0, hiddenByCap = 0;
     grid.querySelectorAll(".product-card").forEach((card) => {
-      const show = cat === "All" || card.dataset.cat === cat;
+      const match = (activeCat === "All" || card.dataset.cat === activeCat) &&
+                    matchesTerm(card, term);
+      let show = match;
+      if (match && phone && shown >= mobileCap) { show = false; hiddenByCap++; }
+      if (show) shown++;
       card.classList.toggle("is-hidden", !show);
     });
+    if (moreBtn) {
+      moreBtn.hidden = !(phone && hiddenByCap > 0);
+      if (!moreBtn.hidden) moreBtn.textContent = `Show ${Math.min(BATCH, hiddenByCap)} more of ${hiddenByCap}`;
+    }
   }
 
+  function applyFilter(cat) {
+    activeCat = cat;
+    mobileCap = BATCH;          // a new category starts its own tasting
+    refresh();
+  }
+
+  searchInput?.addEventListener("input", () => {
+    term = searchInput.value.trim().toLowerCase();
+    mobileCap = BATCH;
+    refresh();
+  });
+  moreBtn?.addEventListener("click", () => { mobileCap += BATCH; refresh(); });
+  let rsz;
+  window.addEventListener("resize", () => { clearTimeout(rsz); rsz = setTimeout(refresh, 200); });
+  refresh();
+
   /* ---- Detail modal --------------------------------------------------- */
+  let lastFocus = null;
   function openModal(slug) {
     const p = products.find((x) => x.slug === slug);
     if (!p) return;
+    lastFocus = document.activeElement;
+    // A shareable address for THIS product — buyers forward SKUs to colleagues.
+    try { history.replaceState(null, "", `#product=${encodeURIComponent(slug)}`); } catch (_) {}
     let modal = document.querySelector(".modal");
     if (!modal) {
       modal = document.createElement("div");
@@ -196,16 +249,27 @@ window.initProducts = function initProducts() {
       modal.setAttribute("aria-modal", "true");
       document.body.appendChild(modal);
     }
-    const img = (p.images && p.images[0]) || { url: "", alt: p.name };
+    const imgs = (p.images && p.images.length ? p.images : [{ url: "", alt: p.name }])
+      .map((im) => ({ url: resolveImg(im.url) || (window.ImgFallback ? window.ImgFallback.makePlaceholder(im.alt || p.name) : ""), alt: im.alt || p.name }));
+    const img = imgs[0];
     const specRows = Object.entries(p.specs || {})
       .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
     const list = (arr) => (arr || []).map((x) => `<span class="chip">${esc(x)}</span>`).join("");
+    const thumbs = imgs.length > 1
+      ? `<div class="modal-thumbs">${imgs.map((im, i) =>
+          `<button class="modal-thumb${i === 0 ? " is-active" : ""}" data-thumb="${i}" aria-label="Photo ${i + 1}">
+             <img src="${esc(im.url)}" alt="">
+           </button>`).join("")}</div>`
+      : "";
 
     modal.innerHTML = `
       <div class="modal-panel" role="document">
         <button class="modal-close" aria-label="Close">&times;</button>
         <div class="modal-grid">
-          <div class="modal-gallery"><img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}"></div>
+          <div class="modal-gallery">
+            <img src="${esc(img.url)}" alt="${esc(img.alt)}" data-gallery-main title="Click to zoom">
+            ${thumbs}
+          </div>
           <div class="modal-body">
             <span class="eyebrow">${esc(p.category)}</span>
             <h3>${esc(p.name)}</h3>
@@ -220,6 +284,7 @@ window.initProducts = function initProducts() {
               <a class="btn btn--whatsapp" data-cta="whatsapp" data-product="${esc(p.name)}"
                  data-packaging="${esc((p.packaging || [])[0] || "bulk")}">Inquire on WhatsApp</a>
               <a class="btn btn--ghost" data-cta="gmail" data-product="${esc(p.name)}">Email Trade Desk</a>
+              <button class="btn btn--ghost" data-share aria-label="Copy a link to this product">Copy Link</button>
             </div>
           </div>
         </div>
@@ -229,11 +294,53 @@ window.initProducts = function initProducts() {
     requestAnimationFrame(() => modal.classList.add("is-open"));
     document.body.style.overflow = "hidden";
 
-    const close = () => { modal.classList.remove("is-open"); document.body.style.overflow = ""; };
+    // Gallery: thumbnails swap the main image; the main image click-zooms.
+    const main = modal.querySelector("[data-gallery-main]");
+    modal.querySelectorAll("[data-thumb]").forEach((b) => {
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const im = imgs[+b.dataset.thumb];
+        if (!im) return;
+        main.src = im.url; main.alt = im.alt;
+        modal.querySelectorAll(".modal-thumb").forEach((x) => x.classList.toggle("is-active", x === b));
+        main.classList.remove("is-zoomed");
+      });
+    });
+    main?.addEventListener("click", () => main.classList.toggle("is-zoomed"));
+
+    // Share: copy the product's deep link.
+    modal.querySelector("[data-share]")?.addEventListener("click", async () => {
+      const url = `${location.origin}${location.pathname}#product=${encodeURIComponent(slug)}`;
+      try {
+        await navigator.clipboard.writeText(url);
+        window.toast && window.toast("Product link copied — paste it anywhere.", "ok");
+      } catch (_) {
+        prompt("Copy this product link:", url);
+      }
+    });
+
+    const close = () => {
+      modal.classList.remove("is-open");
+      document.body.style.overflow = "";
+      try { history.replaceState(null, "", location.pathname + "#products"); } catch (_) {}
+      lastFocus && lastFocus.focus && lastFocus.focus();
+    };
     modal.querySelector(".modal-close").addEventListener("click", close);
     modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
     document.addEventListener("keydown", function escClose(ev) {
       if (ev.key === "Escape") { close(); document.removeEventListener("keydown", escClose); }
+    });
+
+    // Keep keyboard focus inside the dialog while it is open.
+    const panel = modal.querySelector(".modal-panel");
+    modal.querySelector(".modal-close").focus();
+    modal.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
+      const focusables = panel.querySelectorAll("button, a[href], input, [tabindex]:not([tabindex='-1'])");
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
     });
   }
 
@@ -257,4 +364,15 @@ window.initProducts = function initProducts() {
   const params = new URLSearchParams(location.search);
   const qCat = params.get("category");
   if (qCat && CATS.includes(qCat)) selectCat(qCat);
+
+  // Honour a shared product deep link (#product=slug): open that product's
+  // detail once the catalogue is on screen.
+  const pm = location.hash.match(/^#product=([\w-]+)/);
+  if (pm) {
+    const slug = decodeURIComponent(pm[1]);
+    if (products.some((p) => p.slug === slug)) {
+      document.getElementById("products")?.scrollIntoView();
+      setTimeout(() => openModal(slug), 400);
+    }
+  }
 };

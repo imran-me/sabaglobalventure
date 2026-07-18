@@ -121,8 +121,10 @@ function populateConfig() {
     else if (key === "linkedin") href = unset(c.socials?.linkedin) ? "#" : c.socials.linkedin;
     el.setAttribute("href", href);
     // Socials we simply hide when unset — an empty row reads as "no presence",
-    // which is better than a dead icon.
+    // which is better than a dead icon. Dock bubbles likewise: a floating
+    // button that does nothing is worse than one fewer bubble.
     if (key.match(/instagram|facebook|linkedin/) && href === "#") el.style.display = "none";
+    if (href === "#" && el.closest(".dock")) el.style.display = "none";
     if (href !== "#" && (key === "whatsapp" || key === "map" || key.match(/instagram|facebook|linkedin/))) {
       el.target = "_blank"; el.rel = "noopener";
     }

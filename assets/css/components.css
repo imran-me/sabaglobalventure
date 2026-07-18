@@ -274,7 +274,14 @@
 .dock .dock-wa { background: var(--indigo-900); color: var(--gold-300); border: 1.35px solid var(--gold-500); animation: pulse 2.8s var(--ease) infinite; }
 .dock .dock-wa:hover { background: var(--gold-metallic); color: var(--indigo-950); border-color: transparent; }
 .dock .dock-mail { background: var(--gold-metallic); color: var(--navy-950); }
+.dock .dock-tel { background: var(--indigo-900); color: var(--gold-300); border: 1.35px solid var(--gold-500); }
 .dock .dock-products { background: var(--royal-700); color: var(--gold-300); border: 1.35px solid var(--gold-500); }
+/* Smaller bubbles on phones — less of the page hides behind the dock. */
+@media (max-width: 480px) {
+  .dock { gap: .55rem; }
+  .dock a { width: 46px; height: 46px; }
+  .dock a svg { width: 21px; height: 21px; }
+}
 .dock a[data-tip]::after {
   content: attr(data-tip);
   position: absolute; right: 110%; top: 50%; transform: translateY(-50%);

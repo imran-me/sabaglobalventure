@@ -56,6 +56,15 @@
           </div>
         </div>
 
+        <!-- The buyer's own reply channel: if the WhatsApp handoff is closed or
+             fails (desktop without WhatsApp), the inquiry still names a way back. -->
+        <div class="field">
+          <label for="f-reply">Your WhatsApp / email *</label>
+          <input id="f-reply" name="reply" type="text" autocomplete="tel"
+                 placeholder="So our trade desk can reach you — number or email">
+          <span class="err">Please leave a WhatsApp number or email.</span>
+        </div>
+
         <div class="field">
           <label for="f-qty">Quantity / MOQ</label>
           <input id="f-qty" name="qty" type="text" placeholder="e.g. 1 x 40ft reefer">
@@ -66,10 +75,12 @@
           <textarea id="f-message" name="message" placeholder="Tell us about your requirement, packaging and timeline…"></textarea>
         </div>
 
-        <p class="form-note">On submit we'll open WhatsApp with your inquiry pre-filled. We never charge or transact on-site.</p>
+        <p class="form-note">On submit we'll open WhatsApp with your inquiry pre-filled — press <b>Send</b> there to deliver it.
+          We reply <b data-config="replyPromise">within 24 hours (GMT+6)</b>. We never charge or transact on-site.</p>
         <div class="submit-row">
           <button class="btn btn--gold" type="submit">Send Inquiry</button>
-          <a class="btn btn--ghost" data-cta="gmail">Prefer Email?</a>
+          <!-- contact.js intercepts this and carries the filled form into the email draft -->
+          <a class="btn btn--ghost" data-email-inquiry data-cta="gmail">Prefer Email?</a>
         </div>
       </form>
 

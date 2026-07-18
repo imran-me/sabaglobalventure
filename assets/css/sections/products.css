@@ -195,6 +195,25 @@
   .cat-label { font-size: .82rem; }
 }
 
+/* ---- Search — one gold hairline, quiet until needed --------------------- */
+.cat-search {
+  display: flex; align-items: center; gap: .6rem;
+  max-width: 460px; margin: 0 auto clamp(1.6rem, 3vw, 2.4rem);
+  padding-bottom: .45rem;
+  border-bottom: 1px solid rgba(200,162,74,.35);
+  color: var(--gold-500);
+  transition: border-color var(--dur) var(--ease);
+}
+.cat-search:focus-within { border-color: var(--gold-300); }
+.cat-search svg { width: 17px; height: 17px; flex: none; }
+.cat-search input {
+  flex: 1; background: none; border: 0; outline: none;
+  font-family: var(--font-serif); font-size: 1.05rem;
+  color: var(--frost-100); letter-spacing: .01em;
+}
+.cat-search input::placeholder { color: rgba(233,219,178,.45); font-style: italic; }
+.cat-search input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
 /* ============================================================================
    PRODUCT CARDS — horizontal gold-framed plates with scooped "ticket" corners
    ----------------------------------------------------------------------------
@@ -305,7 +324,18 @@
 .pc-loc {
   display: flex; align-items: center; gap: .5rem;
   font-family: var(--font-serif); font-size: 1.02rem;
-  color: var(--gold-100); margin-bottom: 1rem;
+  color: var(--gold-100); margin-bottom: .55rem;
+}
+/* the trade fact a bulk buyer scans for first */
+.pc-moq {
+  font-family: var(--font-body); font-size: .68rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(233,219,178,.75); margin-bottom: 1rem;
+}
+/* keyboard buyers get the same gold attention as hovering ones */
+.product-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--gold-500), 0 24px 50px -28px rgba(1,3,15,.85);
 }
 .pc-pin { width: 15px; height: 17px; color: var(--gold-500); flex: none; }
 .pc-explore {
@@ -375,8 +405,24 @@
 }
 .modal.is-open .modal-panel { transform: none; }
 .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-.modal-gallery { position: relative; min-height: 320px; background: var(--royal-700); }
-.modal-gallery img { width: 100%; height: 100%; object-fit: cover; }
+.modal-gallery { position: relative; min-height: 320px; background: var(--royal-700); overflow: hidden; }
+.modal-gallery img[data-gallery-main] {
+  width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;
+  transition: transform .5s var(--ease);
+}
+.modal-gallery img[data-gallery-main].is-zoomed { transform: scale(1.9); cursor: zoom-out; }
+.modal-thumbs {
+  position: absolute; left: .6rem; bottom: .6rem; z-index: 2;
+  display: flex; gap: .45rem;
+}
+.modal-thumb {
+  width: 52px; height: 52px; padding: 0; cursor: pointer;
+  border: 1.35px solid rgba(200,162,74,.45); border-radius: 6px; overflow: hidden;
+  background: var(--indigo-900); opacity: .75;
+  transition: opacity var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.modal-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.modal-thumb.is-active, .modal-thumb:hover { opacity: 1; border-color: var(--gold-300); }
 .modal-body { padding: clamp(1.25rem, 3vw, 2rem); display: flex; flex-direction: column; gap: .9rem; }
 .modal-body h3 { font-size: 1.8rem; color: var(--frost-100); }
 .modal-body .spec-list { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1rem; font-size: var(--fs-small); }
@@ -387,6 +433,9 @@
 
 /* Empty state */
 .products-empty { text-align: center; color: var(--text-muted-on-dark); padding: var(--space-8) 0; }
+
+/* Mobile "Show more" — hidden by JS everywhere except capped phone lists */
+.show-more { margin-top: 1.2rem; }
 
 @media (max-width: 760px) {
   .modal-grid { grid-template-columns: 1fr; }
