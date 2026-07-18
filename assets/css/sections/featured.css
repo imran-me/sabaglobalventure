@@ -12,7 +12,11 @@
   gap: var(--space-4);
 }
 
-/* Compact featured card — portrait media with a gold-veiled name plate. */
+/* Compact featured card — portrait media with a gold-veiled name plate.
+   Cross-fade/lift uses a hard-decelerating, overshoot-free curve (weighty
+   landing, no bounce) and is staggered per card via --i. Hover feedback
+   (border/shadow) is kept on its own zero delay so a late-index card doesn't
+   feel laggy to the pointer — only the entrance/exit motion is staggered. */
 .featured-card {
   position: relative;
   display: block;
@@ -21,9 +25,10 @@
   border: 4.73px solid var(--line);
   background: linear-gradient(180deg, rgba(20,54,158,.55), rgba(7,28,77,.65));
   box-shadow: var(--shadow-card);
-  transition: opacity 520ms var(--ease), transform 520ms var(--ease),
+  --ease-land: cubic-bezier(.16,1,.3,1);
+  transition: opacity 640ms var(--ease-land), transform 640ms var(--ease-land),
               border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-  transition-delay: calc(var(--i, 0) * 70ms);
+  transition-delay: calc(var(--i, 0) * 70ms), calc(var(--i, 0) * 70ms), 0s, 0s;
 }
 .featured-card:hover { border-color: rgba(201,162,75,.5); box-shadow: var(--shadow-lift); transform: translateY(-4px); }
 
@@ -51,8 +56,10 @@
 }
 .featured-card .plate .ori { font-size: .66rem; color: var(--gold-300); letter-spacing: .04em; margin-top: .2rem; }
 
-/* Swap state: deck fades/lifts out, then content changes, then fades back in. */
-.featured-row.is-swapping .featured-card { opacity: 0; transform: translateY(14px) scale(.985); }
+/* Swap state: deck fades/lifts out, then content changes, then fades back in.
+   A light cross-fade + micro-scale (not a big drop) — the deck should feel
+   like it settles, not like it falls. */
+.featured-row.is-swapping .featured-card { opacity: 0; transform: translateY(10px) scale(.985); }
 
 /* Mobile: 3 across, tighter. */
 @media (max-width: 768px) {

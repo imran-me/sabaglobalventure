@@ -34,9 +34,17 @@ window.initKinetic = function initKinetic() {
     });
 
     // Index every word across the whole heading so the stagger runs in reading
-    // order rather than restarting inside the <em>.
+    // order rather than restarting inside the <em>. The per-word transform
+    // transition is declared in hero.css (.kw-i); here we only add the
+    // longhand duration/curve inline so the rise reads as a hard, considered
+    // deceleration (no overshoot) rather than the default power-out — without
+    // touching the shared transition-property, so reduced-motion's
+    // `.kw-i { transition: none }` still fully disables it (transition: none
+    // zeroes transition-property, which these longhands never set).
     host.querySelectorAll(".kw-i").forEach((el, i) => {
-      el.style.transitionDelay = `${80 + i * 55}ms`;
+      el.style.transitionDelay = `${70 + i * 60}ms`;
+      el.style.transitionDuration = "820ms";
+      el.style.transitionTimingFunction = "cubic-bezier(.16,1,.3,1)";
     });
 
     if (reduce) { host.classList.add("is-revealed"); return; }

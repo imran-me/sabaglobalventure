@@ -1,22 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
-  <!-- mast -->
-  <rect x="86" y="18" width="3.5" height="98" fill="#000"/>
-  <!-- main lateen sail (forward of mast) -->
-  <path d="M84 22 C60 55 44 84 32 110 L84 110 Z" fill="#000"/>
-  <!-- small aft sail -->
-  <path d="M92 40 C104 62 114 86 120 108 L92 108 Z" fill="#000"/>
-  <!-- pennant at masthead -->
-  <path d="M89.5 18 L108 23 L89.5 28 Z" fill="#000"/>
-  <!-- hull: curved upswept prow (left) and stern (right) -->
-  <path d="M12 116 C22 114 34 118 48 120 L152 120 C166 118 178 114 188 111
-           C182 126 170 137 156 141 L44 141 C30 137 19 129 12 116 Z" fill="#000"/>
-  <!-- upswept prow tip -->
-  <path d="M10 114 C14 106 20 100 28 96 L30 101 C24 105 19 110 16 117 Z" fill="#000"/>
-  <!-- upswept stern tip -->
-  <path d="M190 109 C186 101 180 95 172 91 L170 96 C176 100 181 105 184 112 Z" fill="#000"/>
-  <!-- boatman poling at stern -->
-  <circle cx="158" cy="82" r="5" fill="#000"/>
-  <path d="M154 89 L163 89 L166 112 L159 112 L157 100 L154 112 L148 112 Z" fill="#000"/>
-  <!-- pole -->
-  <rect x="164" y="60" width="2.6" height="58" fill="#000" transform="rotate(14 165 90)"/>
+  <!-- hull: long crescent, high swept prow (left) and stern (right); sheer plank slit via evenodd -->
+  <path fill-rule="evenodd" fill="#000" d="M12 82 C20 92 34 104 58 110 C80 114 120 114 144 108 C160 104 174 96 184 86 C180 102 172 116 156 124 C132 131 72 131 46 122 C30 116 18 100 12 82 Z M36 108 C60 117 95 121 130 117 C148 114 160 109 168 102 L170.5 104.5 C162 112 149 117 131 120 C95 124 58 120 34 111 Z"/>
+  <!-- mast, slightly aft of center, raked a touch aft -->
+  <polygon fill="#000" points="105,118 109,118 110.5,12 107,12"/>
+  <!-- yard (lug spar) -->
+  <polygon fill="#000" points="65,33.5 146,22.5 146,26 65,37"/>
+  <!-- single square/lug sail, bellied forward before the wind -->
+  <path fill="#000" d="M72 35.5 L140 25 C142.5 45 142.5 68 138.5 91 C120 100 99 102 82 99 C72 77 70.5 55 72 35.5 Z"/>
+  <!-- forestay wedge: masthead to prow -->
+  <polygon fill="#000" points="106.5,20 109.5,21.5 21,89 19.5,86.3"/>
+  <!-- backstay wedge: masthead to stern horn -->
+  <polygon fill="#000" points="107.5,20.5 110.5,22 183,87.5 180.7,89.7"/>
+  <!-- masthead pennant -->
+  <path fill="#000" d="M110 12 L124 16.5 L110 21 Z"/>
+  <!-- boatman aft, leaning on steering oar -->
+  <circle fill="#000" cx="152" cy="71" r="4.5"/>
+  <path fill="#000" d="M148 76 C147 81 148 86 151 90 L142 108 L147 110 L153 96 L158 110 L163 108 L157 90 C158 85 158 80 156 78 Z"/>
+  <polygon fill="#000" points="151,77.5 167,85 165.5,89 150,82.5"/>
+  <!-- steering oar: shaft over the quarter, blade into the water -->
+  <polygon fill="#000" points="164,82.5 167.5,84.5 186,115 196,137 191.5,139.5 183,116.5"/>
+  <!-- two wave slits under the hull -->
+  <path fill="#000" d="M44 142 C58 137 76 137 90 142 C76 145.5 58 145.5 44 142 Z"/>
+  <path fill="#000" d="M116 148 C128 143.5 146 143.5 158 148 C146 151 128 151 116 148 Z"/>
 </svg>

@@ -1,48 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170">
-  <!-- ===== crane 1 (left) ===== -->
-  <!-- boom -->
-  <rect x="8" y="30" width="92" height="7" fill="#000"/>
+  <!-- ===== crane 2 (background, partially behind) ===== -->
+  <polygon points="118,148 134,148 131,110 125,110" fill="#000"/>
+  <polygon points="158,148 174,148 162,110 155,110" fill="#000"/>
+  <rect x="125" y="107" width="37" height="4" fill="#000"/>
+  <rect x="132" y="96" width="22" height="11" fill="#000"/>
+  <polygon points="144,96 154,96 149,80" fill="#000"/>
+  <polygon points="154,102 154,97 122,93 108,90 100,86 100,90 108,94 122,98" fill="#000"/>
+  <polygon points="154,98 154,102 172,100 172,97" fill="#000"/>
+  <rect x="170" y="95" width="10" height="9" fill="#000"/>
+
+  <!-- ===== crane 1 (main, foreground) ===== -->
+  <!-- sill beam and bogies -->
+  <rect x="40" y="148" width="90" height="6" fill="#000"/>
+  <rect x="44" y="154" width="18" height="8" fill="#000"/>
+  <rect x="108" y="154" width="18" height="8" fill="#000"/>
+  <!-- A-frame portal legs (taper inward toward top) -->
+  <polygon points="46,148 70,148 66,94 58,94" fill="#000"/>
+  <polygon points="100,148 124,148 104,94 96,94" fill="#000"/>
+  <!-- portal cap beam -->
+  <rect x="58" y="90" width="46" height="6" fill="#000"/>
   <!-- machine house -->
-  <rect x="48" y="18" width="30" height="14" fill="#000"/>
-  <!-- back stay -->
-  <polygon points="78,24 100,54 96,58 74,30" fill="#000"/>
-  <!-- boom truss diagonals -->
-  <polygon points="10,37 22,37 36,54 26,54" fill="#000"/>
-  <polygon points="34,37 46,37 32,54 22,54" fill="#000"/>
-  <rect x="16" y="52" width="34" height="4" fill="#000"/>
-  <!-- legs -->
-  <rect x="52" y="36" width="7" height="94" fill="#000"/>
-  <rect x="88" y="36" width="7" height="94" fill="#000"/>
-  <rect x="52" y="72" width="43" height="5" fill="#000"/>
-  <!-- sills / bogies -->
-  <rect x="44" y="130" width="24" height="8" fill="#000"/>
-  <rect x="80" y="130" width="24" height="8" fill="#000"/>
+  <rect x="68" y="74" width="34" height="17" fill="#000"/>
+  <!-- A-frame mast to apex -->
+  <polygon points="88,74 104,74 96,46" fill="#000"/>
+  <!-- backstay tie bars (apex to boom pivot, apex to counterweight tip) -->
+  <polygon points="94,47 98,47 108,81 104,81" fill="#000"/>
+  <polygon points="94,48 98,48 142,87 138,89" fill="#000"/>
+  <!-- boom, reaching seaward with slight upward hitch at tip -->
+  <polygon points="104,86 104,78 55,74 24,70 10,62 10,69 24,77 55,81" fill="#000"/>
+  <!-- backreach with counterweight -->
+  <polygon points="104,80 104,86 140,90 140,84" fill="#000"/>
+  <rect x="136" y="80" width="16" height="16" fill="#000"/>
   <!-- trolley -->
-  <rect x="30" y="37" width="12" height="8" fill="#000"/>
+  <rect x="29" y="75" width="13" height="7" fill="#000"/>
+  <!-- hoist falls -->
+  <rect x="32" y="81" width="2" height="23" fill="#000"/>
+  <rect x="39" y="81" width="2" height="23" fill="#000"/>
+  <!-- spreader and hanging container -->
+  <rect x="27" y="103" width="18" height="3" fill="#000"/>
+  <rect x="27" y="106" width="18" height="14" fill="#000"/>
 
-  <!-- ===== crane 2 (right) ===== -->
-  <rect x="104" y="46" width="88" height="6" fill="#000"/>
-  <rect x="134" y="35" width="26" height="12" fill="#000"/>
-  <polygon points="160,40 180,66 176,70 156,46" fill="#000"/>
-  <polygon points="106,52 116,52 128,66 119,66" fill="#000"/>
-  <polygon points="126,52 136,52 124,66 115,66" fill="#000"/>
-  <rect x="112" y="64" width="28" height="4" fill="#000"/>
-  <rect x="136" y="51" width="6" height="79" fill="#000"/>
-  <rect x="170" y="51" width="6" height="79" fill="#000"/>
-  <rect x="136" y="82" width="40" height="4" fill="#000"/>
-  <rect x="129" y="130" width="21" height="8" fill="#000"/>
-  <rect x="162" y="130" width="21" height="8" fill="#000"/>
-  <rect x="118" y="52" width="11" height="7" fill="#000"/>
-
-  <!-- ===== container stacks at base ===== -->
-  <rect x="6" y="142" width="34" height="11" fill="#000"/>
-  <rect x="6" y="155" width="34" height="11" fill="#000"/>
-  <rect x="44" y="155" width="34" height="11" fill="#000"/>
-  <rect x="82" y="142" width="34" height="11" fill="#000"/>
-  <rect x="82" y="155" width="34" height="11" fill="#000"/>
-  <rect x="120" y="155" width="34" height="11" fill="#000"/>
-  <rect x="158" y="142" width="34" height="11" fill="#000"/>
-  <rect x="158" y="155" width="34" height="11" fill="#000"/>
-  <!-- quay line -->
-  <rect x="0" y="168" width="200" height="2" fill="#000"/>
+  <!-- ===== quay line with two stacked containers ===== -->
+  <rect x="0" y="150" width="200" height="3" fill="#000"/>
+  <rect x="4" y="126" width="30" height="12" fill="#000"/>
+  <rect x="4" y="138" width="30" height="12" fill="#000"/>
 </svg>

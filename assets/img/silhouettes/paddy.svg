@@ -1,47 +1,68 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 190">
-  <!-- ===== stalks (arcing from a bound base at bottom center) ===== -->
-  <path d="M78 186 C74 140 62 98 34 66 C60 88 78 128 84 186 Z" fill="#000"/>
-  <path d="M80 186 C78 138 74 92 58 44 C78 82 88 130 88 186 Z" fill="#000"/>
-  <path d="M82 186 C84 136 90 90 98 42 C98 92 94 138 88 186 Z" fill="#000"/>
-  <path d="M84 186 C90 140 104 98 130 68 C108 96 96 138 92 186 Z" fill="#000"/>
-  <path d="M76 186 C66 146 48 116 20 98 C50 110 74 142 82 186 Z" fill="#000"/>
-  <path d="M86 186 C98 146 118 118 144 102 C114 116 94 144 90 186 Z" fill="#000"/>
-
-  <!-- ===== drooping grain heads (teardrops along each arc) ===== -->
-  <!-- far left stalk head -->
-  <ellipse cx="34" cy="66" rx="4" ry="7" transform="rotate(-40 34 66)" fill="#000"/>
-  <ellipse cx="42" cy="74" rx="4" ry="7" transform="rotate(-40 42 74)" fill="#000"/>
-  <ellipse cx="50" cy="82" rx="4" ry="7" transform="rotate(-40 50 82)" fill="#000"/>
-  <ellipse cx="58" cy="92" rx="4" ry="7" transform="rotate(-35 58 92)" fill="#000"/>
-  <!-- left stalk head -->
-  <ellipse cx="58" cy="44" rx="4" ry="7.5" transform="rotate(-18 58 44)" fill="#000"/>
-  <ellipse cx="63" cy="58" rx="4" ry="7.5" transform="rotate(-18 63 58)" fill="#000"/>
-  <ellipse cx="68" cy="72" rx="4" ry="7.5" transform="rotate(-16 68 72)" fill="#000"/>
-  <ellipse cx="72" cy="86" rx="4" ry="7.5" transform="rotate(-14 72 86)" fill="#000"/>
-  <!-- right center stalk head -->
-  <ellipse cx="98" cy="42" rx="4" ry="7.5" transform="rotate(12 98 42)" fill="#000"/>
-  <ellipse cx="97" cy="56" rx="4" ry="7.5" transform="rotate(12 97 56)" fill="#000"/>
-  <ellipse cx="95" cy="70" rx="4" ry="7.5" transform="rotate(10 95 70)" fill="#000"/>
-  <ellipse cx="93" cy="84" rx="4" ry="7.5" transform="rotate(8 93 84)" fill="#000"/>
-  <!-- far right stalk head -->
-  <ellipse cx="130" cy="68" rx="4" ry="7" transform="rotate(40 130 68)" fill="#000"/>
-  <ellipse cx="122" cy="76" rx="4" ry="7" transform="rotate(40 122 76)" fill="#000"/>
-  <ellipse cx="114" cy="84" rx="4" ry="7" transform="rotate(40 114 84)" fill="#000"/>
-  <ellipse cx="107" cy="94" rx="4" ry="7" transform="rotate(35 107 94)" fill="#000"/>
-  <!-- outer low stalk heads -->
-  <ellipse cx="20" cy="98" rx="4" ry="6.5" transform="rotate(-62 20 98)" fill="#000"/>
-  <ellipse cx="31" cy="104" rx="4" ry="6.5" transform="rotate(-62 31 104)" fill="#000"/>
-  <ellipse cx="42" cy="111" rx="4" ry="6.5" transform="rotate(-58 42 111)" fill="#000"/>
-  <ellipse cx="144" cy="102" rx="4" ry="6.5" transform="rotate(62 144 102)" fill="#000"/>
-  <ellipse cx="133" cy="108" rx="4" ry="6.5" transform="rotate(62 133 108)" fill="#000"/>
-  <ellipse cx="122" cy="115" rx="4" ry="6.5" transform="rotate(58 122 115)" fill="#000"/>
-
-  <!-- ===== thin leaves ===== -->
-  <path d="M78 150 C60 144 44 132 34 116 C50 128 68 138 80 142 Z" fill="#000"/>
-  <path d="M84 154 C102 148 118 136 128 120 C112 132 94 142 82 146 Z" fill="#000"/>
-  <path d="M78 172 C62 170 46 162 36 150 C52 160 68 166 80 166 Z" fill="#000"/>
-  <path d="M85 176 C101 174 117 166 127 154 C111 164 95 170 83 170 Z" fill="#000"/>
-
-  <!-- binding tie at base -->
-  <rect x="70" y="160" width="24" height="7" rx="3" fill="#000"/>
+<g fill="#000">
+<path d="M81 188L77 144L73 103L72 66L70 52L65 43L58 41L58 43L64 45L67 53L68 66L70 104L73 144L77 188Z"/>
+<path d="M60 40L55 42L51 46L49 52L47 58L47 65L48 73L50 73L49 65L49 58L51 52L53 48L56 44L60 42Z"/>
+<path d="M57 43Q61 38 65 43Q60 48 57 43Z"/>
+<path d="M55 41Q58 35 64 40Q60 46 55 41Z"/>
+<path d="M53 47Q53 40 60 40Q60 48 53 47Z"/>
+<path d="M49 48Q49 41 56 42Q56 49 49 48Z"/>
+<path d="M50 54Q46 48 53 45Q57 51 50 54Z"/>
+<path d="M47 58Q43 51 50 49Q54 56 47 58Z"/>
+<path d="M49 63Q43 59 49 54Q55 58 49 63Z"/>
+<path d="M47 68Q42 63 48 59Q53 65 47 68Z"/>
+<path d="M50 74Q44 71 48 65Q55 68 50 74Z"/>
+<path d="M51 81Q44 78 49 72Q55 76 51 81Z"/>
+<path d="M65 44L63 48L62 54L60 59L59 65L59 71L59 77L61 77L60 71L61 65L62 60L63 54L65 49L67 44Z"/>
+<path d="M64 52Q60 47 66 44Q70 49 64 52Z"/>
+<path d="M60 60Q56 54 63 52Q66 58 60 60Z"/>
+<path d="M61 69Q56 65 61 61Q66 65 61 69Z"/>
+<path d="M61 84Q55 81 60 76Q65 80 61 84Z"/>
+<path d="M76 188L66 152L59 121L54 96L51 82L46 73L39 70L39 72L44 75L48 83L52 96L56 122L63 153L72 188Z"/>
+<path d="M41 70L36 71L33 75L30 79L28 85L27 92L27 100L29 100L29 92L30 86L32 80L34 76L37 73L41 72Z"/>
+<path d="M37 72Q42 68 45 73Q40 77 37 72Z"/>
+<path d="M36 70Q40 65 45 70Q40 76 36 70Z"/>
+<path d="M34 76Q34 68 41 70Q41 77 34 76Z"/>
+<path d="M30 77Q30 69 38 71Q37 78 30 77Z"/>
+<path d="M31 82Q28 75 35 73Q38 80 31 82Z"/>
+<path d="M27 85Q25 78 32 77Q34 84 27 85Z"/>
+<path d="M29 91Q24 85 30 81Q35 86 29 91Z"/>
+<path d="M26 95Q22 90 28 86Q33 92 26 95Z"/>
+<path d="M29 101Q23 97 28 92Q34 95 29 101Z"/>
+<path d="M29 108Q23 104 28 99Q34 103 29 108Z"/>
+<path d="M45 74L43 78L42 82L41 87L40 92L40 96L40 101L42 101L41 96L42 92L42 87L43 83L45 78L47 74Z"/>
+<path d="M44 83Q40 78 46 75Q50 80 44 83Z"/>
+<path d="M40 91Q36 85 42 83Q46 88 40 91Z"/>
+<path d="M42 108Q36 105 41 100Q46 103 42 108Z"/>
+<path d="M87 188L94 149L99 114L103 84L106 69L110 61L116 59L116 57L108 59L103 68L101 84L96 114L90 148L83 188Z"/>
+<path d="M114 58L117 60L121 63L123 67L125 73L126 81L126 90L128 90L128 81L127 73L125 66L123 61L119 58L114 56Z"/>
+<path d="M117 59Q113 64 109 59Q113 54 117 59Z"/>
+<path d="M119 57Q114 62 110 56Q115 51 119 57Z"/>
+<path d="M121 62Q114 64 114 56Q121 55 121 62Z"/>
+<path d="M125 63Q118 65 118 57Q125 56 125 63Z"/>
+<path d="M124 69Q117 66 120 60Q127 62 124 69Z"/>
+<path d="M128 72Q121 70 123 64Q130 65 128 72Z"/>
+<path d="M126 78Q120 74 125 69Q131 73 126 78Z"/>
+<path d="M129 84Q122 80 127 74Q133 78 129 84Z"/>
+<path d="M126 90Q121 85 127 81Q132 86 126 90Z"/>
+<path d="M127 98Q121 93 127 89Q132 94 127 98Z"/>
+<path d="M107 61L109 66L110 71L111 76L112 81L112 86L111 92L113 92L113 87L113 81L113 76L112 70L111 65L109 61Z"/>
+<path d="M110 70Q104 67 108 62Q114 65 110 70Z"/>
+<path d="M114 78Q108 75 112 70Q118 72 114 78Z"/>
+<path d="M112 87Q107 82 112 79Q117 83 112 87Z"/>
+<path d="M111 99Q107 94 112 91Q116 96 111 99Z"/>
+<path d="M84 188L85 164L87 142L88 120L89 99L90 80L91 62L89 62L88 80L87 99L86 120L84 141L82 164L80 188Z"/>
+<path d="M91 62L91 56L92 51L92 45L93 40L93 36L93 31L93 31L92 36L91 40L91 45L90 51L90 56L89 62Z"/>
+<path d="M92 56Q95 59 91 62Q88 58 92 56Z"/>
+<path d="M90 47Q93 50 90 53Q86 51 90 47Z"/>
+<path d="M94 40Q96 44 92 46Q89 42 94 40Z"/>
+<path d="M91 33Q95 36 92 39Q88 36 91 33Z"/>
+<path d="M94 26Q96 29 93 31Q91 28 94 26Z"/>
+<path d="M89 102L93 96L97 89L100 82L102 74L104 67L105 60L105 60L103 67L101 74L98 80L94 87L91 94L87 102Z"/>
+<path d="M85 171L91 166L98 160L103 154L108 147L112 139L115 132L118 125L121 117L123 110L121 110L119 117L116 124L113 131L108 137L103 144L98 150L93 156L88 163L83 169Z"/>
+<path d="M123 111L125 110L127 111L129 113L130 116L131 121L131 121L131 116L130 112L128 109L125 108L121 109Z"/>
+<path d="M79 161L73 156L68 150L63 144L58 139L53 133L49 127L45 121L42 114L40 108L38 108L41 115L43 122L46 129L50 135L54 142L58 148L64 154L71 159L77 163Z"/>
+<path d="M40 107L36 106L33 106L31 108L29 112L29 117L29 117L30 112L32 109L34 108L36 108L38 109Z"/>
+<path d="M87 182L93 179L98 176L103 172L107 168L110 163L113 158L115 152L117 147L117 147L114 152L111 157L108 161L104 165L100 169L95 172L91 176L87 180Z"/>
+<path d="M118 148L119 147L120 147L121 149L122 153L122 157L122 157L123 153L122 149L121 146L119 145L116 146Z"/>
+</g>
 </svg>

@@ -87,15 +87,19 @@ window.initFeatured = function initFeatured() {
 
   /* ---- Gentle auto-rotation with a gold crossfade -------------------- */
   let paused = false, timer = null;
-  const INTERVAL = 4200, SWAP = 560;
+  // CARD_DUR/CARD_STEP mirror the exit transition + per-card stagger set in
+  // featured.css (.featured-card) — kept in sync so the deck only repaints
+  // once the slowest (highest --i) card has actually finished fading out.
+  const INTERVAL = 4200, CARD_DUR = 640, CARD_STEP = 70;
 
   const tick = () => {
     if (paused) return;
     row.classList.add("is-swapping");           // fade/lift current set out
+    const exitTime = CARD_DUR + (count - 1) * CARD_STEP;
     setTimeout(() => {
       paint(nextSet(count));                     // swap in the next set
       requestAnimationFrame(() => row.classList.remove("is-swapping")); // fade back in
-    }, SWAP);
+    }, exitTime);
   };
 
   const start = () => { if (!timer) timer = setInterval(tick, INTERVAL); };

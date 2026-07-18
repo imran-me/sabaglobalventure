@@ -21,17 +21,17 @@
   /* ---- Indigo (the deepening of the canvas) ---------------------------
      Bengal's own dye. These sit UNDER the blues and give the dark chapters
      their depth and warmth-in-coldness. */
-  --indigo-950: #05081C;   /* the deepest ground */
-  --indigo-900: #0A1338;   /* dark chapter base */
+  --indigo-950: #07071F;   /* the deepest ground — pulled toward violet-indigo */
+  --indigo-900: #0D0F3E;   /* dark chapter base — real indigo dye, not navy */
   --indigo-800: #141F55;   /* raised indigo surfaces */
   --indigo-700: #1E2E78;   /* indigo cards / gradients */
 
   /* ---- Ivory & natural (the light chapters) ---------------------------
      Warm, paper-like, hand-made. NOT a cold grey-white — that would kill the
      "natural" half of the brief. */
-  --ivory-100: #FBF7EF;   /* the light canvas — raw silk / muslin */
-  --ivory-200: #F4EDE0;   /* raised ivory panels */
-  --ivory-300: #E8DCC8;   /* ivory dividers, hairlines on light */
+  --ivory-100: #FAF4E4;   /* the light canvas — raw silk / muslin */
+  --ivory-200: #F3E9D8;   /* raised ivory panels */
+  --ivory-300: #E9DAC0;   /* ivory dividers, hairlines on light */
   --clay-600:  #9C4A2F;   /* TERRACOTTA — the rare spark */
   --clay-400:  #C2694A;   /* terracotta hover/tint */
   /* ---- Blues (canvas + surfaces) --------------------------------------
@@ -54,7 +54,7 @@
   --gold-500: #C9A24B;    /* PRIMARY gold — lines, eyebrows, CTAs */
   --gold-300: #E8CE79;    /* hover gold, glows */
   --gold-100: #F7EDCB;    /* gold text on very dark, highlights */
-  --gold-metallic: linear-gradient(135deg,#BF953F,#FCF6BA,#B38728,#FBF5B7,#AA771C);
+  --gold-metallic: linear-gradient(135deg,#BF953F,#EFE1AE,#B38728,#E9D9A0,#AA771C);
 
   /* ---- Neutral + light ------------------------------------------------ */
   --frost-100: #F2F7FD;   /* text on dark, light section bg */

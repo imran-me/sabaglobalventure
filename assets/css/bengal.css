@@ -223,6 +223,31 @@
    indigo reads as a deliberate edge, not a gap. */
 .section--ivory { border-block: 1px solid var(--ivory-300); }
 
+/* ---- The ivory MOVEMENT -----------------------------------------------
+   Colour moves in long movements, never stripes: when two ivory sections sit
+   back to back (featured + origin), they are ONE breath. The includes wrap
+   each section in a div, so an adjacent-sibling selector can't see across —
+   the seam is collapsed by id instead: featured drops its bottom hairline and
+   origin keeps its top one, leaving a single line where there were two. */
+#featured.section--ivory { border-bottom: 0; }
+
+/* Where the dark overture meets the paper, the indigo BLEEDS in — the way
+   indigo dye touches muslin — instead of a razor cut from a full-viewport dark
+   hero straight to white. Very shallow, very quiet; it sits above the jamdani
+   weave (z-index -1) and below the content (z-index 2). */
+#featured.section--ivory {
+  position: relative;
+}
+#featured.section--ivory::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: clamp(4rem, 9vw, 7.5rem);
+  background: linear-gradient(180deg, rgba(5,8,28,.30), rgba(5,8,28,.10) 45%, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ===== Alpona divider =================================================
    Bengali rice-paste floor art. Every stroke carries pathLength="100", so one
    rule draws them all in at a uniform rate regardless of true length. The

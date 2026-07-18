@@ -1,39 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130">
-  <!-- hull, bow to the left with raked stem -->
-  <path d="M10 74 L228 74 C230 88 224 100 212 104 L44 104 C28 100 16 90 10 74 Z" fill="#000"/>
-  <!-- raked bow rise -->
-  <path d="M8 72 C8 60 10 50 14 42 L22 42 L22 74 Z" fill="#000"/>
-  <!-- bulwark / main deck line -->
-  <rect x="18" y="66" width="212" height="9" fill="#000"/>
+  <!-- hull: flared bow, bulbous bow at waterline, flat keel, curved stern counter, deck line on top -->
+  <path fill="#000" d="M24 74
+    C16 74 10 76 8 82
+    C7 86 8 90 11 92
+    C13 94 15 95 18 96
+    L224 96
+    C231 96 236 92 236.5 84
+    L235 74
+    Z"/>
 
-  <!-- container stacks on deck -->
-  <rect x="30" y="54" width="26" height="11" fill="#000"/>
-  <rect x="30" y="42" width="26" height="11" fill="#000"/>
-  <rect x="60" y="54" width="26" height="11" fill="#000"/>
-  <rect x="60" y="42" width="26" height="11" fill="#000"/>
-  <rect x="60" y="30" width="26" height="11" fill="#000"/>
-  <rect x="90" y="54" width="26" height="11" fill="#000"/>
-  <rect x="90" y="42" width="26" height="11" fill="#000"/>
-  <rect x="90" y="30" width="26" height="11" fill="#000"/>
-  <rect x="90" y="18" width="26" height="11" fill="#000"/>
-  <rect x="120" y="54" width="26" height="11" fill="#000"/>
-  <rect x="120" y="42" width="26" height="11" fill="#000"/>
-  <rect x="120" y="30" width="26" height="11" fill="#000"/>
-  <rect x="150" y="54" width="26" height="11" fill="#000"/>
-  <rect x="150" y="42" width="26" height="11" fill="#000"/>
+  <!-- tiny bow mast -->
+  <polygon points="20.5,74 22.5,74 21.8,56 21.2,56" fill="#000"/>
 
-  <!-- bridge tower (aft) -->
-  <rect x="182" y="22" width="34" height="44" fill="#000"/>
-  <rect x="176" y="30" width="46" height="10" fill="#000"/>
-  <!-- funnel -->
-  <rect x="192" y="8" width="16" height="16" fill="#000"/>
-  <!-- mast -->
-  <rect x="198" y="0" width="3" height="10" fill="#000"/>
+  <!-- container bays: varying heights, wide/flat landscape blocks, gaps at hatch lines -->
+  <rect x="30" y="60" width="26" height="14" fill="#000"/>
+  <path fill="#000" d="M59 74 L59 62 L67 62 L67 54 L81 54 L81 62 L89 62 L89 74 Z"/>
+  <rect x="92" y="62" width="22" height="12" fill="#000"/>
+  <rect x="117" y="56" width="32" height="18" fill="#000"/>
+  <rect x="152" y="64" width="24" height="10" fill="#000"/>
 
-  <!-- waterline strokes -->
-  <rect x="0" y="108" width="240" height="3" fill="#000"/>
-  <rect x="20" y="116" width="86" height="2.5" fill="#000"/>
-  <rect x="122" y="116" width="70" height="2.5" fill="#000"/>
-  <rect x="52" y="124" width="52" height="2" fill="#000"/>
-  <rect x="140" y="124" width="66" height="2" fill="#000"/>
+  <!-- aft superstructure: single flared bridge block with wing overhang and window slit -->
+  <path fill="#000" fill-rule="evenodd" d="M193 74 L193 34 L188 34 L188 28 L221 28 L221 34 L217 34 L217 74 Z
+    M191 30.2 H218 V31.8 H191 Z"/>
+
+  <!-- radar mast atop bridge roof -->
+  <rect x="204" y="18" width="2" height="10" fill="#000"/>
+  <ellipse cx="205" cy="16.5" rx="2.6" ry="1.4" fill="#000"/>
+
+  <!-- funnel: separate tapered shape behind/above the bridge, near stern, clear of the wing -->
+  <polygon points="227,74 236,74 234.5,30 228.5,30" fill="#000"/>
+
+  <!-- two wake slits -->
+  <rect x="20" y="104" width="95" height="3" rx="1.5" fill="#000"/>
+  <rect x="125" y="104" width="95" height="3" rx="1.5" fill="#000"/>
 </svg>
