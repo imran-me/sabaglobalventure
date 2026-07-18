@@ -59,42 +59,32 @@ window.initProducts = function initProducts() {
     const packs = (p.packaging || [])
       .map((pk) => `<span class="chip chip--pack">${esc(pk)}</span>`).join("");
     const hs = p.hsCode ? `<p class="hs-line">HS Code: <b>${esc(p.hsCode)}</b></p>` : "";
-    // The photo sits in an arched niche (.media-niche carries the arch mask);
-    // the lota-pata ornament traces the same arch OUTSIDE that mask — a frame
-    // inside it would have half its own hairline clipped away. The category is a
-    // micro-cap above the arch, not a pill stuck on the photo, so it must live
-    // outside .media too or the mask would eat it.
-    // Four gold lota-pata corner flourishes framing the card on the blue —
-    // the vine "outside the image" so it reads even with a photo in the arch.
-    // data-reveal on the frame itself so it self-triggers its draw-in (the same
-    // proven path the featured section frame uses) rather than depending on the
-    // card's reveal state cascading in.
-    const lotaFrame =
-      `<span class="lota-frame" aria-hidden="true" data-reveal>` +
-      ["tl","tr","bl","br"].map((c) =>
-        `<svg class="lc lc-${c}" viewBox="0 0 100 100"><use href="#sgv-lota-corner"></use></svg>`
-      ).join("") + `</span>`;
+    // The photo sits in an arched niche (.media-niche carries the arch mask).
+    // The lota-pata vine frames it as a DOUBLE border: an inner arch hugging the
+    // photo and an outer arch sitting on the blue just beyond it — so the vine
+    // reads prominently even when a real image fills the niche. Category is a
+    // micro-cap above the arch (outside .media, or the mask would clip it).
+    const archOrn = (cls) =>
+      `<svg class="arch-orn ${cls}" viewBox="0 0 100 140" preserveAspectRatio="none"
+             fill="none" stroke="currentColor" stroke-width="0.25"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <use class="lo lo-frame" href="#sgv-arch-frame"></use>
+          <use class="lo lo-vines" href="#sgv-arch-vines"></use>
+          <use class="lo lo-crest" href="#sgv-arch-crest"></use>
+        </svg>`;
 
     return `
     <article class="card product-card ${i % 2 ? "motif-b" : ""}" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
-      ${lotaFrame}
       <span class="cat-eyebrow">${esc(p.category)}</span>
-      <div class="media">
+      <div class="media" data-reveal>
         <div class="media-niche">
           <img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
           <!-- Sheen lives INSIDE the niche so the arch mask clips it: the light
                travels across the opening, not across a rectangle. -->
           <span class="arch-sheen" aria-hidden="true"></span>
         </div>
-        <!-- The lota-pata arch, referenced from sections/defs.html rather than
-             inlined: 20+ niches x ~14KB of path data would be ~300KB of DOM. -->
-        <svg class="arch-orn" viewBox="0 0 100 140" preserveAspectRatio="none"
-             fill="none" stroke="currentColor" stroke-width="0.25"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <use class="lo lo-frame" href="#sgv-arch-frame"></use>
-          <use class="lo lo-vines" href="#sgv-arch-vines"></use>
-          <use class="lo lo-crest" href="#sgv-arch-crest"></use>
-        </svg>
+        ${archOrn("arch-orn--outer")}
+        ${archOrn("arch-orn--inner")}
       </div>
       <div class="body">
         <h3 class="name">${esc(p.name)}</h3>
