@@ -251,15 +251,25 @@
    Ivory carries a faint woven ground so it feels like muslin, not like a
    white div. */
 .section--ivory {
-  background: var(--ivory-100);
+  /* Warm ivory ground carrying a Bengal pattern — lotus, paisley and river
+     waves — woven in at low alpha so it reads as printed cloth, not a white div. */
+  background:
+    url("../img/patterns/ivory-bengal.svg") center / 300px repeat,
+    var(--ivory-100);
   color: var(--text-on-light);
   position: relative;
   isolation: isolate;
 }
+/* The Royal Bengal tiger fills the ivory ground as a large gold watermark (the
+   country's own emblem, presiding over the bright chapters). Gold on warm ivory
+   is low-contrast, so even large + prominent it never fights the content, which
+   sits above it (.container is z-index 2). */
 .section--ivory::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: url("../img/patterns/jamdani-gold.svg") center / 120px repeat;
-  opacity: .10;
+  background: url("../img/scene/tiger-cut.png") center 40% / cover no-repeat;
+  opacity: .5;
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 45%, #000 60%, transparent 100%);
+          mask-image: radial-gradient(120% 100% at 50% 45%, #000 60%, transparent 100%);
 }
 .section--ivory .lead { color: var(--text-muted-on-light); }
 .section--ivory h1, .section--ivory h2, .section--ivory h3 { color: var(--ink-900); }

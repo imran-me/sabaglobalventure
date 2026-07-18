@@ -208,6 +208,45 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-18 (later) — Products page rebuilt PIXEL-1:1 to the mockup; sitewide sweep
+Client: *"exactly pixel to pixel perfect… 100% copy"* of the Our-Products mockup, then
+*"go through every page… top-notch luxurious design everywhere."*
+- **The mockup lives on disk**: `assets/img/bg/"ChatGPT Image Jul 18, 2026, 01_53_09 PM.png"`
+  (1536×1024). Its card borders were located by probing gold pixels (cards y 557–891;
+  x 42–523 / 545–989 / 1011–1493), and the three **card photos were cropped straight out
+  of it** into committed assets: `products/miniket-rice.jpg`, `bengal-spices.jpg`,
+  `premium-shrimp.jpg`, plus `scene/paddy-stalk.jpg` (banner left) and `scene/shapla-edge.jpg`.
+- **Products section now mirrors the mockup**: banner (photo right dissolving into navy,
+  jamdani weave, stalk art left, no kicker, "Our/Products" + diamond rule + 2-line sub,
+  seal riding a bolder torn edge lower-right, shapla ghost at the page edge); filter row
+  of 9 roundels with hairline dividers (active = **double ring + tapered underline —
+  never a gold fill**); catalogue on a **wide stage** (`.section--products > .container`
+  max 1478px) with 3-across cards: photo 46% / panel 54%, **scooped "ticket" corners**
+  (4 corner SVGs + hairline edges in `.pc-gild`, matching radial-punch CSS mask on
+  `.pc-frame`), hanging-tassel/lota/paddy panel ornaments, serif name, gold serif origin
+  + pin, "Explore Product ⟶" pinned at the panel foot over a long gold underline;
+  closing gold pull-quote between a redrawn poling **nouka** and a **shapla**.
+  Seed data leads with the mockup trio (Miniket copy verbatim; new `p30 Bengal Spices`
+  Naogaon, `p31 Premium Shrimp` Khulna); `seeded` bumped to **v4**.
+- ⚠ **Firebase is LIVE now** (`firebase-config.js` filled, project `sabaglobalventure`,
+  added 2026-07): every visitor hydrates the catalogue **from Firestore** — the client's
+  admin-edited data with their own uploaded packshots. Seed-file edits only affect fresh/
+  offline fallback. For the live site to show the mockup's Bengal Spices / Premium Shrimp
+  cards, add them in **Admin → Products** (photos are in `assets/img/products/`). Never
+  overwrite the cloud catalogue from the seed without the owner asking.
+- **Sitewide sweep (full-page headless walk of every chapter):** found the two CTA pills
+  with **swapped variants** — featured (ivory) used `.btn--gold` (pale gold on ivory ≈
+  invisible), about (navy) used `.btn--royal` (navy on navy ≈ invisible). Swapped; both
+  verified legible. Kept + verified the previously uncommitted ivory-chapter work: the
+  **Royal Bengal tiger watermark** over `patterns/ivory-bengal.svg` ground (bengal.css)
+  — it renders beautifully behind Featured and Capabilities. `[data-reveal]` verified
+  reaching opacity 1 under real scrolling (a fast scripted walk under-reports reveals —
+  park + dwell, as §Session-1 already warned).
+- **Harness for this repo** (scratchpad `cdp.py` + `render_*.py`): always
+  `Network.setCacheDisabled`, `localStorage.clear()` (the throwaway profile carries stale
+  seeds), and `Network.setBlockedURLs` on `*firestore*` when verifying seed-driven design.
+
+
 ### 2026-07-16 — Standing instructions captured in-repo
 Owner asked that context + instructions always be saved *inside the project
 folder* and pushed to GitHub (not only in an assistant's private memory). Added
