@@ -46,30 +46,64 @@
   // square loses the least in both directions, and the text is wrapped and
   // kept well inside a centre-safe column so nothing gets sliced off.
   function makePlaceholder(label) {
-    const lines = wrap(String(label || "Saba Global Ventures"), 18, 3);
-    const startY = 470 - (lines.length - 1) * 21;
-    const text = lines.map((l, i) =>
-      "<text x='400' y='" + (startY + i * 42) + "' text-anchor='middle' fill='%23D8BD72' " +
-      "font-family='Georgia, serif' font-size='34'>" + escXml(l) + "</text>").join("");
+    const lines = wrap(String(label || "Saba Global Ventures"), 20, 2);
+    const capY = 512 - (lines.length - 1) * 24;
+    const caption = lines.map((l, i) =>
+      "<text x='400' y='" + (capY + i * 46) + "' text-anchor='middle' fill='#E9DBB2' " +
+      "font-family='Georgia, serif' font-style='italic' font-size='36'>" + escXml(l) + "</text>").join("");
+
+    // A jamdani corner motif: a quarter-arc bracket + a small buti diamond.
+    const corner = (tx, ty, rot) =>
+      "<g transform='translate(" + tx + " " + ty + ") rotate(" + rot + ")' fill='none' stroke='#C8A24A' stroke-linecap='round' stroke-linejoin='round'>" +
+        "<path d='M0 70 Q0 0 70 0' stroke-width='2' stroke-opacity='0.5'/>" +
+        "<path d='M16 70 Q16 16 70 16' stroke-width='1.4' stroke-opacity='0.28'/>" +
+        "<path d='M34 34 L42 26 L50 34 L42 42 Z' stroke-width='1.6' stroke-opacity='0.6'/>" +
+        "<circle cx='42' cy='34' r='1.6' fill='#C8A24A' stroke='none'/>" +
+      "</g>";
+
+    // A drooping rice panicle (paddy) flanking the lotus.
+    const paddy = (tx, sx) =>
+      "<g transform='translate(" + tx + " 250) scale(" + sx + " 1)' fill='none' stroke='#C8A24A' stroke-opacity='0.42' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.4'>" +
+        "<path d='M0 96 C6 60 4 22 -8 -14'/>" +
+        "<path d='M-6 6 C4 2 10 10 6 20 C0 16 -4 12 -6 6Z'/>" +
+        "<path d='M-4 30 C6 26 12 34 8 44 C2 40 -2 36 -4 30Z'/>" +
+        "<path d='M-1 54 C9 50 15 58 11 68 C5 64 1 60 -1 54Z'/>" +
+        "<path d='M2 78 C12 74 18 82 14 92 C8 88 4 84 2 78Z'/>" +
+      "</g>";
 
     const svg =
       "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'>" +
-        "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>" +
-          "<stop offset='0' stop-color='#0D2559'/><stop offset='1' stop-color='#050F2C'/>" +
-        "</linearGradient></defs>" +
-        "<rect width='800' height='800' fill='url(%23g)'/>" +
-        "<rect x='30' y='30' width='740' height='740' rx='14' fill='none' stroke='%23C8A24A' stroke-opacity='0.28' stroke-width='2'/>" +
-        // Shapla (water lily) — the national flower, drawn as the house mark.
-        "<g transform='translate(400 296)' fill='none' stroke='%23C8A24A' stroke-opacity='0.6' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'>" +
-          "<path d='M0 40 C-6 6 -6 -30 0 -58 C6 -30 6 6 0 40Z'/>" +
-          "<path d='M0 40 C-24 20 -44 -6 -52 -40 C-20 -30 2 -6 0 40Z'/>" +
-          "<path d='M0 40 C24 20 44 -6 52 -40 C20 -30 -2 -6 0 40Z'/>" +
-          "<path d='M0 40 C-40 30 -70 14 -84 -12 C-44 -14 -14 6 0 40Z' stroke-opacity='0.42'/>" +
-          "<path d='M0 40 C40 30 70 14 84 -12 C44 -14 14 6 0 40Z' stroke-opacity='0.42'/>" +
-          "<path d='M-58 52 C-24 40 24 40 58 52' stroke-opacity='0.32'/>" +
+        "<defs><linearGradient id='g' x1='0.2' y1='0' x2='0.5' y2='1'>" +
+          "<stop offset='0' stop-color='#12306A'/><stop offset='0.55' stop-color='#0A1C48'/><stop offset='1' stop-color='#050F2C'/>" +
+        "</linearGradient>" +
+        "<radialGradient id='halo' cx='0.5' cy='0.36' r='0.5'>" +
+          "<stop offset='0' stop-color='#C8A24A' stop-opacity='0.12'/><stop offset='1' stop-color='#C8A24A' stop-opacity='0'/>" +
+        "</radialGradient></defs>" +
+        "<rect width='800' height='800' fill='url(#g)'/>" +
+        "<rect width='800' height='800' fill='url(#halo)'/>" +
+        // double gold frame
+        "<rect x='26' y='26' width='748' height='748' fill='none' stroke='#C8A24A' stroke-opacity='0.34' stroke-width='2'/>" +
+        "<rect x='38' y='38' width='724' height='724' fill='none' stroke='#C8A24A' stroke-opacity='0.16' stroke-width='1'/>" +
+        // jamdani corners
+        corner(46, 46, 0) + corner(754, 46, 90) + corner(754, 754, 180) + corner(46, 754, 270) +
+        // paddy flanking the lotus
+        paddy(300, 1) + paddy(500, -1) +
+        // the shapla (national flower) — layered petals + water lines, the house mark
+        "<g transform='translate(400 300)' fill='none' stroke='#D8BD72' stroke-linecap='round' stroke-linejoin='round' stroke-width='3.2'>" +
+          "<path d='M0 74 C-8 22 -8 -54 0 -98 C8 -54 8 22 0 74Z'/>" +
+          "<path d='M0 74 C-36 46 -64 -4 -74 -58 C-32 -42 -4 -6 0 74Z'/>" +
+          "<path d='M0 74 C36 46 64 -4 74 -58 C32 -42 4 -6 0 74Z'/>" +
+          "<path d='M0 74 C-62 56 -102 26 -118 -22 C-62 -20 -20 10 0 74Z' stroke-opacity='0.55'/>" +
+          "<path d='M0 74 C62 56 102 26 118 -22 C62 -20 20 10 0 74Z' stroke-opacity='0.55'/>" +
+          "<path d='M-86 88 C-32 68 32 68 86 88' stroke-opacity='0.4'/>" +
+          "<path d='M-58 100 C-22 88 22 88 58 100' stroke-opacity='0.28'/>" +
         "</g>" +
-        text +
-        "<text x='400' y='612' text-anchor='middle' fill='%23C8A24A' font-family='Arial, sans-serif' font-size='16' letter-spacing='4'>SABA GLOBAL VENTURES</text>" +
+        caption +
+        // a diamond-centred rule under the caption
+        "<path d='M292 " + (capY + 34) + " H388 M412 " + (capY + 34) + " H508' stroke='#C8A24A' stroke-opacity='0.5' stroke-width='1'/>" +
+        "<path d='M400 " + (capY + 27) + " L407 " + (capY + 34) + " L400 " + (capY + 41) + " L393 " + (capY + 34) + " Z' fill='#C8A24A' fill-opacity='0.65'/>" +
+        "<text x='400' y='624' text-anchor='middle' fill='#C8A24A' font-family='Arial, sans-serif' font-size='17' letter-spacing='6'>SABA GLOBAL VENTURES</text>" +
+        "<text x='400' y='656' text-anchor='middle' fill='#C8A24A' fill-opacity='0.6' font-family='Georgia, serif' font-style='italic' font-size='19'>imagery on request</text>" +
       "</svg>";
     return "data:image/svg+xml," + svg.replace(/#/g, "%23").replace(/\s{2,}/g, " ");
   }
