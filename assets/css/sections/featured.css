@@ -86,7 +86,7 @@
 .featured-card .cat {
   display: block; text-align: center;
   margin: .1rem 0 .45rem;
-  font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700;
+  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700;
   color: var(--gold-500);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
@@ -101,20 +101,37 @@
   font-family: var(--font-serif); font-size: 1rem; line-height: 1.15; color: var(--frost-100);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.featured-card .plate .ori { font-size: .62rem; color: var(--gold-300); letter-spacing: .04em; margin-top: .25rem; }
+.featured-card .plate .ori { font-size: .68rem; color: var(--gold-300); letter-spacing: .04em; margin-top: .25rem; }
 
 /* Swap state: deck fades/lifts out, then content changes, then fades back in.
    A light cross-fade + micro-scale (not a big drop) — the deck should feel
    like it settles, not like it falls. */
 .featured-row.is-swapping .featured-card { opacity: 0; transform: translateY(10px) scale(.985); }
 
-/* Mobile: 3 across, tighter. */
-@media (max-width: 768px) {
+/* Tablet: 3 across, tighter. */
+@media (max-width: 900px) {
   .featured-row { grid-template-columns: repeat(3, 1fr); gap: .5rem; }
   .featured-card .plate { padding: 1rem .45rem .45rem; }
   .featured-card .plate .name { font-size: .76rem; }
   .featured-card .plate .ori { display: none; }
-  .featured-card .cat { font-size: .5rem; letter-spacing: .1em; padding: .15rem .35rem; }
+  .featured-card .cat { font-size: .56rem; letter-spacing: .1em; padding: .15rem .35rem; }
+}
+
+/* Phone: a snap-scroll promenade — each signature line at a size worth
+   stopping for, instead of five cards crushed into matchboxes. */
+@media (max-width: 640px) {
+  .featured-row {
+    display: flex; overflow-x: auto; gap: .8rem;
+    scroll-snap-type: x mandatory;
+    padding: 0 var(--gutter) .6rem;
+    margin-inline: calc(-1 * var(--gutter));
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .featured-row::-webkit-scrollbar { display: none; }
+  .featured-card { flex: 0 0 62vw; scroll-snap-align: center; }
+  .featured-card .plate .name { font-size: 1rem; }
+  .featured-card .plate .ori { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {

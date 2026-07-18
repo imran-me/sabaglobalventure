@@ -156,6 +156,18 @@
 @media (prefers-reduced-motion: reduce) {
   .portal-sampan { animation: none; transform: translateX(-50%); }
 }
+/* The phone-only nouka — the engraving beneath the CTAs (portal is a faint
+   backdrop there). Gilded the same way as its portal sibling. */
+.hero-nouka-m {
+  display: none;
+  width: min(72%, 300px); height: auto;
+  margin: 1.6rem auto 0;
+  mix-blend-mode: screen; opacity: .85;
+  filter: sepia(.55) saturate(1.7) hue-rotate(-12deg) brightness(1.06);
+}
+@media (max-width: 640px) {
+  .hero-nouka-m { display: block; }
+}
 
 .portal-veil {
   position: absolute; inset: 0; z-index: 2;
@@ -167,7 +179,7 @@
   position: absolute;
   left: 50%; bottom: -1.9rem;
   transform: translateX(-50%);
-  font-size: .62rem;
+  font-size: .66rem;
   letter-spacing: .34em;
   text-transform: uppercase;
   color: var(--gold-500);
@@ -180,7 +192,7 @@
 .scroll-cue {
   position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: .35rem;
-  color: var(--gold-300); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold-300); font-size: .64rem; letter-spacing: .3em; text-transform: uppercase;
   z-index: 2;
 }
 .scroll-cue svg { width: 20px; height: 20px; animation: cue-bob 1.8s ease-in-out infinite; }

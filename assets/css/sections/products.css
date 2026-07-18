@@ -127,7 +127,7 @@
   .pb-scene { width: 100%; opacity: .45; -webkit-mask: linear-gradient(90deg, transparent, #000 60%); mask: linear-gradient(90deg, transparent, #000 60%); }
   .pb-seal { position: static; margin: 1.4rem auto 0; bottom: auto; }
   .products-banner { flex-direction: column; justify-content: center; padding-block: 2.5rem 3rem; margin-bottom: 2.4rem; }
-  .pb-copy { padding-left: clamp(2.2rem, 14vw, 5rem); }
+  .pb-copy { padding-left: clamp(3rem, 19vw, 7.5rem); }  /* clear of the stalk art */
   .pb-shapla { display: none; }
 }
 @media (max-width: 520px) {
@@ -306,7 +306,7 @@
 
 .pc-cat {
   display: flex; align-items: center; gap: .55rem; margin-bottom: .85rem;
-  font-size: .64rem; letter-spacing: .3em; text-transform: uppercase;
+  font-size: .68rem; letter-spacing: .3em; text-transform: uppercase;
   font-weight: 600; color: var(--gold-300); font-family: var(--font-body);
 }
 .pc-dash { width: 14px; height: 1px; background: var(--gold-500); flex: none; }

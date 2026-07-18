@@ -31,7 +31,7 @@
   position: absolute;
   left: 50%; bottom: -1.75rem;
   transform: translateX(-50%);
-  font-size: .6rem;
+  font-size: .66rem;
   letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--gold-500);

@@ -40,7 +40,7 @@
 }
 .contact-director .cd-title {
   display: block; margin-top: .15rem;
-  font-size: .64rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-500);
+  font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-500);
 }
 .contact-line { display: flex; gap: .8rem; align-items: flex-start; }
 .contact-line .ic { flex: none; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; border: 1.35px solid var(--line); color: var(--gold-300); }

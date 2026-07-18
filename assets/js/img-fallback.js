@@ -46,7 +46,9 @@
   // square loses the least in both directions, and the text is wrapped and
   // kept well inside a centre-safe column so nothing gets sliced off.
   function makePlaceholder(label) {
-    const lines = wrap(String(label || "Saba Global Ventures"), 20, 2);
+    // Three lines of ~22 chars before ellipsis — captions like "Turmeric
+    // fingers and ground turmeric" must never die mid-word ("turmeri…").
+    const lines = wrap(String(label || "Saba Global Ventures"), 22, 3);
     const capY = 512 - (lines.length - 1) * 24;
     const caption = lines.map((l, i) =>
       "<text x='400' y='" + (capY + i * 46) + "' text-anchor='middle' fill='#E9DBB2' " +

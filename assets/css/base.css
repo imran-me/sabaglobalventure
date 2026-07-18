@@ -161,3 +161,28 @@ a:hover { color: var(--accent-hover); }
     transition-duration: .001ms !important;
   }
 }
+
+
+/* ===== Accessibility: prefers-contrast ==================================
+   The house hairlines run at 20-40% gold - elegant, but for low-vision
+   buyers they vanish. When the OS asks for more contrast, thicken the ink. */
+@media (prefers-contrast: more) {
+  :root {
+    --line: rgba(201,162,75,.55);
+    --line-blue: rgba(169,207,234,.4);
+    --text-muted-on-dark: rgba(242,247,253,.88);
+  }
+}
+
+/* ===== Print ============================================================
+   Gulf procurement prints pages into order files. Strip the theatre: white
+   paper, black ink, no fixed furniture, no background art. */
+@media print {
+  * { background: #fff !important; color: #000 !important; box-shadow: none !important; }
+  .bg-stage, .dock, .to-top, .site-header, .mobile-menu, .preloader, .scroll-progress,
+  .side-accent, .marquee, .scroll-cue, .cursor-dot, .cursor-ring, .toast-wrap,
+  .pb-scene, .pb-weave, .pb-stalk, .pb-shapla, .pb-torn, .pq-boat, .pq-lotus,
+  .portal-sampan, .hero-nouka-m { display: none !important; }
+  a { text-decoration: underline; }
+  .section { padding: 1rem 0 !important; }
+}
