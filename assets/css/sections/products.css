@@ -42,14 +42,22 @@
    The mask is applied to .media only (not the whole card), so the copy below
    stays on a straight baseline and stays readable. */
 .product-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, rgba(30,46,120,.22), rgba(5,8,28,.86) 60%);
   border: 1.35px solid rgba(201,162,75,.24);
   border-radius: 2px;              /* the arch carries the shape; the box stays quiet */
-  padding: .85rem .85rem 0;
+  padding: 1.15rem 1.05rem 0;      /* room for the corner lota-pata to sit on the blue */
   overflow: visible;
 }
+/* Content rides above the corner lota-pata frame (which is z-index 1). */
+.product-card > .cat-eyebrow,
+.product-card > .media,
+.product-card > .body { position: relative; z-index: 2; }
+/* On hover the vine warms up with the card. */
+.product-card:hover .lota-frame { color: var(--gold-300); }
+.product-card .lota-frame { transition: color var(--dur) var(--ease); }
 .product-card .media { position: relative; aspect-ratio: 100 / 128; }
 /* The niche carries the arch mask; the photo is cut to the cusped opening. */
 .product-card .media-niche {

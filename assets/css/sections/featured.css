@@ -6,6 +6,29 @@
    via the .is-swapping class for a quiet, luxurious transition.
    ========================================================================== */
 
+/* Blue lota-pata framing the ivory section (the "blue vine on ivory"). Larger
+   than the card corners; indigo so it reads on the warm paper. It draws itself
+   in when the section reveals (reuses the .lota-frame contract, keyed off the
+   section-head's data-reveal via the .section wrapper). */
+.featured { position: relative; }
+.featured .lota-frame--section {
+  color: var(--royal-700);
+  z-index: 0;
+}
+.featured .lota-frame--section .lc {
+  width: clamp(70px, 12vw, 150px);
+  height: clamp(70px, 12vw, 150px);
+  opacity: .6;
+}
+.featured .lota-frame--section .lc-tl { top: 10px; left: 10px; }
+.featured .lota-frame--section .lc-tr { top: 10px; right: 10px; }
+.featured .lota-frame--section .lc-bl { bottom: 10px; left: 10px; }
+.featured .lota-frame--section .lc-br { bottom: 10px; right: 10px; }
+/* (the section frame draws itself in — it carries data-reveal, so reveal.js
+   toggles .is-visible on it and the shared .lota-frame.is-visible rule fires.) */
+/* it's inside the section but the container content must sit above it */
+.featured > .container { position: relative; z-index: 1; }
+
 .featured-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -21,40 +44,58 @@
   position: relative;
   display: block;
   border-radius: var(--radius);
-  overflow: hidden;
-  border: 4.73px solid var(--line);
-  background: linear-gradient(180deg, rgba(20,54,158,.55), rgba(7,28,77,.65));
+  padding: .55rem .55rem 0;
+  border: 1.5px solid rgba(201,162,75,.42);   /* refined gold hairline (the 4.7px was chunky here) */
+  background: linear-gradient(180deg, var(--indigo-700), var(--indigo-950) 70%);
   box-shadow: var(--shadow-card);
   --ease-land: cubic-bezier(.16,1,.3,1);
   transition: opacity 640ms var(--ease-land), transform 640ms var(--ease-land),
               border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
   transition-delay: calc(var(--i, 0) * 70ms), calc(var(--i, 0) * 70ms), 0s, 0s;
 }
-.featured-card:hover { border-color: rgba(201,162,75,.5); box-shadow: var(--shadow-lift); transform: translateY(-4px); }
+.featured-card:hover { border-color: var(--gold-300); box-shadow: var(--shadow-lift); transform: translateY(-5px); }
 
-.featured-card .ph { position: relative; aspect-ratio: 3 / 4; overflow: hidden; }
+/* The photo now sits in an ARCHED niche — the same cusped shape as the product
+   cards and hero portal, so the featured deck speaks the house language. A gold
+   arch outline traces it; the name plate rides the flat bottom of the arch. */
+.featured-card .ph {
+  position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+  -webkit-mask: url("../../img/ornaments/arch-mask.svg") center / 100% 100% no-repeat;
+          mask: url("../../img/ornaments/arch-mask.svg") center / 100% 100% no-repeat;
+  background: var(--indigo-800);
+}
 .featured-card .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
 .featured-card:hover .ph img { transform: scale(1.06); }
+/* Gold arch outline over the niche (masked-gradient, matches the arch exactly). */
+.featured-card .ph::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, var(--gold-300), var(--gold-500) 60%, var(--gold-700));
+  -webkit-mask: url("../../img/ornaments/arch-outline.svg") center / 100% 100% no-repeat;
+          mask: url("../../img/ornaments/arch-outline.svg") center / 100% 100% no-repeat;
+  opacity: .5; transition: opacity var(--dur) var(--ease);
+}
+.featured-card:hover .ph::after { opacity: .85; }
 
-/* Category pill, top-left. */
+/* Category as a fine gold micro-cap ABOVE the arched photo. */
 .featured-card .cat {
-  position: absolute; top: .5rem; left: .5rem; z-index: 2;
-  font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-  color: var(--navy-950); background: var(--gold-metallic);
-  padding: .2rem .5rem; border-radius: var(--radius-sm);
+  display: block; text-align: center;
+  margin: .1rem 0 .45rem;
+  font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700;
+  color: var(--gold-500);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
-/* Bottom gradient + name plate. */
+/* Name sits BELOW the arched photo, on the indigo card body — a framed portrait
+   with its title beneath, not text dumped over the image. */
 .featured-card .plate {
-  position: absolute; inset: auto 0 0 0; z-index: 2;
-  padding: 1.4rem .7rem .6rem;
-  background: linear-gradient(to top, rgba(2,7,26,.92), rgba(2,7,26,.55) 55%, transparent);
+  padding: .6rem .5rem .7rem;
+  text-align: center;
 }
 .featured-card .plate .name {
   font-family: var(--font-serif); font-size: 1rem; line-height: 1.15; color: var(--frost-100);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.featured-card .plate .ori { font-size: .66rem; color: var(--gold-300); letter-spacing: .04em; margin-top: .2rem; }
+.featured-card .plate .ori { font-size: .62rem; color: var(--gold-300); letter-spacing: .04em; margin-top: .25rem; }
 
 /* Swap state: deck fades/lifts out, then content changes, then fades back in.
    A light cross-fade + micro-scale (not a big drop) — the deck should feel

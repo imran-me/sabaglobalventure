@@ -64,8 +64,20 @@ window.initProducts = function initProducts() {
     // inside it would have half its own hairline clipped away. The category is a
     // micro-cap above the arch, not a pill stuck on the photo, so it must live
     // outside .media too or the mask would eat it.
+    // Four gold lota-pata corner flourishes framing the card on the blue —
+    // the vine "outside the image" so it reads even with a photo in the arch.
+    // data-reveal on the frame itself so it self-triggers its draw-in (the same
+    // proven path the featured section frame uses) rather than depending on the
+    // card's reveal state cascading in.
+    const lotaFrame =
+      `<span class="lota-frame" aria-hidden="true" data-reveal>` +
+      ["tl","tr","bl","br"].map((c) =>
+        `<svg class="lc lc-${c}" viewBox="0 0 100 100"><use href="#sgv-lota-corner"></use></svg>`
+      ).join("") + `</span>`;
+
     return `
     <article class="card product-card ${i % 2 ? "motif-b" : ""}" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
+      ${lotaFrame}
       <span class="cat-eyebrow">${esc(p.category)}</span>
       <div class="media">
         <div class="media-niche">

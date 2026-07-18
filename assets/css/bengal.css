@@ -99,6 +99,57 @@
   .arch-frame path { stroke-dashoffset: 0; transition: none; }
 }
 
+/* ---- লতা পাতা corner frame -------------------------------------------
+   The client loves the golden vine on blue and wants it OUTSIDE the arched
+   photo too, so the ornament reads even when a real image fills the niche. This
+   frames a whole card: one corner flourish (sgv-lota-corner in defs.html)
+   mirrored into all four corners. It inherits `color`, so a dark card sets gold
+   and an ivory card sets indigo — same vine, palette-aware. It draws itself in
+   with the card via the shared .lo-line contract.
+
+   pointer-events:none and a low z so it never blocks the card's buttons; it
+   sits over the card body but under the arched photo and the text. */
+.lota-frame {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--gold-500);           /* default: gold (dark cards) */
+  transform: none;                  /* frames carry data-reveal for the draw-in;
+                                       cancel its 24px rise so the corners don't shift */
+}
+.lota-frame .lc {
+  position: absolute;
+  width: clamp(46px, 26%, 78px);
+  height: clamp(46px, 26%, 78px);
+  overflow: visible;
+  opacity: .85;
+}
+.lota-frame .lc-tl { top: 3px;  left: 3px;  }
+.lota-frame .lc-tr { top: 3px;  right: 3px;  transform: scaleX(-1); }
+.lota-frame .lc-bl { bottom: 3px; left: 3px; transform: scaleY(-1); }
+.lota-frame .lc-br { bottom: 3px; right: 3px; transform: scale(-1); }
+/* The flourish paths live in the <use> shadow tree, unreachable by `.lo-line`
+   selectors — so, exactly like .arch-orn, the draw-in is driven on the <use>
+   ELEMENT: stroke-dasharray/-dashoffset are INHERITED SVG properties, so setting
+   them on the <use> cascades into every cloned path (each carries pathLength=100
+   so they draw at one rate). The corners stagger so the vine grows top-down. */
+.lota-frame .lc use {
+  stroke: currentColor; stroke-width: 1.4; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 100; stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1.6s var(--ease);
+}
+.lota-frame .lc-tr use { transition-delay: .12s; }
+.lota-frame .lc-bl use { transition-delay: .24s; }
+.lota-frame .lc-br use { transition-delay: .36s; }
+[data-reveal].is-visible .lota-frame .lc use,
+.is-visible .lota-frame .lc use,
+.lota-frame.is-visible .lc use,          /* frame itself carries data-reveal (section frame) */
+.lota-frame.is-drawn .lc use { stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .lota-frame .lc use { stroke-dashoffset: 0; transition: none; }
+}
+
 /* ---- The unveiling ---------------------------------------------------
    An arched portrait is not faded in — it is UNVEILED, the image rising into
    its niche from below while a curtain of indigo lifts off it. A fade says "an
