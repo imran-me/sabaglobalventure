@@ -81,19 +81,31 @@
   margin-bottom: clamp(2.4rem, 5vw, 4rem);
   display: flex; align-items: center; overflow: hidden;
 }
-/* the photograph, full-bleed right, masked to melt into the navy on its left */
+/* the photograph, full-bleed right, feathered into the navy on EVERY edge (not a
+   hard rectangle) — a radial + directional mask dissolves left, top, right and
+   bottom so the scene reads as painted onto the navy, not pasted over it. */
 .pb-scene {
-  position: absolute; inset: 0 0 0 auto; width: min(66%, 1120px);
+  position: absolute; inset: 0 0 0 auto; width: min(70%, 1160px);
   background: url("../../img/scene/paddy-sunrise.jpg") center right / cover no-repeat;
-  -webkit-mask: linear-gradient(90deg, transparent, #000 36%);
-          mask: linear-gradient(90deg, transparent, #000 36%);
+  -webkit-mask:
+    linear-gradient(90deg,  transparent 0%, #000 38%),
+    linear-gradient(270deg, transparent 0%, #000 10%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 80%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+          mask:
+    linear-gradient(90deg,  transparent 0%, #000 38%),
+    linear-gradient(270deg, transparent 0%, #000 10%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 80%, transparent 100%);
 }
-/* navy floor + gold vignette keep the title legible over the scene */
+/* navy wash + gold vignette: keeps the title legible AND re-darkens all four
+   edges so, even where the mask can't reach, the scene bleeds into Midnight Navy. */
 .products-banner::before {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(90deg, var(--indigo-900) 20%, rgba(8,27,69,.55) 44%, transparent 70%),
-    linear-gradient(180deg, rgba(8,27,69,.35), transparent 28%, rgba(5,15,44,.5));
+    linear-gradient(90deg,  var(--indigo-900) 16%, rgba(8,27,69,.5) 42%, transparent 66%),
+    linear-gradient(270deg, var(--indigo-900) 0%, transparent 13%),
+    linear-gradient(180deg, var(--indigo-900) 0%, transparent 20%, transparent 72%, rgba(8,27,69,.9) 99%);
 }
 /* gold paddy stalks standing at the far-left margin */
 .pb-paddy {
@@ -187,7 +199,8 @@
   background: linear-gradient(90deg, transparent, rgba(8,20,50,.94)); pointer-events: none;
 }
 .pc-body { position: relative; padding: clamp(1.1rem, 1.7vw, 1.65rem); display: flex; flex-direction: column; }
-.pc-vine { position: absolute; top: 0; right: 0; width: 56px; height: 56px; color: var(--gold-500); opacity: .3; transform: scaleX(-1); pointer-events: none; }
+.pc-vine { position: absolute; top: 2px; right: 2px; width: 66px; height: 66px; color: var(--gold-400, var(--gold-500)); opacity: .5; transform: scaleX(-1); pointer-events: none; transition: opacity var(--dur) var(--ease); }
+.product-card:hover .pc-vine { opacity: .8; }
 .pc-cat { font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 700; color: var(--gold-300); margin-bottom: .5rem; }
 .pc-cat i { color: var(--gold-500); font-style: normal; margin-left: .25rem; }
 .pc-name { font-family: var(--font-serif); font-size: clamp(1.35rem, 1.8vw, 1.7rem); color: var(--frost-100); line-height: 1.1; margin-bottom: .5rem; }

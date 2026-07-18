@@ -50,15 +50,18 @@ window.initBackground = function initBackground() {
   // Ivory chapters carry a lighter opacity: the same gold that glows on indigo
   // would smudge on paper.
   //   w = width in vmin;  y = vertical anchor (% of section);  op = opacity
+  // `file` = an SVG silhouette tinted gold via CSS mask. `raster` = a finished
+  // gold illustration (client art) composited directly, dark ground already
+  // knocked out — used where a detailed engraving reads better than a flat mask.
   const SIDE_ACCENTS = [
     { section: "hero",         file: "sampan.svg",      side: "right", w: 34, y: 68, op: 0.16 },
-    { section: "about",        file: "tiger.svg",       side: "left",  w: 32, y: 60, op: 0.07 },
+    { section: "about",        raster: "scene/tiger-cut.png",    side: "left",  w: 34, y: 58, op: 0.16 },
     { section: "trust",        file: "water-lily.svg",  side: "left",  w: 16, y: 52, op: 0.14 },
-    { section: "products",     file: "bazar.svg",       side: "right", w: 27, y: 44, op: 0.13 },
+    { section: "products",     file: "bazar.svg",       side: "right", w: 27, y: 44, op: 0.10 },
     { section: "capabilities", file: "port-crane.svg",  side: "right", w: 28, y: 56, op: 0.07 },
     { section: "journey",      file: "river-delta.svg", side: "left",  w: 26, y: 52, op: 0.13 },
     { section: "markets",      file: "cargo-ship.svg",  side: "left",  w: 36, y: 62, op: 0.14 },
-    { section: "cta",          file: "rickshaw.svg",    side: "right", w: 26, y: 55, op: 0.15 },
+    { section: "cta",          raster: "scene/rickshaw-cut.png", side: "right", w: 30, y: 55, op: 0.18 },
     { section: "contact",      file: "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.14 },
   ];
 
