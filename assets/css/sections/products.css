@@ -27,7 +27,7 @@
 /* the photograph, full-bleed right, feathered into the navy left and top */
 .pb-scene {
   position: absolute; inset: 0 0 0 auto; width: min(62%, 1080px);
-  background: url("../../img/scene/paddy-sunrise.jpg") center right / cover no-repeat;
+  background: url("../../img/scene/paddy-sunrise.webp") center right / cover no-repeat;
   -webkit-mask:
     linear-gradient(90deg,  transparent 0%, #000 30%),
     linear-gradient(180deg, #000 0%, #000 82%, rgba(0,0,0,.35) 100%);

@@ -68,16 +68,16 @@ window.initBackground = function initBackground() {
   //   shaplas    → flanking the trust counters
   //   cargo ship → capabilities (how the house moves goods), quiet on ivory
   const SIDE_ACCENTS = [
-    { section: "about",        raster: "scene/tiger-gold.png",    side: "left",  w: 58, ground: 0, op: 0.6, blend: true },
-    { section: "trust",        raster: "scene/shapla-cut.png",    side: "left",  w: 23, y: 50, op: 0.22, blend: true },
-    { section: "trust",        raster: "scene/shapla-cut.png",    side: "right", w: 23, y: 50, op: 0.22, blend: true, flip: true },
+    { section: "about",        raster: "scene/tiger-gold.webp",    side: "left",  w: 58, ground: 0, op: 0.6, blend: true },
+    { section: "trust",        raster: "scene/shapla-cut.webp",    side: "left",  w: 23, y: 50, op: 0.22, blend: true },
+    { section: "trust",        raster: "scene/shapla-cut.webp",    side: "right", w: 23, y: 50, op: 0.22, blend: true, flip: true },
     { section: "products",     file:   "bazar.svg",       side: "right", w: 27, y: 44, op: 0.07 },
     { section: "capabilities", file:   "cargo-ship.svg",  side: "right", w: 34, y: 58, op: 0.10 },
-    { section: "markets",      raster: "scene/fisherman-cut.png", side: "right", w: 44, y: 55, op: 0.32 },
-    { section: "cta",          raster: "scene/rickshaw-cut.png",  side: "right", w: 38, y: 52, op: 0.34, gild: true },
+    { section: "markets",      raster: "scene/fisherman-cut.webp", side: "right", w: 44, y: 55, op: 0.32 },
+    { section: "cta",          raster: "scene/rickshaw-cut.webp",  side: "right", w: 38, y: 52, op: 0.34, gild: true },
     { section: "contact",      file:   "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.12 },
     // the boat leaves as the page signs off
-    { section: "footer",       raster: "scene/sampan-cut.png",    side: "right", w: 27, y: 44, op: 0.28, blend: true, gild: true },
+    { section: "footer",       raster: "scene/sampan-cut.webp",    side: "right", w: 27, y: 44, op: 0.28, blend: true, gild: true },
   ];
 
   const placed = [];
@@ -111,7 +111,6 @@ window.initBackground = function initBackground() {
       // without it their strokes read as moonlit silver on the navy.
       const gild = a.gild ? "sepia(.55) saturate(1.7) hue-rotate(-12deg) brightness(1.06) " : "";
       Object.assign(el.style, {
-        backgroundImage: `url(assets/img/${a.raster})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "contain",
@@ -119,6 +118,10 @@ window.initBackground = function initBackground() {
         maskImage: feather,
         filter: gild + "drop-shadow(0 12px 34px rgba(200,162,74,.14))",
       });
+      // Lazy: the image URL waits in data-src until the accent approaches the
+      // viewport — a 300KB engraving 10,000px below the fold must not load at
+      // page-open. The reveal observer below applies it.
+      el.dataset.src = `assets/img/${a.raster}`;
       if (a.blend) el.style.mixBlendMode = "screen";
     } else {
       // Mask (not background-image) so the gold gradient in CSS tints the shape.
@@ -131,15 +134,24 @@ window.initBackground = function initBackground() {
     placed.push(el);
   });
 
-  if (reduce) {
-    placed.forEach((el) => el.classList.add("is-in"));
-  } else if ("IntersectionObserver" in window && placed.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("is-in"); });
-    }, { threshold: 0.12 });
-    placed.forEach((el) => io.observe(el));
+  const loadArt = (el) => {
+    if (el.dataset.src) {
+      el.style.backgroundImage = `url(${el.dataset.src})`;
+      delete el.dataset.src;
+    }
+  };
+  if (reduce || !("IntersectionObserver" in window)) {
+    placed.forEach((el) => { loadArt(el); el.classList.add("is-in"); });
   } else {
-    placed.forEach((el) => el.classList.add("is-in"));
+    // Art starts loading one viewport early (rootMargin) so it is already
+    // there when its reveal begins; the class still waits for intersection.
+    const loader = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { loadArt(e.target); loader.unobserve(e.target); } });
+    }, { rootMargin: "100% 0px" });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    placed.forEach((el) => { loader.observe(el); io.observe(el); });
   }
 
   // The drifting "stars" are retired: the client wants a woven Bengali ground,
