@@ -100,8 +100,9 @@ window.initBackground = function initBackground() {
     placed.forEach((el) => el.classList.add("is-in"));
   }
 
-  // Signature drifting golden particles on top of the stage.
-  if (!reduce) initParticles(stage);
+  // The drifting "stars" are retired: the client wants a woven Bengali ground,
+  // not a starfield. Texture now lives in .bg-weave (CSS). Particles left in the
+  // file below in case the effect is ever wanted again, but no longer started.
 };
 
 /* ----------------------------------------------------------------------------

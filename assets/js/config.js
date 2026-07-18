@@ -87,10 +87,15 @@ window.SITE_CONFIG = {
      Set show:false (or delete the row) for anything not actually held. Do NOT
      display a certification the company does not hold.                     */
   certs: [
-    { label: "HACCP",            show: true },
-    { label: "Halal Certified",  show: true },
-    { label: "Phytosanitary",    show: true },
-    { label: "EU Approved Est.", show: false },
+    { label: "ISO Certified",         icon: "iso",       show: true },
+    { label: "HACCP",                 icon: "haccp",     show: true },
+    { label: "Halal Certified",       icon: "halal",     show: true },
+    { label: "Phytosanitary",         icon: "leaf",      show: true },
+    { label: "Premium Export",        icon: "export",    show: true },
+    { label: "Non GMO",               icon: "nongmo",    show: true },
+    { label: "Hygienically Processed",icon: "hygiene",   show: true },
+    { label: "Moisture Controlled",   icon: "moisture",  show: true },
+    { label: "EU Approved Est.",      icon: "shield",    show: false },
   ],
 
   /* ---- Message templates (used by cta-helper.js) -----------------------

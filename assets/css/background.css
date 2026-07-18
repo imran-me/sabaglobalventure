@@ -66,6 +66,32 @@
   100% { transform: translate3d(2%, -1%, 0) scale(1.09); }
 }
 
+/* ---- The woven ground (replaces the starfield) -----------------------
+   Over Midnight Navy, a very faint Bengali cloth: a Jamdani buti lattice as the
+   weave, a larger lotus floral drifting through it as the "rice-grain" watermark,
+   and — on its own layer — a light terracotta floral bloom. Everything is kept
+   FAR under 20% (a radial mask fades it out toward the edges), so it reads as
+   texture in the fabric, never as busy wallpaper. This is what makes the dark
+   chapters look woven and expensive instead of flat. */
+.bg-stage .bg-weave {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    url("../img/patterns/jamdani-gold.svg") 0 0 / 150px repeat,
+    url("../img/patterns/lotus-gold.svg") 60px 40px / 400px repeat;
+  opacity: .13;
+  -webkit-mask-image: radial-gradient(125% 105% at 50% 26%, #000 34%, rgba(0,0,0,.45) 70%, transparent 100%);
+          mask-image: radial-gradient(125% 105% at 50% 26%, #000 34%, rgba(0,0,0,.45) 70%, transparent 100%);
+}
+/* A light terracotta floral, the fired-clay warmth of a temple panel, pooled low
+   and even fainter — the rare spark the brand rule reserves for terracotta. */
+.bg-stage .bg-weave::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--clay-600);
+  -webkit-mask: url("../img/patterns/kantha-gold.svg") center 30% / 340px repeat;
+          mask: url("../img/patterns/kantha-gold.svg") center 30% / 340px repeat;
+  opacity: .05;
+}
+
 /* The golden delta panorama — a container ship, gantry cranes, a Bengali sampan
    under sail and date/coconut palms along the waterline. The SVG is a MASK, so
    the gold gradient beneath shows through the shapes. Anchored to the bottom so

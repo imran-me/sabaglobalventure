@@ -13,8 +13,59 @@
 #products .section-head h2 { margin-bottom: calc(var(--space-4) * .7); }
 #products .section-head .lead { max-width: 78ch; margin-inline: auto; }
 
-/* ---- Filter pills row ----------------------------------------------- */
-.filter-bar { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: var(--space-5); }
+/* ---- Filter: circled gold line-art category glyphs ------------------
+   The reference's signature — a row of thin-gold roundels, each holding a
+   Bengali line-art icon, the name set beneath in a fine serif. Reads as a
+   gallery's chapter markers, not a UI pill row. */
+.filter-bar {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: clamp(.6rem, 2.4vw, 2rem);
+  margin: 0 auto var(--space-6);
+}
+.cat-filter {
+  display: flex; flex-direction: column; align-items: center; gap: .55rem;
+  background: none; border: 0; cursor: pointer; padding: .2rem;
+  color: var(--text-muted-on-dark);
+  transition: color var(--dur) var(--ease);
+}
+.cat-round {
+  display: grid; place-items: center;
+  width: clamp(52px, 6vw, 68px); aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1.35px solid rgba(200,162,74,.38);
+  color: var(--gold-300);
+  background: radial-gradient(120% 120% at 50% 30%, rgba(200,162,74,.06), transparent 70%);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease),
+              background var(--dur) var(--ease), transform var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
+}
+.cat-ico { width: 55%; height: 55%; }
+.cat-label {
+  font-family: var(--font-serif); font-size: 1.02rem; letter-spacing: .02em;
+  color: inherit; white-space: nowrap;
+  position: relative; padding-bottom: .3rem;
+}
+.cat-filter:hover { color: var(--gold-100); }
+.cat-filter:hover .cat-round {
+  border-color: var(--gold-500); color: var(--gold-300);
+  transform: translateY(-2px);
+}
+.cat-filter.is-active { color: var(--gold-100); }
+.cat-filter.is-active .cat-round {
+  border-color: var(--gold-500);
+  color: var(--indigo-950);
+  background: var(--gold-metallic);
+  box-shadow: 0 8px 22px -10px rgba(200,162,74,.5);
+}
+/* Active gets a fine underline beneath its label, like the reference. */
+.cat-filter.is-active .cat-label::after {
+  content: ""; position: absolute; left: 15%; right: 15%; bottom: 0; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+@media (max-width: 640px) {
+  .cat-label { font-size: .82rem; }
+  .filter-bar { gap: .5rem 1rem; }
+}
 
 /* ---- Product grid --------------------------------------------------- */
 /* auto-FILL (not auto-fit) + a capped column max keeps every card the SAME
@@ -120,6 +171,48 @@
 .product-card .hs-line b { color: var(--gold-300); font-weight: 600; }
 .product-card .card-actions { display: flex; gap: .5rem; margin-top: auto; padding-top: .6rem; }
 .product-card .card-actions .btn { flex: 1; }
+
+/* ---- The Bengal Story band ------------------------------------------
+   A quiet paragraph flanked by gold line-art (sampan left, shapla right),
+   then a centred serif pull-quote — the reference's closing move. */
+.bengal-story {
+  display: grid;
+  grid-template-columns: auto minmax(0, 62ch) auto;
+  align-items: center; justify-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+}
+.story-orn { width: clamp(90px, 12vw, 150px); height: auto; color: var(--gold-500); opacity: .8; }
+.story-body { text-align: center; }
+.story-eyebrow {
+  display: inline-block; margin-bottom: .9rem;
+  font-size: .62rem; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--gold-500);
+}
+.story-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.6; font-weight: 300;
+  color: var(--frost-100);
+}
+.story-text em { font-style: italic; color: var(--gold-300); }
+
+.story-quote {
+  display: flex; align-items: center; justify-content: center; gap: 1.1rem;
+  margin: clamp(2rem, 5vw, 3.4rem) auto 0;
+  font-family: var(--font-serif); font-style: italic; font-weight: 300;
+  font-size: clamp(1.2rem, 2.4vw, 1.9rem);
+  color: var(--gold-100); text-align: center;
+}
+.story-quote .q-rule {
+  width: clamp(28px, 8vw, 90px); height: 1px; flex: none;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+
+@media (max-width: 760px) {
+  .bengal-story { grid-template-columns: 1fr; }
+  .story-orn { display: none; }
+}
 
 /* ---- Product detail modal ------------------------------------------- */
 .modal {

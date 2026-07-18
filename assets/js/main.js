@@ -248,13 +248,27 @@ function renderStats() {
   }).join("");
 }
 
-/* ---- Certification chips -------------------------------------------- */
+/* ---- Certification badges (tiny gold line-art + label) -------------- */
+const CERT_ICONS = {
+  iso:      '<circle cx="12" cy="12" r="7.5"/><path d="M12 6.5v11M6.7 9.2h10.6M6.7 14.8h10.6"/>',
+  haccp:    '<path d="M12 3.5l7 3v5c0 4.2-2.9 7-7 9-4.1-2-7-4.8-7-9v-5Z"/><path d="M9 12l2 2 4-4.5"/>',
+  halal:    '<circle cx="12" cy="12" r="7.5"/><path d="M9.2 9v6M9.2 12c1.5-1.6 3.4-1.6 3.4.4V15M15.4 8.6V15"/>',
+  leaf:     '<path d="M6 18C6 11 11 6.5 18 6.5 18 13 13.5 18 6 18Z"/><path d="M6 18C9 15 12.5 12.5 16 11"/>',
+  export:   '<path d="M12 15.5V5.5M8.5 9L12 5.5 15.5 9"/><path d="M5.5 14v3.5c0 .6.4 1 1 1h11c.6 0 1-.4 1-1V14"/>',
+  nongmo:   '<circle cx="12" cy="12" r="7.5"/><path d="M8 8c3 1 5 3 8 8M8.5 15.5c1.2-1.6 1.2-3.4 0-5M15.5 8.5c-1.2 1.6-1.2 3.4 0 5"/><path d="M6.7 6.7l10.6 10.6"/>',
+  hygiene:  '<path d="M12 4.5c2.5 2.5 5 4.5 5 8a5 5 0 0 1-10 0c0-3.5 2.5-5.5 5-8Z"/><path d="M9.6 13.2c.3 1.6 1.4 2.6 2.9 2.8"/>',
+  moisture: '<path d="M12 4.5c2.5 3 5 5.4 5 8.5a5 5 0 0 1-10 0c0-3.1 2.5-5.5 5-8.5Z"/>',
+  shield:   '<path d="M12 3.5l7 3v5c0 4.2-2.9 7-7 9-4.1-2-7-4.8-7-9v-5Z"/>',
+};
 function renderCerts() {
   const certs = ((window.SITE_CONFIG || {}).certs || []).filter((c) => c.show);
   const host = document.querySelector("[data-certs]");
   if (!host) return;
   if (!certs.length) { host.remove(); return; }
-  host.innerHTML = certs.map((c) => `<span class="chip">✓ ${c.label}</span>`).join("");
+  host.innerHTML = certs.map((c) => {
+    const ico = CERT_ICONS[c.icon] || CERT_ICONS.shield;
+    return `<span class="cert-badge"><svg class="cert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ico}</svg>${c.label}</span>`;
+  }).join("");
 }
 
 /* ---- Smooth scroll: native only ------------------------------------

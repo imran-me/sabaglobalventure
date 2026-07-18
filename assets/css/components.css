@@ -25,6 +25,7 @@
   line-height: 1;
   border: 1.35px solid transparent;
   overflow: hidden;
+  isolation: isolate;                 /* keep the hover-fill ::after (z-index:-1) inside the button */
   transition: transform var(--dur-fast) var(--ease),
               box-shadow var(--dur) var(--ease),
               background var(--dur) var(--ease),
@@ -38,52 +39,56 @@
 .btn:active { transform: translateY(0) scale(.965); }
 .btn svg { width: 18px; height: 18px; flex: none; }
 
-/* Primary — gold. A slow light-sweep crosses it on hover (the "polish"). */
-.btn--gold {
-  background: var(--gold-metallic);
-  color: var(--navy-950);
-  box-shadow: var(--glow-gold);
+/* ── The luxury button language ───────────────────────────────────────
+   At rest a button is a THIN GOLD RULE on the canvas — an engraved outline,
+   never a filled UI control. On hover it becomes a solid gold seal: the gilt
+   floods in and the label goes ink-navy, like foil pressed onto an invitation.
+   No saturated fills at rest, no glow, no white light-sweep — that restraint
+   is the whole difference between "a website button" and "a luxury mark". */
+
+/* Primary — the gold seal. Used for the main CTA and every WhatsApp inquiry. */
+.btn--gold,
+.btn--whatsapp {
+  background: transparent;
+  color: var(--gold-100);
+  border-color: var(--gold-500);
 }
-.btn--gold:hover { color: var(--navy-950); box-shadow: 0 14px 38px -10px rgba(201,162,75,.55); }
-.btn--gold:active { box-shadow: 0 6px 18px -10px rgba(201,162,75,.4); }
-.btn--gold::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%);
-  transform: translateX(-120%);
-  transition: transform .75s var(--ease);
+.btn--gold::after,
+.btn--whatsapp::after {                 /* the gilt that floods in on hover */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--gold-metallic);
+  opacity: 0; transition: opacity var(--dur) var(--ease);
   pointer-events: none;
 }
-.btn--gold:hover::after { transform: translateX(120%); }
+.btn--gold:hover,
+.btn--whatsapp:hover { color: var(--indigo-950); border-color: transparent; }
+.btn--gold:hover::after,
+.btn--whatsapp:hover::after { opacity: 1; }
 
-/* Ghost gold — secondary on dark */
+/* Ghost — the companion (Email / secondary). Quieter at rest, and on hover it
+   warms with a translucent gilt rather than the solid seal, so the primary
+   always leads the eye. */
 .btn--ghost {
-  border-color: var(--line);
+  border-color: rgba(200,162,74,.4);
   color: var(--gold-300);
-  background: rgba(201,162,75,.05);
+  background: transparent;
 }
-.btn--ghost:hover { border-color: var(--gold-500); background: rgba(201,162,75,.12); color: var(--gold-300); }
+.btn--ghost:hover { border-color: var(--gold-500); background: rgba(200,162,74,.14); color: var(--gold-100); }
 
-/* Ink — the button for the IVORY chapters. Deep indigo with a gold hairline,
-   not a saturated royal-blue slab: on warm paper a bright blue reads as a UI
-   control, while ink-and-gold reads as a seal. */
+/* Ink — the seal for the IVORY chapters. Same outline→fill grammar, but the
+   fill is midnight navy with a gold hairline, so on warm paper it reads as a
+   wax seal, not a bright control. */
 .btn--royal {
-  background: var(--indigo-900);
-  color: var(--gold-100);
-  border-color: rgba(201,162,75,.45);
-  box-shadow: 0 10px 26px -14px rgba(5,8,28,.6);
+  background: transparent;
+  color: var(--indigo-900);
+  border-color: rgba(200,162,74,.55);
 }
 .btn--royal:hover {
-  background: var(--indigo-950);
-  color: var(--gold-300);
-  border-color: var(--gold-500);
-  box-shadow: 0 14px 30px -12px rgba(5,8,28,.7);
+  background: var(--indigo-900);
+  color: var(--gold-100);
+  border-color: var(--indigo-900);
 }
-.btn--royal:active { box-shadow: 0 6px 14px -10px rgba(5,8,28,.6); }
-
-/* WhatsApp green */
-.btn--whatsapp { background: #1FA855; color: #fff; }
-.btn--whatsapp:hover { background: #25D366; color: #fff; }
+.btn--royal:active { transform: translateY(0) scale(.965); }
 
 /* Small inline variant for product cards */
 .btn--sm { padding: .55rem 1rem; font-size: .8rem; }
@@ -264,7 +269,10 @@
 }
 .dock a:hover { transform: scale(1.08); }
 .dock a svg { width: 24px; height: 24px; }
-.dock .dock-wa { background: #25D366; color: #fff; animation: pulse 2.6s var(--ease) infinite; }
+/* No bright green — the dock is gilt on navy. The WhatsApp bubble keeps a slow
+   gold halo pulse so it still draws the eye, without the template-green. */
+.dock .dock-wa { background: var(--indigo-900); color: var(--gold-300); border: 1.35px solid var(--gold-500); animation: pulse 2.8s var(--ease) infinite; }
+.dock .dock-wa:hover { background: var(--gold-metallic); color: var(--indigo-950); border-color: transparent; }
 .dock .dock-mail { background: var(--gold-metallic); color: var(--navy-950); }
 .dock .dock-products { background: var(--royal-700); color: var(--gold-300); border: 1.35px solid var(--gold-500); }
 .dock a[data-tip]::after {
@@ -278,8 +286,8 @@
 .dock a[data-tip]:hover::after { opacity: 1; }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,.4); }
-  50% { box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,162,74,.45); }
+  50% { box-shadow: 0 0 0 10px rgba(200,162,74,0); }
 }
 @media (prefers-reduced-motion: reduce) { .dock .dock-wa { animation: none; } }
 

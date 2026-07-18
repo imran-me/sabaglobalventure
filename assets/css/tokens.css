@@ -18,43 +18,50 @@
    ========================================================================== */
 
 :root {
-  /* ---- Indigo (the deepening of the canvas) ---------------------------
-     Bengal's own dye. These sit UNDER the blues and give the dark chapters
-     their depth and warmth-in-coldness. */
-  --indigo-950: #07071F;   /* the deepest ground — pulled toward violet-indigo */
-  --indigo-900: #0D0F3E;   /* dark chapter base — real indigo dye, not navy */
-  --indigo-800: #141F55;   /* raised indigo surfaces */
-  --indigo-700: #1E2E78;   /* indigo cards / gradients */
+  /* ---- Midnight Navy (the canvas) -------------------------------------
+     The house palette, fixed by the client: Midnight Navy #081B45 is THE
+     ground. Everything dark is built as a tight, cohesive scale around it —
+     no near-black, no violet drift. One deep, confident navy, the way a
+     Louis-Vuitton catalogue commits to one ink. (Token names kept as
+     --indigo-* so the whole cascade keeps working.) */
+  --indigo-950: #050F2C;   /* deepest ground — below the navy, for vignettes */
+  --indigo-900: #081B45;   /* MIDNIGHT NAVY — the base canvas */
+  --indigo-800: #0D2559;   /* raised navy surfaces */
+  --indigo-700: #143171;   /* navy cards / gradients */
 
   /* ---- Ivory & natural (the light chapters) ---------------------------
-     Warm, paper-like, hand-made. NOT a cold grey-white — that would kill the
-     "natural" half of the brief. */
-  --ivory-100: #FAF4E4;   /* the light canvas — raw silk / muslin */
-  --ivory-200: #F3E9D8;   /* raised ivory panels */
-  --ivory-300: #E9DAC0;   /* ivory dividers, hairlines on light */
-  --clay-600:  #9C4A2F;   /* TERRACOTTA — the rare spark */
-  --clay-400:  #C2694A;   /* terracotta hover/tint */
+     Warm Ivory #F7F2E8 is the paper; Rice White #FDFBF6 the lightest leaf. */
+  --rice-white: #FDFBF6;  /* Rice White — the lightest paper */
+  --ivory-100: #F7F2E8;   /* WARM IVORY — the light canvas */
+  --ivory-200: #EFE7D6;   /* raised ivory panels */
+  --ivory-300: #E2D5BC;   /* ivory dividers, hairlines on light */
+  --clay-600:  #A85A2A;   /* TERRACOTTA ACCENT — fired-clay spark */
+  --clay-400:  #C57A4C;   /* terracotta hover/tint */
+  --paddy-600: #597A3A;   /* PADDY GREEN — the natural, growing accent */
+  --paddy-500: #6E9349;   /* paddy hover/tint */
   /* ---- Blues (canvas + surfaces) --------------------------------------
-     From the deepest night-sea to the palest powder. --blue-900 is the
-     Majestic Blue that dominates the site; --royal-600 is true Royal Blue. */
-  --navy-950:  #02071A;   /* deepest — footer, preloader, vignette core */
-  --navy-900:  #041031;   /* deep background wash */
-  --blue-900:  #071C4D;   /* PRIMARY brand surface — "Majestic Blue" */
-  --blue-800:  #0B2A6B;   /* dark blue sections, gradients */
-  --royal-700: #14369E;   /* Royal Blue, deep — cards on dark */
-  --royal-600: #1E4FD8;   /* ROYAL BLUE — the signature accent */
-  --ocean-500: #1279C4;   /* Ocean Blue — currents, routes, links */
-  --ocean-400: #34A3E0;   /* bright ocean — icon tints, glows */
+     All anchored to Midnight Navy so the dark chapters read as ONE ink, with
+     ocean blue kept only as the faint "current" in motion/glows. */
+  --navy-950:  #040B22;   /* deepest — footer, preloader, vignette core */
+  --navy-900:  #061436;   /* deep background wash */
+  --blue-900:  #081B45;   /* PRIMARY brand surface — Midnight Navy */
+  --blue-800:  #0E2A63;   /* dark blue sections, gradients */
+  --royal-700: #143171;   /* deep royal — cards on dark */
+  --royal-600: #1E4FA8;   /* royal accent (calmed, not electric) */
+  --ocean-500: #1D6AAE;   /* ocean — currents, routes, links */
+  --ocean-400: #3E93C9;   /* bright ocean — icon tints, glows */
   --powder-300:#A9CFEA;   /* Powder Blue — soft highlights */
   --powder-200:#CFE4F5;   /* powder panels */
   --powder-100:#EDF4FB;   /* light section background */
 
-  /* ---- Golds (the jewelry) -------------------------------------------- */
-  --gold-700: #9A7423;    /* gold shadow / engrave */
-  --gold-500: #C9A24B;    /* PRIMARY gold — lines, eyebrows, CTAs */
-  --gold-300: #E8CE79;    /* hover gold, glows */
-  --gold-100: #F7EDCB;    /* gold text on very dark, highlights */
-  --gold-metallic: linear-gradient(135deg,#BF953F,#EFE1AE,#B38728,#E9D9A0,#AA771C);
+  /* ---- Golds (the jewelry — Royal Gold #C8A24A) -----------------------
+     RESTRAINED. Antique, not shiny; the highlight stays warm, never bleaches
+     to near-white, so gold reads as gilt metal, not chrome. */
+  --gold-700: #8C6C1E;    /* gold shadow / engrave */
+  --gold-500: #C8A24A;    /* PRIMARY gold — Royal Gold, lines, eyebrows, CTAs */
+  --gold-300: #D8BD72;    /* restrained hover gold */
+  --gold-100: #E9DBB2;    /* gold text on very dark, highlights */
+  --gold-metallic: linear-gradient(135deg,#9E7A26,#D2BA6E,#C8A24A,#AE8A32,#8C6C1E);
 
   /* ---- Neutral + light ------------------------------------------------ */
   --frost-100: #F2F7FD;   /* text on dark, light section bg */
