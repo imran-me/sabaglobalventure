@@ -195,6 +195,13 @@
 .pc-photo { position: relative; overflow: hidden; background: var(--indigo-800); }
 .pc-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
 .product-card:hover .pc-photo img { transform: scale(1.05); }
+/* a slow gilt light-sweep crosses the photo on hover — the "polish" */
+.pc-photo::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(105deg, transparent 42%, rgba(233,219,178,.22) 50%, transparent 58%);
+  transform: translateX(-130%); transition: transform .9s var(--ease);
+}
+.product-card:hover .pc-photo::before { transform: translateX(130%); }
 /* soft seam so the photo dissolves into the navy panel, never a hard cut */
 .pc-photo::after {
   content: ""; position: absolute; inset: 0 -1px 0 auto; width: 44px;

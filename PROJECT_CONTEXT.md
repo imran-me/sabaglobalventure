@@ -460,6 +460,37 @@ Standing rules unchanged (push as **Md Imran Hossain** only, never Claude; save 
   Headless renders must terminate ONLY their own spawned instance (proc.terminate / by PID).
 - Commits this session: `6e6c6bd` (palette/buttons/weave/filter/badges/story), `a8506ce`
   (paddy/shapla/jamdani vines). Both pushed to origin/main, 0 Claude attribution.
+### 2026-07-18 (cont.) — Reference-driven rebuild + full "no-compromise" luxury pass
+Client supplied a **reference mockup** (an "Our Products" page) + real **gold art** and a
+**paddy-sunrise photo** (originals in `assets/img/bg/`, gitignored; optimised copies in
+`assets/img/scene/`). Direction: "Louis Vuitton meets Bengal," pixel-perfect, maximum detail.
+- **Products = the reference.** New full-bleed **banner** (`.products-banner`): paddy-sunrise
+  photo feathered into Midnight Navy on ALL edges (intersecting mask gradients + navy wash),
+  gold **paddy stalks** (`paddy.svg` mask) at the left, "Our" (gold italic) over big white
+  "Products", diamond-centred rule, **"Rooted in Bengal / Delivering Worldwide" seal** with a
+  shapla mark, and a generated **torn gold deckle edge** (`ornaments/torn-edge.svg`).
+- **Cards** = reference's **3-per-row horizontal photo cards** (photo left / navy panel right):
+  category eyebrow ✦, serif name, **five-petal flower divider**, desc, **origin+packaging chips
+  + HS** (the full arched-card detail, restored on request), pin + "Explore Product →" + Inquire,
+  **lota-pata vine on two corners**, gold cut-corner brackets, hover gilt light-sweep.
+- **Category filter** = circular gold **line-art food icons**, redrawn to be recognisable
+  (rice sprig, shrimp, fish, carrot, apple, chilli, potato, sack). Config in `products.js ICONS`.
+- **Ornate placeholder** (`img-fallback.js makePlaceholder`): double gold frame + jamdani buti
+  corners + layered **shapla** + flanking **paddy panicles** + italic caption cartouche +
+  wordmark + "imagery on request". Fills every card that lacks a photo.
+- **Featured** arched cards now carry the climbing **lota-pata vine** (`.ph` split into unmasked
+  frame + inner `.ph-mask`; vine `.arch-orn.is-drawn`, kept bright gold on the dark card).
+- **Art everywhere** (`background.js` raster accents, dark grounds knocked out to
+  `scene/*-cut.png`): sampan→hero, tiger→about, shapla→trust, fisherman→capabilities,
+  rickshaw→cta — ghosted gold engravings.
+- **IMPORTANT client corrections captured:** the ORIGINAL intricate **lota-pata** (five-petal
+  flowers/buds, `defs.html`) is the loved ornament — a "cheap paddy" rice-panicle redraw was
+  REVERTED. Arch silhouette stays the cusped arch (**NOT a temple/Puthia arch**). **No bright
+  green** anywhere. Buttons = gold outline → gold-fill seal.
+- Verified desktop 1440 + mobile 390 (no horizontal overflow). The ONE remaining gap to the
+  reference is **real per-product photography** — client to supply; cards/placeholders are ready.
+- ⚠ Headless caveat reconfirmed: full-page `captureBeyondViewport` blanks CSS-masked photos
+  under `--disable-gpu` (a screenshot artifact) — verify banners/masks with **viewport** shots.
 ```
 (Add a new dated entry above this line each day.)
 ```
