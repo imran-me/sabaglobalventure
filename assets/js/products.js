@@ -79,52 +79,47 @@ window.initProducts = function initProducts() {
     return window.ImgFallback ? window.ImgFallback.makePlaceholder(img.alt || p.name) : "";
   };
 
+  // A faint jamdani/paddy vine hugging the card's top-right corner (the reference's
+  // quiet ornament). One symbol, tinted gold, drawn thin.
+  const cornerVine =
+    `<svg class="pc-vine" viewBox="0 0 55 55" fill="none" stroke="currentColor" stroke-width="0.7"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#sgv-lota-corner"></use>
+     </svg>`;
+  const pin =
+    `<svg class="pc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/>
+     </svg>`;
+
   const cardHTML = (p, i) => {
     const img = (p.images && p.images[0]) || { url: "", alt: p.name };
-    // Show ALL origins + packaging on the card (they wrap) — no hidden values.
-    const origins = (p.origins || [])
-      .map((o) => `<span class="chip">${esc(o)}</span>`).join("");
-    const packs = (p.packaging || [])
-      .map((pk) => `<span class="chip chip--pack">${esc(pk)}</span>`).join("");
-    const hs = p.hsCode ? `<p class="hs-line">HS Code: <b>${esc(p.hsCode)}</b></p>` : "";
-    // The photo sits in an arched niche (.media-niche carries the arch mask).
-    // The lota-pata vine frames it as a DOUBLE border: an inner arch hugging the
-    // photo and an outer arch sitting on the blue just beyond it — so the vine
-    // reads prominently even when a real image fills the niche. Category is a
-    // micro-cap above the arch (outside .media, or the mask would clip it).
-    const archOrn = (cls) =>
-      `<svg class="arch-orn ${cls}" viewBox="0 0 100 140" preserveAspectRatio="none"
-             fill="none" stroke="currentColor" stroke-width="0.25"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <use class="lo lo-frame" href="#sgv-arch-frame"></use>
-          <use class="lo lo-vines" href="#sgv-arch-vines"></use>
-          <use class="lo lo-crest" href="#sgv-arch-crest"></use>
-        </svg>`;
+    const origin = (p.origins || [])[0] || "Bangladesh";
+    const hs = p.hsCode ? `<span class="pc-hs">HS ${esc(p.hsCode)}</span>` : "";
 
+    // The reference card: a full photograph on the left, a Midnight-Navy panel on
+    // the right — category eyebrow, serif name, a line of copy, the origin with a
+    // pin, then "Explore Product →" (opens the detail + inquiry modal). A thin gold
+    // frame with cut corners and a faint corner vine finishes it.
     return `
-    <article class="card product-card ${i % 2 ? "motif-b" : ""}" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
-      <span class="cat-eyebrow">${esc(p.category)}</span>
-      <div class="media" data-reveal>
-        <div class="media-niche">
-          <img src="${esc(resolveImg(img.url))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
-          <!-- Sheen lives INSIDE the niche so the arch mask clips it: the light
-               travels across the opening, not across a rectangle. -->
-          <span class="arch-sheen" aria-hidden="true"></span>
-        </div>
-        ${archOrn("arch-orn--outer")}
-        ${archOrn("arch-orn--inner")}
+    <article class="product-card" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
+      <div class="pc-photo">
+        <img src="${esc(nicheSrc(img, p))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
       </div>
-      <div class="body">
-        <h3 class="name">${esc(p.name)}</h3>
-        <p class="desc">${esc(p.shortDesc)}</p>
-        <div class="meta">${origins}${packs}</div>
-        ${hs}
-        <div class="card-actions">
-          <a class="btn btn--whatsapp btn--sm" data-cta="whatsapp"
-             data-product="${esc(p.name)}" data-packaging="${esc((p.packaging || [])[0] || "bulk")}">Inquire</a>
-          <a class="btn btn--ghost btn--sm" data-cta="email" data-product="${esc(p.name)}">Email</a>
+      <div class="pc-body">
+        ${cornerVine}
+        <p class="pc-cat">${esc(p.category)} <i>&#10022;</i></p>
+        <h3 class="pc-name">${esc(p.name)}</h3>
+        <p class="pc-desc">${esc(p.shortDesc)}</p>
+        <p class="pc-loc">${pin}${esc(origin)} ${hs}</p>
+        <div class="pc-foot">
+          <a class="pc-explore" data-explore>Explore Product <span aria-hidden="true">&rarr;</span></a>
+          <a class="pc-inquire" data-cta="whatsapp" data-product="${esc(p.name)}"
+             data-packaging="${esc((p.packaging || [])[0] || "bulk")}" aria-label="Inquire about ${esc(p.name)} on WhatsApp">Inquire</a>
         </div>
       </div>
+      <span class="pc-corner pc-corner--tl" aria-hidden="true"></span>
+      <span class="pc-corner pc-corner--br" aria-hidden="true"></span>
     </article>`;
   };
 
