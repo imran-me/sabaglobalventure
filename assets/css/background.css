@@ -75,10 +75,12 @@
    chapters look woven and expensive instead of flat. */
 .bg-stage .bg-weave {
   position: absolute; inset: 0; pointer-events: none;
+  /* Larger, sparser motifs at a lower whisper: the couture rule — when the
+     engravings are the jewellery, the cloth must never compete. */
   background:
-    url("../img/patterns/jamdani-gold.svg") 0 0 / 150px repeat,
-    url("../img/patterns/lotus-gold.svg") 60px 40px / 400px repeat;
-  opacity: .13;
+    url("../img/patterns/jamdani-gold.svg") 0 0 / 210px repeat,
+    url("../img/patterns/lotus-gold.svg") 80px 60px / 560px repeat;
+  opacity: .08;
   -webkit-mask-image: radial-gradient(125% 105% at 50% 26%, #000 34%, rgba(0,0,0,.45) 70%, transparent 100%);
           mask-image: radial-gradient(125% 105% at 50% 26%, #000 34%, rgba(0,0,0,.45) 70%, transparent 100%);
 }
@@ -205,6 +207,12 @@
 .side-accent.flip.right       { transform: translate(42%, -50%) scaleX(-1); }
 .side-accent.flip.is-in.left  { transform: translate(-26%, -50%) scaleX(-1); }
 .side-accent.flip.is-in.right { transform: translate(26%, -50%) scaleX(-1); }
+/* ground-anchored variant — the artwork stands on the section floor
+   (no vertical centering; it rises into place as it enters view) */
+.side-accent.ground.left         { transform: translate(-30%, 4%); }
+.side-accent.ground.right        { transform: translate(30%, 4%); }
+.side-accent.ground.is-in.left   { transform: translate(-14%, 0); }
+.side-accent.ground.is-in.right  { transform: translate(14%, 0); }
 
 /* A missing SVG simply masks to nothing — the site degrades gracefully to the
    glow canvas alone. */

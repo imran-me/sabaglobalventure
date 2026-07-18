@@ -25,7 +25,8 @@
   position: absolute; inset: 0; z-index: -1;
   pointer-events: none;
   background: url("../../img/patterns/royal-bengal-gold.svg") center / 140px repeat;
-  opacity: .14;
+  /* quieted so the rickshaw engraving is the band's single artifact */
+  opacity: .08;
   -webkit-mask-image: radial-gradient(75% 90% at 50% 50%, #000 10%, rgba(0,0,0,.45) 55%, transparent 85%);
           mask-image: radial-gradient(75% 90% at 50% 50%, #000 10%, rgba(0,0,0,.45) 55%, transparent 85%);
   /* The ground drifts, very slowly. Nothing in this house is quite still. */

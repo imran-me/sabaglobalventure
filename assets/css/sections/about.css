@@ -93,3 +93,11 @@
 @media (max-width: 560px) {
   .creed > div { grid-template-columns: 1fr; gap: .25rem; }
 }
+
+
+/* ===== The tiger's cleared stage ========================================
+   The Royal Bengal walks a strip of pure navy beneath the origin story -
+   cleared air, nothing behind it, nothing over it. The section's extra
+   bottom padding IS the artwork's ground; do not fill it with content. */
+#about { padding-bottom: clamp(12rem, 22vw, 19rem); }
+@media (max-width: 760px) { #about { padding-bottom: var(--section-pad); } }

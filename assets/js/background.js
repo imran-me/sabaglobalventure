@@ -58,19 +58,26 @@ window.initBackground = function initBackground() {
   //            the richest versions of the art can run large without a hard edge.
   // `flip`   = mirror horizontally (for symmetric pairs).
   // Multiple entries per section are allowed (e.g. the twin shaplas at trust).
+  // Casting, after the client's own note — "the tiger, the fisherman, the
+  // rickshaw were not being used properly": each of the three now owns ONE
+  // navy stage with cleared air, and the grounds around them were quieted.
+  //   tiger      → ORIGIN, walking a cleared strip beneath the story
+  //   fisherman  → MARKETS, casting his net toward the world map
+  //   rickshaw   → the CTA, the last mile, over a whispering damask
+  //   nouka      → inside the hero portal; and leaving again at the footer
+  //   shaplas    → flanking the trust counters
+  //   cargo ship → capabilities (how the house moves goods), quiet on ivory
   const SIDE_ACCENTS = [
-    // hero: the nouka now sails INSIDE the arch portal (hero.html .portal-sampan)
-    { section: "about",        raster: "scene/tiger-gold.png",    side: "left",  w: 48, y: 62, op: 0.5, blend: true, flip: true },
+    { section: "about",        raster: "scene/tiger-gold.png",    side: "left",  w: 58, ground: 0, op: 0.6, blend: true },
     { section: "trust",        raster: "scene/shapla-cut.png",    side: "left",  w: 23, y: 50, op: 0.22, blend: true },
     { section: "trust",        raster: "scene/shapla-cut.png",    side: "right", w: 23, y: 50, op: 0.22, blend: true, flip: true },
-    { section: "products",     file:   "bazar.svg",       side: "right", w: 27, y: 44, op: 0.09 },
-    { section: "capabilities", raster: "scene/fisherman-cut.png", side: "right", w: 36, y: 56, op: 0.20 },
-    { section: "journey",      file:   "river-delta.svg", side: "left",  w: 26, y: 52, op: 0.13 },
-    { section: "markets",      file:   "cargo-ship.svg",  side: "left",  w: 36, y: 62, op: 0.14 },
-    { section: "cta",          raster: "scene/rickshaw-cut.png",  side: "right", w: 34, y: 55, op: 0.22 },
-    { section: "contact",      file:   "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.14 },
+    { section: "products",     file:   "bazar.svg",       side: "right", w: 27, y: 44, op: 0.07 },
+    { section: "capabilities", file:   "cargo-ship.svg",  side: "right", w: 34, y: 58, op: 0.10 },
+    { section: "markets",      raster: "scene/fisherman-cut.png", side: "right", w: 44, y: 55, op: 0.32 },
+    { section: "cta",          raster: "scene/rickshaw-cut.png",  side: "right", w: 38, y: 52, op: 0.34, gild: true },
+    { section: "contact",      file:   "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.12 },
     // the boat leaves as the page signs off
-    { section: "footer",       raster: "scene/sampan-cut.png",    side: "right", w: 27, y: 44, op: 0.24, blend: true },
+    { section: "footer",       raster: "scene/sampan-cut.png",    side: "right", w: 27, y: 44, op: 0.28, blend: true, gild: true },
   ];
 
   const placed = [];
@@ -85,13 +92,24 @@ window.initBackground = function initBackground() {
     Object.assign(el.style, {
       width: a.w + "vmin",
       height: (a.w * 0.82) + "vmin",
-      top: a.y + "%",
     });
+    if (a.ground != null) {
+      // Ground-anchored: the artwork stands ON the section's floor (the
+      // tiger's cleared stage) instead of hanging at a mid height.
+      el.classList.add("ground");
+      el.style.bottom = a.ground + "%";
+      el.style.top = "auto";
+    } else {
+      el.style.top = a.y + "%";
+    }
     if (a.raster) {
       // A finished gold engraving (client art), composited directly and
       // feathered at the edges so it sits IN the navy rather than ON it.
       el.classList.add("side-accent--photo");
       const feather = "radial-gradient(115% 100% at 50% 50%, #000 58%, transparent 96%)";
+      // `gild` warms the pale engravings (sampan, rickshaw) into true gold —
+      // without it their strokes read as moonlit silver on the navy.
+      const gild = a.gild ? "sepia(.55) saturate(1.7) hue-rotate(-12deg) brightness(1.06) " : "";
       Object.assign(el.style, {
         backgroundImage: `url(assets/img/${a.raster})`,
         backgroundRepeat: "no-repeat",
@@ -99,7 +117,7 @@ window.initBackground = function initBackground() {
         backgroundSize: "contain",
         webkitMaskImage: feather,
         maskImage: feather,
-        filter: "drop-shadow(0 12px 34px rgba(200,162,74,.14))",
+        filter: gild + "drop-shadow(0 12px 34px rgba(200,162,74,.14))",
       });
       if (a.blend) el.style.mixBlendMode = "screen";
     } else {
