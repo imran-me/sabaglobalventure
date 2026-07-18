@@ -208,6 +208,25 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-19 — Golden-art placement pass ("on the blue they bloom")
+Client: the ivory tiger was buried behind cards; the gold art belongs on navy,
+where it ফুটে ওঠে — creative placements, luxury never compromised.
+- **Ivory chapters back to quiet paper** (`bengal.css`): tiger watermark retired;
+  woven `ivory-bengal.svg` ground + a warm candle-glow radial only.
+- **Hero portal:** the client's nouka engraving (`sampan-cut.png`) now glides on
+  the niche's waterline (`.portal-sampan`, screen-blend + warm gild filter,
+  26s drift; sits BELOW `.portal-photo` so an admin hero photo replaces it).
+  The flat delta silhouette dimmed to a faint horizon (opacity .22).
+- **About/Origin:** the tiger takes the navy stage — `tiger-gold.png` (painterly
+  original) at 48vmin, `mix-blend-mode: screen` melts its dark jungle ground
+  into the navy, **flipped** so the face shows in the open navy left of the arch.
+- **Trust:** twin shaplas flank the counters (left + mirrored right, screen).
+- **CTA rickshaw** bigger (34vmin, .22, un-blended — screen made it silvery).
+- **Footer:** the sampan glides out at the sign-off (right, .24, screen).
+- `background.js` engine now supports `blend` / `flip` / multiple accents per
+  section, and rasters get a radial feather mask instead of hard edges.
+- Reduced-motion honoured (sampan drift disabled); overflow still 0.
+
 ### 2026-07-18 (later) — Products page rebuilt PIXEL-1:1 to the mockup; sitewide sweep
 Client: *"exactly pixel to pixel perfect… 100% copy"* of the Our-Products mockup, then
 *"go through every page… top-notch luxurious design everywhere."*

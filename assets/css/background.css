@@ -200,6 +200,11 @@
 .side-accent.is-in        { opacity: var(--acc-op, .15); }
 .side-accent.is-in.left   { transform: translate(-26%, -50%); }
 .side-accent.is-in.right  { transform: translate(26%, -50%); }
+/* mirrored variant — for symmetric pairs (the twin shaplas at trust) */
+.side-accent.flip.left        { transform: translate(-42%, -50%) scaleX(-1); }
+.side-accent.flip.right       { transform: translate(42%, -50%) scaleX(-1); }
+.side-accent.flip.is-in.left  { transform: translate(-26%, -50%) scaleX(-1); }
+.side-accent.flip.is-in.right { transform: translate(26%, -50%) scaleX(-1); }
 
 /* A missing SVG simply masks to nothing — the site degrades gracefully to the
    glow canvas alone. */
@@ -214,6 +219,8 @@
   .side-accent { transition: opacity .3s; }
   .side-accent.is-in.left  { transform: translate(-26%, -50%); }
   .side-accent.is-in.right { transform: translate(26%, -50%); }
+  .side-accent.flip.is-in.left  { transform: translate(-26%, -50%) scaleX(-1); }
+  .side-accent.flip.is-in.right { transform: translate(26%, -50%) scaleX(-1); }
 }
 
 /* On smaller screens the side art crowds the text AND, since it's anchored to

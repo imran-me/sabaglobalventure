@@ -47,36 +47,40 @@ window.initBackground = function initBackground() {
   //                 folk art, at the moment we ask for the conversation
   //   contact       the Shat Gombuj mosque, serene, where we sign off
   //
-  // Ivory chapters carry a lighter opacity: the same gold that glows on indigo
-  // would smudge on paper.
+  // The golden art LIVES on the navy chapters — on indigo the engravings bloom
+  // (ফুটে ওঠে); on ivory the same gold smudges into the paper, so ivory carries
+  // only its woven ground and at most ONE dense engraving.
   //   w = width in vmin;  y = vertical anchor (% of section);  op = opacity
-  // `file` = an SVG silhouette tinted gold via CSS mask. `raster` = a finished
-  // gold illustration (client art) composited directly, dark ground already
-  // knocked out — used where a detailed engraving reads better than a flat mask.
+  // `file`   = an SVG silhouette tinted gold via CSS mask.
+  // `raster` = a finished gold illustration (client art) composited directly.
+  // `blend`  = "screen": only the LIGHT of the artwork lands on the navy — the
+  //            painterly dark grounds of the original engravings melt away, so
+  //            the richest versions of the art can run large without a hard edge.
+  // `flip`   = mirror horizontally (for symmetric pairs).
+  // Multiple entries per section are allowed (e.g. the twin shaplas at trust).
   const SIDE_ACCENTS = [
-    { section: "hero",         raster: "scene/sampan-cut.png",    side: "right", w: 32, y: 66, op: 0.20 },
-    { section: "about",        raster: "scene/tiger-cut.png",     side: "left",  w: 34, y: 58, op: 0.17 },
-    { section: "trust",        raster: "scene/shapla-cut.png",    side: "left",  w: 22, y: 52, op: 0.20 },
+    // hero: the nouka now sails INSIDE the arch portal (hero.html .portal-sampan)
+    { section: "about",        raster: "scene/tiger-gold.png",    side: "left",  w: 48, y: 62, op: 0.5, blend: true, flip: true },
+    { section: "trust",        raster: "scene/shapla-cut.png",    side: "left",  w: 23, y: 50, op: 0.22, blend: true },
+    { section: "trust",        raster: "scene/shapla-cut.png",    side: "right", w: 23, y: 50, op: 0.22, blend: true, flip: true },
     { section: "products",     file:   "bazar.svg",       side: "right", w: 27, y: 44, op: 0.09 },
-    { section: "capabilities", raster: "scene/fisherman-cut.png", side: "right", w: 34, y: 56, op: 0.17 },
+    { section: "capabilities", raster: "scene/fisherman-cut.png", side: "right", w: 36, y: 56, op: 0.20 },
     { section: "journey",      file:   "river-delta.svg", side: "left",  w: 26, y: 52, op: 0.13 },
     { section: "markets",      file:   "cargo-ship.svg",  side: "left",  w: 36, y: 62, op: 0.14 },
-    { section: "cta",          raster: "scene/rickshaw-cut.png",  side: "right", w: 30, y: 55, op: 0.18 },
+    { section: "cta",          raster: "scene/rickshaw-cut.png",  side: "right", w: 34, y: 55, op: 0.22 },
     { section: "contact",      file:   "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.14 },
+    // the boat leaves as the page signs off
+    { section: "footer",       raster: "scene/sampan-cut.png",    side: "right", w: 27, y: 44, op: 0.24, blend: true },
   ];
 
-  const used = new Set();
   const placed = [];
   SIDE_ACCENTS.forEach((a) => {
-    let host = null;
-    document.querySelectorAll(`[data-bg-section="${a.section}"]`).forEach((h) => {
-      if (!host && !used.has(h)) host = h;
-    });
+    const host = document.querySelector(`[data-bg-section="${a.section}"]`);
     if (!host) return;
-    used.add(host);
 
     const el = document.createElement("div");
     el.className = `side-accent ${a.side}`;
+    if (a.flip) el.classList.add("flip");
     el.setAttribute("aria-hidden", "true");
     Object.assign(el.style, {
       width: a.w + "vmin",
@@ -84,18 +88,20 @@ window.initBackground = function initBackground() {
       top: a.y + "%",
     });
     if (a.raster) {
-      // A finished gold engraving (client art) — dark ground already knocked out.
-      // Composited directly (no mask/tint), softened with a warm gold glow.
+      // A finished gold engraving (client art), composited directly and
+      // feathered at the edges so it sits IN the navy rather than ON it.
       el.classList.add("side-accent--photo");
+      const feather = "radial-gradient(115% 100% at 50% 50%, #000 58%, transparent 96%)";
       Object.assign(el.style, {
         backgroundImage: `url(assets/img/${a.raster})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "contain",
-        webkitMaskImage: "none",
-        maskImage: "none",
+        webkitMaskImage: feather,
+        maskImage: feather,
         filter: "drop-shadow(0 12px 34px rgba(200,162,74,.14))",
       });
+      if (a.blend) el.style.mixBlendMode = "screen";
     } else {
       // Mask (not background-image) so the gold gradient in CSS tints the shape.
       const url = `url(${DIR}${a.file})`;

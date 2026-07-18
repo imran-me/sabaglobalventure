@@ -109,7 +109,8 @@
     linear-gradient(180deg, var(--gold-300), var(--gold-500) 45%, var(--gold-700));
   -webkit-mask: url("../../img/bg/delta-scene.svg") center bottom / cover no-repeat;
           mask: url("../../img/bg/delta-scene.svg") center bottom / cover no-repeat;
-  opacity: .5;
+  /* quieted to a faint horizon since the engraved nouka (below) leads the niche */
+  opacity: .22;
   animation: portal-drift 40s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -133,6 +134,29 @@
 /* Indigo veil + a warm bloom at the horizon, so the niche has depth. Sits ABOVE
    the optional hero photo (z-index 2) so a real photo is graded into the indigo
    palette and the caption stays legible. */
+/* The golden nouka riding the niche's waterline. Screen blend = only the gold
+   light lands on the navy; the drop-glow is the boat's own lamp on the water. */
+.portal-sampan {
+  position: absolute; z-index: 1;
+  left: 50%; bottom: 11%;
+  width: 86%; height: auto;
+  transform: translateX(-50%);
+  mix-blend-mode: screen;
+  opacity: .96;
+  /* the engraving's pale strokes are gilded warm so it reads as gold, not moonlight */
+  filter: sepia(.55) saturate(1.7) hue-rotate(-12deg) brightness(1.06)
+          drop-shadow(0 10px 26px rgba(200,162,74,.3));
+  animation: sampan-glide 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes sampan-glide {
+  from { transform: translateX(-53%) translateY(0); }
+  to   { transform: translateX(-47%) translateY(-1.2%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-sampan { animation: none; transform: translateX(-50%); }
+}
+
 .portal-veil {
   position: absolute; inset: 0; z-index: 2;
   background:

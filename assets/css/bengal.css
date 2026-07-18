@@ -260,16 +260,14 @@
   position: relative;
   isolation: isolate;
 }
-/* The Royal Bengal tiger fills the ivory ground as a large gold watermark (the
-   country's own emblem, presiding over the bright chapters). Gold on warm ivory
-   is low-contrast, so even large + prominent it never fights the content, which
-   sits above it (.container is z-index 2). */
+/* The ivory chapters stay QUIET paper — the client confirmed the golden art
+   belongs on the navy, where it blooms; on ivory it smudges and the content
+   cards bury it (the tiger watermark tried this and was retired). The woven
+   ivory-bengal ground above is the texture; this layer adds only a warm
+   candle-glow at the heart of the chapter. */
 .section--ivory::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: url("../img/scene/tiger-cut.png") center 40% / cover no-repeat;
-  opacity: .5;
-  -webkit-mask-image: radial-gradient(120% 100% at 50% 45%, #000 60%, transparent 100%);
-          mask-image: radial-gradient(120% 100% at 50% 45%, #000 60%, transparent 100%);
+  background: radial-gradient(70% 55% at 50% 42%, rgba(200,162,74,.10), transparent 75%);
 }
 .section--ivory .lead { color: var(--text-muted-on-light); }
 .section--ivory h1, .section--ivory h2, .section--ivory h3 { color: var(--ink-900); }
