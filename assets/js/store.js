@@ -37,7 +37,9 @@
     // visitors on the stale ones.
     //   v2 — real WhatsApp / email / address / map landed in config.js
     //   v3 — official card: name pluralised, tagline, WhatsApp number corrected
-    seeded: "sgv_seeded_v3",
+    //   v4 — reference-mockup line-up: Miniket copy + Bengal Spices and
+    //        Premium Shrimp lead the catalogue with real photography
+    seeded: "sgv_seeded_v4",
   };
 
   // Default category + country seeds (used on first run and "Reset demo data").

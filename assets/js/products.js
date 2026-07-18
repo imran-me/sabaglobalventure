@@ -33,17 +33,18 @@ window.initProducts = function initProducts() {
      Not a row of pills — a row of thin-gold roundels, each holding a Bengali
      line-art glyph for its category (shapla, paddy, shrimp, fish, gourd, chilli,
      potato, jute sack), with the name beneath. The reference's signature move. */
-  // Clear, iconic Bengali food glyphs — read instantly at small size.
+  // Clear, iconic Bengali food glyphs — matched to the reference mockup's row:
+  // alpona rosette, paddy, shrimp, fish, cut gourd, mango pair, potatoes, jar.
   const ICONS = {
-    "All":             `<circle cx="12" cy="12" r="2.3"/><g stroke-linecap="round" stroke-linejoin="round"><path d="M12 9.7C10.6 7 12 4 12 4s1.4 3 0 5.7Z"/><path d="M12 14.3C13.4 17 12 20 12 20s-1.4-3 0-5.7Z"/><path d="M9.7 12C7 10.6 4 12 4 12s3 1.4 5.7 0Z"/><path d="M14.3 12C17 13.4 20 12 20 12s-3-1.4-5.7 0Z"/><path d="M10.4 10.4C8.6 8.6 6 8.6 6 8.6s0 2.6 1.8 4.4"/><path d="M13.6 13.6C15.4 15.4 18 15.4 18 15.4s0-2.6-1.8-4.4"/></g>`,
-    "Rice":            `<g stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 9.5C9.6 9.2 8 7.4 7.8 5 10.4 5.3 12 7.1 12 9.5Z"/><path d="M12 9.5C14.4 9.2 16 7.4 16.2 5 13.6 5.3 12 7.1 12 9.5Z"/><path d="M12 14C10 13.8 8.7 12.4 8.5 10.5 10.6 10.7 12 12.1 12 14Z"/><path d="M12 14C14 13.8 15.3 12.4 15.5 10.5 13.4 10.7 12 12.1 12 14Z"/></g>`,
-    "Shrimp":          `<g stroke-linecap="round" stroke-linejoin="round"><path d="M18 9c-4-1.4-9 .4-10.4 4.6-1 3 .8 6 3.9 6.6 2 .4 3.9-.3 5.1-1.7"/><path d="M18 9c1.5.3 2.4 1.4 2.4 2.8"/><path d="M7.6 13.6C6 12.8 4.4 12.9 3.2 13.9"/><path d="M8.4 11.2C7 10.2 5.4 10 4 10.6"/><path d="M11.5 19.2c.6 1 1.7 1.6 2.9 1.4"/><circle cx="16.3" cy="11.4" r=".6" fill="currentColor" stroke="none"/></g>`,
-    "Fish & Seafood":  `<g stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c2.6-4 8.4-4 11 0-2.6 4-8.4 4-11 0Z"/><path d="M15 12c1.5-1.7 3.2-2.3 4.4-2.3-.5 1.5-.5 3.1 0 4.6-1.2 0-2.9-.6-4.4-2.3Z"/><circle cx="7.4" cy="11.3" r=".7" fill="currentColor" stroke="none"/></g>`,
-    "Fresh Vegetables":`<g stroke-linecap="round" stroke-linejoin="round"><path d="M8 10.5 12 20l4-9.5c-2.4-1.3-5.6-1.3-8 0Z"/><path d="M9.4 13.4h5.2M10.3 16h3.4"/><path d="M12 10V5.5"/><path d="M12 6.6C10.7 5.3 8.9 5.1 7.6 6.2 9 7.4 10.7 7.7 12 6.6Z"/><path d="M12 6.6C13.3 5.3 15.1 5.1 16.4 6.2 15 7.4 13.3 7.7 12 6.6Z"/></g>`,
-    "Fresh Fruits":    `<g stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.6c-1.4-1.4-3.8-1.6-5.2 0-1.4 1.6-1.2 4.6.3 6.7 1.1 1.6 2.3 2.5 3.1 2.5.6 0 1-.3 1.8-.3s1.2.3 1.8.3c.8 0 2-.9 3.1-2.5 1.5-2.1 1.7-5.1.3-6.7-1.4-1.6-3.8-1.4-5.2 0Z"/><path d="M12 8.6V6c0-1.3 1.1-2.4 2.6-2.5"/></g>`,
-    "Spices":          `<g stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8.5C10 11.5 9.6 16 6.6 19.2c-1 1-2.4 1.5-3.8 1.3"/><path d="M8.5 8.5c1.5.4 2.4 1.8 2.1 3.5"/><path d="M8.5 8.5 10 6.5c.5-.7 1.4-.9 2.2-.5"/></g>`,
-    "Potato":          `<g stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 7.8C11 6.5 14.4 6.9 16.4 9.2c2 2.3 1.7 5.8-.6 7.7-2.3 1.9-5.9 1.6-7.9-.5-1.8-2-1.9-4.8 0-6.8.2-.3.4-.5.7-.8Z"/><circle cx="10.6" cy="11.6" r=".55" fill="currentColor" stroke="none"/><circle cx="14" cy="13.8" r=".55" fill="currentColor" stroke="none"/><circle cx="11.8" cy="15.4" r=".55" fill="currentColor" stroke="none"/></g>`,
-    "Dry & Agro Foods":`<g stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 9.5C6.8 8.2 7.7 6.7 9.1 6.9M16.5 9.5C17.2 8.2 16.3 6.7 14.9 6.9"/><path d="M7.5 9.5h9l-.7 8c-.1 1.3-1.2 2.3-2.5 2.3h-2.6c-1.3 0-2.4-1-2.5-2.3Z"/><path d="M9.4 13.6c1.7.9 3.5.9 5.2 0"/></g>`,
+    "All":             `<g stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.7"/><g><path d="M12 9.9C10.9 8.2 10.9 5.9 12 4.2 13.1 5.9 13.1 8.2 12 9.9Z"/><path d="M12 14.1C13.1 15.8 13.1 18.1 12 19.8 10.9 18.1 10.9 15.8 12 14.1Z"/></g><g transform="rotate(45 12 12)"><path d="M12 9.9C10.9 8.2 10.9 5.9 12 4.2 13.1 5.9 13.1 8.2 12 9.9Z"/><path d="M12 14.1C13.1 15.8 13.1 18.1 12 19.8 10.9 18.1 10.9 15.8 12 14.1Z"/></g><g transform="rotate(90 12 12)"><path d="M12 9.9C10.9 8.2 10.9 5.9 12 4.2 13.1 5.9 13.1 8.2 12 9.9Z"/><path d="M12 14.1C13.1 15.8 13.1 18.1 12 19.8 10.9 18.1 10.9 15.8 12 14.1Z"/></g><g transform="rotate(135 12 12)"><path d="M12 9.9C10.9 8.2 10.9 5.9 12 4.2 13.1 5.9 13.1 8.2 12 9.9Z"/><path d="M12 14.1C13.1 15.8 13.1 18.1 12 19.8 10.9 18.1 10.9 15.8 12 14.1Z"/></g></g>`,
+    "Rice":            `<g stroke-linecap="round" stroke-linejoin="round"><path d="M11 21c.5-4.5.6-9 .4-13.5"/><path d="M11.4 8.5C9.4 8.2 8 6.6 7.8 4.6 9.9 4.9 11.3 6.5 11.4 8.5Z"/><path d="M11.4 8.5C13.4 8.2 14.8 6.6 15 4.6 12.9 4.9 11.5 6.5 11.4 8.5Z"/><path d="M11.2 12.4C9.4 12.2 8.1 10.9 7.9 9.1 9.8 9.3 11 10.6 11.2 12.4Z"/><path d="M11.2 12.4C13 12.2 14.3 10.9 14.5 9.1 12.6 9.3 11.4 10.6 11.2 12.4Z"/><path d="M11 16C9.4 15.8 8.2 14.6 8 13 9.7 13.2 10.8 14.4 11 16Z"/><path d="M11 16C12.6 15.8 13.8 14.6 14 13 12.3 13.2 11.2 14.4 11 16Z"/><path d="M14.5 21c1.8-2.5 2.9-5.4 3.2-8.5" stroke-opacity=".8"/></g>`,
+    "Shrimp":          `<g stroke-linecap="round" stroke-linejoin="round"><path d="M18 9c-4-1.4-9 .4-10.4 4.6-1 3 .8 6 3.9 6.6 2 .4 3.9-.3 5.1-1.7"/><path d="M18 9c1.5.3 2.4 1.4 2.4 2.8"/><path d="M9.9 10.5c1 1.4 1.2 4.3.3 6.3M13.2 9.6c.9 1.8 1 4.9 0 7.6M16.2 9.4c.8 1.9.8 4.4-.2 6.4" stroke-opacity=".8"/><path d="M7.6 13.6C6 12.8 4.4 12.9 3.2 13.9"/><path d="M8.4 11.2C7 10.2 5.4 10 4 10.6"/><path d="M11.5 19.2c.6 1 1.7 1.6 2.9 1.4"/><circle cx="16.3" cy="11.4" r=".6" fill="currentColor" stroke="none"/></g>`,
+    "Fish & Seafood":  `<g stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.6c2.6-4 8.4-4 11 0-2.6 4-8.4 4-11 0Z"/><path d="M15 12.6c1.5-1.7 3.2-2.3 4.4-2.3-.5 1.5-.5 3.1 0 4.6-1.2 0-2.9-.6-4.4-2.3Z"/><path d="M9 9.9C9.8 9 10.6 8.3 11.7 7.8c.2 1 .1 1.9-.2 2.8" stroke-opacity=".8"/><path d="M8.8 13.5c.4 1 .5 1.9.3 2.9" stroke-opacity=".8"/><circle cx="7.4" cy="11.9" r=".7" fill="currentColor" stroke="none"/></g>`,
+    "Fresh Vegetables":`<g stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.4" r="6.4"/><path d="M12 7v12.8M7.2 9.2c3 2.8 6.6 2.8 9.6 0M7.2 17.6c3-2.8 6.6-2.8 9.6 0" stroke-opacity=".75"/><circle cx="12" cy="13.4" r="2.6" stroke-opacity=".9"/><path d="M12 6.8c-.5-1.2 0-2.4 1.2-3"/></g>`,
+    "Fresh Fruits":    `<g stroke-linecap="round" stroke-linejoin="round"><path d="M10.2 6.2C7.5 7.4 6 10 6.3 13c.3 3.4 2.8 6 5.7 6 .9 0 1.7-.3 2.4-.8"/><path d="M10.2 6.2c2.6-.9 5.4 0 6.9 2.3 1.7 2.6 1.2 6.2-1 8.4-.9.9-2 1.3-3.1 1.3"/><path d="M10.2 6.2C9.8 4.9 9 4.1 7.8 3.8"/><path d="M11.4 4.9c.9-.3 1.8-.2 2.6.2" stroke-opacity=".8"/></g>`,
+    "Spices":          `<g stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8.5C10 11.5 9.6 16 6.6 19.2c-1 1-2.4 1.5-3.8 1.3"/><path d="M8.5 8.5c1.5.4 2.4 1.8 2.1 3.5"/><path d="M8.5 8.5 10 6.5c.5-.7 1.4-.9 2.2-.5"/><path d="M15.5 9.5c1.2 2.6.8 6.2-1.6 8.9" stroke-opacity=".85"/><path d="M15.5 9.5c1.3.3 2.1 1.5 1.9 3" stroke-opacity=".85"/><circle cx="18.6" cy="16.6" r=".55" fill="currentColor" stroke="none"/><circle cx="17" cy="19" r=".55" fill="currentColor" stroke="none"/><circle cx="19.6" cy="19.4" r=".55" fill="currentColor" stroke="none"/></g>`,
+    "Potato":          `<g stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 6.8C9.3 5.6 12 6 13.4 7.9c1.4 1.9 1.1 4.6-.7 6.1-1.8 1.5-4.6 1.3-6.2-.4-1.4-1.6-1.5-3.8 0-5.4l.9-1.4Z"/><path d="M13.9 11.2c2-.6 4.2.1 5.3 1.9 1.2 1.9.7 4.4-1 5.8-1.8 1.4-4.4 1.2-5.9-.5-1-1.1-1.3-2.6-.9-4" /><circle cx="9.6" cy="9.6" r=".5" fill="currentColor" stroke="none"/><circle cx="11.4" cy="12" r=".5" fill="currentColor" stroke="none"/><circle cx="16.4" cy="14.4" r=".5" fill="currentColor" stroke="none"/><circle cx="17.6" cy="16.6" r=".5" fill="currentColor" stroke="none"/></g>`,
+    "Dry & Agro Foods":`<g stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 6.8h5.2M9.8 6.8V5.4c0-.5.4-.9.9-.9h2.2c.5 0 .9.4.9.9v1.4"/><path d="M9.2 6.8C8 8 7.4 9.6 7.4 11.4v5.2c0 1.6 1.3 2.9 2.9 2.9h3c1.6 0 2.9-1.3 2.9-2.9v-5.2c0-1.8-.6-3.4-1.8-4.6"/><path d="M7.4 12.6h8.8" stroke-opacity=".8"/><circle cx="4.6" cy="18.4" r=".6" fill="currentColor" stroke="none"/><circle cx="6" cy="20" r=".6" fill="currentColor" stroke="none"/><circle cx="4" cy="20.6" r=".6" fill="currentColor" stroke="none"/><circle cx="19.6" cy="19.6" r=".6" fill="currentColor" stroke="none"/><circle cx="21" cy="18.2" r=".6" fill="currentColor" stroke="none"/></g>`,
   };
   const iconFor = (c) => `<svg class="cat-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" aria-hidden="true">${ICONS[c] || ICONS["All"]}</svg>`;
 
@@ -80,63 +81,84 @@ window.initProducts = function initProducts() {
     return window.ImgFallback ? window.ImgFallback.makePlaceholder(img.alt || p.name) : "";
   };
 
-  // The loved lota-pata vine, hugging TWO corners of the card (top-right +
-  // bottom-left) so the ornament frames the piece — plus a small five-petal
-  // flower divider under the name. More Bengal, as asked.
-  const cornerVine = (cls) =>
-    `<svg class="pc-vine ${cls}" viewBox="0 0 55 55" fill="none" stroke="currentColor" stroke-width="0.7"
+  // The panel's line ornaments, matched to the reference: a tasselled kite
+  // hanging from the top border beside the seam, the lota-pata vine at the
+  // panel's top-right, and a paddy stalk rising through the bottom-right.
+  const tassel =
+    `<svg class="pc-tassel" viewBox="0 0 22 64" fill="none" stroke="currentColor" stroke-width="1"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M11 0v20"/>
+        <path d="M11 20l6.5 9L11 38l-6.5-9Z"/>
+        <path d="M11 29h.01" stroke-width="1.6"/>
+        <path d="M11 38v7"/>
+        <path d="M11 45l-4 8M11 45l4 8M11 45v10"/>
+        <circle cx="7" cy="55" r=".8"/><circle cx="15" cy="55" r=".8"/><circle cx="11" cy="57.5" r=".8"/>
+     </svg>`;
+  const vine =
+    `<svg class="pc-vine" viewBox="0 0 55 55" fill="none" stroke="currentColor" stroke-width="0.7"
           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <use href="#sgv-lota-corner"></use>
      </svg>`;
-  const flourish =
-    `<span class="pc-flourish" aria-hidden="true">
-        <i></i>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="1.6"/>
-          <path d="M12 10.4C11 8.8 12 6.6 12 6.6S13 8.8 12 10.4Z"/><path d="M12 13.6C13 15.2 12 17.4 12 17.4S11 15.2 12 13.6Z"/>
-          <path d="M10.4 12C8.8 11 6.6 12 6.6 12S8.8 13 10.4 12Z"/><path d="M13.6 12C15.2 11 17.4 12 17.4 12S15.2 13 13.6 12Z"/>
-        </svg>
-        <i></i>
-     </span>`;
+  const paddySprig =
+    `<svg class="pc-paddy" viewBox="0 0 58 110" fill="none" stroke="currentColor" stroke-width="1"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M30 110C32 82 33 54 31 26"/>
+        <path d="M31 30C25.5 29 22 25 21.5 19.5 27 20.5 30.5 24.5 31 30Z"/>
+        <path d="M31 30C36.5 29 40 25 40.5 19.5 35 20.5 31.5 24.5 31 30Z"/>
+        <path d="M31.5 42C26.5 41 23.5 37.5 23 33 28 34 31 37.5 31.5 42Z"/>
+        <path d="M31.5 42C36.5 41 39.5 37.5 40 33 35 34 32 37.5 31.5 42Z"/>
+        <path d="M31.5 53C27 52.2 24.2 49 23.8 45 28.2 45.8 31 49 31.5 53Z"/>
+        <path d="M31.5 53C36 52.2 38.8 49 39.2 45 34.8 45.8 32 49 31.5 53Z"/>
+        <path d="M12 110C18 92 24 80 30 72" stroke-opacity=".7"/>
+        <path d="M48 110C43 96 39 87 33 80" stroke-opacity=".7"/>
+     </svg>`;
   const pin =
-    `<svg class="pc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+    `<svg class="pc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/>
      </svg>`;
+  const arrow =
+    `<svg width="30" height="10" viewBox="0 0 30 10" fill="none" stroke="currentColor" stroke-width="1.2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M0 5h27M21 1l6 4-6 4"/>
+     </svg>`;
+  // The gilt frame: four scooped "ticket" corners + hairline edges. The same
+  // scoops are carved out of the card beneath by the .pc-frame CSS mask.
+  const cornerPath = "M40 1H31A5 5 0 0 1 21 1H10A9 9 0 0 0 1 10V21A5 5 0 0 1 1 31V40";
+  const gild =
+    `<span class="pc-gild" aria-hidden="true">
+        ${["tl", "tr", "bl", "br"].map((c) =>
+          `<svg class="pc-corner pc-corner--${c}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="${cornerPath}"/></svg>`
+        ).join("")}
+        <i class="pc-edge pc-edge--t"></i><i class="pc-edge pc-edge--b"></i>
+        <i class="pc-edge pc-edge--l"></i><i class="pc-edge pc-edge--r"></i>
+     </span>`;
 
   const cardHTML = (p, i) => {
     const img = (p.images && p.images[0]) || { url: "", alt: p.name };
     const origin = (p.origins || [])[0] || "Bangladesh";
-    const hs = p.hsCode ? `<span class="pc-hs">HS ${esc(p.hsCode)}</span>` : "";
-    // The full line-card detail the arched cards used to show: every origin +
-    // every packaging option, as fine chips.
-    const chips = [
-      ...(p.origins || []).map((o) => `<span class="chip">${esc(o)}</span>`),
-      ...(p.packaging || []).map((pk) => `<span class="chip chip--pack">${esc(pk)}</span>`),
-    ].join("");
 
+    // The reference card: photo LEFT, Midnight-Navy panel RIGHT (category eyebrow
+    // with a dash + ✦, serif name, a line of copy, origin with a pin, and
+    // "Explore Product ⟶" pinned to the panel foot over a long gold underline).
     return `
     <article class="product-card" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
-      <div class="pc-photo">
-        <img src="${esc(nicheSrc(img, p))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
-      </div>
-      <div class="pc-body">
-        ${cornerVine("pc-vine--tr")}
-        ${cornerVine("pc-vine--bl")}
-        <p class="pc-cat">${esc(p.category)} <i>&#10022;</i></p>
-        <h3 class="pc-name">${esc(p.name)}</h3>
-        ${flourish}
-        <p class="pc-desc">${esc(p.shortDesc)}</p>
-        ${chips ? `<div class="pc-meta">${chips}</div>` : ""}
-        <p class="pc-loc">${pin}${esc(origin)} ${hs}</p>
-        <div class="pc-foot">
-          <a class="pc-explore" data-explore>Explore Product <span aria-hidden="true">&rarr;</span></a>
-          <a class="pc-inquire" data-cta="whatsapp" data-product="${esc(p.name)}"
-             data-packaging="${esc((p.packaging || [])[0] || "bulk")}" aria-label="Inquire about ${esc(p.name)} on WhatsApp">Inquire</a>
+      <div class="pc-frame">
+        <div class="pc-photo">
+          <img src="${esc(nicheSrc(img, p))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
+        </div>
+        <div class="pc-body">
+          ${tassel}
+          ${vine}
+          ${paddySprig}
+          <p class="pc-cat"><span class="pc-dash"></span>${esc(p.category)} <span class="pc-star">&#10022;</span></p>
+          <h3 class="pc-name">${esc(p.name)}</h3>
+          <p class="pc-desc">${esc(p.shortDesc)}</p>
+          <p class="pc-loc">${pin}${esc(origin)}</p>
+          <a class="pc-explore" data-explore>Explore Product <span class="pc-arrow" aria-hidden="true">${arrow}</span></a>
         </div>
       </div>
-      <span class="pc-corner pc-corner--tl" aria-hidden="true"></span>
-      <span class="pc-corner pc-corner--br" aria-hidden="true"></span>
+      ${gild}
     </article>`;
   };
 

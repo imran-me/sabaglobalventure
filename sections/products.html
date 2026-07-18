@@ -1,10 +1,15 @@
 <!-- ===========================================================================
      sections/products.html — Products showcase (the centerpiece)
      ---------------------------------------------------------------------------
-     Rebuilt to the client's reference: an "Our Products" banner (paddy-sunrise
-     scene melting into Midnight Navy, with a "Rooted in Bengal" seal and a torn
-     gold deckle edge), the circled gold category glyphs, horizontal photo cards,
-     and a closing pull-quote flanked by a gold sampan and shapla.
+     Rebuilt 1:1 against the client's reference mockup
+     (assets/img/bg/"ChatGPT Image Jul 18, 2026, 01_53_09 PM.png"):
+       • "Our Products" banner — paddy-sunrise photo right, melting into navy;
+         golden paddy-stalk art left; "Rooted in Bengal" seal riding the tear;
+         a shapla blossom ghosted at the right page edge; torn gold deckle.
+       • Circled gold line-art category glyphs with hairline dividers.
+       • Horizontal photo cards (photo left / navy panel right) with scooped
+         "ticket" corners, hanging-tassel + lota + paddy line ornaments.
+       • Closing gold pull-quote flanked by a nouka and a shapla.
      .filter-bar + .product-grid are injected by products.js from the Store.
      ======================================================================== -->
 <section class="section section--products" id="products" data-bg-section="products">
@@ -13,72 +18,103 @@
   <div class="products-banner" data-reveal>
     <!-- the paddy-sunrise photograph, full-bleed on the right, dissolving left into navy -->
     <div class="pb-scene" role="img" aria-label="Sunrise over a Bengal paddy field, a farmer at harvest and a sampan under sail on the river"></div>
-    <span class="pb-paddy" aria-hidden="true"></span>
+    <!-- faint jamdani weave over the navy half -->
+    <span class="pb-weave" aria-hidden="true"></span>
+    <!-- golden paddy stalk standing at the left margin (cropped from the client's art) -->
+    <img class="pb-stalk" src="assets/img/scene/paddy-stalk.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
 
     <div class="container pb-inner">
       <div class="pb-copy">
-        <p class="pb-kicker">From Bengal, to the World</p>
         <h2 class="pb-title"><span class="pb-our">Our</span><span class="pb-products">Products</span></h2>
         <span class="pb-rule" aria-hidden="true">
           <i></i>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>
+          <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 6.5 15 11l4.5 2L15 15l-2 4.5L11 15l-4.5-2L11 11Z"/>
+            <path d="M4.5 13c1.6-1 3-1 4.2 0-1.2 1-2.6 1-4.2 0Z" stroke-opacity=".7"/>
+            <path d="M21.5 13c-1.6-1-3-1-4.2 0 1.2 1 2.6 1 4.2 0Z" stroke-opacity=".7"/>
+          </svg>
           <i></i>
         </span>
         <p class="pb-sub">Premium quality products from the fertile lands of Bengal, crafted for the world.</p>
       </div>
-
-      <!-- the seal that rides the boundary of scene and copy -->
-      <div class="pb-seal" data-reveal>
-        <svg class="pb-lotus" viewBox="0 0 48 30" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M24 26 C21 18 21 9 24 3 C27 9 27 18 24 26 Z"/>
-          <path d="M24 26 C18 21 13 14 13 6 C19 9 23 16 24 26 Z"/>
-          <path d="M24 26 C30 21 35 14 35 6 C29 9 25 16 24 26 Z"/>
-          <path d="M24 26 C15 24 8 20 4 13 C12 13 20 18 24 26 Z" stroke-opacity=".6"/>
-          <path d="M24 26 C33 24 40 20 44 13 C36 13 28 18 24 26 Z" stroke-opacity=".6"/>
-        </svg>
-        <span>Rooted in Bengal<br><em>Delivering Worldwide</em></span>
-      </div>
     </div>
+
+    <!-- the seal that rides the torn edge, lower right — exactly as the reference -->
+    <div class="pb-seal" data-reveal>
+      <svg class="pb-lotus" viewBox="0 0 48 30" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M24 26 C21 18 21 9 24 3 C27 9 27 18 24 26 Z"/>
+        <path d="M24 26 C18 21 13 14 13 6 C19 9 23 16 24 26 Z"/>
+        <path d="M24 26 C30 21 35 14 35 6 C29 9 25 16 24 26 Z"/>
+        <path d="M24 26 C15 24 8 20 4 13 C12 13 20 18 24 26 Z" stroke-opacity=".6"/>
+        <path d="M24 26 C33 24 40 20 44 13 C36 13 28 18 24 26 Z" stroke-opacity=".6"/>
+      </svg>
+      <span>Rooted in Bengal<br>Delivering Worldwide</span>
+    </div>
+
+    <!-- a shapla blossom ghosted at the very edge of the page -->
+    <img class="pb-shapla" src="assets/img/scene/shapla-edge.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
 
     <!-- the hand-torn gold deckle edge where the scene gives way to the catalogue -->
     <span class="pb-torn" aria-hidden="true"></span>
   </div>
 
   <div class="container">
-    <span class="side-rail" aria-hidden="true">The line card</span>
-
     <!-- Category filter — circled gold line-art glyphs (injected by products.js) -->
     <div class="filter-bar" role="group" aria-label="Filter products by category"></div>
 
     <!-- Product cards (injected by products.js) -->
     <div class="product-grid" data-reveal-stagger></div>
 
-    <div class="row row--center" style="margin-top:2.5rem">
-      <a class="btn btn--gold" data-cta="whatsapp">Request the Full Line Card &rarr;</a>
-    </div>
+    <!-- Closing pull-quote — a nouka poles past on the left, a shapla blooms at
+         the right page edge, the words carried in gold italic between them. -->
+    <div class="pq" data-reveal>
+      <svg class="pq-boat" viewBox="0 0 250 120" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- hull -->
+        <path d="M12 82 C62 96 176 96 232 74"/>
+        <path d="M20 88 C78 101 172 99 224 81"/>
+        <path d="M12 82 C8 78 6 74 7 70"/>
+        <path d="M232 74 C238 70 241 66 241 61"/>
+        <!-- woven canopy -->
+        <path d="M58 84 C56 58 70 44 92 43 C114 44 127 58 125 84"/>
+        <path d="M66 84 C65 63 74 51 92 50 C110 51 118 63 117 84"/>
+        <path d="M75 84 C75 60 92 56 92 56 C92 56 108 60 108 84"/>
+        <path d="M92 43 V84"/>
+        <!-- boatman, poling -->
+        <circle cx="176" cy="36" r="3.4"/>
+        <path d="M176 40 C175 50 175 58 176 66"/>
+        <path d="M176 46 L188 40"/>
+        <path d="M176 50 L167 44"/>
+        <path d="M190 18 L164 84"/>
+        <path d="M176 66 L169 82 M176 66 L184 80"/>
+        <!-- water -->
+        <path d="M6 104 H96" stroke-opacity=".55"/>
+        <path d="M120 108 H210" stroke-opacity=".45"/>
+        <path d="M42 113 H150" stroke-opacity=".3"/>
+      </svg>
 
-    <!-- Closing pull-quote, flanked by a gold sampan (left) and a shapla (right) -->
-    <p class="story-quote" data-reveal>
-      <svg class="story-orn story-orn--l" viewBox="0 0 120 70" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M6 52h108"/>
-        <path d="M20 52c8-3 76-26 84-29"/>
-        <path d="M104 23l6 29"/>
-        <path d="M104 23c-16 2-52 10-72 20"/>
-        <path d="M40 52c-2-8-2-14 0-20"/>
-        <path d="M10 56c12 4 88 4 100 0"/>
+      <p class="pq-text">
+        <span class="pq-mark" aria-hidden="true">&ldquo;</span>
+        From the golden fields of Bengal to tables around the world.
+        <span class="pq-mark" aria-hidden="true">&rdquo;</span>
+      </p>
+      <svg class="pq-orn" viewBox="0 0 56 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M28 2 32 8 28 14 24 8Z"/>
+        <path d="M20 8 C15 5 10 5 5 8 C10 11 15 11 20 8Z" stroke-opacity=".65"/>
+        <path d="M36 8 C41 5 46 5 51 8 C46 11 41 11 36 8Z" stroke-opacity=".65"/>
       </svg>
-      <span class="q-rule" aria-hidden="true"></span>
-      &ldquo;From the golden fields of Bengal to tables around the world.&rdquo;
-      <span class="q-rule" aria-hidden="true"></span>
-      <svg class="story-orn story-orn--r" viewBox="0 0 120 70" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <g transform="translate(60 40)">
-          <path d="M0 22 C-5 2 -5 -22 0 -42 C5 -22 5 2 0 22 Z"/>
-          <path d="M0 22 C-18 10 -34 -6 -40 -28 C-16 -22 2 -6 0 22 Z"/>
-          <path d="M0 22 C18 10 34 -6 40 -28 C16 -22 -2 -6 0 22 Z"/>
-          <path d="M0 22 C-30 16 -50 6 -60 -12 C-30 -10 -10 4 0 22 Z" stroke-opacity=".55"/>
-          <path d="M0 22 C30 16 50 6 60 -12 C30 -10 10 4 0 22 Z" stroke-opacity=".55"/>
+
+      <svg class="pq-lotus" viewBox="0 0 150 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <g transform="translate(75 62)">
+          <path d="M0 30 C-6 6 -6 -24 0 -50 C6 -24 6 6 0 30 Z"/>
+          <path d="M0 30 C-20 16 -38 -4 -44 -30 C-18 -24 2 -6 0 30 Z"/>
+          <path d="M0 30 C20 16 38 -4 44 -30 C18 -24 -2 -6 0 30 Z"/>
+          <path d="M0 30 C-34 24 -56 12 -68 -10 C-34 -8 -12 6 0 30 Z" stroke-opacity=".55"/>
+          <path d="M0 30 C34 24 56 12 68 -10 C34 -8 12 6 0 30 Z" stroke-opacity=".55"/>
         </g>
+        <path d="M8 98 H70" stroke-opacity=".5"/>
+        <path d="M84 103 H142" stroke-opacity=".4"/>
+        <path d="M30 108 H118" stroke-opacity=".28"/>
       </svg>
-    </p>
+    </div>
   </div>
 </section>
