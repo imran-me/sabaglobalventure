@@ -1,10 +1,11 @@
 /* ============================================================================
-   sections/about.css — CHAPTER 01, ORIGIN (ivory)
+   sections/about.css — CHAPTER 01, ORIGIN (dark indigo)
    ----------------------------------------------------------------------------
-   Asymmetric on purpose: the arched portrait leads on the left at .8fr, the
-   story runs wider at 1.2fr. The portrait is cut to the house arch and framed
-   in a hairline, echoing the hero portal — one shape language used twice, so it
-   reads as a house style rather than a one-off flourish.
+   Client verdict: "Rooted in the Delta doesn't look premium in ivory." So this
+   chapter is DARK — the gold lota-pata arch reads best on indigo (the golden
+   vine on blue is the look the client loves), and gold is king again here.
+   Asymmetric: the arched portrait leads on the left at .8fr, the story runs
+   wider at 1.2fr. One shape language with the hero portal.
    ========================================================================== */
 
 .about-grid {
@@ -21,18 +22,11 @@
   aspect-ratio: 100 / 140;
   max-height: 620px;
 }
-.about-portrait-img { position: absolute; inset: 0; background: var(--ivory-200); }
+.about-portrait-img { position: absolute; inset: 0; background: var(--indigo-800); }
 .about-portrait-img img { width: 100%; height: 100%; object-fit: cover; }
 /* The gentle push-in on hover only once the unveil has finished — otherwise the
    two transforms fight over the same property and the image jumps. */
 .about-portrait.is-visible:hover .unveil img { transform: scale(1.045); }
-.about-portrait .arch-frame { color: var(--clay-600); opacity: .8; }   /* terracotta — the rare spark, replacing gold on this ivory chapter */
-
-/* Chapter numeral on this ivory chapter: terracotta stroke instead of gold.
-   Overrides bengal.css .section--ivory .chapter-num (same specificity, later
-   in cascade order — about.css loads after bengal.css). Decorative only
-   (aria-hidden numeral), so no body-text contrast requirement applies. */
-.about .chapter-num { -webkit-text-stroke-color: var(--clay-600); }
 .about-portrait figcaption {
   position: absolute;
   left: 50%; bottom: -1.75rem;
@@ -40,7 +34,7 @@
   font-size: .6rem;
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--gold-700);
+  color: var(--gold-500);
   white-space: nowrap;
   opacity: .85;
 }
@@ -51,13 +45,13 @@
 .pull-quote {
   margin: clamp(1.5rem, 3.5vw, 2.25rem) 0;
   padding-left: clamp(1rem, 2vw, 1.5rem);
-  border-left: 2.7px solid var(--clay-600);   /* terracotta — the rare spark */
+  border-left: 2.7px solid var(--clay-400);   /* terracotta — the rare spark, brighter on dark */
   font-family: var(--font-serif);
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-style: italic;
   font-weight: 400;
   line-height: 1.35;
-  color: var(--ink-900);
+  color: var(--gold-100);
   max-width: 46ch;
 }
 
@@ -65,27 +59,27 @@
    another grid of identical feature cards. */
 .creed {
   margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
-  border-top: 1.35px solid var(--line-ivory);
+  border-top: 1.35px solid var(--line);
 }
 .creed > div {
   display: grid;
   grid-template-columns: 12rem 1fr;
   gap: 1rem;
   padding: .85rem 0;
-  border-bottom: 1.35px solid var(--line-ivory);
+  border-bottom: 1.35px solid var(--line);
 }
 .creed dt {
   font-size: .72rem;
   font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--gold-700);
+  color: var(--gold-300);
 }
 .creed dd {
   margin: 0;
   font-size: var(--fs-small);
   line-height: 1.6;
-  color: var(--text-muted-on-light);
+  color: var(--text-muted-on-dark);
 }
 
 @media (max-width: 900px) {
