@@ -421,6 +421,45 @@ Dubai-origin, Arabian monuments.
   compositing is so slow a 0.6s transition can take seconds of wall-clock — don't
   mistake that for a stuck animation.
 - ⏳ Next: client contact details → Firebase project → real photography → Lighthouse.
+
+### 2026-07-18 — "Louis Vuitton meets Bengal" luxury overhaul (client called earlier build "cheap")
+Client rapid-fire brief + a reference screenshot of a "Our Products" page as the north star.
+Standing rules unchanged (push as **Md Imran Hossain** only, never Claude; save context here).
+- **Exact palette (client-fixed)** — now in tokens.css: Midnight Navy `#081B45`, Royal Gold
+  `#C8A24A`, Warm Ivory `#F7F2E8`, Rice White `#FDFBF6`, Terracotta `#A85A2A`, Paddy Green
+  `#597A3A`. Token names kept (`--indigo-*` etc.) but revalued around one confident navy;
+  gold is antique (highlight never bleaches to white).
+- **NO bright green buttons — ever.** New button grammar (components.css): thin **gold
+  outline at rest → solid gold seal on hover** (label→ink navy), no glow, no light-sweep.
+  `.btn--whatsapp` reuses this (was WhatsApp green). Dock bubbles gilt-on-navy, no green pulse.
+- **Background**: retired the gold-particle starfield (background.js no longer calls
+  `initParticles`). Added `.bg-weave` (index.html + background.css): Midnight Navy under a
+  <20% Jamdani buti + lotus watermark + faint terracotta bloom, radial-feathered.
+- **Catalogue filter** = the reference's signature: circled thin-gold **line-art category
+  glyphs** (shapla/paddy/shrimp/fish/gourd/chilli/potato/jute-sack), name beneath, active
+  fills gold. Icons live in `products.js` `ICONS{}`; styles `.cat-filter/.cat-round`.
+- **Empty niches fixed**: an empty `<img src>` never fired the load-error fallback, so some
+  arches rendered blank. `products.js nicheSrc()` now injects `ImgFallback.makePlaceholder`
+  directly. Placeholder redrawn to a Shapla lily on the new palette (img-fallback.js).
+- **Certifications** → 8 gold-outline badges w/ tiny line-art icons (config.js `certs[]` now
+  carries `icon:`; `main.js CERT_ICONS{}` + `renderCerts`; trust.css `.cert-badge`): ISO,
+  HACCP, Halal, Phytosanitary, Premium Export, Non GMO, Hygienically Processed, Moisture
+  Controlled. Any not actually held → `show:false`.
+- **Bengal Story** band added to products.html (fertile plains of Bengal… aroma/purity/
+  consistency) flanked by gold sampan+shapla line-art + centred serif pull-quote.
+- **Arch ornament redraw** (sections/defs.html): leaf vines → **rice panicles (paddy) +
+  jamdani buti diamonds + shapla-bud finial**, thin gold. Draw-in contract preserved
+  (`.lota-line`/`.lo-line` + `pathLength=100`, no `vector-effect`). Client said **NOT a
+  temple arch** — silhouette (the cusped arch-mask) is UNCHANGED; Bengali feel is ornament-only.
+- **Client will supply real photography** (chosen in-session). Biggest remaining gap to the
+  reference is photos (paddy-sunset banner, spice bowls, shrimp, rice-in-field). Cannot be
+  generated — wire them via Admin → Products / a banner slot when they arrive. Hero portal
+  still uses the older leafy `arch-lota.svg` (not the defs symbols) — swap to paddy later for
+  full consistency.
+- ⚠ **NEVER `taskkill /IM chrome.exe`** — it killed the client's working browser mid-session.
+  Headless renders must terminate ONLY their own spawned instance (proc.terminate / by PID).
+- Commits this session: `6e6c6bd` (palette/buttons/weave/filter/badges/story), `a8506ce`
+  (paddy/shapla/jamdani vines). Both pushed to origin/main, 0 Claude attribution.
 ```
 (Add a new dated entry above this line each day.)
 ```
