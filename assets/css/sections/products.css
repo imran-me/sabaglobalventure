@@ -170,18 +170,20 @@
    PRODUCT CARDS — horizontal photo cards (the reference layout)
    Full photograph on the left, a Midnight-Navy panel on the right.
    ========================================================================== */
+/* Three cards to a row: narrower + taller, as asked. auto-fit collapses to 2
+   then 1 as the viewport narrows. */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
-  gap: clamp(1rem, 2vw, 1.6rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+  gap: clamp(.9rem, 1.6vw, 1.4rem);
 }
 .product-card.is-hidden { display: none; }
 
 .product-card {
-  position: relative; display: grid; grid-template-columns: 44% 1fr;
-  min-height: 248px;
-  background: linear-gradient(158deg, rgba(20,49,113,.4), rgba(8,20,50,.94));
-  border: 1.35px solid rgba(200,162,74,.3);
+  position: relative; display: grid; grid-template-columns: 40% 1fr;
+  min-height: clamp(330px, 26vw, 390px);
+  background: linear-gradient(158deg, rgba(20,49,113,.42), rgba(8,20,50,.95));
+  border: 1.35px solid rgba(200,162,74,.32);
   border-radius: 3px; overflow: hidden; cursor: pointer;
   box-shadow: 0 20px 44px -26px rgba(1,3,15,.85);
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
@@ -198,21 +200,37 @@
   content: ""; position: absolute; inset: 0 -1px 0 auto; width: 44px;
   background: linear-gradient(90deg, transparent, rgba(8,20,50,.94)); pointer-events: none;
 }
-.pc-body { position: relative; padding: clamp(1.1rem, 1.7vw, 1.65rem); display: flex; flex-direction: column; }
-.pc-vine { position: absolute; top: 2px; right: 2px; width: 66px; height: 66px; color: var(--gold-400, var(--gold-500)); opacity: .5; transform: scaleX(-1); pointer-events: none; transition: opacity var(--dur) var(--ease); }
-.product-card:hover .pc-vine { opacity: .8; }
-.pc-cat { font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 700; color: var(--gold-300); margin-bottom: .5rem; }
+.pc-body { position: relative; padding: clamp(1rem, 1.5vw, 1.45rem); display: flex; flex-direction: column; }
+/* the lota-pata vine framing TWO corners of the panel */
+.pc-vine { position: absolute; width: 62px; height: 62px; color: var(--gold-300); opacity: .5; pointer-events: none; z-index: 1; transition: opacity var(--dur) var(--ease); }
+.pc-vine--tr { top: 2px; right: 2px; transform: scaleX(-1); }
+.pc-vine--bl { bottom: 2px; left: 2px; transform: scaleY(-1); }
+.product-card:hover .pc-vine { opacity: .82; }
+.pc-cat { position: relative; z-index: 2; font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; color: var(--gold-300); margin-bottom: .4rem; }
 .pc-cat i { color: var(--gold-500); font-style: normal; margin-left: .25rem; }
-.pc-name { font-family: var(--font-serif); font-size: clamp(1.35rem, 1.8vw, 1.7rem); color: var(--frost-100); line-height: 1.1; margin-bottom: .5rem; }
-.pc-desc { font-size: .9rem; color: var(--text-muted-on-dark); line-height: 1.55; margin-bottom: .7rem; }
-.pc-loc { display: flex; align-items: center; gap: .4rem; font-size: .82rem; color: var(--gold-100); margin-top: auto; }
+.pc-name { position: relative; z-index: 2; font-family: var(--font-serif); font-size: clamp(1.3rem, 1.7vw, 1.6rem); color: var(--frost-100); line-height: 1.08; margin-bottom: .5rem; }
+/* five-petal flower divider under the name */
+.pc-flourish { display: flex; align-items: center; gap: .5rem; margin: 0 0 .6rem; color: var(--gold-500); }
+.pc-flourish i { height: 1px; width: 26px; background: linear-gradient(90deg, var(--gold-500), transparent); }
+.pc-flourish i:first-child { background: linear-gradient(90deg, transparent, var(--gold-500)); max-width: 16px; }
+.pc-flourish svg { width: 17px; height: 17px; flex: none; }
+.pc-desc {
+  position: relative; z-index: 2; font-size: .84rem; color: var(--text-muted-on-dark); line-height: 1.5; margin-bottom: .7rem;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+/* the full line-card detail: origin + packaging chips */
+.pc-meta { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .6rem; }
+.pc-meta .chip { font-size: .62rem; padding: .16rem .5rem; letter-spacing: .01em; }
+.pc-meta .chip--pack { opacity: .78; }
+.pc-loc { position: relative; z-index: 2; display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; font-size: .78rem; color: var(--gold-100); margin-top: auto; }
 .pc-pin { width: 15px; height: 15px; color: var(--gold-500); flex: none; }
 .pc-hs { margin-left: .45rem; color: var(--text-muted-on-dark); font-size: .72rem; letter-spacing: .02em; }
 .pc-foot {
-  display: flex; align-items: center; justify-content: space-between; gap: .8rem;
-  margin-top: .9rem; padding-top: .8rem; border-top: 1px solid rgba(200,162,74,.16);
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+  margin-top: .85rem; padding-top: .75rem; border-top: 1px solid rgba(200,162,74,.16);
 }
-.pc-explore { position: relative; font-size: .82rem; letter-spacing: .03em; color: var(--gold-300); }
+.pc-explore { position: relative; font-size: .78rem; letter-spacing: .02em; color: var(--gold-300); white-space: nowrap; }
 .pc-explore span { display: inline-block; transition: transform var(--dur) var(--ease); }
 .product-card:hover .pc-explore span { transform: translateX(4px); }
 .pc-explore::after {

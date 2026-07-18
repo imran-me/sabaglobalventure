@@ -80,13 +80,24 @@ window.initProducts = function initProducts() {
     return window.ImgFallback ? window.ImgFallback.makePlaceholder(img.alt || p.name) : "";
   };
 
-  // A faint jamdani/paddy vine hugging the card's top-right corner (the reference's
-  // quiet ornament). One symbol, tinted gold, drawn thin.
-  const cornerVine =
-    `<svg class="pc-vine" viewBox="0 0 55 55" fill="none" stroke="currentColor" stroke-width="0.7"
+  // The loved lota-pata vine, hugging TWO corners of the card (top-right +
+  // bottom-left) so the ornament frames the piece — plus a small five-petal
+  // flower divider under the name. More Bengal, as asked.
+  const cornerVine = (cls) =>
+    `<svg class="pc-vine ${cls}" viewBox="0 0 55 55" fill="none" stroke="currentColor" stroke-width="0.7"
           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <use href="#sgv-lota-corner"></use>
      </svg>`;
+  const flourish =
+    `<span class="pc-flourish" aria-hidden="true">
+        <i></i>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="1.6"/>
+          <path d="M12 10.4C11 8.8 12 6.6 12 6.6S13 8.8 12 10.4Z"/><path d="M12 13.6C13 15.2 12 17.4 12 17.4S11 15.2 12 13.6Z"/>
+          <path d="M10.4 12C8.8 11 6.6 12 6.6 12S8.8 13 10.4 12Z"/><path d="M13.6 12C15.2 11 17.4 12 17.4 12S15.2 13 13.6 12Z"/>
+        </svg>
+        <i></i>
+     </span>`;
   const pin =
     `<svg class="pc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -97,21 +108,26 @@ window.initProducts = function initProducts() {
     const img = (p.images && p.images[0]) || { url: "", alt: p.name };
     const origin = (p.origins || [])[0] || "Bangladesh";
     const hs = p.hsCode ? `<span class="pc-hs">HS ${esc(p.hsCode)}</span>` : "";
+    // The full line-card detail the arched cards used to show: every origin +
+    // every packaging option, as fine chips.
+    const chips = [
+      ...(p.origins || []).map((o) => `<span class="chip">${esc(o)}</span>`),
+      ...(p.packaging || []).map((pk) => `<span class="chip chip--pack">${esc(pk)}</span>`),
+    ].join("");
 
-    // The reference card: a full photograph on the left, a Midnight-Navy panel on
-    // the right — category eyebrow, serif name, a line of copy, the origin with a
-    // pin, then "Explore Product →" (opens the detail + inquiry modal). A thin gold
-    // frame with cut corners and a faint corner vine finishes it.
     return `
     <article class="product-card" data-cat="${esc(p.category)}" data-slug="${esc(p.slug)}" data-reveal>
       <div class="pc-photo">
         <img src="${esc(nicheSrc(img, p))}" alt="${esc(img.alt || p.name)}" loading="lazy" decoding="async">
       </div>
       <div class="pc-body">
-        ${cornerVine}
+        ${cornerVine("pc-vine--tr")}
+        ${cornerVine("pc-vine--bl")}
         <p class="pc-cat">${esc(p.category)} <i>&#10022;</i></p>
         <h3 class="pc-name">${esc(p.name)}</h3>
+        ${flourish}
         <p class="pc-desc">${esc(p.shortDesc)}</p>
+        ${chips ? `<div class="pc-meta">${chips}</div>` : ""}
         <p class="pc-loc">${pin}${esc(origin)} ${hs}</p>
         <div class="pc-foot">
           <a class="pc-explore" data-explore>Explore Product <span aria-hidden="true">&rarr;</span></a>
