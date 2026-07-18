@@ -54,15 +54,15 @@ window.initBackground = function initBackground() {
   // gold illustration (client art) composited directly, dark ground already
   // knocked out — used where a detailed engraving reads better than a flat mask.
   const SIDE_ACCENTS = [
-    { section: "hero",         file: "sampan.svg",      side: "right", w: 34, y: 68, op: 0.16 },
-    { section: "about",        raster: "scene/tiger-cut.png",    side: "left",  w: 34, y: 58, op: 0.16 },
-    { section: "trust",        file: "water-lily.svg",  side: "left",  w: 16, y: 52, op: 0.14 },
-    { section: "products",     file: "bazar.svg",       side: "right", w: 27, y: 44, op: 0.10 },
-    { section: "capabilities", file: "port-crane.svg",  side: "right", w: 28, y: 56, op: 0.07 },
-    { section: "journey",      file: "river-delta.svg", side: "left",  w: 26, y: 52, op: 0.13 },
-    { section: "markets",      file: "cargo-ship.svg",  side: "left",  w: 36, y: 62, op: 0.14 },
-    { section: "cta",          raster: "scene/rickshaw-cut.png", side: "right", w: 30, y: 55, op: 0.18 },
-    { section: "contact",      file: "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.14 },
+    { section: "hero",         raster: "scene/sampan-cut.png",    side: "right", w: 32, y: 66, op: 0.20 },
+    { section: "about",        raster: "scene/tiger-cut.png",     side: "left",  w: 34, y: 58, op: 0.17 },
+    { section: "trust",        raster: "scene/shapla-cut.png",    side: "left",  w: 22, y: 52, op: 0.20 },
+    { section: "products",     file:   "bazar.svg",       side: "right", w: 27, y: 44, op: 0.09 },
+    { section: "capabilities", raster: "scene/fisherman-cut.png", side: "right", w: 34, y: 56, op: 0.17 },
+    { section: "journey",      file:   "river-delta.svg", side: "left",  w: 26, y: 52, op: 0.13 },
+    { section: "markets",      file:   "cargo-ship.svg",  side: "left",  w: 36, y: 62, op: 0.14 },
+    { section: "cta",          raster: "scene/rickshaw-cut.png",  side: "right", w: 30, y: 55, op: 0.18 },
+    { section: "contact",      file:   "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.14 },
   ];
 
   const used = new Set();
@@ -83,10 +83,25 @@ window.initBackground = function initBackground() {
       height: (a.w * 0.82) + "vmin",
       top: a.y + "%",
     });
-    // Mask (not background-image) so the gold gradient in CSS tints the shape.
-    const url = `url(${DIR}${a.file})`;
-    el.style.webkitMaskImage = url;
-    el.style.maskImage = url;
+    if (a.raster) {
+      // A finished gold engraving (client art) — dark ground already knocked out.
+      // Composited directly (no mask/tint), softened with a warm gold glow.
+      el.classList.add("side-accent--photo");
+      Object.assign(el.style, {
+        backgroundImage: `url(assets/img/${a.raster})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "contain",
+        webkitMaskImage: "none",
+        maskImage: "none",
+        filter: "drop-shadow(0 12px 34px rgba(200,162,74,.14))",
+      });
+    } else {
+      // Mask (not background-image) so the gold gradient in CSS tints the shape.
+      const url = `url(${DIR}${a.file})`;
+      el.style.webkitMaskImage = url;
+      el.style.maskImage = url;
+    }
     el.style.setProperty("--acc-op", a.op);
     host.appendChild(el);
     placed.push(el);
