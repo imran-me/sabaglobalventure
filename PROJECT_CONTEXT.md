@@ -208,6 +208,21 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-19 (vision acts IV) — the lost page, the moon, the lamp, the shoot
+- **404.html**: standalone page — the client's carved golden arch (cut from
+  the `bg/` ornament sheet → `scene/arch-gold.webp`, screen-blend + strong
+  radial feather so the crop floats, never sits as a rectangle) over "The
+  river has carried this page away." GitHub Pages serves it automatically.
+  Also cut `scene/paddy-corner-l/r.webp` for future letterhead corners.
+- **The moon** (#10): a soft light-disc over the footer's departing sampan
+  (`.site-footer::before`) — hero sails at sunrise, footer leaves under the
+  moon; the page completes one day on the river.
+- **The rickshaw lamp** (#9, adapted for raster art): hovering the CTA's gold
+  button warms the rickshaw via `--acc-op` (`:has()` rule in cta.css).
+- **PHOTO-SHOT-LIST.md**: the art-directed one-day shoot brief (golden hour,
+  hands in frame, warm/dark grounds; 1 hero boat + 20 SKUs + 3 story + 2
+  people). Hand it to whoever holds the camera.
+
 ### 2026-07-19 (final) — The fisherman and the rickshaw join the tiger's rank
 Client: "you haven't used the fisherman, the rickshaw, like the royal bengal
 tiger." All three engravings now share the SAME stagecraft — ground-anchored
