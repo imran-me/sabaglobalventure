@@ -95,12 +95,8 @@
 }
 
 
-/* ===== The tiger's cleared stage ========================================
-   The Royal Bengal walks a strip of pure navy beneath the origin story -
-   cleared air, nothing behind it, nothing over it. The section's extra
-   bottom padding IS the artwork's ground; do not fill it with content. */
-#about { padding-bottom: clamp(12rem, 22vw, 19rem); }
-@media (max-width: 760px) { #about { padding-bottom: var(--section-pad); } }
+/* The tiger now floats behind the story text on the right (background.js),
+   so the section no longer needs the extra ground-stage bottom padding. */
 
 /* ===== The Managing Director's note ==================================== */
 .md-note { margin-top: clamp(1.8rem, 3.5vw, 2.6rem); max-width: 52ch; }

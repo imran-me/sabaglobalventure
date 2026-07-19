@@ -115,8 +115,8 @@
   --fs-small:   0.875rem;
   --fs-eyebrow: 0.75rem;
 
-  --lh-heading: 1.06;     /* tight — Cormorant has lots of built-in air */
-  --lh-body:    1.7;
+  --lh-heading: 1.04;     /* tight — Cormorant has lots of built-in air */
+  --lh-body:    1.5;      /* compacted from 1.7 — tighter lines, ~15% less height */
   --measure:    68ch;
   --tracking-eyebrow: 0.22em;
 
@@ -127,10 +127,10 @@
   --space-4: 1rem;
   --space-5: 1.5rem;
   --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4rem;
-  --space-9: 6rem;
-  --section-pad: clamp(2.4rem, 5.2vw, 4.6rem);
+  --space-7: 2rem;
+  --space-8: 2.6rem;
+  --space-9: 3.6rem;
+  --section-pad: clamp(1.6rem, 3.4vw, 3rem);   /* compacted ~35% for a tighter page */
 
   /* ---- Layout --------------------------------------------------------- */
   --container:        1240px;

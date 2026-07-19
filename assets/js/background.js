@@ -68,9 +68,12 @@ window.initBackground = function initBackground() {
   //   shaplas    → flanking the trust counters
   //   cargo ship → capabilities (how the house moves goods), quiet on ivory
   const SIDE_ACCENTS = [
-    { section: "about",        raster: "scene/tiger-gold.webp",    side: "left",  w: 58, ground: 0, op: 0.6, blend: true },
-    { section: "trust",        raster: "scene/shapla-cut.webp",    side: "left",  w: 23, y: 50, op: 0.22, blend: true },
-    { section: "trust",        raster: "scene/shapla-cut.webp",    side: "right", w: 23, y: 50, op: 0.22, blend: true, flip: true },
+    // The tiger floats behind the story text on the RIGHT (client-placed),
+    // flipped to face the story on its left. Same size + opacity as before;
+    // z-index 0 keeps it strictly behind the text, so it never steals space.
+    { section: "about",        raster: "scene/tiger-gold.webp",    side: "right", w: 58, y: 46, op: 0.6, blend: true, flip: true },
+    { section: "trust",        raster: "scene/shapla-cut.webp",    side: "left",  w: 23, y: 50, op: 0.9, blend: true },
+    { section: "trust",        raster: "scene/shapla-cut.webp",    side: "right", w: 23, y: 50, op: 0.9, blend: true, flip: true },
     { section: "products",     file:   "bazar.svg",       side: "right", w: 27, y: 44, op: 0.07 },
     { section: "capabilities", file:   "cargo-ship.svg",  side: "right", w: 34, y: 58, op: 0.10 },
     // The fisherman and the rickshaw get the SAME stagecraft as the tiger:
