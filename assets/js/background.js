@@ -73,8 +73,11 @@ window.initBackground = function initBackground() {
     { section: "trust",        raster: "scene/shapla-cut.webp",    side: "right", w: 23, y: 50, op: 0.22, blend: true, flip: true },
     { section: "products",     file:   "bazar.svg",       side: "right", w: 27, y: 44, op: 0.07 },
     { section: "capabilities", file:   "cargo-ship.svg",  side: "right", w: 34, y: 58, op: 0.10 },
-    { section: "markets",      raster: "scene/fisherman-cut.webp", side: "right", w: 44, y: 55, op: 0.32 },
-    { section: "cta",          raster: "scene/rickshaw-cut.webp",  side: "right", w: 38, y: 52, op: 0.34, gild: true },
+    // The fisherman and the rickshaw get the SAME stagecraft as the tiger:
+    // ground-anchored, large, walking cleared navy (the sections' extra
+    // bottom padding IS their stage — markets.css / cta.css).
+    { section: "markets",      raster: "scene/fisherman-cut.webp", side: "right", w: 54, ground: 0, op: 0.58 },
+    { section: "cta",          raster: "scene/rickshaw-cut.webp",  side: "right", w: 46, ground: 0, op: 0.55, gild: true },
     { section: "contact",      file:   "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.12 },
     // the boat leaves as the page signs off
     { section: "footer",       raster: "scene/sampan-cut.webp",    side: "right", w: 27, y: 44, op: 0.28, blend: true, gild: true },

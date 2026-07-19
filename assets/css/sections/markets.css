@@ -78,3 +78,11 @@
    here. main.js can open that modal from ANY market chip row — hero, CTA band
    or footer — including on pages that never load this stylesheet, so it has to
    be global. Keeping a second copy here would just fight it on specificity. */
+
+
+/* ===== The fisherman's cleared stage ====================================
+   Like the tiger at Origin: the extra bottom padding IS the artwork's
+   ground - he casts his net across cleared navy, under the world map,
+   toward the one route that sails off its right edge. Do not fill it. */
+#markets { padding-bottom: clamp(11rem, 20vw, 17rem); }
+@media (max-width: 760px) { #markets { padding-bottom: var(--section-pad); } }

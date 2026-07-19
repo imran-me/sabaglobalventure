@@ -78,3 +78,9 @@
   .trade-facts { flex-direction: column; gap: .7rem; }
   .trade-facts .fact + .fact { border-left: 0; border-top: 1px solid rgba(200,162,74,.18); padding-top: .9rem; }
 }
+
+/* ===== The rickshaw's cleared stage =====================================
+   The last mile gets its own ground beneath the conversation - the band's
+   extra bottom padding is the rickshaw's street. Do not fill it. */
+#cta { padding-bottom: clamp(10rem, 18vw, 15rem); }
+@media (max-width: 760px) { #cta { padding-bottom: var(--section-pad); } }
