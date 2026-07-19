@@ -208,6 +208,28 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-19 (later) — Four vision acts: Arabic edition, waterline, net-route, cert plates (+SVG diet)
+- **Arabic/RTL edition** (`assets/js/i18n.js` + `assets/css/rtl.css`): a header
+  "عربي" toggle (persisted; reloads); translation runs on TEXT NODES so it
+  survives partial-includes and injected markup; runs after initContact (the
+  category <select> rebuild) and BEFORE initKinetic so the Arabic headline
+  word-splits and animates like English. Amiri loads only when AR is active.
+  Typography law in rtl.css: NO letter-spacing on Arabic, NO italics, looser
+  leading. Catalogue DATA stays English by design. Preserve node whitespace
+  when translating (the space before an <em> lives in the text node).
+- **The waterline** (ART-VISION #18): a hairline gold river fixed in the left
+  margin, filled by scroll, a lamp-lit dot riding the tip — the page's one
+  progress indicator (the top scroll bar is retired via CSS). Hidden <1100px.
+- **The net route** (#8): exactly one fainter, slower arc leaves the map's hub
+  and exits the right edge into the fisherman's net (`.route--net`,
+  markets-map.js) — art and data touching once.
+- **Cert plates** (#24): certifications render as framed plates (hairline +
+  scooped ticket corners) with a `no:` slot per row in config.certs[] — the
+  number line renders only once real numbers are supplied.
+- **Brand SVG diet:** emblem.svg/favicon.svg were a full-size base64 PNG in an
+  <image> wrapper — embedded raster resized + quantized: 59KB → 13KB / 9KB.
+- Verified: AR renders RTL with zero overflow at 1536; EN untouched.
+
 ### 2026-07-19 (cont.) — "Solve all 50" + Art Pass II + admin-editable trust layer
 Client: solve every review item except the Gmail/domain one; make new business
 facts Admin-editable; use the engravings to their full potential; declutter.
