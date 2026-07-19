@@ -208,6 +208,30 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-20 — Client-directed engraving placements + vertical compaction
+A round of "place X here" art direction (client marked screenshots). Placement
+mechanics: navy chapters use `background.js` SIDE_ACCENTS (screen-blend + gild);
+IVORY chapters (featured, capabilities) can't screen-blend, so they use bespoke
+CSS spans with a warm darken filter + a local ivory "clearing" radial that mutes
+the busy `ivory-bengal.svg` pattern behind the art.
+- **Tiger** → floats behind the About story text on the RIGHT (flipped to face
+  the story, z-index 0 so it never steals space). Removed its ground-stage pad.
+- **Trust shaplas** → opacity 0.22 → **0.9** (prominent gold lilies, two sides).
+- **Fisherman** → ivory Capabilities upper-right (`.cap-fisher`, soft gold,
+  local clearing). Removed the fisherman from Markets.
+- **Rickshaw** → Markets upper-right (navy, screen-blend like the tiger).
+- **Two noukas** → ivory Featured upper corners (`.feat-nouka--l/r`).
+- **Hero flanking লতা পাতা** → `.portal-vine--l/r` in hero.html: thin-gold
+  climbing vines + leaves + five-petal flowers + songbirds on each side of the
+  arch, OUTSIDE the inner arch vine; draws in with the hero (`.pv-line` dash).
+- **Vertical compaction** (client: "reduce page height 15%"): `--lh-body`
+  1.7→1.5, `--section-pad` and `--space-7/8/9` cut ~35%, chapter-head gaps,
+  hero 100→86svh, product banner + card min-heights. Achieved **~9%**
+  (13675→12443px, zero overflow). A literal 15% needs shrinking the product
+  photos/hero enough to hurt the luxury feel — flagged to client, not done.
+- Ivory-art recipe worth reusing: darken filter `sepia(.5) saturate(1.5)
+  hue-rotate(-12deg) brightness(.68-.72)` + radial ivory clearing behind.
+
 ### 2026-07-20 — Proper OG share card (WhatsApp/LinkedIn preview)
 The `og:image` was a flat logo icon; sharing a link IS the sales channel, so it
 now uses a real 1200×630 house card — the paddy-sunrise + nouka under sail,
