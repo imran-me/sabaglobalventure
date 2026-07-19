@@ -208,6 +208,22 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-20 — Proper OG share card (WhatsApp/LinkedIn preview)
+The `og:image` was a flat logo icon; sharing a link IS the sales channel, so it
+now uses a real 1200×630 house card — the paddy-sunrise + nouka under sail,
+wordmark, tagline and shapla seal. Source is **`tools/og-card.html`** (not
+linked from the site): serve the repo, open it at a 1200×630 viewport,
+screenshot, save over `assets/img/icons/og-image.jpg`
+(scratchpad `render_og.py` automates this). Shipped as a **92KB progressive
+JPEG** (was a 635KB PNG, now removed); `index.html` meta updated to `.jpg`
+with explicit `og:image:width/height/type/alt`. Committed `e5b1ceb`.
+- **Still open from ART-VISION (self-contained, next up):** paddy-corner sprays
+  flanking the 404 (`scene/paddy-corner-l/r.webp` already cut — they suit
+  navy+screen-blend, not the white line card); chapter-numeral die-ring
+  treatment (#13); an Arabic-edition mobile (390px) verification.
+- Client still owes: domain + info@ email, cert numbers, license/BIN, real
+  photography (brief = PHOTO-SHOT-LIST.md), GA4 id, Pages activation.
+
 ### 2026-07-19 (forensic pass) — every feature drilled, four defects fixed
 Full report: **REVIEW-DEEP-2026-07-19.md**. Scripted drills proved search∩
 filter compose, the whole modal cycle, all form paths (empty blocked, valid →
