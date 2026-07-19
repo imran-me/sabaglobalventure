@@ -92,3 +92,19 @@
   font-size: .74rem; letter-spacing: .04em;
   color: var(--text-muted-on-dark); opacity: .8;
 }
+
+/* The single Bengali line that signs the house (ART-VISION #12). */
+.bn-line {
+  margin-top: .9rem;
+  font-family: "Tiro Bangla", "Cormorant Garamond", serif;
+  font-size: 1.02rem; line-height: 1.6;
+  color: var(--gold-300); opacity: .85;
+}
+
+/* The colophon: the signature under the whole work (ART-VISION #25). */
+.colophon {
+  text-align: center; padding: 0 clamp(6rem, 12vw, 10rem) 1.4rem;
+  font-family: var(--font-serif); font-style: italic;
+  font-size: .8rem; letter-spacing: .06em;
+  color: var(--gold-500); opacity: .55;
+}

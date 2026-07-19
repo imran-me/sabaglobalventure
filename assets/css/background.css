@@ -81,6 +81,8 @@
     url("../img/patterns/jamdani-gold.svg") 0 0 / 210px repeat,
     url("../img/patterns/lotus-gold.svg") 80px 60px / 560px repeat;
   opacity: .08;
+  /* the cloth breathes — a 90s candlelight swell, never a flicker */
+  animation: weave-breathe 90s ease-in-out infinite;
   -webkit-mask-image: radial-gradient(125% 105% at 50% 26%, #000 34%, rgba(0,0,0,.45) 70%, transparent 100%);
           mask-image: radial-gradient(125% 105% at 50% 26%, #000 34%, rgba(0,0,0,.45) 70%, transparent 100%);
 }
@@ -217,7 +219,13 @@
 /* A missing SVG simply masks to nothing — the site degrades gracefully to the
    glow canvas alone. */
 
+@keyframes weave-breathe {
+  0%, 100% { opacity: .07; }
+  50%      { opacity: .095; }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .bg-stage .bg-weave { animation: none; }
   .bg-stage .bg-scene { animation: none; transform: scale(1.03); }
   .bg-stage .bg-waves,
   .bg-stage .bg-waves::before,

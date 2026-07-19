@@ -9,6 +9,17 @@
 window.initReveal = function initReveal() {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // The alpona is drawn ONCE per visit: a craftsman doesn't redraw his floor
+  // for the same guest twice. On return navigations within the session the
+  // ornament simply IS there (bengal.css collapses the draw transitions).
+  try {
+    if (sessionStorage.getItem("sgv_visited")) {
+      document.documentElement.classList.add("is-returning");
+    } else {
+      sessionStorage.setItem("sgv_visited", "1");
+    }
+  } catch (_) { /* storage may be unavailable — draw as normal */ }
+
   // Stagger children get an index so CSS can delay them.
   document.querySelectorAll("[data-reveal-stagger]").forEach((group) => {
     Array.from(group.children).forEach((child, i) =>

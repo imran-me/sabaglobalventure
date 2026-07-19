@@ -484,3 +484,16 @@
   background: linear-gradient(180deg, var(--gold-500), transparent);
 }
 @media (max-width: 1100px) { .side-rail { display: none; } }
+
+
+/* ===== Returning guests (ART-VISION #17) ================================
+   reveal.js marks the <html> once a session has already seen the page. The
+   ornament draw-ins collapse to instant: the floor is already painted. */
+html.is-returning .arch-orn .lo,
+html.is-returning .arch-frame path,
+html.is-returning .lota-frame .lc use,
+html.is-returning .alpona circle,
+html.is-returning .frieze * {
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
