@@ -208,6 +208,44 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-19 (cont.) — "Solve all 50" + Art Pass II + admin-editable trust layer
+Client: solve every review item except the Gmail/domain one; make new business
+facts Admin-editable; use the engravings to their full potential; declutter.
+- **Buyer workflow:** reply-channel field (required) on the form; "drafted in
+  WhatsApp — press Send" toasts; "Prefer Email?" carries the filled form;
+  catalogue search; MOQ chips; `#product=slug` deep links + Copy Link; modal
+  gallery/zoom + focus trap; keyboard-openable cards; phone show-more batching;
+  click-to-call dock bubble (auto-hides when phone unset).
+- **Art Pass II (the casting law — ONE artifact per chapter):** weave halved +
+  enlarged, CTA damask .08; tiger walks a cleared bottom stage at Origin
+  (#about extra padding-bottom IS the artwork's ground — don't fill it);
+  fisherman → Markets right (casting toward the map); cargo-ship silhouette →
+  Capabilities; rickshaw 38vmin gilded at CTA; phone hero gets its own nouka.
+  Engine supports `blend`/`flip`/`gild`/`ground` + multi-accent + lazy art
+  (data-src applied one viewport early by IO).
+- **Performance: 5.15MB → 1.37MB.** Engravings re-cut to right-sized WebP
+  (originals kept); og:image/twitter absolute (WhatsApp previews now work).
+- **Trust layer, all Admin → Settings driven (blank = hidden):** trade-facts
+  ledger at the CTA (port/incoterms/payment/lead/samples) + same facts as a
+  visible FAQ (+FAQPage JSON-LD); reply promise "within 24 hours (GMT+6)";
+  footer legal line (tradeLicense/bin/exportRegNo — LEAVE BLANK until real);
+  season-note line under the ticker; per-product JSON-LD; GA4 loader
+  (analyticsId) with wa_click events; MD signed note in About; certs
+  "documents on request" link; printable **linecard.html** (Print → PDF).
+  store.js seeded → **v5**; admin.js `EXTRA_SETTING_KEYS` carries the new set.
+- **Design floor:** placeholder captions wrap 3 lines (no more mid-word cuts);
+  sub-11px text raised; phone featured deck = snap-scroll; prefers-contrast
+  + print stylesheets in base.css.
+- ⚠ **Encoding trap (cost 20 min):** PowerShell `Get-Content`/`Set-Content`
+  default encoding MANGLES the UTF-8 CSS/JS comments (em-dashes, Bengali).
+  Always read/write via `[System.IO.File]::ReadAllText/WriteAllText` with
+  `UTF8Encoding($false)`, or use the agent Edit tool.
+- Deliverables in repo: **REVIEW-2026-07-19.md** (50-point audit),
+  **ART-VISION.md** (25-move maison roadmap — read before any design work).
+- Client still owed: domain + info@ email, cert numbers/PDFs, license/BIN,
+  real photography (shot list idea in ART-VISION #21), Arabic edition
+  decision, GA4 id, Pages + custom domain activation.
+
 ### 2026-07-19 — Golden-art placement pass ("on the blue they bloom")
 Client: the ivory tiger was buried behind cards; the gold art belongs on navy,
 where it ফুটে ওঠে — creative placements, luxury never compromised.
