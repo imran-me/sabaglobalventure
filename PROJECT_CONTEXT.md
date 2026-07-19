@@ -242,6 +242,11 @@ facts Admin-editable; use the engravings to their full potential; declutter.
   `UTF8Encoding($false)`, or use the agent Edit tool.
 - Deliverables in repo: **REVIEW-2026-07-19.md** (50-point audit),
   **ART-VISION.md** (25-move maison roadmap — read before any design work).
+- **Vision quick-wins shipped same day** (`39b9789`): footer signs the house —
+  one Bengali line (Tiro Bangla, "বাংলার ফসল, বিশ্বের টেবিলে") + italic
+  colophon; shapla seal letterheads the line card; alpona draws once per
+  session (html.is-returning collapses draw transitions); the weave breathes
+  (90s ±opacity swell, reduced-motion safe).
 - Client still owed: domain + info@ email, cert numbers/PDFs, license/BIN,
   real photography (shot list idea in ART-VISION #21), Arabic edition
   decision, GA4 id, Pages + custom domain activation.
