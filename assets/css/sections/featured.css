@@ -137,3 +137,21 @@
 @media (prefers-reduced-motion: reduce) {
   .featured-card, .featured-row.is-swapping .featured-card { transition: none; opacity: 1; transform: none; }
 }
+
+
+/* ===== Two noukas on the ivory Featured chapter (client-placed) =========
+   Upper corners, flanking the heading. On paper the engraving is a soft gold
+   figure (no screen blend); z-index 0 keeps it behind the content. */
+.featured { position: relative; }
+.feat-nouka {
+  position: absolute; z-index: 0; pointer-events: none; top: 4%;
+  width: clamp(180px, 20vw, 300px); height: clamp(120px, 13vw, 200px);
+  background: url("../../img/scene/sampan-cut.webp") center / contain no-repeat;
+  -webkit-mask: radial-gradient(80% 82% at 50% 50%, #000 52%, transparent 86%);
+          mask: radial-gradient(80% 82% at 50% 50%, #000 52%, transparent 86%);
+  filter: sepia(.5) saturate(1.5) hue-rotate(-12deg) brightness(.68) contrast(1.05);
+  opacity: 1;
+}
+.feat-nouka--l { left: 1%; }
+.feat-nouka--r { right: 1%; transform: scaleX(-1); }
+@media (max-width: 760px) { .feat-nouka { display: none; } }

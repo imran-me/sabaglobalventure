@@ -214,7 +214,7 @@
   grid-template-columns: auto 1fr;
   gap: clamp(1rem, 3vw, 2.25rem);
   align-items: start;
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: clamp(1.3rem, 3.2vw, 2.3rem);   /* compacted */
 }
 .chapter-num {
   font-family: var(--font-wordmark);

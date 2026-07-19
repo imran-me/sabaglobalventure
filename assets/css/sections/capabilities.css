@@ -73,3 +73,29 @@
   .capability { grid-template-columns: 1.75rem 1fr; }
   .capability p { font-size: .82rem; }
 }
+
+
+/* ===== The fisherman on the ivory chapter (client-placed, upper-right) =====
+   On paper the engraving cannot screen-blend, so it is a soft gold figure.
+   ::before is the ivory clearing that mutes the woven pattern in this corner;
+   ::after is the fisherman himself at tiger-grade opacity. */
+.capabilities { position: relative; }
+.cap-fisher {
+  position: absolute; z-index: 0; pointer-events: none;
+  top: 2%; right: -4%;
+  width: clamp(320px, 46%, 620px); height: clamp(240px, 42%, 460px);
+}
+.cap-fisher::before {
+  content: ""; position: absolute; inset: -12% -6% -12% -18%;
+  background: radial-gradient(62% 60% at 60% 46%, var(--ivory-100) 44%, rgba(247,242,232,.55) 66%, transparent 82%);
+}
+.cap-fisher::after {
+  content: ""; position: absolute; inset: 0;
+  background: url("../../img/scene/fisherman-cut.webp") center right / contain no-repeat;
+  -webkit-mask: radial-gradient(78% 82% at 55% 50%, #000 55%, transparent 88%);
+          mask: radial-gradient(78% 82% at 55% 50%, #000 55%, transparent 88%);
+  /* warm the pale engraving to a gold that sits on cream, and mute it to a ghost */
+  filter: sepia(.5) saturate(1.5) hue-rotate(-12deg) brightness(.72) contrast(1.05);
+  opacity: .5;
+}
+@media (max-width: 760px) { .cap-fisher { display: none; } }

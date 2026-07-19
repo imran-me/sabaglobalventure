@@ -79,7 +79,9 @@ window.initBackground = function initBackground() {
     // The fisherman and the rickshaw get the SAME stagecraft as the tiger:
     // ground-anchored, large, walking cleared navy (the sections' extra
     // bottom padding IS their stage — markets.css / cta.css).
-    { section: "markets",      raster: "scene/fisherman-cut.webp", side: "right", w: 54, ground: 0, op: 0.58 },
+    // markets: the rickshaw floats upper-right behind the heading (client-placed,
+    // like the tiger); the fisherman moved to the ivory capabilities chapter.
+    { section: "markets",      raster: "scene/rickshaw-cut.webp",  side: "right", w: 54, y: 27, op: 0.55, blend: true, gild: true },
     { section: "cta",          raster: "scene/rickshaw-cut.webp",  side: "right", w: 46, ground: 0, op: 0.55, gild: true },
     { section: "contact",      file:   "mosque.svg",      side: "left",  w: 26, y: 58, op: 0.12 },
     // the boat leaves as the page signs off

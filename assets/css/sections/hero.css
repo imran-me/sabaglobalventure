@@ -14,7 +14,7 @@
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 86svh;   /* compacted from 100svh for a tighter page */
   display: flex;
   align-items: center;
   padding-top: clamp(6.5rem, 15vh, 9.5rem);
@@ -216,7 +216,7 @@
   .hero-title { max-width: 13ch; }
 }
 @media (max-width: 640px) {
-  .hero { min-height: 94svh; }
+  .hero { min-height: 88svh; }
   .hero-cta .btn { flex: 1 1 100%; }
   .hero .lead { max-width: 100%; }
 }
