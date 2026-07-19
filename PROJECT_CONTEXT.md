@@ -208,6 +208,21 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-19 (final) — The fisherman and the rickshaw join the tiger's rank
+Client: "you haven't used the fisherman, the rickshaw, like the royal bengal
+tiger." All three engravings now share the SAME stagecraft — ground-anchored
+(`ground: 0` in background.js SIDE_ACCENTS) on cleared navy the sections buy
+with extra bottom padding (about.css / markets.css / cta.css — do not fill it):
+- **Tiger** — Origin, 58vmin, op .6, screen-blend.
+- **Fisherman** — Markets, 54vmin, op .58, casting under the map, catching the
+  one `.route--net` arc that sails off its right edge.
+- **Rickshaw** — the CTA, 46vmin, op .55, gilded, beside the market chips.
+Verified in real renders (rickshaw stage frame + fisherman-under-map frame);
+zero console errors.
+- ⚠ Harness note: single big scrollIntoView jumps can catch a section pre-
+  reveal (empty frame, transient) — park at center first, then end, then shoot.
+  And read probe rects only while parked at THAT section.
+
 ### 2026-07-19 (later) — Four vision acts: Arabic edition, waterline, net-route, cert plates (+SVG diet)
 - **Arabic/RTL edition** (`assets/js/i18n.js` + `assets/css/rtl.css`): a header
   "عربي" toggle (persisted; reloads); translation runs on TEXT NODES so it
