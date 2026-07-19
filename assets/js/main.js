@@ -72,8 +72,10 @@
     "initCounters", "initBackground", "initProducts", "initFeatured",
     "initMarquee", "initMarketsMap",
     "initReveal",     // after everything that injects markup — see note above
+    "initContact",    // rebuilds the category <select> — must precede i18n
+    "initI18n",       // BEFORE kinetic: the Arabic headline must exist before
+                      // the word-split, so it animates word by word like English
     "initKinetic",    // after reveal: the headline reveals itself, not via IO
-    "initContact",
   ].forEach((fn) => { try { window[fn] && window[fn](); } catch (e) { console.error(fn, e); } });
 
   initSmoothScroll();

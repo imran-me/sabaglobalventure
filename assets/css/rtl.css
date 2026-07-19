@@ -1,0 +1,76 @@
+/* ============================================================================
+   rtl.css — The Arabic edition's typography and mirror rules (ART-VISION #23)
+   ----------------------------------------------------------------------------
+   Loaded on every page (tiny); every rule is gated behind [dir="rtl"] or
+   :root[lang="ar"], so the English edition pays nothing.
+
+   Three non-negotiables of Arabic typography, all enforced here:
+     1. NEVER letter-space Arabic — tracking breaks the connected script.
+     2. NEVER italicize Arabic — the script does not slant; the gold color
+        of <em> flourishes carries the emphasis alone.
+     3. Looser leading — Cormorant's .9 line-heights decapitate Arabic
+        ascenders and dots.
+   ========================================================================== */
+
+/* Amiri carries every voice of the Arabic edition (loaded by i18n.js). */
+:root[lang="ar"] {
+  --font-display: "Amiri", serif;
+  --font-serif: "Amiri", serif;
+  --font-wordmark: "Amiri", serif;
+  --font-body: "Amiri", "Segoe UI", system-ui, sans-serif;
+}
+
+/* 1 — no tracking, anywhere. (Latin fragments inside — SKU codes, "PDF",
+   phone numbers — survive untracked without harm.) */
+[dir="rtl"] * { letter-spacing: 0 !important; }
+
+/* 2 — no slanting. */
+:root[lang="ar"] em,
+:root[lang="ar"] i,
+:root[lang="ar"] .italic,
+:root[lang="ar"] blockquote { font-style: normal !important; }
+
+/* 3 — leading that lets the script breathe. */
+:root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3 { line-height: 1.3; }
+:root[lang="ar"] .hero-title { line-height: 1.25; letter-spacing: 0; }
+:root[lang="ar"] .pb-title { line-height: 1.2; }
+:root[lang="ar"] p, :root[lang="ar"] li, :root[lang="ar"] dd { line-height: 1.9; }
+
+/* ---- Mirrored details (flex/grid auto-mirror; these are the physical
+        properties that don't) ------------------------------------------- */
+[dir="rtl"] .pb-copy { padding-left: 0; padding-right: clamp(4rem, 9vw, 10rem); }
+@media (max-width: 860px) {
+  [dir="rtl"] .pb-copy { padding-right: clamp(3rem, 19vw, 7.5rem); padding-left: 0; }
+}
+[dir="rtl"] .pc-arrow svg { transform: scaleX(-1); }
+[dir="rtl"] .pc-explore::after {
+  background: linear-gradient(270deg, rgba(200,162,74,.85) 70%, transparent);
+}
+[dir="rtl"] .md-note > p:first-child {
+  border-left: 0; padding-left: 0;
+  border-right: 2px solid rgba(200,162,74,.45); padding-right: 1rem;
+}
+[dir="rtl"] .md-sign { padding-left: 0; padding-right: 1rem; }
+[dir="rtl"] .faq-item summary { padding: .95rem .2rem .95rem 2rem; }
+[dir="rtl"] .faq-item summary::after { right: auto; left: .4rem; }
+[dir="rtl"] .pull-quote {
+  border-left: 0 !important; padding-left: 0 !important;
+  border-right: 3px solid var(--gold-500); padding-right: 1.1rem;
+}
+[dir="rtl"] .trade-facts .fact + .fact {
+  border-left: 0; border-right: 1px solid rgba(200,162,74,.25);
+}
+@media (max-width: 700px) {
+  [dir="rtl"] .trade-facts .fact + .fact { border-right: 0; }
+}
+[dir="rtl"] .hero-rule { background: linear-gradient(270deg, var(--gold-500), transparent); transform-origin: right; }
+
+/* The language toggle itself */
+.lang-toggle {
+  background: none; border: 0; cursor: pointer;
+  font-family: var(--font-serif); font-size: .95rem;
+  color: var(--gold-300); letter-spacing: .02em;
+  padding: .4rem .55rem;
+  transition: color var(--dur) var(--ease);
+}
+.lang-toggle:hover { color: var(--gold-100); }

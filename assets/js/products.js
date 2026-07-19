@@ -291,6 +291,9 @@ window.initProducts = function initProducts() {
       </div>`;
 
     window.CTA && window.CTA.wireDataAttrs(modal);
+    // The modal is built on demand — the Arabic edition translates its chrome
+    // (buttons, labels) here; product data itself stays English by design.
+    if (window.I18N && window.I18N.active) window.I18N.apply(modal);
     requestAnimationFrame(() => modal.classList.add("is-open"));
     document.body.style.overflow = "hidden";
 
