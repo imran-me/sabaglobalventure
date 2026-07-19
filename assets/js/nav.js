@@ -12,17 +12,21 @@ window.initNav = function initNav() {
   const closeBtn = document.querySelector(".mobile-menu .close");
   const progress = document.querySelector(".scroll-progress");
   const toTop = document.querySelector(".to-top");
+  const waterFill = document.querySelector(".waterline-fill");
+  const waterDot = document.querySelector(".waterline-dot");
 
   /* ---- Header shrink/frost + scroll progress + back-to-top ----------- */
   const onScroll = () => {
     const y = window.scrollY;
     if (header) header.classList.toggle("is-scrolled", y > 40);
     if (toTop) toTop.classList.toggle("is-shown", y > window.innerHeight);
-    if (progress) {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-    }
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const frac = max > 0 ? y / max : 0;
+    if (progress) progress.style.transform = `scaleX(${frac})`;
+    // The waterline: the river fills as you read; the dot rides the tip.
+    if (waterFill) waterFill.style.transform = `scaleY(${frac})`;
+    if (waterDot) waterDot.style.top = `${(frac * 100).toFixed(3)}%`;
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();

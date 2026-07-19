@@ -81,6 +81,24 @@ window.initMarketsMap = function initMarketsMap() {
     }
   });
 
+  /* ---- One route lands in the fisherman's net (ART-VISION #8) ---------
+     The golden fisherman engraving stands at the section's right edge,
+     casting toward this map. Exactly ONE arc leaves the hub, sails past the
+     last market and exits the map's right edge at his height — art and data
+     touching once, and only once. */
+  {
+    const exitY = Math.min(150, hy + 30);   // low-right, toward the net's arc
+    const d = `M${hx} ${hy} Q${(hx + 360) / 2 + 14} ${hy - 22} 360 ${exitY}`;
+    const path = make("path", { class: "route route--net", d });
+    routesG.appendChild(path);
+    const len = (typeof path.getTotalLength === "function") ? path.getTotalLength() : 140;
+    path.style.setProperty("--len", len.toFixed(1));
+    if (!reduce) {
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = len;
+    }
+  }
+
   /* ---- Pins (markets + hub) ------------------------------------------ */
   const addPin = (c, isHub) => {
     const x = px(c.lng), y = py(c.lat);

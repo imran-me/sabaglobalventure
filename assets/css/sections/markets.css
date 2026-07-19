@@ -36,6 +36,13 @@
   transition: stroke-dashoffset 1.8s var(--ease);
 }
 .markets svg.is-drawn .route { stroke-dashoffset: 0 !important; }
+/* the one arc that sails past the markets into the fisherman's net — fainter
+   and slower than the trade routes: poetry, not data (ART-VISION #8) */
+.markets .route--net {
+  stroke: var(--gold-500); opacity: .45; stroke-width: .55;
+  stroke-dasharray: none;
+  transition: stroke-dashoffset 2.8s var(--ease) .9s;
+}
 
 /* Pins — layered glow / halo / core dot. */
 .markets .pin-glow { fill: var(--gold-500); opacity: .18; animation: pin-pulse 2.6s ease-in-out infinite; }

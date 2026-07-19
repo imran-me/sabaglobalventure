@@ -498,3 +498,30 @@
   font-size: var(--fs-small);
 }
 .mm-list .flag { font-size: 1.05rem; }
+
+
+/* ===== The waterline (ART-VISION #18) ==================================
+   A hairline gold river in the left margin: the track is barely there, the
+   fill flows down as you read, a small lamp-lit dot rides the tip. The one
+   progress indicator on the page; the conventional top bar is retired. */
+.scroll-progress { display: none; }
+.waterline {
+  position: fixed; left: clamp(14px, 1.6vw, 26px); top: 96px; bottom: 28px;
+  width: 1px; z-index: var(--z-header);
+  background: rgba(200,162,74,.14);
+  pointer-events: none;
+}
+.waterline-fill {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(200,162,74,.25), var(--gold-500));
+  transform: scaleY(0); transform-origin: top;
+}
+.waterline-dot {
+  position: absolute; left: 50%; top: 0;
+  width: 5px; height: 5px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--gold-300);
+  box-shadow: 0 0 8px 2px rgba(200,162,74,.45);
+}
+@media (max-width: 1099px) { .waterline { display: none; } }
+@media print { .waterline { display: none !important; } }

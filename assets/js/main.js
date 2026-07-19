@@ -275,9 +275,19 @@ function renderCerts() {
   const host = document.querySelector("[data-certs]");
   if (!host) return;
   if (!certs.length) { host.remove(); return; }
+  // Each certification is a small FRAMED PLATE — the same hairline + scooped
+  // "ticket" corner grammar as the product cards, so proof is displayed the
+  // way the house displays everything else (ART-VISION #24). The certificate
+  // number line renders only once a real `no:` exists in config.certs[] —
+  // never display a number that hasn't been supplied.
   host.innerHTML = certs.map((c) => {
     const ico = CERT_ICONS[c.icon] || CERT_ICONS.shield;
-    return `<span class="cert-badge"><svg class="cert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ico}</svg>${c.label}</span>`;
+    const no = String(c.no || "").trim();
+    return `<span class="cert-plate">
+      <svg class="cert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ico}</svg>
+      <span class="cert-label">${c.label}</span>
+      ${no ? `<span class="cert-no">${no}</span>` : ""}
+    </span>`;
   }).join("");
 }
 

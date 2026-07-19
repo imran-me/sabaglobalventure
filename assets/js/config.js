@@ -85,17 +85,19 @@ window.SITE_CONFIG = {
 
   /* ---- Certifications — CLIENT TO CONFIRM ------------------------------
      Set show:false (or delete the row) for anything not actually held. Do NOT
-     display a certification the company does not hold.                     */
+     display a certification the company does not hold.
+     `no:` = the certificate number ("ISO 22000:2018 · Cert. No. …") — shown
+     on the plate once filled; LEAVE "" until the real number exists.       */
   certs: [
-    { label: "ISO Certified",         icon: "iso",       show: true },
-    { label: "HACCP",                 icon: "haccp",     show: true },
-    { label: "Halal Certified",       icon: "halal",     show: true },
-    { label: "Phytosanitary",         icon: "leaf",      show: true },
-    { label: "Premium Export",        icon: "export",    show: true },
-    { label: "Non GMO",               icon: "nongmo",    show: true },
-    { label: "Hygienically Processed",icon: "hygiene",   show: true },
-    { label: "Moisture Controlled",   icon: "moisture",  show: true },
-    { label: "EU Approved Est.",      icon: "shield",    show: false },
+    { label: "ISO Certified",         icon: "iso",       show: true,  no: "" },
+    { label: "HACCP",                 icon: "haccp",     show: true,  no: "" },
+    { label: "Halal Certified",       icon: "halal",     show: true,  no: "" },
+    { label: "Phytosanitary",         icon: "leaf",      show: true,  no: "" },
+    { label: "Premium Export",        icon: "export",    show: true,  no: "" },
+    { label: "Non GMO",               icon: "nongmo",    show: true,  no: "" },
+    { label: "Hygienically Processed",icon: "hygiene",   show: true,  no: "" },
+    { label: "Moisture Controlled",   icon: "moisture",  show: true,  no: "" },
+    { label: "EU Approved Est.",      icon: "shield",    show: false, no: "" },
   ],
 
   /* ---- Trade facts (the answers a Gulf buyer asks first) ---------------
