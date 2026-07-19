@@ -89,3 +89,9 @@
   .stat .label { font-size: .62rem; }
   .cert-badge { font-size: .66rem; padding: .42rem .7rem; }
 }
+
+
+/* the invitation under the badges: documents exist and can be asked for */
+.certs-note { margin-top: .8rem; font-size: .8rem; color: var(--text-muted-on-dark); }
+.certs-note a { color: var(--gold-300); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.certs-note a:hover { color: var(--gold-100); }

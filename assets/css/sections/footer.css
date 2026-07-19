@@ -84,3 +84,11 @@
   .foot-bottom .right, .foot-bottom .center { text-align: center; }
 }
 @media (max-width: 520px) { .foot-grid { grid-template-columns: 1fr; } }
+
+
+/* legal registrations line — only renders once real numbers exist */
+.foot-legal {
+  text-align: center; padding: 0 var(--gutter) 1.1rem;
+  font-size: .74rem; letter-spacing: .04em;
+  color: var(--text-muted-on-dark); opacity: .8;
+}

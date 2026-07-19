@@ -9,12 +9,19 @@
   <div class="container" data-reveal>
     <p class="eyebrow">Let's Trade</p>
     <h2>Ready to place a <em>bulk inquiry?</em></h2>
-    <p class="lead" style="margin:0 auto 2rem">Talk to our trade desk — we reply fast.</p>
+    <p class="lead" style="margin:0 auto 2rem">Talk to our trade desk — we reply
+      <b data-config="replyPromise">within 24 hours (GMT+6)</b>.</p>
 
     <div class="cta-actions">
       <a class="btn btn--gold" data-cta="whatsapp">Request a Bulk Quote</a>
       <a class="btn btn--ghost" data-cta="gmail">Email Our Trade Desk</a>
+      <a class="btn btn--ghost" href="linecard.html" target="_blank" rel="noopener">Line Card (PDF)</a>
     </div>
+
+    <!-- The facts a Gulf buyer checks before writing: port, terms, payment,
+         lead time, samples. Rendered by main.js renderTradeFacts() from
+         Admin → Settings; hidden entirely until at least one fact is set. -->
+    <div class="trade-facts" data-trade-facts hidden></div>
 
     <div class="market-row">
       <span data-markets></span>

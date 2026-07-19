@@ -101,3 +101,14 @@
    bottom padding IS the artwork's ground; do not fill it with content. */
 #about { padding-bottom: clamp(12rem, 22vw, 19rem); }
 @media (max-width: 760px) { #about { padding-bottom: var(--section-pad); } }
+
+/* ===== The Managing Director's note ==================================== */
+.md-note { margin-top: clamp(1.8rem, 3.5vw, 2.6rem); max-width: 52ch; }
+.md-note > p:first-child {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1.06rem; line-height: 1.65; color: var(--gold-100); opacity: .92;
+  border-left: 2px solid rgba(200,162,74,.45); padding-left: 1rem;
+}
+.md-sign { margin-top: .8rem; padding-left: 1rem; display: flex; flex-direction: column; gap: .1rem; }
+.md-name { font-family: var(--font-serif); font-size: 1.22rem; color: var(--gold-300); }
+.md-title { font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--text-muted-on-dark); }

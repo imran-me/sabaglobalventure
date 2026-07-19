@@ -98,6 +98,36 @@ window.SITE_CONFIG = {
     { label: "EU Approved Est.",      icon: "shield",    show: false },
   ],
 
+  /* ---- Trade facts (the answers a Gulf buyer asks first) ---------------
+     Shown in the CTA facts ledger + the contact FAQ; each line HIDES itself
+     if you blank it. CLIENT TO CONFIRM every value before launch — these are
+     standard-practice defaults, not confirmed policy. Editable live in
+     Admin → Settings. */
+  replyPromise: "within 24 hours (GMT+6)",
+  portLoading:  "Chattogram Seaport · Dhaka (air)",
+  incoterms:    "FOB · CIF · CFR",
+  paymentTerms: "Irrevocable LC at sight · TT",
+  leadTime:     "FCL in 2–3 weeks of confirmed order",
+  samplePolicy: "Samples available — buyer covers courier",
+
+  /* ---- Legal registrations (footer line) -------------------------------
+     LEAVE BLANK until the client supplies the real numbers — never invent
+     registrations. Each renders only once set (Admin → Settings).          */
+  tradeLicense: "",     // e.g. "Trade License No. 12345"
+  bin:          "",     // e.g. "BIN 001234567-0101"
+  exportRegNo:  "",     // e.g. "ERC No. 26-12345"
+
+  /* ---- Season note (one living line under the hero ticker) -------------
+     e.g. "Aman harvest arriving — new-crop Miniket booking now". Blank hides
+     it. Update monthly from Admin → Settings: a changing line proves the
+     house is alive.                                                        */
+  seasonNote: "",
+
+  /* ---- Analytics (optional) --------------------------------------------
+     GA4 measurement id ("G-XXXXXXXXXX"). Blank = no analytics script loads.
+     When set, outbound WhatsApp clicks are reported as "wa_click" events.  */
+  analyticsId: "",
+
   /* ---- Message templates (used by cta-helper.js) -----------------------
      {product}, {packaging}, {country}, {name} are filled in at click time.  */
   templates: {

@@ -34,7 +34,10 @@
   // reference cached by cta-helper.js stays valid). Only non-empty values win.
   if (window.Store && window.SITE_CONFIG) {
     const s = window.Store.getSettings();
-    ["whatsapp", "email", "phone", "address", "mapUrl", "hours", "emblem"].forEach((k) => {
+    ["whatsapp", "email", "phone", "address", "mapUrl", "hours", "emblem",
+     "replyPromise", "portLoading", "incoterms", "paymentTerms", "leadTime",
+     "samplePolicy", "tradeLicense", "bin", "exportRegNo", "seasonNote",
+     "analyticsId"].forEach((k) => {
       if (s[k]) window.SITE_CONFIG[k] = s[k];
     });
     if (s.socials) window.SITE_CONFIG.socials = { ...window.SITE_CONFIG.socials, ...s.socials };
@@ -47,6 +50,11 @@
   renderMarketChips();
   renderStats();
   renderCerts();
+  renderTradeFacts();
+  renderLegalLine();
+  renderSeasonNote();
+  renderProductJsonLd();
+  initAnalytics();
 
   // Wire every static [data-cta] link/button on the page.
   window.CTA && window.CTA.wireDataAttrs(document);
@@ -290,5 +298,123 @@ function initSmoothScroll() {
     e.preventDefault();
     const y = target.getBoundingClientRect().top + window.scrollY - 80;
     window.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" });
+  });
+}
+
+
+/* ---- Trade facts ledger (CTA band) + contact FAQ ----------------------
+   Values live in config.js and Admin -> Settings; every line hides itself
+   when blank, so nothing unconfirmed ever renders. */
+function renderTradeFacts() {
+  const c = window.SITE_CONFIG || {};
+  const rows = [
+    ["Port of loading", c.portLoading],
+    ["Incoterms",       c.incoterms],
+    ["Payment",         c.paymentTerms],
+    ["Lead time",       c.leadTime],
+    ["Samples",         c.samplePolicy],
+  ].filter((r) => r[1] && !/^\{.*\}$/.test(r[1]));
+  const host = document.querySelector("[data-trade-facts]");
+  if (host && rows.length) {
+    host.innerHTML = rows.map(([t, v]) =>
+      '<div class="fact"><span class="fact-t">' + t + '</span><span class="fact-v">' + v + "</span></div>"
+    ).join("");
+    host.hidden = false;
+  }
+  // FAQ (contact section) — same facts, phrased as the buyer asks them.
+  const faq = document.querySelector("[data-faq]");
+  if (faq) {
+    const qa = [
+      ["What is the minimum order?", "MOQ applies per product - most lines start at one 20' FCL. The exact MOQ is on every product card."],
+      c.paymentTerms ? ["Which payment terms do you accept?", c.paymentTerms + "."] : null,
+      c.leadTime ? ["How fast can you ship?", c.leadTime + ", subject to season and vessel space."] : null,
+      c.samplePolicy ? ["Can I get samples first?", c.samplePolicy + "."] : null,
+      c.portLoading ? ["Which ports do you load from?", c.portLoading + "."] : null,
+    ].filter(Boolean);
+    if (qa.length) {
+      faq.innerHTML = '<h3 class="faq-title">Before you ask</h3>' + qa.map(([q, a]) =>
+        "<details class='faq-item'><summary>" + q + "</summary><p>" + a + "</p></details>"
+      ).join("");
+      faq.hidden = false;
+      // FAQPage structured data mirrors the VISIBLE questions only.
+      const ld = document.createElement("script");
+      ld.type = "application/ld+json";
+      ld.textContent = JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: qa.map(([q, a]) => ({
+          "@type": "Question", name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
+      });
+      document.head.appendChild(ld);
+    }
+  }
+}
+
+/* ---- Footer legal line — renders ONLY the registrations that exist ---- */
+function renderLegalLine() {
+  const c = window.SITE_CONFIG || {};
+  const bits = [c.tradeLicense, c.bin, c.exportRegNo]
+    .map((v) => String(v || "").trim())
+    .filter((v) => v && !/^\{.*\}$/.test(v));
+  const host = document.querySelector("[data-legal-line]");
+  if (host && bits.length) { host.textContent = bits.join("  ·  "); host.hidden = false; }
+}
+
+/* ---- Season note — the one living line under the hero ticker ---------- */
+function renderSeasonNote() {
+  const c = window.SITE_CONFIG || {};
+  const v = String(c.seasonNote || "").trim();
+  const host = document.querySelector("[data-season-note]");
+  if (host && v && !/^\{.*\}$/.test(v)) {
+    host.querySelector("span").textContent = v;
+    host.hidden = false;
+  }
+}
+
+/* ---- Product structured data — rich results build legitimacy ---------- */
+function renderProductJsonLd() {
+  try {
+    const products = (window.Store ? window.Store.getProducts() : window.PRODUCTS || [])
+      .filter((p) => p.status !== "draft").slice(0, 24);
+    if (!products.length) return;
+    const ld = document.createElement("script");
+    ld.type = "application/ld+json";
+    ld.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": products.map((p) => ({
+        "@type": "Product",
+        name: p.name,
+        description: p.shortDesc || "",
+        category: p.category || "",
+        url: "https://www.sabaglobalventures.com/#product=" + encodeURIComponent(p.slug || ""),
+        brand: { "@type": "Brand", name: "Saba Global Ventures" },
+      })),
+    });
+    document.head.appendChild(ld);
+  } catch (_) { /* structured data must never break the page */ }
+}
+
+/* ---- Analytics (GA4) — loads ONLY when an id is configured ------------ */
+function initAnalytics() {
+  const id = String((window.SITE_CONFIG || {}).analyticsId || "").trim();
+  if (!/^G-[A-Z0-9]+$/i.test(id)) return;
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag("js", new Date());
+  gtag("config", id);
+  // The event the seller actually cares about: which products drive WhatsApp.
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[href*='wa.me']");
+    if (!a) return;
+    gtag("event", "wa_click", {
+      product: a.getAttribute("data-product") || "(general)",
+      location: a.closest("section")?.id || "page",
+    });
   });
 }

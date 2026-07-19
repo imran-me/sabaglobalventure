@@ -82,3 +82,15 @@
 
 <!-- Endless hairline ticker of every market we ship to (injected by main.js). -->
 <div class="marquee" aria-hidden="true" data-marquee></div>
+
+<!-- The living line: one seasonal sentence (Admin → Settings → Season note).
+     A line that changes month to month proves the house is awake. Hidden
+     until set — rendered by main.js renderSeasonNote(). -->
+<p class="season-note" data-season-note hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 21V9"/>
+    <path d="M12 9.5C9.6 9.2 8 7.4 7.8 5 10.4 5.3 12 7.1 12 9.5Z"/>
+    <path d="M12 9.5C14.4 9.2 16 7.4 16.2 5 13.6 5.3 12 7.1 12 9.5Z"/>
+  </svg>
+  <span></span>
+</p>

@@ -576,6 +576,14 @@
   }
 
   /* ================= SETTINGS ========================================= */
+  // Flat, admin-editable settings keys beyond the contact basics: the trade
+  // facts ledger, legal registrations, the season note and analytics.
+  const EXTRA_SETTING_KEYS = [
+    "replyPromise", "portLoading", "incoterms", "paymentTerms", "leadTime",
+    "samplePolicy", "tradeLicense", "bin", "exportRegNo", "seasonNote",
+    "analyticsId",
+  ];
+
   function loadSettings() {
     const form = $("#settings-form");
     if (!form) return;
@@ -589,10 +597,13 @@
     form.instagram.value = s.socials?.instagram || "";
     form.facebook.value = s.socials?.facebook || "";
     form.linkedin.value = s.socials?.linkedin || "";
+    EXTRA_SETTING_KEYS.forEach((k) => {
+      if (form.elements[k]) form.elements[k].value = s[k] || "";
+    });
 
     form.onsubmit = (e) => {
       e.preventDefault();
-      Store.saveSettings({
+      const patch = {
         whatsapp: form.whatsapp.value.trim(),
         email: form.email.value.trim(),
         phone: form.phone.value.trim(),
@@ -604,7 +615,11 @@
           facebook: form.facebook.value.trim(),
           linkedin: form.linkedin.value.trim(),
         },
+      };
+      EXTRA_SETTING_KEYS.forEach((k) => {
+        if (form.elements[k]) patch[k] = form.elements[k].value.trim();
       });
+      Store.saveSettings(patch);
       toast("Settings saved — live on the public site.");
     };
   }

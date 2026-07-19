@@ -226,6 +226,41 @@
               <div class="field"><label for="s-li">LinkedIn URL</label><input id="s-li" name="linkedin" type="text" placeholder="https://linkedin.com/company/..."></div>
               <div class="field"></div>
             </div>
+
+            <h3 style="color:var(--frost-100);margin:1.25rem 0 .75rem">Trade facts (shown in the CTA ledger &amp; FAQ — blank a line to hide it)</h3>
+            <div class="field--row">
+              <div class="field"><label for="s-reply">Reply promise</label><input id="s-reply" name="replyPromise" type="text" placeholder="within 24 hours (GMT+6)"></div>
+              <div class="field"><label for="s-port">Port of loading</label><input id="s-port" name="portLoading" type="text" placeholder="Chattogram Seaport · Dhaka (air)"></div>
+            </div>
+            <div class="field--row">
+              <div class="field"><label for="s-incoterms">Incoterms</label><input id="s-incoterms" name="incoterms" type="text" placeholder="FOB · CIF · CFR"></div>
+              <div class="field"><label for="s-payment">Payment terms</label><input id="s-payment" name="paymentTerms" type="text" placeholder="Irrevocable LC at sight · TT"></div>
+            </div>
+            <div class="field--row">
+              <div class="field"><label for="s-lead">Lead time</label><input id="s-lead" name="leadTime" type="text" placeholder="FCL in 2–3 weeks of confirmed order"></div>
+              <div class="field"><label for="s-sample">Sample policy</label><input id="s-sample" name="samplePolicy" type="text" placeholder="Samples available — buyer covers courier"></div>
+            </div>
+
+            <h3 style="color:var(--frost-100);margin:1.25rem 0 .75rem">Legal registrations (footer line — leave blank until confirmed)</h3>
+            <div class="field--row">
+              <div class="field"><label for="s-license">Trade license</label><input id="s-license" name="tradeLicense" type="text" placeholder="Trade License No. …"></div>
+              <div class="field"><label for="s-bin">BIN</label><input id="s-bin" name="bin" type="text" placeholder="BIN …"></div>
+            </div>
+            <div class="field--row">
+              <div class="field"><label for="s-erc">Export Reg. (ERC)</label><input id="s-erc" name="exportRegNo" type="text" placeholder="ERC No. …"></div>
+              <div class="field"></div>
+            </div>
+
+            <h3 style="color:var(--frost-100);margin:1.25rem 0 .75rem">Living line &amp; analytics</h3>
+            <div class="field">
+              <label for="s-season">Season note (one line under the hero ticker — update monthly)</label>
+              <input id="s-season" name="seasonNote" type="text" placeholder="Aman harvest arriving — new-crop Miniket booking now">
+            </div>
+            <div class="field">
+              <label for="s-ga">Google Analytics 4 ID (blank = analytics off)</label>
+              <input id="s-ga" name="analyticsId" type="text" placeholder="G-XXXXXXXXXX">
+            </div>
+
             <div class="submit-row">
               <button class="btn btn--gold" type="submit">Save Settings</button>
               <span class="form-note">Tip: also update <code>assets/js/config.js</code> so brand-new visitors get these before the Store seeds.</span>

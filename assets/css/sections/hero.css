@@ -220,3 +220,16 @@
   .hero-cta .btn { flex: 1 1 100%; }
   .hero .lead { max-width: 100%; }
 }
+
+
+/* ===== Season note — the living line under the ticker ================== */
+.season-note {
+  display: flex; align-items: center; justify-content: center; gap: .55rem;
+  padding: .65rem var(--gutter);
+  background: rgba(6,15,38,.6);
+  border-top: 1px solid rgba(200,162,74,.16);
+  border-bottom: 1px solid rgba(200,162,74,.16);
+  font-family: var(--font-serif); font-style: italic;
+  font-size: .98rem; color: var(--gold-300); text-align: center;
+}
+.season-note svg { width: 17px; height: 17px; color: var(--gold-500); flex: none; }

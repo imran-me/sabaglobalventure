@@ -39,7 +39,8 @@
     //   v3 — official card: name pluralised, tagline, WhatsApp number corrected
     //   v4 — reference-mockup line-up: Miniket copy + Bengal Spices and
     //        Premium Shrimp lead the catalogue with real photography
-    seeded: "sgv_seeded_v4",
+    //   v5 — trade facts / legal / season-note / analytics settings added
+    seeded: "sgv_seeded_v5",
   };
 
   // Default category + country seeds (used on first run and "Reset demo data").
@@ -120,6 +121,18 @@
       address: c.address || "",
       mapUrl: c.mapUrl || "",
       hours: c.hours || "",
+      // Trade facts + legal + living-line — all editable in Admin → Settings.
+      replyPromise: c.replyPromise || "",
+      portLoading: c.portLoading || "",
+      incoterms: c.incoterms || "",
+      paymentTerms: c.paymentTerms || "",
+      leadTime: c.leadTime || "",
+      samplePolicy: c.samplePolicy || "",
+      tradeLicense: c.tradeLicense || "",
+      bin: c.bin || "",
+      exportRegNo: c.exportRegNo || "",
+      seasonNote: c.seasonNote || "",
+      analyticsId: c.analyticsId || "",
       // The site-wide brand MARK. Must be the square crest, NOT the wide
       // logo.svg lockup: main.js applyEmblem() stamps this into `.brand .mark`,
       // which already sits next to a text wordmark — using the lockup here
