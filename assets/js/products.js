@@ -368,14 +368,18 @@ window.initProducts = function initProducts() {
   const qCat = params.get("category");
   if (qCat && CATS.includes(qCat)) selectCat(qCat);
 
-  // Honour a shared product deep link (#product=slug): open that product's
-  // detail once the catalogue is on screen.
-  const pm = location.hash.match(/^#product=([\w-]+)/);
-  if (pm) {
+  // Honour a shared product deep link (#product=slug) — both at boot AND on
+  // later hash changes (pasting a colleague's link while already on the site
+  // is a same-document navigation: no reload, so boot-only handling misses it).
+  const openFromHash = () => {
+    const pm = location.hash.match(/^#product=([\w-]+)/);
+    if (!pm) return;
     const slug = decodeURIComponent(pm[1]);
     if (products.some((p) => p.slug === slug)) {
       document.getElementById("products")?.scrollIntoView();
       setTimeout(() => openModal(slug), 400);
     }
-  }
+  };
+  window.addEventListener("hashchange", openFromHash);
+  openFromHash();
 };

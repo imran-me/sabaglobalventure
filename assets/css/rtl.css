@@ -43,6 +43,17 @@
   [dir="rtl"] .pb-copy { padding-right: clamp(3rem, 19vw, 7.5rem); padding-left: 0; }
 }
 [dir="rtl"] .pc-arrow svg { transform: scaleX(-1); }
+/* Product DATA stays English by design — each text block takes its OWN
+   direction (plaintext), so English keeps English punctuation order inside
+   the RTL page, and future Arabic entries flow RTL automatically. */
+[dir="rtl"] .pc-name,
+[dir="rtl"] .pc-desc,
+[dir="rtl"] .pc-loc,
+[dir="rtl"] .pc-moq,
+[dir="rtl"] .modal-body h3,
+[dir="rtl"] .modal-body p,
+[dir="rtl"] .modal-body dd,
+[dir="rtl"] .featured-card .plate { unicode-bidi: plaintext; }
 [dir="rtl"] .pc-explore::after {
   background: linear-gradient(270deg, rgba(200,162,74,.85) 70%, transparent);
 }
