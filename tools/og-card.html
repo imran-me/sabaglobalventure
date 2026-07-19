@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OG card generator — screenshot me at exactly 1200×630</title>
+  <!-- ==========================================================================
+       tools/og-card.html — the WhatsApp/LinkedIn share card, in the house style
+       --------------------------------------------------------------------------
+       Not linked from the site. Serve the repo, open this page at a 1200×630
+       viewport, screenshot, save over assets/img/icons/og-image.png. The
+       scratchpad script render_og.py does exactly that.
+       ======================================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Marcellus&family=Manrope:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 1200px; height: 630px; overflow: hidden; position: relative;
+           background: radial-gradient(120% 130% at 18% 40%, #0D2559 0%, #081B45 55%, #050F2C 100%); }
+    /* the paddy sunrise, right half, dissolving into the navy */
+    .scene {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 62%;
+      background: url("../assets/img/scene/paddy-sunrise.webp") center right / cover no-repeat;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 42%);
+              mask-image: linear-gradient(90deg, transparent 0%, #000 42%);
+    }
+    .veil { position: absolute; inset: 0;
+            background: linear-gradient(90deg, rgba(8,27,69,.35) 30%, transparent 55%),
+                        linear-gradient(180deg, transparent 70%, rgba(5,15,44,.75) 100%); }
+    .copy { position: absolute; left: 74px; top: 50%; transform: translateY(-53%); z-index: 2; }
+    .wordmark { font-family: "Marcellus", serif; color: #FDFBF6; font-size: 78px; letter-spacing: .06em; line-height: 1.02; }
+    .wordmark small { display: block; font-size: 30px; letter-spacing: .42em; color: #C8A24A; margin-top: 8px; }
+    .rule { width: 380px; height: 2px; margin: 30px 0 26px;
+            background: linear-gradient(90deg, #C8A24A 60%, transparent); }
+    .tagline { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 33px; color: #E9DBB2; }
+    .lines { margin-top: 18px; font-family: "Manrope", sans-serif; font-weight: 600;
+             font-size: 17px; letter-spacing: .22em; color: rgba(233,219,178,.75); text-transform: uppercase; }
+    .seal { position: absolute; left: 74px; bottom: 44px; z-index: 2;
+            display: flex; align-items: center; gap: 14px;
+            font-family: "Cormorant Garamond", serif; font-size: 21px; color: #D8BD72; }
+    .seal svg { width: 44px; height: 28px; }
+    .bottom-line { position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+                   background: linear-gradient(90deg, #8C6C1E, #D2BA6E, #C8A24A, #8C6C1E); }
+  </style>
+</head>
+<body>
+  <div class="scene"></div>
+  <div class="veil"></div>
+  <div class="copy">
+    <div class="wordmark">SABA GLOBAL<small>VENTURES</small></div>
+    <div class="rule"></div>
+    <div class="tagline">From Bangladesh, To The World.</div>
+    <div class="lines">Rice · Shrimp · Fish · Fresh Produce · Spices</div>
+  </div>
+  <div class="seal">
+    <svg viewBox="0 0 48 30" fill="none" stroke="#C8A24A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 26 C21 18 21 9 24 3 C27 9 27 18 24 26 Z"/>
+      <path d="M24 26 C18 21 13 14 13 6 C19 9 23 16 24 26 Z"/>
+      <path d="M24 26 C30 21 35 14 35 6 C29 9 25 16 24 26 Z"/>
+      <path d="M24 26 C15 24 8 20 4 13 C12 13 20 18 24 26 Z" stroke-opacity=".6"/>
+      <path d="M24 26 C33 24 40 20 44 13 C36 13 28 18 24 26 Z" stroke-opacity=".6"/>
+    </svg>
+    Rooted in Bengal · Delivering Worldwide
+  </div>
+  <div class="bottom-line"></div>
+</body>
+</html>
