@@ -208,6 +208,22 @@ sabaglobal/
 
 ## 9. Session Log (newest first)
 
+### 2026-07-19 (forensic pass) — every feature drilled, four defects fixed
+Full report: **REVIEW-DEEP-2026-07-19.md**. Scripted drills proved search∩
+filter compose, the whole modal cycle, all form paths (empty blocked, valid →
+correct wa.me + reply channel in body), linecard/404/admin, mobile batching
+(products 12.6k→5.6k px), reduced-motion (all art static + visible), AR boot.
+Fixed and verified (`bbc77cf`):
+1. Footer `<p>` lines (fineprint/legal/colophon) were LEFT-STUCK — the global
+   `p { max-width: 68ch }` measure shrinks them; they need `margin-inline:
+   auto`. Remember this for any future footer-level `<p>`.
+2. The moon sat over the contact column as a gray smudge → moved outside the
+   container (top-right sky), luminous core.
+3. `#product=` deep links now also work via `hashchange` (same-document
+   navigation never re-boots — boot-only hash handling misses it).
+4. RTL: `unicode-bidi: plaintext` on card/modal text — English catalogue data
+   keeps its punctuation inside the Arabic page; Arabic entries would flow RTL.
+
 ### 2026-07-19 (vision acts IV) — the lost page, the moon, the lamp, the shoot
 - **404.html**: standalone page — the client's carved golden arch (cut from
   the `bg/` ornament sheet → `scene/arch-gold.webp`, screen-blend + strong
