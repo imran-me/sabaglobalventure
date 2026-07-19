@@ -242,7 +242,7 @@
   border-radius: 10px; overflow: hidden;
   background: linear-gradient(163deg, #0E2757 0%, #0A2050 45%, #081B45 100%);
   display: grid; grid-template-columns: 46% 1fr;
-  min-height: clamp(250px, 20vw, 300px);   /* compacted */
+  min-height: clamp(280px, 24vw, 336px);   /* full height — client: keep product cards spacious */
   -webkit-mask:
     radial-gradient(circle 5.4px at 26px 0,               transparent 4.9px, #000 5.4px),
     radial-gradient(circle 5.4px at calc(100% - 26px) 0,   transparent 4.9px, #000 5.4px),
