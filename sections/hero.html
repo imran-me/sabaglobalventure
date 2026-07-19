@@ -46,6 +46,53 @@
     <!-- The portal: an arched niche onto the delta. The scene inside drifts
          slowly; the gold hairline frame traces the exact same arch geometry. -->
     <div class="hero-portal" data-reveal aria-hidden="true">
+      <!-- লতা পাতা with flowers and songbirds, flanking the portal OUTSIDE the
+           arch (client request). Thin gold line-art that draws itself in with
+           the hero; deliberately clear of the inner arch vine. Right side is
+           the same art mirrored (CSS). -->
+      <svg class="portal-vine portal-vine--l" viewBox="0 0 100 460" fill="none"
+           stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <g id="hero-vine-art">
+        <path class="pv-line" d="M56 458 C36 422 74 396 52 360 C34 332 70 304 50 268 C34 240 68 212 52 176 C38 146 66 120 54 84 C46 60 52 40 50 16"/>
+        <path class="pv-line" d="M52 360 C37 355 27 340 30 323 C45 329 55 344 52 360Z"/>
+        <path class="pv-line" d="M50 302 C65 297 76 282 73 265 C58 271 47 286 50 302Z"/>
+        <path class="pv-line" d="M52 244 C37 239 26 224 29 207 C44 213 55 228 52 244Z"/>
+        <path class="pv-line" d="M53 150 C68 145 79 130 76 113 C61 119 50 134 53 150Z"/>
+        <path class="pv-line" d="M50 96 C35 91 25 76 28 59 C43 65 53 80 50 96Z"/>
+        <g class="pv-line" transform="translate(73 265)">
+          <circle cx="0" cy="0" r="1.5"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(72)"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(144)"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(216)"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(288)"/>
+        </g>
+        <g class="pv-line" transform="translate(28 207) scale(.85)">
+          <circle cx="0" cy="0" r="1.5"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(72)"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(144)"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(216)"/>
+          <path d="M0 -3 C-3 -8 -3 -13 0 -15 C3 -13 3 -8 0 -3Z" transform="rotate(288)"/>
+        </g>
+        <!-- a lotus-bud finial where the vine closes -->
+        <path class="pv-line" d="M50 16 C46 6 50 -2 50 -2 C50 -2 54 6 50 16Z"/>
+        <!-- a songbird perched on the vine -->
+        <g class="pv-line" transform="translate(60 118)">
+          <path d="M0 2 C6 -1 13 0 17 4 C12 6 5 6 0 4Z"/>
+          <path d="M17 4 C19 2 22 1 24 3"/>
+          <path d="M0 4 C-4 5 -8 8 -11 12"/>
+          <path d="M6 1 C9 -4 13 -6 17 -6"/>
+        </g>
+        <!-- two little birds in flight, high over the arch -->
+        <path class="pv-line" d="M22 54 C28 48 33 48 37 54 C41 48 46 48 52 54"/>
+        <path class="pv-line" d="M44 30 C48 26 52 26 55 30 C58 26 62 26 66 30"/>
+        </g>
+      </svg>
+      <svg class="portal-vine portal-vine--r" viewBox="0 0 100 460" fill="none"
+           stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#hero-vine-art"></use>
+      </svg>
       <div class="portal-niche">
         <div class="portal-scene"></div>
         <!-- The client's golden nouka engraving, gliding on the waterline of the

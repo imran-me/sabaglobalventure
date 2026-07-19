@@ -233,3 +233,22 @@
   font-size: .98rem; color: var(--gold-300); text-align: center;
 }
 .season-note svg { width: 17px; height: 17px; color: var(--gold-500); flex: none; }
+
+/* ===== লতা পাতা flanking the portal (client request) ====================
+   Thin gold vine + flowers + songbirds on each side of the arch, OUTSIDE it
+   so it never touches the inner arch vine. Draws itself in with the hero. */
+.portal-vine {
+  position: absolute; top: -2%; height: 104%; width: auto; z-index: 0;
+  color: var(--gold-300); opacity: .8; pointer-events: none; overflow: visible;
+}
+.portal-vine--l { left: -16%; }
+.portal-vine--r { right: -16%; transform: scaleX(-1); }
+.portal-vine .pv-line {
+  stroke-dasharray: 800; stroke-dashoffset: 800; opacity: 0;
+  transition: stroke-dashoffset 2.4s var(--ease), opacity .7s var(--ease);
+}
+.hero-portal.is-visible .portal-vine .pv-line { stroke-dashoffset: 0; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .portal-vine .pv-line { stroke-dashoffset: 0; opacity: 1; transition: none; }
+}
+@media (max-width: 900px) { .portal-vine { display: none; } }
