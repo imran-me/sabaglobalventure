@@ -108,3 +108,17 @@
   font-size: .8rem; letter-spacing: .06em;
   color: var(--gold-500); opacity: .55;
 }
+
+/* ===== The moon over the departing sampan (ART-VISION #10) ==============
+   The hero's nouka sails at sunrise; the footer's leaves under a small
+   moon - the page completes one day on the river. Pure light, no markup. */
+.site-footer::before {
+  content: ""; position: absolute; pointer-events: none;
+  top: 90px; right: clamp(9%, 14vw, 20%);
+  width: 46px; height: 46px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 38%, rgba(247,242,232,.5), rgba(233,219,178,.25) 55%, transparent 72%);
+  box-shadow: 0 0 34px 10px rgba(233,219,178,.08);
+  opacity: .5;
+}
+@media (max-width: 760px) { .site-footer::before { display: none; } }

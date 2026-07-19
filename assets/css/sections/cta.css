@@ -84,3 +84,11 @@
    extra bottom padding is the rickshaw's street. Do not fill it. */
 #cta { padding-bottom: clamp(10rem, 18vw, 15rem); }
 @media (max-width: 760px) { #cta { padding-bottom: var(--section-pad); } }
+
+/* ===== The rickshaw lamp (ART-VISION #9, adapted for raster art) ========
+   Hovering the gold CTA warms the rickshaw's presence - the lamp lights
+   for a boarding passenger. Opacity only, driven through --acc-op so the
+   accent's own transition carries it. */
+.cta-band:has(.cta-actions .btn--gold:hover) .side-accent.is-in {
+  opacity: calc(var(--acc-op, .3) * 1.35);
+}

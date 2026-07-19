@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081B45">
+  <title>Page not found — Saba Global Ventures</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Even the lost page belongs to the house: navy, one golden artifact
+       (the carved arch from the client's own sheet, screen-blended so its
+       dark ground melts into the canvas), one line, one way home. */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100svh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.1rem; padding: 2rem;
+      background:
+        radial-gradient(90% 70% at 50% 30%, #0D2559 0%, #081B45 55%, #050F2C 100%);
+      color: #E9DBB2; text-align: center;
+      font-family: "Manrope", system-ui, sans-serif;
+    }
+    .arch {
+      width: min(78vw, 420px); height: auto;
+      mix-blend-mode: screen;
+      /* feather the crop's edges so the artifact floats in the navy,
+         never sits on it as a rectangle */
+      -webkit-mask-image: radial-gradient(72% 74% at 50% 52%, #000 42%, transparent 70%);
+              mask-image: radial-gradient(72% 74% at 50% 52%, #000 42%, transparent 70%);
+      filter: drop-shadow(0 18px 44px rgba(200,162,74,.22));
+    }
+    h1 {
+      font-family: "Cormorant Garamond", serif; font-weight: 500;
+      font-size: clamp(1.7rem, 4.5vw, 2.6rem); color: #FDFBF6; line-height: 1.25;
+    }
+    h1 em { font-style: italic; color: #D8BD72; }
+    p { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; color: rgba(233,219,178,.85); max-width: 44ch; }
+    .code { font-size: .68rem; letter-spacing: .34em; color: #C8A24A; text-transform: uppercase; }
+    a.home {
+      display: inline-flex; align-items: center; gap: .55rem;
+      margin-top: .6rem; padding: .85rem 1.7rem;
+      border: 1.35px solid #C8A24A; border-radius: 999px;
+      color: #E9DBB2; text-decoration: none;
+      font-weight: 600; font-size: .9rem; letter-spacing: .03em;
+      transition: background .3s ease, color .3s ease;
+    }
+    a.home:hover { background: linear-gradient(135deg, #9E7A26, #D2BA6E, #C8A24A, #8C6C1E); color: #050F2C; }
+    .colophon { margin-top: 1.4rem; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: .8rem; color: rgba(200,162,74,.55); }
+  </style>
+</head>
+<body>
+  <span class="code">404 · Page not found</span>
+  <img class="arch" src="assets/img/scene/arch-gold.webp" alt="" aria-hidden="true">
+  <h1>The river has carried <em>this page</em> away.</h1>
+  <p>What you were looking for may have moved with the season. The harvest, the catalogue and the trade desk are all still where they belong.</p>
+  <a class="home" href="index.html">Return to the delta &rarr;</a>
+  <p class="colophon">Saba Global Ventures · From Bangladesh, To The World</p>
+</body>
+</html>
