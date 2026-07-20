@@ -22,8 +22,10 @@
   aspect-ratio: 100 / 140;
   max-height: 620px;
 }
-.about-portrait-img { position: absolute; inset: 0; background: var(--indigo-800); }
-.about-portrait-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-portrait-img { position: absolute; inset: 0; background: linear-gradient(180deg, var(--indigo-800), var(--indigo-950)); }
+/* contain, not cover: show the whole admin-set image (logo + all products)
+   inside the arch rather than cropping it to fill. */
+.about-portrait-img img { width: 100%; height: 100%; object-fit: contain; }
 /* The gentle push-in on hover only once the unveil has finished — otherwise the
    two transforms fight over the same property and the image jumps. */
 .about-portrait.is-visible:hover .unveil img { transform: scale(1.045); }

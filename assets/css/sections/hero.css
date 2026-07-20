@@ -124,10 +124,12 @@
 .portal-photo {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
+  /* contain (not cover) so an admin-set photo — e.g. the product-family
+     banner — is shown WHOLE inside the arch, never cropped. The niche-matching
+     navy fills the letterbox so it reads as one framed plate. */
+  object-fit: contain;
+  background: linear-gradient(180deg, var(--indigo-800), var(--indigo-950));
   z-index: 1;
-  animation: portal-drift 44s ease-in-out infinite alternate;
-  will-change: transform;
 }
 .portal-photo:not([src]), .portal-photo[src=""] { display: none; }
 @media (prefers-reduced-motion: reduce) { .portal-photo { animation: none; } }
