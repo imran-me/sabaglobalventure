@@ -82,6 +82,15 @@
   honourInitialHash();
 })();
 
+/* ---- Escape admin/config values before they enter innerHTML ----------
+   Market names, stat labels, cert labels, trade facts and FAQ copy are all
+   editable in Admin and persisted to localStorage/Firestore, so a crafted
+   value could otherwise inject markup. */
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"]/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
 /* ---- Land on the right section for a deep-linked URL -----------------
    The page is composed from partials fetched at runtime, so when the browser
    processes a fragment like index.html#products on load, that element does not
@@ -189,8 +198,8 @@ function renderMarketChips() {
 
   const LIMIT = 10;   // show at most 10 publicly; the rest live behind "See all"
   const chip = (m, dots) => dots
-    ? `<li><span class="flag">${m.flag}</span> ${m.name}</li>`
-    : `<span class="chip"><span class="flag">${m.flag}</span> ${m.name}</span>`;
+    ? `<li><span class="flag">${esc(m.flag)}</span> ${esc(m.name)}</li>`
+    : `<span class="chip"><span class="flag">${esc(m.flag)}</span> ${esc(m.name)}</span>`;
 
   document.querySelectorAll("[data-markets]").forEach((host) => {
     const asDots = host.hasAttribute("data-markets-dots");
@@ -217,25 +226,38 @@ function openMarketsModal(markets) {
     modal.setAttribute("aria-modal", "true");
     document.body.appendChild(modal);
   }
-  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) =>
-    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   modal.innerHTML = `
     <div class="mm-panel" role="document">
       <button class="mm-close" aria-label="Close">&times;</button>
       <p class="eyebrow">Where We Operate</p>
       <h3>${markets.length} Markets &amp; Growing</h3>
       <ul class="mm-list" role="list">
-        ${markets.map((m) => `<li><span class="flag">${m.flag}</span> ${esc(m.name)}</li>`).join("")}
+        ${markets.map((m) => `<li><span class="flag">${esc(m.flag)}</span> ${esc(m.name)}</li>`).join("")}
       </ul>
     </div>`;
+  const lastFocus = document.activeElement;
   requestAnimationFrame(() => modal.classList.add("is-open"));
   document.body.style.overflow = "hidden";
-  const close = () => { modal.classList.remove("is-open"); document.body.style.overflow = ""; };
+  const onKey = (ev) => {
+    if (ev.key === "Escape") { close(); return; }
+    if (ev.key !== "Tab") return;
+    // Trap Tab inside the dialog (parity with the product modal).
+    const f = modal.querySelectorAll("button, a[href], [tabindex]:not([tabindex='-1'])");
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === first) { last.focus(); ev.preventDefault(); }
+    else if (!ev.shiftKey && document.activeElement === last) { first.focus(); ev.preventDefault(); }
+  };
+  const close = () => {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", onKey);
+    lastFocus && lastFocus.focus && lastFocus.focus();
+  };
   modal.querySelector(".mm-close").addEventListener("click", close);
   modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
-  document.addEventListener("keydown", function esc2(ev) {
-    if (ev.key === "Escape") { close(); document.removeEventListener("keydown", esc2); }
-  });
+  document.addEventListener("keydown", onKey);
+  modal.querySelector(".mm-close").focus();   // move focus into the dialog
 }
 
 /* ---- Trust-strip stats ---------------------------------------------- */
@@ -254,8 +276,8 @@ function renderStats() {
     const value = (isMarkets && marketCount) ? marketCount : s.value;
     return `
     <div class="stat" data-reveal>
-      <div class="num"><span data-count="${value}" data-suffix="${s.suffix || ""}">0</span></div>
-      <div class="label">${s.label}</div>
+      <div class="num"><span data-count="${value}" data-suffix="${esc(s.suffix || "")}">0</span></div>
+      <div class="label">${esc(s.label)}</div>
     </div>`;
   }).join("");
 }
@@ -287,8 +309,8 @@ function renderCerts() {
     const no = String(c.no || "").trim();
     return `<span class="cert-plate">
       <svg class="cert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ico}</svg>
-      <span class="cert-label">${c.label}</span>
-      ${no ? `<span class="cert-no">${no}</span>` : ""}
+      <span class="cert-label">${esc(c.label)}</span>
+      ${no ? `<span class="cert-no">${esc(no)}</span>` : ""}
     </span>`;
   }).join("");
 }
@@ -329,7 +351,7 @@ function renderTradeFacts() {
   const host = document.querySelector("[data-trade-facts]");
   if (host && rows.length) {
     host.innerHTML = rows.map(([t, v]) =>
-      '<div class="fact"><span class="fact-t">' + t + '</span><span class="fact-v">' + v + "</span></div>"
+      '<div class="fact"><span class="fact-t">' + esc(t) + '</span><span class="fact-v">' + esc(v) + "</span></div>"
     ).join("");
     host.hidden = false;
   }
@@ -345,7 +367,7 @@ function renderTradeFacts() {
     ].filter(Boolean);
     if (qa.length) {
       faq.innerHTML = '<h3 class="faq-title">Before you ask</h3>' + qa.map(([q, a]) =>
-        "<details class='faq-item'><summary>" + q + "</summary><p>" + a + "</p></details>"
+        "<details class='faq-item'><summary>" + esc(q) + "</summary><p>" + esc(a) + "</p></details>"
       ).join("");
       faq.hidden = false;
       // FAQPage structured data mirrors the VISIBLE questions only.
@@ -379,7 +401,8 @@ function renderSeasonNote() {
   const v = String(c.seasonNote || "").trim();
   const host = document.querySelector("[data-season-note]");
   if (host && v && !/^\{.*\}$/.test(v)) {
-    host.querySelector("span").textContent = v;
+    const span = host.querySelector("span");
+    if (span) span.textContent = v; else host.textContent = v;
     host.hidden = false;
   }
 }

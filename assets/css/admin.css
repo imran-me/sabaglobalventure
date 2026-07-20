@@ -14,8 +14,7 @@ body.admin { background: var(--navy-950); }
 .admin .brand .mark { height: 40px; width: auto; }
 .admin .brand .wordmark { display: flex; flex-direction: column; line-height: 1.05; }
 .admin .brand .wordmark b { font-family: var(--font-display); font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: var(--frost-100); }
-.admin .brand .wordmark small { font-size: .58rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-500); font-weight: 600; }
-.admin-login .emblem { height: 72px; width: auto; margin: 0 auto var(--space-4); }
+.admin .brand .wordmark small { font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-500); font-weight: 600; }
 
 /* ---- Login screen ---------------------------------------------------- */
 .admin-login {
@@ -49,7 +48,7 @@ body.admin { background: var(--navy-950); }
 .admin-nav-btn svg { width: 18px; height: 18px; }
 .admin-nav-btn:hover { background: rgba(201,162,75,.06); color: var(--gold-300); }
 .admin-nav-btn.is-active { background: rgba(201,162,75,.12); color: var(--gold-300); }
-.admin-sidebar .logout { margin-top: auto; color: #ff9b9b; }
+.admin-sidebar .logout { margin-top: auto; color: var(--error-soft); }
 
 /* Sidebar section label (e.g. "Content"). */
 .admin-nav-group {
@@ -92,10 +91,10 @@ body.admin { background: var(--navy-950); }
 .admin-table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); }
 .admin-table th, .admin-table td { text-align: left; padding: .7rem .8rem; border-bottom: 1.35px solid var(--line); }
 .admin-table th { font-size: var(--fs-eyebrow); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-300); }
-.admin-table tr:hover, .admin-table tbody tr:hover { background: rgba(201,162,75,.04); }
+.admin-table tbody tr:hover { background: rgba(201,162,75,.04); }
 .status-tag { padding: .2rem .55rem; border-radius: var(--radius-pill); font-size: .68rem; font-weight: 600; }
 .status-tag.new { background: rgba(201,162,75,.15); color: var(--gold-300); }
-.status-tag.contacted, .status-tag.published { background: rgba(52,163,224,.15); color: var(--ocean-400); }
+.status-tag.contacted, .status-tag.published { background: rgba(62,147,201,.15); color: var(--ocean-400); }
 .status-tag.draft { background: rgba(255,255,255,.08); color: var(--text-muted-on-dark); }
 
 /* ---- Product editor + live preview ----------------------------------- */

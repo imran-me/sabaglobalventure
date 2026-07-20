@@ -76,6 +76,18 @@
 }
 [dir="rtl"] .hero-rule { background: linear-gradient(270deg, var(--gold-500), transparent); transform-origin: right; }
 
+/* ---- Mirror the modal / menu close buttons (physical top-right → top-left) --- */
+[dir="rtl"] .modal-close { right: auto; left: .75rem; }
+[dir="rtl"] .mm-close { right: auto; left: 1rem; }
+[dir="rtl"] .mobile-menu .close { right: auto; left: 1.25rem; }
+
+/* Directional hover nudges point inward from the reading edge. */
+[dir="rtl"] .capability:hover { transform: translateX(-6px); }
+[dir="rtl"] .product-card:hover .pc-explore .pc-arrow { transform: translateX(-6px); }
+
+/* The admin dot's inline gap follows the reading direction. */
+[dir="rtl"] .admin-dot { margin-left: 0; margin-right: .5rem; }
+
 /* The language toggle itself */
 .lang-toggle {
   background: none; border: 0; cursor: pointer;

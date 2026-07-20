@@ -20,10 +20,10 @@
     const s = String(v == null ? "" : v).trim();
     return !s || /^\{.*\}$/.test(s);
   }
-  let warned = false;
+  const warned = new Set();
   function warnUnset(what) {
-    if (warned) return;
-    warned = true;
+    if (warned.has(what)) return;   // once PER field, not once globally
+    warned.add(what);
     console.warn(
       `[cta] ${what} is still a {CURLY} placeholder — inquiry links are disabled. ` +
       `Set it in assets/js/config.js or Admin → Settings before launch.`
@@ -118,6 +118,9 @@
         el.href = url;
         if (!unset && (kind === "whatsapp" || kind === "gmail")) el.target = "_blank";
         el.rel = "noopener";
+        // A disabled link still has href="#"; without this it would jump the
+        // page to the top when clicked.
+        if (unset) el.addEventListener("click", (e) => e.preventDefault());
       } else {
         el.addEventListener("click", () => {
           if (unset) return;

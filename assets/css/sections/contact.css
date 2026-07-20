@@ -21,11 +21,11 @@
    use dark text — inheriting the field's frost colour made them nearly invisible.
    Applies to the public contact form AND the admin selects (admin.html reuses
    .field). Do not remove: this is a real, previously-shipped bug. */
-.field select option, .field select optgroup { color: #050C1C; background: #EDF4FB; }
+.field select option, .field select optgroup { color: var(--ink-900); background: var(--powder-100); }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold-500); background: rgba(255,255,255,.05); outline: none; }
 .field textarea { resize: vertical; min-height: 110px; }
-.field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea { border-color: rgba(244,99,99,.7); }
-.field .err { font-size: .72rem; color: #ff9b9b; display: none; }
+.field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea { border-color: var(--error-line); }
+.field .err { font-size: .72rem; color: var(--error-soft); display: none; }
 .field.is-invalid .err { display: block; }
 .field--row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
 .form-note { font-size: .76rem; color: var(--text-muted-on-dark); }
@@ -58,7 +58,7 @@
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: .6rem; padding: 1rem; text-align: center;
   background:
-    radial-gradient(80% 80% at 50% 0%, rgba(52,163,224,.10), transparent 65%),
+    radial-gradient(80% 80% at 50% 0%, rgba(62,147,201,.10), transparent 65%),
     linear-gradient(180deg, rgba(20,54,158,.28), rgba(4,16,49,.6));
 }
 .map--placeholder .map-cta {

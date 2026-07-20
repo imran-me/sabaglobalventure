@@ -70,7 +70,7 @@
     "Documentation": "التوثيق",
     "Halal, phytosanitary, health certificate, CoO — the full file, on time.":
       "حلال، وصحة نباتية، وشهادة صحية، وشهادة منشأ — الملف الكامل في موعده.",
-    "See the Line Card →": "اطّلع على قائمة المنتجات ←",
+    "See the Catalogue →": "اطّلع على الكتالوج ←",
     "“Every container that leaves under our name carries my own word with it. Write to us — you will be answered by someone who can decide.”":
       "«كل حاوية تغادر باسمنا تحمل كلمتي معها. راسلونا — وسيجيبكم من يملك القرار.»",
     "Managing Director": "المدير العام",
@@ -149,7 +149,7 @@
     "bulk inquiry?": "طلب جملة؟",
     "Talk to our trade desk — we reply": "تحدّث إلى مكتب التجارة — نرد",
     "within 24 hours (GMT+6)": "خلال 24 ساعة (GMT+6)",
-    "Line Card (PDF)": "قائمة المنتجات (PDF)",
+    "View the Line Card": "اطّلع على قائمة المنتجات",
     "Port of loading": "ميناء الشحن",
     "Chattogram Seaport · Dhaka (air)": "ميناء تشاتوغرام · دكا (جوًا)",
     "Incoterms": "شروط التسليم",
@@ -223,6 +223,17 @@
     "Inquire on WhatsApp": "استفسر عبر واتساب",
     "Email Trade Desk": "راسل مكتب التجارة",
     "Copy Link": "انسخ الرابط",
+    "Varieties / Grades": "الأصناف / الدرجات",
+    "Origins": "المناشئ",
+    "Packaging": "التعبئة",
+    "MOQ:": "الحد الأدنى للطلب:",
+    "HS Code:": "رمز HS:",
+
+    /* Markets modal + empty states + form toast */
+    "Where We Operate": "أين نعمل",
+    "No products yet — add your first to bring the showcase to life.":
+      "لا توجد منتجات بعد — أضِف أول منتج لتُحيي المعرض.",
+    "Please complete the required fields.": "يرجى إكمال الحقول المطلوبة.",
   };
 
   /* Context overrides — where one English word must translate differently.
@@ -279,6 +290,9 @@
   window.I18N = {
     get active() { try { return localStorage.getItem(KEY) === "ar"; } catch (_) { return false; } },
     apply,
+    // Translate a single runtime string (for toasts/messages built in JS).
+    // Returns the original when inactive or unknown, so callers can wrap freely.
+    t(str) { return this.active ? (AR[norm(str)] || str) : str; },
   };
 
   window.initI18n = function initI18n() {

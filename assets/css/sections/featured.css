@@ -86,7 +86,7 @@
 .featured-card .cat {
   display: block; text-align: center;
   margin: .1rem 0 .45rem;
-  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700;
+  font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700;
   color: var(--gold-500);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
@@ -114,7 +114,7 @@
   .featured-card .plate { padding: 1rem .45rem .45rem; }
   .featured-card .plate .name { font-size: .76rem; }
   .featured-card .plate .ori { display: none; }
-  .featured-card .cat { font-size: .56rem; letter-spacing: .1em; padding: .15rem .35rem; }
+  .featured-card .cat { font-size: .62rem; letter-spacing: .1em; padding: .15rem .35rem; }
 }
 
 /* Phone: a snap-scroll promenade — each signature line at a size worth
@@ -141,8 +141,8 @@
 
 /* ===== Two noukas on the ivory Featured chapter (client-placed) =========
    Upper corners, flanking the heading. On paper the engraving is a soft gold
-   figure (no screen blend); z-index 0 keeps it behind the content. */
-.featured { position: relative; }
+   figure (no screen blend); z-index 0 keeps it behind the content.
+   (.featured is already position:relative — declared once at the top.) */
 .feat-nouka {
   position: absolute; z-index: 0; pointer-events: none; top: 4%;
   width: clamp(180px, 20vw, 300px); height: clamp(120px, 13vw, 200px);

@@ -235,6 +235,17 @@ window.initProducts = function initProducts() {
 
   /* ---- Detail modal --------------------------------------------------- */
   let lastFocus = null;
+  // Defined once at this scope so the persistent modal element's listeners
+  // (attached a single time on creation) can close it without being re-bound
+  // on every open.
+  function closeModalEl() {
+    const modal = document.querySelector(".modal");
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+    try { history.replaceState(null, "", location.pathname + "#products"); } catch (_) {}
+    lastFocus && lastFocus.focus && lastFocus.focus();
+  }
   function openModal(slug) {
     const p = products.find((x) => x.slug === slug);
     if (!p) return;
@@ -248,6 +259,22 @@ window.initProducts = function initProducts() {
       modal.setAttribute("role", "dialog");
       modal.setAttribute("aria-modal", "true");
       document.body.appendChild(modal);
+      // Persistent listeners — attached ONCE. The modal element is reused
+      // across opens (only its innerHTML is replaced), so binding these here
+      // instead of per-open prevents handlers stacking up (a slow leak +
+      // duplicate firing on every product view).
+      modal.addEventListener("click", (e) => { if (e.target === modal) closeModalEl(); });
+      modal.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") { closeModalEl(); return; }
+        if (e.key !== "Tab") return;
+        const panel = modal.querySelector(".modal-panel");
+        if (!panel) return;
+        const f = panel.querySelectorAll("button, a[href], a[data-cta], input, [tabindex]:not([tabindex='-1'])");
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+        else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+      });
     }
     const imgs = (p.images && p.images.length ? p.images : [{ url: "", alt: p.name }])
       .map((im) => ({ url: resolveImg(im.url) || (window.ImgFallback ? window.ImgFallback.makePlaceholder(im.alt || p.name) : ""), alt: im.alt || p.name }));
@@ -322,29 +349,12 @@ window.initProducts = function initProducts() {
       }
     });
 
-    const close = () => {
-      modal.classList.remove("is-open");
-      document.body.style.overflow = "";
-      try { history.replaceState(null, "", location.pathname + "#products"); } catch (_) {}
-      lastFocus && lastFocus.focus && lastFocus.focus();
-    };
-    modal.querySelector(".modal-close").addEventListener("click", close);
-    modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
-    document.addEventListener("keydown", function escClose(ev) {
-      if (ev.key === "Escape") { close(); document.removeEventListener("keydown", escClose); }
-    });
-
-    // Keep keyboard focus inside the dialog while it is open.
-    const panel = modal.querySelector(".modal-panel");
+    // The close button lives inside the replaced innerHTML, so it is wired
+    // per-open (the old node is discarded each time — no accumulation). The
+    // backdrop click, Tab-trap and Escape are on the persistent element above.
+    modal.querySelector(".modal-close").addEventListener("click", closeModalEl);
+    // Move focus into the dialog so the Tab-trap and Escape handling engage.
     modal.querySelector(".modal-close").focus();
-    modal.addEventListener("keydown", (e) => {
-      if (e.key !== "Tab") return;
-      const focusables = panel.querySelectorAll("button, a[href], input, [tabindex]:not([tabindex='-1'])");
-      if (!focusables.length) return;
-      const first = focusables[0], last = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
-      else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
-    });
   }
 
   /* ---- Category deep-link ---------------------------------------------

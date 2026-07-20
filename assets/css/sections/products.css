@@ -211,7 +211,7 @@
   font-family: var(--font-serif); font-size: 1.05rem;
   color: var(--frost-100); letter-spacing: .01em;
 }
-.cat-search input::placeholder { color: rgba(233,219,178,.45); font-style: italic; }
+.cat-search input::placeholder { color: rgba(233,219,178,.6); font-style: italic; }
 .cat-search input::-webkit-search-cancel-button { -webkit-appearance: none; }
 
 /* ============================================================================
@@ -317,8 +317,8 @@
   line-height: 1.05; margin-bottom: .8rem;
 }
 .pc-desc {
-  font-family: var(--font-body); font-weight: 300;
-  font-size: .92rem; color: rgba(242,247,253,.88); line-height: 1.6; margin-bottom: 1.05rem;
+  font-family: var(--font-body); font-weight: 400;
+  font-size: .92rem; color: rgba(242,247,253,.9); line-height: 1.6; margin-bottom: 1.05rem;
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
 .pc-loc {

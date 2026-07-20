@@ -87,13 +87,17 @@ window.SGVCloud = (function () {
     if (!db) return;
     const coll = COLL[kind];
     if (!coll) return;
+    // The try/catch only traps a synchronous throw; the returned promise is
+    // async, so each write needs its own .catch() or a denied/offline write
+    // becomes an unhandled rejection.
+    const onErr = (e) => console.warn("[firebase] mirror write failed", kind, action, e && e.message);
     try {
       if (kind === "settings") {
-        db.collection(coll).doc(SETTINGS_DOC).set(payload || {}, { merge: true });
+        db.collection(coll).doc(SETTINGS_DOC).set(payload || {}, { merge: true }).catch(onErr);
       } else if (action === "del") {
-        if (payload && payload.id) db.collection(coll).doc(String(payload.id)).delete();
+        if (payload && payload.id) db.collection(coll).doc(String(payload.id)).delete().catch(onErr);
       } else if (payload && payload.id) {
-        db.collection(coll).doc(String(payload.id)).set(payload, { merge: true });
+        db.collection(coll).doc(String(payload.id)).set(payload, { merge: true }).catch(onErr);
       }
     } catch (e) { console.error("[firebase] mirror failed", kind, action, e); }
   }

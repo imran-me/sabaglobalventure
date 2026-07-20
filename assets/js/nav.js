@@ -10,25 +10,32 @@ window.initNav = function initNav() {
   const menu = document.querySelector(".mobile-menu");
   const openBtn = document.querySelector(".hamburger");
   const closeBtn = document.querySelector(".mobile-menu .close");
-  const progress = document.querySelector(".scroll-progress");
   const toTop = document.querySelector(".to-top");
   const waterFill = document.querySelector(".waterline-fill");
   const waterDot = document.querySelector(".waterline-dot");
 
-  /* ---- Header shrink/frost + scroll progress + back-to-top ----------- */
+  /* ---- Header shrink/frost + waterline progress + back-to-top ---------
+     The scrollable height is cached and only recomputed on resize/load —
+     reading scrollHeight/clientHeight on every scroll tick forces a synchronous
+     layout reflow, which is the classic scroll-jank cause. */
+  let docMax = 0;
+  const recomputeMax = () => {
+    const h = document.documentElement;
+    docMax = h.scrollHeight - h.clientHeight;
+  };
   const onScroll = () => {
     const y = window.scrollY;
     if (header) header.classList.toggle("is-scrolled", y > 40);
     if (toTop) toTop.classList.toggle("is-shown", y > window.innerHeight);
-    const h = document.documentElement;
-    const max = h.scrollHeight - h.clientHeight;
-    const frac = max > 0 ? y / max : 0;
-    if (progress) progress.style.transform = `scaleX(${frac})`;
+    const frac = docMax > 0 ? y / docMax : 0;
     // The waterline: the river fills as you read; the dot rides the tip.
     if (waterFill) waterFill.style.transform = `scaleY(${frac})`;
     if (waterDot) waterDot.style.top = `${(frac * 100).toFixed(3)}%`;
   };
+  recomputeMax();
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", recomputeMax, { passive: true });
+  window.addEventListener("load", recomputeMax);
   onScroll();
 
   /* ---- Mobile overlay menu ------------------------------------------- */

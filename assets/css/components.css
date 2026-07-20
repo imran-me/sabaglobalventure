@@ -221,7 +221,7 @@
   font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
   background: rgba(201,162,75,.12); color: var(--gold-300); border: 1.35px solid rgba(201,162,75,.3);
 }
-.badge--ocean { background: rgba(52,163,224,.12); color: var(--ocean-400); border-color: rgba(52,163,224,.3); }
+.badge--ocean { background: rgba(62,147,201,.12); color: var(--ocean-400); border-color: rgba(62,147,201,.3); }
 
 /* ===== Section reveal (JS toggles .is-visible) ========================
    Slightly longer and a touch more travel than a UI fade — reads as a
@@ -243,15 +243,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal], [data-reveal-stagger] > * { opacity: 1 !important; transform: none !important; }
-}
-
-/* ===== Scroll progress bar (top hairline) ============================= */
-.scroll-progress {
-  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
-  transform: scaleX(0); transform-origin: left;
-  background: var(--gold-metallic);
-  z-index: var(--z-header);
-  pointer-events: none;
 }
 
 /* ===== Floating contact dock ========================================= */
@@ -323,8 +314,8 @@
   font-size: var(--fs-small);
   animation: toast-in var(--dur) var(--ease);
 }
-.toast--ok { border-color: rgba(52,163,224,.55); }
-.toast--err { border-color: rgba(244,99,99,.55); }
+.toast--ok { border-color: rgba(62,147,201,.55); }
+.toast--err { border-color: rgba(232,106,106,.55); }
 @keyframes toast-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
 /* ===== Preloader — the overture ======================================

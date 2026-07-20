@@ -147,7 +147,12 @@
   --shadow-card: 0 10px 30px -12px rgba(1,5,18,.55);
   --shadow-lift: 0 22px 48px -18px rgba(1,5,18,.65);
   --glow-gold:   0 0 0 1px var(--line), 0 8px 28px -10px rgba(201,162,75,.38);
-  --glow-ocean:  0 0 0 1px var(--line-blue), 0 10px 34px -12px rgba(52,163,224,.35);
+  --glow-ocean:  0 0 0 1px var(--line-blue), 0 10px 34px -12px rgba(62,147,201,.35);  /* --ocean-400 */
+
+  /* ---- Feedback / status colours -------------------------------------- */
+  --error:      #E86A6A;                 /* form errors, invalid fields */
+  --error-soft: #FF9B9B;                 /* error text on very dark surfaces */
+  --error-line: rgba(232,106,106,.5);    /* invalid field border */
 
   /* ---- Motion --------------------------------------------------------- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);   /* ~power3.out */

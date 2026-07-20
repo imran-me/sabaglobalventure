@@ -46,12 +46,20 @@ window.initContact = function initContact() {
     // ---- Validate ----
     const data = readForm();
     let ok = true;
+    let firstInvalid = null;
     ["name", "country", "product", "reply"].forEach((k) => {
       const empty = !data[k];
       setErr(k, empty);
-      if (empty) ok = false;
+      if (empty) { ok = false; firstInvalid = firstInvalid || k; }
     });
-    if (!ok) { toast("Please complete the required fields.", "err"); return; }
+    if (!ok) {
+      // Move focus to the first missing field so the inline (already-translated)
+      // error is announced, and translate the summary toast for the AR edition.
+      field(firstInvalid)?.focus();
+      const msg = "Please complete the required fields.";
+      toast(window.I18N ? window.I18N.t(msg) : msg, "err");
+      return;
+    }
 
     const body = buildSummary(data);
 

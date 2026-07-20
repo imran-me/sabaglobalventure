@@ -48,8 +48,13 @@
 .markets .pin-glow { fill: var(--gold-500); opacity: .18; animation: pin-pulse 2.6s ease-in-out infinite; }
 .markets .pin-halo { fill: var(--gold-300); opacity: .35; }
 .markets .pin { fill: var(--gold-300); cursor: pointer; transition: fill var(--dur-fast) var(--ease); }
-.markets .pin:hover { fill: var(--gold-300); }
-.markets .pin-group.is-hub .pin { fill: #fff; }
+.markets .pin:hover { fill: var(--gold-100); }
+/* Keyboard affordance — pins are interactive (JS click), so they must show a
+   focus ring, not rely on hover alone. */
+.markets .pin-group:focus-visible { outline: none; }
+.markets .pin-group:focus-visible .pin { fill: var(--gold-100); }
+.markets .pin-group:focus-visible .pin-halo { opacity: .6; }
+.markets .pin-group.is-hub .pin { fill: var(--rice-white); }
 .markets .pin-group.is-hub .pin-glow { fill: var(--gold-300); opacity: .28; }
 
 @keyframes pin-pulse { 0%,100% { opacity: .10; } 50% { opacity: .30; } }

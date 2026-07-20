@@ -94,7 +94,6 @@
 .divider svg { width: 24px; height: 24px; }
 
 /* ---- Visibility utilities ------------------------------------------- */
-.hide-mobile { }
 .hide-desktop { display: none; }
 @media (max-width: 768px) {
   .hide-mobile { display: none !important; }
