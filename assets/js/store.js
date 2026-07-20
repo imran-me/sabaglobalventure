@@ -40,7 +40,9 @@
     //   v4 — reference-mockup line-up: Miniket copy + Bengal Spices and
     //        Premium Shrimp lead the catalogue with real photography
     //   v5 — trade facts / legal / season-note / analytics settings added
-    seeded: "sgv_seeded_v5",
+    //   v6 — new SABA-branded lines (Dairy, Dry Fruits & Nuts, Confectionery)
+    //        with real photography; these are the featured deck
+    seeded: "sgv_seeded_v6",
   };
 
   // Default category + country seeds (used on first run and "Reset demo data").
@@ -48,6 +50,8 @@
   const SEED_CATEGORIES = [
     "Rice", "Shrimp", "Fish & Seafood", "Fresh Vegetables",
     "Fresh Fruits", "Spices", "Potato", "Dry & Agro Foods",
+    // SABA-branded / sourced lines (traded worldwide alongside the Bengal harvest).
+    "Dairy", "Dry Fruits & Nuts", "Confectionery",
   ].map((name, i) => ({ id: `c${i + 1}`, name, order: i + 1 }));
 
   // Bangladesh is the ORIGIN hub (hub:true) — the world map draws every trade

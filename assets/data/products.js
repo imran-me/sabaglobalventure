@@ -22,7 +22,7 @@
        id: "p1", slug: "miniket-rice", name: "Miniket Rice",
        category: "Rice",             // must match a name in Admin → Categories
        status: "published",          // "published" (shown) | "draft" (hidden)
-       featured: true,               // shows in the Featured deck
+       featured: false,               // shows in the Featured deck
        order: 1,
        shortDesc: "…",  longDesc: "…",
        origins: ["Cumilla, Bangladesh"], grades: ["Sortex-clean"],
@@ -36,7 +36,7 @@ window.PRODUCTS = [
   /* ---- Rice ---------------------------------------------------------- */
   {
     id: "p1", slug: "miniket-rice", name: "Miniket Rice",
-    category: "Rice", status: "published", featured: true, order: 1,
+    category: "Rice", status: "published", featured: false, order: 1,
     shortDesc: "Fine-milled, polished long grain rice with natural aroma and delicate taste.",
     longDesc: "Slender, polished long-grain rice milled from Bangladeshi paddy and sortex-cleaned to export presentation. Consistent grain length and a clean, non-sticky cook make it the standard choice for Gulf retail and catering buyers. Milled to order against your specification.",
     origins: ["Cumilla, Bangladesh"], grades: ["Sortex-clean", "Double-polished"],
@@ -49,7 +49,7 @@ window.PRODUCTS = [
   /* ---- The reference mockup's lead trio (cards 2 & 3) ----------------- */
   {
     id: "p30", slug: "bengal-spices", name: "Bengal Spices",
-    category: "Spices", status: "published", featured: true, order: 2,
+    category: "Spices", status: "published", featured: false, order: 2,
     shortDesc: "Pure, sun-dried spices sourced from the best farms of Bengal.",
     longDesc: "A curated spice basket from the northern districts — turmeric, dried chilli, cumin, coriander and cardamom — sun-dried the traditional way and milled or shipped whole to order. Every lot is single-origin, traceable to its farm cluster and graded for colour and oil content before packing.",
     origins: ["Naogaon, Bangladesh"], grades: ["Whole", "Ground", "Farm-graded"],
@@ -61,7 +61,7 @@ window.PRODUCTS = [
   },
   {
     id: "p31", slug: "premium-shrimp", name: "Premium Shrimp",
-    category: "Shrimp", status: "published", featured: true, order: 3,
+    category: "Shrimp", status: "published", featured: false, order: 3,
     shortDesc: "Wild-caught and responsibly processed for exceptional quality and freshness.",
     longDesc: "Shrimp from the Khulna estuaries, iced at the landing ghat and processed the same day in BRC-certified plants. Graded by count, glazed to specification and blast-frozen, with full cold-chain documentation from ghat to port.",
     origins: ["Khulna, Bangladesh"], grades: ["HOSO", "HLSO", "PD blocks"],
@@ -73,7 +73,7 @@ window.PRODUCTS = [
   },
   {
     id: "p2", slug: "chinigura-aromatic-rice", name: "Chinigura Aromatic Rice",
-    category: "Rice", status: "published", featured: true, order: 2,
+    category: "Rice", status: "published", featured: false, order: 2,
     shortDesc: "Bangladesh's celebrated short-grain aromatic — the rice of polao and biryani.",
     longDesc: "A small-grain aromatic rice native to Bangladesh, prized for an intense natural fragrance that basmati cannot replicate. Traditionally reserved for polao, biryani and festival cooking. Aged before milling to deepen aroma and firm the grain.",
     origins: ["Dinajpur, Bangladesh"], grades: ["Premium aged", "Sortex-clean"],
@@ -99,7 +99,7 @@ window.PRODUCTS = [
   /* ---- Shrimp -------------------------------------------------------- */
   {
     id: "p4", slug: "black-tiger-shrimp", name: "Black Tiger Shrimp",
-    category: "Shrimp", status: "published", featured: true, order: 4,
+    category: "Shrimp", status: "published", featured: false, order: 4,
     shortDesc: "Bagda — the Sundarbans-belt tiger prawn, blast-frozen at source.",
     longDesc: "Penaeus monodon farmed in the brackish delta of southwest Bangladesh, graded by count and blast-frozen within hours of harvest to lock in texture and colour. Available head-on (HOSO), headless shell-on (HLSO) and peeled formats, block or IQF. Cold chain unbroken from pond to port.",
     origins: ["Khulna, Bangladesh", "Satkhira, Bangladesh"],
@@ -139,7 +139,7 @@ window.PRODUCTS = [
   /* ---- Fish & Seafood ------------------------------------------------ */
   {
     id: "p7", slug: "hilsa-ilish", name: "Hilsa (Ilish)",
-    category: "Fish & Seafood", status: "published", featured: true, order: 7,
+    category: "Fish & Seafood", status: "published", featured: false, order: 7,
     shortDesc: "The national fish — Padma and Meghna river hilsa, whole and frozen.",
     longDesc: "Tenualosa ilisha, the most sought-after fish in Bengali cuisine and the single strongest draw for diaspora buyers across the Gulf and beyond. Sourced in season from the Padma and Meghna, graded by weight, whole-round and blast-frozen. Subject to seasonal catch windows and export regulation.",
     origins: ["Chandpur, Bangladesh", "Barishal, Bangladesh"],
@@ -178,7 +178,7 @@ window.PRODUCTS = [
   /* ---- Fresh Vegetables ---------------------------------------------- */
   {
     id: "p10", slug: "green-chilli", name: "Green Chilli",
-    category: "Fresh Vegetables", status: "published", featured: true, order: 10,
+    category: "Fresh Vegetables", status: "published", featured: false, order: 10,
     shortDesc: "Hand-picked, cold-chain handled from field to freight in under 24 hours.",
     longDesc: "Fresh green chilli picked at colour and firmness, pre-cooled and moved to the airport the same day. Air-freighted to Gulf markets on a schedule that protects shelf life. Sorted by length and packed to your retail or wholesale presentation.",
     origins: ["Cumilla, Bangladesh", "Bogura, Bangladesh"], grades: ["Export grade", "Hand-sorted"],
@@ -216,7 +216,7 @@ window.PRODUCTS = [
   /* ---- Fresh Fruits --------------------------------------------------- */
   {
     id: "p13", slug: "haribhanga-mango", name: "Haribhanga Mango",
-    category: "Fresh Fruits", status: "published", featured: true, order: 13,
+    category: "Fresh Fruits", status: "published", featured: false, order: 13,
     shortDesc: "Rangpur's fibreless, honey-sweet mango — the pride of the Bangladeshi season.",
     longDesc: "A GI-recognised Bangladeshi mango from the Rangpur belt, celebrated for dense fibreless flesh, a small stone and an intense honeyed sweetness. Harvested at maturity, hot-water treated where the destination requires it, and air-freighted inside the short season.",
     origins: ["Rangpur, Bangladesh"], grades: ["Export grade", "A-grade"],
@@ -280,7 +280,7 @@ window.PRODUCTS = [
   /* ---- Potato --------------------------------------------------------- */
   {
     id: "p18", slug: "table-potato", name: "Table Potato",
-    category: "Potato", status: "published", featured: true, order: 18,
+    category: "Potato", status: "published", featured: false, order: 18,
     shortDesc: "Diamant and Cardinal, size-graded and cured for long transit.",
     longDesc: "Bangladesh grows far more potato than it eats, and the surplus is genuinely export-competitive. Diamant and Cardinal varieties, harvested mature, cured to set the skin, then size-graded and packed. Handled to arrive firm, unblemished and ready for shelf.",
     origins: ["Munshiganj, Bangladesh", "Bogura, Bangladesh"], grades: ["Diamant", "Cardinal", "Size-graded"],
@@ -327,5 +327,133 @@ window.PRODUCTS = [
     images: [{ url: "assets/img/products/jute-goods.jpg", alt: "Woven jute sacks and hessian cloth" }],
     specs: { Note: "Draft — pending client confirmation" },
     tags: ["non-food"],
+  },
+
+  /* ======================================================================
+     SABA-BRANDED / SOURCED LINES — the Featured deck.
+     Real product photography (assets/img/products/). Traded worldwide
+     alongside the Bengal harvest. These are the ONLY featured:true items.
+     ⚠ Grades / packaging / MOQ / HS codes are sensible placeholders — the
+     client confirms before launch.
+     ====================================================================== */
+
+  /* ---- Dairy --------------------------------------------------------- */
+  {
+    id: "p32", slug: "lancy-full-cream-milk-powder", name: "Lancy Instant Full Cream Milk Powder",
+    category: "Dairy", status: "published", featured: true, order: 32,
+    shortDesc: "Spray-dried instant full-cream milk powder, packed in 25 kg bags for foodservice and repacking.",
+    longDesc: "Saba's Lancy label — instant full-cream milk powder, spray-dried from fresh cow's milk and packed in 25 kg multi-wall bags for bakeries, foodservice and retail repackers across the Gulf. Consistent solubility and a clean, rich dairy note, lot after lot.",
+    origins: ["Imported dairy"], grades: ["Full cream", "Instant, spray-dried"],
+    packaging: ["25 kg multiwall bag", "Retail packs to order"],
+    moq: "1 x 20' FCL", hsCode: "0402.21",
+    images: [{ url: "assets/img/products/lancy-milk.jpg", alt: "Lancy instant full cream milk powder 25 kg bag" }],
+    specs: { Type: "Full cream", Fat: "26–28%", Process: "Spray-dried", Pack: "25 kg" },
+    tags: ["branded", "dairy"],
+  },
+  {
+    id: "p33", slug: "suri-skimmed-milk-powder", name: "Suri Skimmed Milk Powder",
+    category: "Dairy", status: "published", featured: true, order: 33,
+    shortDesc: "Low-fat skimmed milk powder in 25 kg bags — the workhorse base for bakery and confectionery.",
+    longDesc: "Suri skimmed milk powder: spray-dried, low-fat and free-flowing — the dependable dairy base for bakeries, confectioners and beverage makers. Packed in 25 kg bags with consistent protein and solubility.",
+    origins: ["Imported dairy"], grades: ["Skimmed / low-fat", "Spray-dried"],
+    packaging: ["25 kg multiwall bag"],
+    moq: "1 x 20' FCL", hsCode: "0402.10",
+    images: [{ url: "assets/img/products/suri-milk.jpg", alt: "Suri skimmed milk powder 25 kg bag" }],
+    specs: { Type: "Skimmed", Fat: "≤ 1.5%", Process: "Spray-dried", Pack: "25 kg" },
+    tags: ["branded", "dairy"],
+  },
+  {
+    id: "p34", slug: "malak-full-cream-milk-powder", name: "Malak Full Cream Milk Powder",
+    category: "Dairy", status: "published", featured: true, order: 34,
+    shortDesc: "Instant full-cream milk powder of New Zealand origin — 25 kg.",
+    longDesc: "Malak instant full-cream milk powder, made from New Zealand dairy and packed in 25 kg bags. A premium full-cream base for tea, foodservice and retail repackers who want a clean, rich cup.",
+    origins: ["New Zealand"], grades: ["Full cream", "Instant"],
+    packaging: ["25 kg multiwall bag"],
+    moq: "1 x 20' FCL", hsCode: "0402.21",
+    images: [{ url: "assets/img/products/malak-milk.jpg", alt: "Malak full cream milk powder 25 kg bag" }],
+    specs: { Type: "Full cream", Fat: "26–28%", Origin: "New Zealand", Pack: "25 kg" },
+    tags: ["branded", "dairy"],
+  },
+  {
+    id: "p35", slug: "nzmp-wholemilk-powder", name: "NZMP Wholemilk Powder",
+    category: "Dairy", status: "published", featured: true, order: 35,
+    shortDesc: "Fonterra NZMP wholemilk powder, product of New Zealand — 25 kg.",
+    longDesc: "NZMP wholemilk powder, made to Fonterra's quality standards and shipped as a product of New Zealand in 25 kg bags. A globally trusted dairy ingredient for manufacturers and repackers.",
+    origins: ["New Zealand"], grades: ["Wholemilk", "Pasteurised"],
+    packaging: ["25 kg bag"],
+    moq: "1 x 20' FCL", hsCode: "0402.21",
+    images: [{ url: "assets/img/products/nzmp-wholemilk.jpg", alt: "NZMP wholemilk powder, product of New Zealand" }],
+    specs: { Brand: "NZMP (Fonterra)", Origin: "New Zealand", Pack: "25 kg" },
+    tags: ["branded", "dairy"],
+  },
+
+  /* ---- Spices -------------------------------------------------------- */
+  {
+    id: "p36", slug: "premium-saffron", name: "Premium Grade Saffron",
+    category: "Spices", status: "published", featured: true, order: 36,
+    shortDesc: "Deep-red, high-grade saffron threads — intense colour, aroma and flavour.",
+    longDesc: "Premium all-red saffron threads, hand-graded for colour strength and aroma. Supplied in bulk and retail-ready packs for HORECA and the gift trade — a high-value, low-volume line that travels light and sells on presentation.",
+    origins: ["Imported, hand-graded"], grades: ["All-red premium", "Whole threads"],
+    packaging: ["1 g / 2 g / 5 g retail", "Bulk tins"],
+    moq: "By agreement", hsCode: "0910.20",
+    images: [
+      { url: "assets/img/products/saffron.jpg", alt: "Premium grade saffron threads in a bowl" },
+      { url: "assets/img/products/saffron-2.jpg", alt: "Saffron threads with a crocus flower" },
+      { url: "assets/img/products/saffron-3.jpg", alt: "Bowl of premium saffron threads" },
+    ],
+    specs: { Grade: "All-red premium", Form: "Threads", Aroma: "High" },
+    tags: ["premium", "signature"],
+  },
+
+  /* ---- Dry Fruits & Nuts --------------------------------------------- */
+  {
+    id: "p37", slug: "makhana-fox-nuts", name: "Makhana (Fox Nuts)",
+    category: "Dry Fruits & Nuts", status: "published", featured: true, order: 37,
+    shortDesc: "Light, crisp fox nuts — the popular high-protein healthy snack, bulk or retail.",
+    longDesc: "Premium makhana (fox nuts / lotus seeds), size-graded and crisp, ready to roast and season. A fast-growing healthy-snack line with strong demand across the Gulf and South Asia. Bulk or retail packs to order.",
+    origins: ["Sourced & graded"], grades: ["Popped", "Size-graded"],
+    packaging: ["Bulk carton", "Retail pouch"],
+    moq: "1 x 20' FCL (mixed welcome)", hsCode: "1212.99",
+    images: [{ url: "assets/img/products/makhana.jpg", alt: "Makhana fox nuts in a bowl" }],
+    specs: { Form: "Popped seeds", Grading: "By size", Moisture: "Low" },
+    tags: ["healthy-snack"],
+  },
+  {
+    id: "p38", slug: "ajwa-dates-madinah", name: "Ajwa Dates (Madinah)",
+    category: "Dry Fruits & Nuts", status: "published", featured: true, order: 38,
+    shortDesc: "Soft, dark Madinah Ajwa dates — the premium gifting and Ramadan line.",
+    longDesc: "Ajwa dates from Madinah: soft, dark and richly sweet — the most prized date for gifting and the Ramadan trade. Hand-selected, graded and packed to retail presentation. A high-sentiment, high-margin seasonal line.",
+    origins: ["Madinah, Saudi Arabia"], grades: ["Premium", "Hand-selected"],
+    packaging: ["400 g / 800 g gift box", "5 kg carton"],
+    moq: "By agreement", hsCode: "0804.10",
+    images: [{ url: "assets/img/products/ajwa-dates.jpg", alt: "Premium Ajwa dates from Madinah in a bowl" }],
+    specs: { Variety: "Ajwa", Origin: "Madinah", Texture: "Soft" },
+    tags: ["premium", "seasonal", "signature"],
+  },
+  {
+    id: "p39", slug: "dried-figs", name: "Dried Figs",
+    category: "Dry Fruits & Nuts", status: "published", featured: true, order: 39,
+    shortDesc: "Sun-dried whole figs — naturally sweet, in threaded and loose packs.",
+    longDesc: "Whole dried figs, naturally sweet and tender, supplied both string-threaded (traditional) and as loose graded fruit. A staple dry-fruit line for retail, gifting and the Ramadan basket.",
+    origins: ["Imported, graded"], grades: ["Threaded", "Loose, graded"],
+    packaging: ["Retail pouch", "5 kg / 10 kg carton"],
+    moq: "By agreement", hsCode: "0804.20",
+    images: [{ url: "assets/img/products/dried-figs.jpg", alt: "Sun-dried whole figs" }],
+    specs: { Form: "Whole dried", Grades: "Threaded / loose" },
+    tags: ["shelf-stable"],
+  },
+
+  /* ---- Confectionery ------------------------------------------------- */
+  {
+    id: "p40", slug: "pistachio-filled-chocolate", name: "Pistachio Filled Chocolate",
+    category: "Confectionery", status: "published", featured: true, order: 40,
+    shortDesc: "Milk chocolate with a rich pistachio-cream filling — the viral gourmet bar.",
+    longDesc: "Indulgent milk chocolate bars with a generous roasted-pistachio cream filling — the gourmet, gift-worthy confection driving demand across the Gulf. Available in retail bars and gift formats under private label.",
+    origins: ["Made to order"], grades: ["Milk chocolate", "Pistachio-filled"],
+    packaging: ["Retail bar", "Gift box"],
+    moq: "By agreement", hsCode: "1806.31",
+    images: [{ url: "assets/img/products/pistachio-chocolate.jpg", alt: "Pistachio-filled milk chocolate bars" }],
+    specs: { Type: "Filled chocolate bar", Filling: "Pistachio cream" },
+    tags: ["premium", "private-label"],
   },
 ];

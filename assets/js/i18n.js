@@ -109,6 +109,9 @@
     "Spices": "التوابل",
     "Potato": "البطاطس",
     "Dry & Agro Foods": "أغذية جافة وزراعية",
+    "Dairy": "منتجات الألبان",
+    "Dry Fruits & Nuts": "الفواكه المجففة والمكسرات",
+    "Confectionery": "الحلويات",
     "Multiple / Other": "متعدد / أخرى",
     "Explore Product": "استكشف المنتج",
     "“From the golden fields of Bengal to tables around the world.”":
